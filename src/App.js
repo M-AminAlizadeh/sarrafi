@@ -1,5 +1,12 @@
+import { Container, Row, Col } from "react-bootstrap";
 function App() {
-	return <div></div>;
+	return (
+		<div>
+			<Container>
+				<Row></Row>
+			</Container>
+		</div>
+	);
 }
 
 export default App;
