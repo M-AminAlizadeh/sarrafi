@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -10,8 +11,6 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -31,8 +30,16 @@ import CreditCardRoundedIcon from "@material-ui/icons/CreditCardRounded";
 import PersonOutlineRoundedIcon from "@material-ui/icons/PersonOutlineRounded";
 import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
 import ClearRoundedIcon from "@material-ui/icons/ClearRounded";
+import "./layout.css";
 
-const drawerWidth = 240;
+// ///////////////////////////////////////////////////////
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import Collapse from "@material-ui/core/Collapse";
+import AdjustIcon from "@material-ui/icons/Adjust";
+// ///////////////////////////////////////////////////////
+
+const drawerWidth = 280;
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -94,7 +101,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Layout() {
 	const classes = useStyles();
 	const theme = useTheme();
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = React.useState(true);
+	const [expand, setExpand] = React.useState(false);
 
 	const handleDrawerOpen = () => {
 		setOpen(true);
@@ -102,6 +110,10 @@ export default function Layout() {
 
 	const handleDrawerClose = () => {
 		setOpen(false);
+	};
+
+	const handleClick = () => {
+		setExpand(!expand);
 	};
 
 	return (
@@ -131,12 +143,12 @@ export default function Layout() {
 						<div
 							className="topbar-user-info"
 							style={{
-								border: "1px solid red",
 								display: "flex",
 								flexDirection: "column",
 								justifyContent: "center",
 								alignItems: "center",
-								marginLeft: "5px",
+								marginLeft: "10px",
+								marginRight: "10px",
 							}}
 						>
 							<span className="topbar-user-name">امین علیزاده</span>
@@ -173,7 +185,7 @@ export default function Layout() {
 					paper: classes.drawerPaper,
 				}}
 			>
-				{/* Website Name and Logo */}
+				{/* Website Name and Logo and times icon */}
 				<div
 					className="sidebar-info"
 					style={{
@@ -209,29 +221,71 @@ export default function Layout() {
 				</div>
 				<Divider />
 				<List dir="rtl">
-					<ListItem style={{ textAlign: "right" }}>
+					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
 							<HomeOutlinedIcon />
 						</ListItemIcon>
-						<ListItemText style={{}}>داشبورد</ListItemText>
+						<ListItemText>
+							<Link to="/" className="layout-links">
+								داشبورد
+							</Link>
+						</ListItemText>
 					</ListItem>
-					<ListItem style={{ textAlign: "right" }}>
+					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
 							<AccountBalanceWalletOutlinedIcon />
 						</ListItemIcon>
-						<ListItemText> کیف پول ها</ListItemText>
+						<ListItemText>
+							<Link to="/wallets" className="layout-links">
+								کیف پول ها
+							</Link>
+						</ListItemText>
 					</ListItem>
-					<ListItem style={{ textAlign: "right" }}>
+					<ListItem
+						style={{ textAlign: "right" }}
+						className="hover-effect"
+						onClick={handleClick}
+					>
 						<ListItemIcon>
 							<AccountBalanceOutlinedIcon />
 						</ListItemIcon>
-						<ListItemText> تراکنش های کیف پول</ListItemText>
+						<Link to="" className="layout-links">
+							تراکنش های کیف پول
+						</Link>
+						{expand ? <ExpandLess /> : <ExpandMore />}
 					</ListItem>
-					<ListItem style={{ textAlign: "right" }}>
+					<Collapse
+						in={expand}
+						timeout="auto"
+						unmountOnExit
+						style={{ paddingRight: "15px" }}
+					>
+						<List component="div" disablePadding>
+							<ListItem style={{ textAlign: "right" }} className="hover-effect">
+								<ListItemIcon>
+									<AdjustIcon />
+								</ListItemIcon>
+								<Link to="/crypto-transactions" className="layout-links">
+									تراکنش های رمز ارز
+								</Link>
+							</ListItem>
+							<ListItem style={{ textAlign: "right" }} className="hover-effect">
+								<ListItemIcon>
+									<AdjustIcon />
+								</ListItemIcon>
+								<Link to="/rial-transactions" className="layout-links">
+									تراکنش های ریالی
+								</Link>
+							</ListItem>
+						</List>
+					</Collapse>
+					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
 							<ChatBubbleOutlineOutlinedIcon />
 						</ListItemIcon>
-						<ListItemText> پشتیبانی</ListItemText>
+						<Link to="/tickets" className="layout-links">
+							پشتیبانی
+						</Link>
 					</ListItem>
 				</List>
 				<Divider />
@@ -242,23 +296,29 @@ export default function Layout() {
 					خرید/فروش
 				</p>
 				<List dir="rtl">
-					<ListItem style={{ textAlign: "right" }}>
+					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
 							<TrendingDownIcon />
 						</ListItemIcon>
-						<ListItemText> خرید ارز</ListItemText>
+						<Link to="/buy" className="layout-links">
+							خرید ارز
+						</Link>
 					</ListItem>
-					<ListItem style={{ textAlign: "right" }}>
+					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
 							<TrendingUpIcon />
 						</ListItemIcon>
-						<ListItemText> فروش ارز</ListItemText>
+						<Link to="/sell" className="layout-links">
+							فروش ارز
+						</Link>
 					</ListItem>
-					<ListItem style={{ textAlign: "right" }}>
+					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
 							<DnsOutlinedIcon />
 						</ListItemIcon>
-						<ListItemText> سفارشات </ListItemText>
+						<Link to="/orders" className="layout-links">
+							سفارشات
+						</Link>
 					</ListItem>
 				</List>
 				<Divider />
@@ -269,17 +329,21 @@ export default function Layout() {
 					ترید یا معامله
 				</p>
 				<List dir="rtl">
-					<ListItem style={{ textAlign: "right" }}>
+					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
 							<ChangeHistoryRoundedIcon />
 						</ListItemIcon>
-						<ListItemText>معاملات باز </ListItemText>
+						<Link to="/open-transactions" className="layout-links">
+							معاملات باز{" "}
+						</Link>
 					</ListItem>
-					<ListItem style={{ textAlign: "right" }}>
+					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
 							<ListRoundedIcon />
 						</ListItemIcon>
-						<ListItemText>تاریخچه معاملات</ListItemText>
+						<Link to="trade-logs" className="layout-links">
+							تاریخچه معاملات
+						</Link>
 					</ListItem>
 				</List>
 				<Divider />
@@ -290,25 +354,51 @@ export default function Layout() {
 					حساب کاربری
 				</p>
 				<List dir="rtl">
-					<ListItem style={{ textAlign: "right" }}>
+					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
 							<CreditCardRoundedIcon />
 						</ListItemIcon>
 						<ListItemText> کارت های بانکی </ListItemText>
 					</ListItem>
-					<ListItem style={{ textAlign: "right" }}>
+					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
 							<FlashOnRoundedIcon />
 						</ListItemIcon>
 						<ListItemText>کسب درآمد </ListItemText>
 					</ListItem>
-					<ListItem style={{ textAlign: "right" }}>
+					<ListItem
+						style={{ textAlign: "right" }}
+						className="hover-effect"
+						onClick={handleClick}
+					>
 						<ListItemIcon>
 							<PersonOutlineRoundedIcon />
 						</ListItemIcon>
-						<ListItemText>حساب کاربری</ListItemText>
+						<ListItemText primary={"حساب کاربری "} />
+						{expand ? <ExpandLess /> : <ExpandMore />}
 					</ListItem>
-					<ListItem style={{ textAlign: "right" }}>
+					<Collapse
+						in={expand}
+						timeout="auto"
+						unmountOnExit
+						style={{ paddingRight: "15px" }}
+					>
+						<List component="div" disablePadding>
+							<ListItem style={{ textAlign: "right" }} className="hover-effect">
+								<ListItemIcon>
+									<AdjustIcon />
+								</ListItemIcon>
+								<ListItemText primary="سطح کاربری و احراز هویت" />
+							</ListItem>
+							<ListItem style={{ textAlign: "right" }} className="hover-effect">
+								<ListItemIcon>
+									<AdjustIcon />
+								</ListItemIcon>
+								<ListItemText primary="تغییر رمز عبور" />
+							</ListItem>
+						</List>
+					</Collapse>
+					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
 							<PowerSettingsNewRoundedIcon />
 						</ListItemIcon>

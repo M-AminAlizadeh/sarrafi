@@ -1,0 +1,18 @@
+.hover-effect:hover {
+	transform: translateX(-5px);
+	transition: 0.4s;
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.layout-links {
+	text-decoration: none;
+	font-size: 16px;
+	font-family: "Vazirmatn";
+	color: #636363;
+}
