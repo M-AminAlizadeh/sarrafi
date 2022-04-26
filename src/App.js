@@ -1,11 +1,15 @@
-import { Container, Row, Col } from "react-bootstrap";
+import Dashboard from "./Pages/Dashboard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./Pages/Layout";
+
 function App() {
 	return (
-		<div>
-			<Container>
-				<Row></Row>
-			</Container>
-		</div>
+		<BrowserRouter>
+			<Layout></Layout>
+			<Routes>
+				<Route path="/" element={<Dashboard />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
 
