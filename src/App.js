@@ -1,4 +1,4 @@
-import Dashboard from "./Pages/Dashboard";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 import Wallets from "./Pages/Wallets";
 import Crypto_transactions from "./Pages/Crypto_transactions";
 import Rial_transactions from "./Pages/Rial_transactions";

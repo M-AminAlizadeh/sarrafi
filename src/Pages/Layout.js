@@ -1,3 +1,4 @@
+// All The Imports
 import React from "react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
@@ -31,13 +32,11 @@ import PersonOutlineRoundedIcon from "@material-ui/icons/PersonOutlineRounded";
 import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
 import ClearRoundedIcon from "@material-ui/icons/ClearRounded";
 import "./layout.css";
-
-// ///////////////////////////////////////////////////////
+// Expand Functionality Imports
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import AdjustIcon from "@material-ui/icons/Adjust";
-// ///////////////////////////////////////////////////////
 
 const drawerWidth = 280;
 
@@ -101,9 +100,16 @@ const useStyles = makeStyles((theme) => ({
 export default function Layout() {
 	const classes = useStyles();
 	const theme = useTheme();
-	const [open, setOpen] = React.useState(true);
+	// Expand Functionality Functions Defined For Drawer And Dropdowns
+	// First Dropdown****************************************************************
+	const [open, setOpen] = React.useState(false);
 	const [expand, setExpand] = React.useState(false);
-
+	// Second Dropdown****************************************************************
+	const [expand_2, setExpand_2] = React.useState(false);
+	const handleClick_2 = () => {
+		setExpand_2(!expand_2);
+	};
+	// ****************************************************************
 	const handleDrawerOpen = () => {
 		setOpen(true);
 	};
@@ -115,7 +121,7 @@ export default function Layout() {
 	const handleClick = () => {
 		setExpand(!expand);
 	};
-
+	// Main Component
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
@@ -139,7 +145,8 @@ export default function Layout() {
 							cursor: "pointer",
 						}}
 					>
-						<Avatar className={classes.orange}>ا</Avatar>
+						{/* User Avatar */}
+						<Avatar className={classes.orange}>ام</Avatar>
 						<div
 							className="topbar-user-info"
 							style={{
@@ -176,6 +183,7 @@ export default function Layout() {
 			>
 				<div className={classes.drawerHeader} />
 			</main>
+			{/* Drawer Or Sidebar */}
 			<Drawer
 				className={classes.drawer}
 				variant="persistent"
@@ -220,6 +228,7 @@ export default function Layout() {
 					</div>
 				</div>
 				<Divider />
+				{/* List Starts Here */}
 				<List dir="rtl">
 					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
@@ -241,6 +250,7 @@ export default function Layout() {
 							</Link>
 						</ListItemText>
 					</ListItem>
+					{/* First Dropdown */}
 					<ListItem
 						style={{ textAlign: "right" }}
 						className="hover-effect"
@@ -249,10 +259,14 @@ export default function Layout() {
 						<ListItemIcon>
 							<AccountBalanceOutlinedIcon />
 						</ListItemIcon>
-						<Link to="" className="layout-links">
+						<Link to="#" className="layout-links">
 							تراکنش های کیف پول
 						</Link>
-						{expand ? <ExpandLess /> : <ExpandMore />}
+						{expand ? (
+							<ExpandLess className="expand-icon" />
+						) : (
+							<ExpandMore className="expand-icon" />
+						)}
 					</ListItem>
 					<Collapse
 						in={expand}
@@ -334,7 +348,7 @@ export default function Layout() {
 							<ChangeHistoryRoundedIcon />
 						</ListItemIcon>
 						<Link to="/open-transactions" className="layout-links">
-							معاملات باز{" "}
+							معاملات باز
 						</Link>
 					</ListItem>
 					<ListItem style={{ textAlign: "right" }} className="hover-effect">
@@ -358,27 +372,38 @@ export default function Layout() {
 						<ListItemIcon>
 							<CreditCardRoundedIcon />
 						</ListItemIcon>
-						<ListItemText> کارت های بانکی </ListItemText>
+						<Link to="credit-cards" className="layout-links">
+							کارت های بانکی
+						</Link>
 					</ListItem>
 					<ListItem style={{ textAlign: "right" }} className="hover-effect">
 						<ListItemIcon>
 							<FlashOnRoundedIcon />
 						</ListItemIcon>
-						<ListItemText>کسب درآمد </ListItemText>
+						<Link to="invitation" className="layout-links">
+							کسب درآمد
+						</Link>
 					</ListItem>
+					{/* Second Dropdown */}
 					<ListItem
 						style={{ textAlign: "right" }}
 						className="hover-effect"
-						onClick={handleClick}
+						onClick={handleClick_2}
 					>
 						<ListItemIcon>
 							<PersonOutlineRoundedIcon />
 						</ListItemIcon>
-						<ListItemText primary={"حساب کاربری "} />
-						{expand ? <ExpandLess /> : <ExpandMore />}
+						<Link to="#" className="layout-links">
+							حساب کاربری
+						</Link>
+						{expand_2 ? (
+							<ExpandLess className="expand-icon" />
+						) : (
+							<ExpandMore className="expand-icon" />
+						)}
 					</ListItem>
 					<Collapse
-						in={expand}
+						in={expand_2}
 						timeout="auto"
 						unmountOnExit
 						style={{ paddingRight: "15px" }}
@@ -388,13 +413,17 @@ export default function Layout() {
 								<ListItemIcon>
 									<AdjustIcon />
 								</ListItemIcon>
-								<ListItemText primary="سطح کاربری و احراز هویت" />
+								<Link to="authentication" className="layout-links">
+									سطح‌کاربری ‌و ‌احراز‌هویت
+								</Link>
 							</ListItem>
 							<ListItem style={{ textAlign: "right" }} className="hover-effect">
 								<ListItemIcon>
 									<AdjustIcon />
 								</ListItemIcon>
-								<ListItemText primary="تغییر رمز عبور" />
+								<Link to="password" className="layout-links">
+									تغییر رمز عبور
+								</Link>
 							</ListItem>
 						</List>
 					</Collapse>
@@ -402,7 +431,9 @@ export default function Layout() {
 						<ListItemIcon>
 							<PowerSettingsNewRoundedIcon />
 						</ListItemIcon>
-						<ListItemText>خروج</ListItemText>
+						<Link to="#" className="layout-links">
+							خروج
+						</Link>
 					</ListItem>
 				</List>
 			</Drawer>
