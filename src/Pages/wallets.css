@@ -1,0 +1,23 @@
+.wallets-container {
+	width: 90%;
+	margin: auto;
+	border: 3px solid #fff;
+	border-radius: 20px;
+	box-shadow: 0 0 20px #555;
+	overflow: hidden;
+}
+.wallets-crypto-image {
+	width: 40px;
+}
+.wallets-header {
+	padding: 20px;
+	color: #444444;
+}
+.MuiInputBase-root {
+	font-size: 18px !important;
+	font-family: "Vazirmatn" !important;
+}
+
+.ForwardRef-icon-16 {
+	display: none !important;
+}
