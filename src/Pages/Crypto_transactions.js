@@ -5,6 +5,7 @@ import {
 	gridPageSelector,
 	useGridApiContext,
 	useGridSelector,
+	Toolbar,
 } from "@mui/x-data-grid";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
@@ -210,6 +211,7 @@ export default function Crypto_transactions() {
 				disableColumnMenu
 				disableColumnSelector
 				disableSelectionOnClick
+				toolbar={["pdfExport"]}
 				components={{
 					Pagination: CustomPagination,
 				}}
