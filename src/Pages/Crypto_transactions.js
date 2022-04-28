@@ -37,8 +37,8 @@ const columns = [
 	},
 	{
 		field: "datetime",
-		headerName: "تاریخ و ساعت ثبت",
-		description: "زمان و تاریخ ثبت",
+		headerName: "تاریخ ثبت",
+		description: " تاریخ شمسی ثبت",
 		width: 200,
 	},
 	{
