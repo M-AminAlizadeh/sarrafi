@@ -1,0 +1,15 @@
+.MuiDataGrid-root {
+	font-family: "Vazirmatn", sans-serif !important;
+	text-align: right !important;
+}
+
+.MuiDataGrid-root .MuiDataGrid-cell--textLeft {
+	text-align: right !important;
+}
+.MuiPagination-ul li svg {
+	transform: rotate(180deg);
+}
+
+.rial_transactions-title-container {
+	font-size: 25px;
+}
