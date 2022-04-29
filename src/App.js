@@ -28,8 +28,6 @@ function App() {
 				<Route path="buy" element={<Buy />} />
 				<Route path="sell" element={<Sell />} />
 				<Route path="orders" element={<Orders />} />
-				<Route path="open-transactions" element={<Open_transactions />} />
-				<Route path="trade-logs" element={<Trade_logs />} />
 				<Route path="credit-cards" element={<Credit_cards />} />
 				<Route path="invitation" element={<Invitation />} />
 				<Route path="authentication" element={<Authentication />} />
