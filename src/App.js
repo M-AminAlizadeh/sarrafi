@@ -8,8 +8,6 @@ import Tickets from "./Pages/Tickets";
 import Buy from "./Pages/Buy";
 import Sell from "./Pages/Sell";
 import Orders from "./Pages/Orders";
-import Open_transactions from "./Pages/Open_transactions";
-import Trade_logs from "./Pages/Trade_logs";
 import Credit_cards from "./Pages/Credit_cards";
 import Invitation from "./Pages/Invitation";
 import Authentication from "./Pages/Authentication";
