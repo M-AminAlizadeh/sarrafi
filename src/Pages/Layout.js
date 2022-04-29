@@ -340,31 +340,6 @@ export default function Layout() {
 					dir="rtl"
 					style={{ paddingRight: "20px", paddingTop: "10px", color: "#A6A6A6" }}
 				>
-					ترید یا معامله
-				</p>
-				<List dir="rtl">
-					<ListItem style={{ textAlign: "right" }} className="hover-effect">
-						<ListItemIcon>
-							<ChangeHistoryRoundedIcon />
-						</ListItemIcon>
-						<Link to="/open-transactions" className="layout-links">
-							معاملات باز
-						</Link>
-					</ListItem>
-					<ListItem style={{ textAlign: "right" }} className="hover-effect">
-						<ListItemIcon>
-							<ListRoundedIcon />
-						</ListItemIcon>
-						<Link to="trade-logs" className="layout-links">
-							تاریخچه معاملات
-						</Link>
-					</ListItem>
-				</List>
-				<Divider />
-				<p
-					dir="rtl"
-					style={{ paddingRight: "20px", paddingTop: "10px", color: "#A6A6A6" }}
-				>
 					حساب کاربری
 				</p>
 				<List dir="rtl">
