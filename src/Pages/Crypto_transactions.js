@@ -190,32 +190,34 @@ function CustomPagination() {
 
 export default function Crypto_transactions() {
 	return (
-		<div style={{ width: "90%", margin: "auto" }} dir="rtl">
-			{/* Title and description part */}
-			<div className="crypto_transactions-info-container">
-				<div className="crypto_transactions-title-container">
-					<p>لیست تراکنش های رمزارز</p>
+		<div className="crypto-transactions-container">
+			<div style={{ width: "90%", margin: "auto" }} dir="rtl">
+				{/* Title and description part */}
+				<div className="crypto_transactions-info-container">
+					<div className="crypto_transactions-title-container">
+						<p>لیست تراکنش های رمزارز</p>
+					</div>
+					<div className="crypto_transactions-description-container">
+						<p>با کلیک روی عناوین جدول تراکنش مورد نظر خود را پیدا کنید</p>
+					</div>
 				</div>
-				<div className="crypto_transactions-description-container">
-					<p>با کلیک روی عناوین جدول تراکنش مورد نظر خود را پیدا کنید</p>
-				</div>
-			</div>
 
-			{/* Table */}
-			<DataGrid
-				rows={rows}
-				columns={columns}
-				pageSize={10}
-				autoHeight
-				style={{ textAlign: "right" }}
-				disableColumnMenu
-				disableColumnSelector
-				disableSelectionOnClick
-				toolbar={["pdfExport"]}
-				components={{
-					Pagination: CustomPagination,
-				}}
-			/>
+				{/* Table */}
+				<DataGrid
+					rows={rows}
+					columns={columns}
+					pageSize={10}
+					autoHeight
+					style={{ textAlign: "right" }}
+					disableColumnMenu
+					disableColumnSelector
+					disableSelectionOnClick
+					toolbar={["pdfExport"]}
+					components={{
+						Pagination: CustomPagination,
+					}}
+				/>
+			</div>
 		</div>
 	);
 }
