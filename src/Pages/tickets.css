@@ -1,0 +1,119 @@
+.tickets-container {
+	width: 90%;
+	margin: auto;
+	direction: rtl;
+}
+
+.tickets-new-ticket-container {
+	border: none;
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 10px 20px;
+}
+
+.tickets-new-ticket-title {
+	direction: rtl;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	cursor: pointer;
+	user-select: none;
+}
+
+.new-ticket-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	letter-spacing: 1px;
+}
+
+.tickets-new-ticket-form-container {
+	width: 60%;
+	margin: auto;
+	border: 3px solid pink;
+	padding: 10px;
+}
+
+.new-ticket-form-unit,
+.new-ticket-form-title {
+	display: flex;
+	flex-direction: column;
+	width: 40%;
+}
+
+.tickets-new-ticket-form-top-container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+}
+
+.new-ticket-form-order {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+
+.new-ticket-form-explain {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+
+#form-title,
+#form-unit,
+#form-order,
+#form-explain,
+.form-upload,
+#form-submit {
+	outline: none;
+	padding: 10px 15px;
+	border-radius: 20px;
+	border: 1px solid rgb(201, 201, 201);
+}
+
+#form-upload {
+	display: none;
+}
+
+.form-upload {
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding: 5px 30px;
+}
+
+.new-ticket-form-upload-file {
+	width: 100%;
+}
+
+.new-ticket-form-submit {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0px;
+}
+
+#form-submit {
+	padding: 10px 40px;
+	font-size: 20px;
+}
+
+#form-submit:hover {
+	box-shadow: 0px 10px 20px black;
+}
+
+/* Styles for useState */
+.form-alarm {
+	border: 1px solid red !important;
+}
+
+.form-default-border {
+	border: 1px solid rgb(201, 201, 201) !important;
+}
+
+/* Tickets log section styling */
+

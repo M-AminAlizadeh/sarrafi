@@ -8,8 +8,6 @@ import Tickets from "./Pages/Tickets";
 import Buy from "./Pages/Buy";
 import Sell from "./Pages/Sell";
 import Orders from "./Pages/Orders";
-import Open_transactions from "./Pages/Open_transactions";
-import Trade_logs from "./Pages/Trade_logs";
 import Credit_cards from "./Pages/Credit_cards";
 import Invitation from "./Pages/Invitation";
 import Authentication from "./Pages/Authentication";
@@ -44,6 +42,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
+<<<<<<< HEAD
 				<Route path="/login" element={<Login />} />
 				<Route path="forgot-password" element={<Forgot_password />} />
 				<Route path="sign-up" element={<Sign_up />} />
@@ -63,6 +62,20 @@ function App() {
 					<Route path="authentication" element={<Authentication />} />
 					<Route path="password" element={<Password />} />
 				</Route>
+=======
+				<Route path="/" element={<Dashboard />} />
+				<Route path="wallets" element={<Wallets />} />
+				<Route path="crypto-transactions" element={<Crypto_transactions />} />
+				<Route path="rial-transactions" element={<Rial_transactions />} />
+				<Route path="tickets" element={<Tickets />} />
+				<Route path="buy" element={<Buy />} />
+				<Route path="sell" element={<Sell />} />
+				<Route path="orders" element={<Orders />} />
+				<Route path="credit-cards" element={<Credit_cards />} />
+				<Route path="invitation" element={<Invitation />} />
+				<Route path="authentication" element={<Authentication />} />
+				<Route path="password" element={<Password />} />
+>>>>>>> 26e50b2107ce65c07fa745e06dcf7f03b06c42ad
 			</Routes>
 		</BrowserRouter>
 	);
