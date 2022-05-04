@@ -45,7 +45,7 @@ const columns = [
 		headerName: "جزییات",
 		description: "نمایش جزییات",
 		sortable: false,
-		width:300,
+		width: 300,
 	},
 ];
 
@@ -182,31 +182,32 @@ function CustomPagination() {
 
 export default function rial_transactions() {
 	return (
-		<div style={{ width: "90%", margin: "auto" }} dir="rtl">
-			{/* Title and description part */}
-			<div className="crypto_transactions-info-container">
-				<div className="crypto_transactions-title-container">
-					<p>لیست تراکنش های کیف پول</p>
+		<div className="rial-transactions-container">
+			<div style={{ width: "90%", margin: "auto" }} dir="rtl">
+				{/* Title and description part */}
+				<div className="crypto_transactions-info-container">
+					<div className="crypto_transactions-title-container">
+						<p>لیست تراکنش های کیف پول</p>
+					</div>
+					<div className="crypto_transactions-description-container">
+						<p>با کلیک روی عناوین جدول تراکنش مورد نظر خود را پیدا کنید</p>
+					</div>
 				</div>
-				<div className="crypto_transactions-description-container">
-					<p>با کلیک روی عناوین جدول تراکنش مورد نظر خود را پیدا کنید</p>
-				</div>
-			</div>
 
-			{/* Table */}
-			<DataGrid
-				rows={rows}
-				columns={columns}
-				pageSize={10}
-				autoHeight
-				style={{ textAlign: "right" }}
-				disableColumnMenu
-				disableColumnSelector
-				disableSelectionOnClick
-				components={{
-					Pagination: CustomPagination,
-				}}
-			/>
+				{/* Table */}
+				<DataGrid
+					rows={rows}
+					columns={columns}
+					pageSize={10}
+					autoHeight
+					disableColumnMenu
+					disableColumnSelector
+					disableSelectionOnClick
+					components={{
+						Pagination: CustomPagination,
+					}}
+				/>
+			</div>
 		</div>
 	);
 }
