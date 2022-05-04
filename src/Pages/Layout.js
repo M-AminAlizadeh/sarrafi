@@ -431,7 +431,7 @@ export default function Layout() {
 						<ListItemIcon>
 							<PowerSettingsNewRoundedIcon />
 						</ListItemIcon>
-						<Link to="#" className="layout-links">
+						<Link to="/login" className="layout-links">
 							خروج
 						</Link>
 					</ListItem>
