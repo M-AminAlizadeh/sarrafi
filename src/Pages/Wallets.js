@@ -500,6 +500,87 @@ const Demo = () => {
 				<TableContainer>
 					<Table className={classes.table} aria-label="simple table" dir="rtl">
 						<TableBody>
+							<TableRow
+								style={{
+									width: "100%",
+									border: "1px solid #7367F0",
+									backgroundColor: "#E4E2F7",
+								}}
+							>
+								<TableCell
+									component="th"
+									className=""
+									scope="row"
+									align="right"
+								>
+									<p style={{ fontSize: "20px" }}> تومان</p>
+								</TableCell>
+								<TableCell
+									component="th"
+									className=""
+									scope="row"
+									align="right"
+								>
+									<img
+										className="wallets-crypto-image"
+										src="images/crypto-logos/iran.png"
+									></img>
+								</TableCell>
+								<TableCell
+									component="th"
+									className=""
+									scope="row"
+									align="right"
+								>
+									<div style={{ fontSize: "20px", color: "#7468F0" }}>
+										موجودی : <span className="wallets-user-balance">0</span>{" "}
+										تومان
+									</div>
+								</TableCell>
+								<TableCell
+									component="th"
+									className=""
+									scope="row"
+									align="right"
+								>
+									<div>{""} </div>
+								</TableCell>
+								<TableCell
+									align="right"
+									className=""
+									style={{
+										textAlign: "left",
+										width: "500px",
+									}}
+								>
+									<Button
+										style={{
+											backgroundColor: "#28C76F",
+											border: "none",
+											padding: "10px 50px",
+											marginLeft: "10px",
+										}}
+										className="wallets-button"
+										size="sm"
+										active
+									>
+										واریز
+									</Button>
+									<Button
+										style={{
+											backgroundColor: "#EA5455",
+											border: "none",
+											padding: "10px 50px",
+											marginLeft: "10px",
+										}}
+										className="wallets-button"
+										size="sm"
+										active
+									>
+										برداشت
+									</Button>
+								</TableCell>
+							</TableRow>
 							{rows.map((row) => (
 								<TableRow key={row.name}>
 									<TableCell
@@ -536,6 +617,7 @@ const Demo = () => {
 												padding: "10px 50px",
 												marginLeft: "10px",
 											}}
+											className="wallets-button"
 											size="sm"
 											active
 										>
@@ -548,6 +630,7 @@ const Demo = () => {
 												padding: "10px 50px",
 												marginLeft: "10px",
 											}}
+											className="wallets-button"
 											size="sm"
 											active
 										>
@@ -560,6 +643,7 @@ const Demo = () => {
 												padding: "10px 50px",
 												marginLeft: "10px",
 											}}
+											className="wallets-button"
 											size="sm"
 											active
 										>

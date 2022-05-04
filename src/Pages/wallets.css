@@ -21,3 +21,9 @@
 .ForwardRef-icon-16 {
 	display: none !important;
 }
+.MuiTableCell-root {
+	border-bottom: 1px solid #7367f0 !important;
+}
+.wallets-button:hover {
+	box-shadow: 0 0 10px black;
+}
