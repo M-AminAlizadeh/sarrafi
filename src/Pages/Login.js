@@ -15,10 +15,7 @@ export default function Login() {
 					alignItems: "center",
 				}}
 			>
-				<img
-					src="https://panel.exonyx.ir/images/logo/logo.png"
-					style={{ width: "50%" }}
-				/>
+				<img src="images/main-logo/cointiger.svg" style={{ width: "50%" }} />
 			</div>
 			<div className="login-page-main-card-container" dir="rtl">
 				<div className="login-page-item-container">
