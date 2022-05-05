@@ -28,8 +28,6 @@ const AppLayout = () => (
 			<Route path="buy" element={<Buy />} />
 			<Route path="sell" element={<Sell />} />
 			<Route path="orders" element={<Orders />} />
-			<Route path="open-transactions" element={<Open_transactions />} />
-			<Route path="trade-logs" element={<Trade_logs />} />
 			<Route path="credit-cards" element={<Credit_cards />} />
 			<Route path="invitation" element={<Invitation />} />
 			<Route path="authentication" element={<Authentication />} />
@@ -42,7 +40,6 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-<<<<<<< HEAD
 				<Route path="/login" element={<Login />} />
 				<Route path="forgot-password" element={<Forgot_password />} />
 				<Route path="sign-up" element={<Sign_up />} />
@@ -55,27 +52,11 @@ function App() {
 					<Route path="buy" element={<Buy />} />
 					<Route path="sell" element={<Sell />} />
 					<Route path="orders" element={<Orders />} />
-					<Route path="open-transactions" element={<Open_transactions />} />
-					<Route path="trade-logs" element={<Trade_logs />} />
 					<Route path="credit-cards" element={<Credit_cards />} />
 					<Route path="invitation" element={<Invitation />} />
 					<Route path="authentication" element={<Authentication />} />
 					<Route path="password" element={<Password />} />
 				</Route>
-=======
-				<Route path="/" element={<Dashboard />} />
-				<Route path="wallets" element={<Wallets />} />
-				<Route path="crypto-transactions" element={<Crypto_transactions />} />
-				<Route path="rial-transactions" element={<Rial_transactions />} />
-				<Route path="tickets" element={<Tickets />} />
-				<Route path="buy" element={<Buy />} />
-				<Route path="sell" element={<Sell />} />
-				<Route path="orders" element={<Orders />} />
-				<Route path="credit-cards" element={<Credit_cards />} />
-				<Route path="invitation" element={<Invitation />} />
-				<Route path="authentication" element={<Authentication />} />
-				<Route path="password" element={<Password />} />
->>>>>>> 26e50b2107ce65c07fa745e06dcf7f03b06c42ad
 			</Routes>
 		</BrowserRouter>
 	);
