@@ -15,10 +15,7 @@ export default function Signup() {
 					alignItems: "center",
 				}}
 			>
-				<img
-					src="https://panel.exonyx.ir/images/pages/register.jpg"
-					style={{ width: "50%" }}
-				/>
+				<img src="images/illustrations/register.png" style={{ width: "50%" }} />
 			</div>
 			<div className="signup-page-main-card-container" dir="rtl">
 				<div className="signup-page-item-container">
