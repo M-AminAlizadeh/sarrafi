@@ -1,0 +1,41 @@
+.credit-cards-list-item {
+	padding: 10px;
+	border-bottom: 1px solid #d9d9d9;
+	width: 100%;
+	cursor: pointer;
+}
+.active {
+	background-color: #7367f0;
+	color: #fff;
+}
+.credit-cards-submit-button {
+	background-color: #7367f0;
+	color: #fff;
+	border: none;
+	padding: 10px 50px;
+	margin: 20px;
+	border-radius: 15px;
+	outline: none;
+}
+.credit-cards-submit-button:hover {
+	box-shadow: 2px 2px 20px #7367f0;
+	transition: 0.4s;
+}
+.credit-cards-input {
+	width: 300px;
+	padding: 10px;
+	text-align: center;
+	margin: 10px;
+	border-radius: 15px;
+	outline: none;
+	border: 1px solid #d9d9d9;
+	background-color: transparent;
+	font-size: 12px;
+}
+.credit-cards-input:focus {
+	border-color: #7367f0;
+	transition: 0.4s;
+}
+.unchecked {
+	color: #c3c3c3 !important;
+}
