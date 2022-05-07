@@ -1,46 +1,64 @@
-.buy-page-input {
-	height: 50px;
+/* Dropdown section */
+.drop-down-list-container {
+	position: relative;
+	width: 80%;
+	overflow: auto;
+}
+
+.toggle-drop-down-icon {
+	transform: rotate(180deg);
+}
+.drop-down-list {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid rgb(206, 206, 206);
+	cursor: pointer;
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+.drop-down-list .left-side {
+	display: flex;
+	flex-direction: column;
+}
+/* Search box inside Dropdown section */
+.search-box-container {
+	position: absolute;
+	width: 100%;
+	right: 0;
+	top: 20;
+	z-index: 100;
+}
+
+#search-bar {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 	padding: 9px 12px;
 	border: 1px solid #d9d9d9;
-	width: 500px;
-	margin: 30px;
+	width: 100%;
 	border-radius: 5px;
-}
-.buy-page-input:focus {
 	outline: none;
-	border: 1px solid #8378ef;
+	cursor: pointer;
 }
+/* Entering value from user section */
+
+/* Text area sectoin */
 textarea:focus {
 	outline: none !important;
 	border-color: #8378ef !important;
 }
+/* warning */
+.warning {
+	border: 1px solid red !important;
+}
 
-/* .btn {
-	background-color: #8378ef !important;
-	border-color: #8378ef !important;
-	margin: 10px !important;
-	width: 60%;
-} */
+
+/* Media Queries */
 @media (max-width: 1200px) {
 	.buy-page-container {
 		flex-wrap: wrap;
 		flex-direction: column;
-	}
-	.buy-page-input-container {
-		width: 97%;
-	}
-	.buy-page-input-container input {
-		width: 80%;
-	}
-	.buy-page-input-container input:nth-of-type(2) {
-		margin-right: 30px !important;
-	}
-	textarea {
-		display: none !important;
-	}
-}
-@media (min-width: 600), (max-width: 1200) {
-	.buy-page-input-container input:nth-of-type(2) {
-		margin-right: 100px !important;
 	}
 }
