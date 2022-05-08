@@ -216,7 +216,7 @@ export default function Buy() {
 						borderRadius: "5px",
 					}}
 				>
-					مبلغ پرداختی:<span>0</span> تومان
+					مبلغ پرداختی:<span>{toman_value}</span> تومان
 				</div>
 				{/* Select currency part */}
 				<div className="currency-selection-container">
@@ -301,7 +301,9 @@ export default function Buy() {
 				<hr />
 				<div>
 					<span>مقدار ارز</span>
-					<div className={`currency-value-container ${warning ? "" : "warning"}`}>
+					<div
+						className={`currency-value-container ${warning ? "" : "warning"}`}
+					>
 						<label htmlFor="">مقدار {currency_name}</label>
 						<img src={currency_icon} alt={currency_name} width="20px" />
 						<input
