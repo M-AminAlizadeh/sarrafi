@@ -10,6 +10,7 @@ import Paper from "@material-ui/core/Paper";
 import SearchBar from "material-ui-search-bar";
 import "./wallets.css";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
 	table: {
@@ -636,19 +637,22 @@ const Demo = () => {
 										>
 											برداشت
 										</Button>
-										<Button
-											style={{
-												backgroundColor: "#7367F0",
-												border: "none",
-												padding: "10px 50px",
-												marginLeft: "10px",
-											}}
-											className="wallets-button"
-											size="sm"
-											active
-										>
-											تاریخچه
-										</Button>
+
+										<Link to="/crypto-transactions">
+											<Button
+												style={{
+													backgroundColor: "#7367F0",
+													border: "none",
+													padding: "10px 50px",
+													marginLeft: "10px",
+												}}
+												className="wallets-button"
+												size="sm"
+												active
+											>
+												تاریخچه
+											</Button>
+										</Link>
 									</TableCell>
 								</TableRow>
 							))}

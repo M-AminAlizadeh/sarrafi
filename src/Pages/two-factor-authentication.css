@@ -1,0 +1,68 @@
+.two-factor-authentication-list-item {
+	padding: 10px;
+	border-bottom: 1px solid #d9d9d9;
+	width: 100%;
+	cursor: pointer;
+}
+
+.active {
+	background-color: #7367f0;
+	color: #fff;
+}
+
+.two-factor-authentication-submit-button {
+	background-color: #7367f0;
+	color: #fff;
+	border: none;
+	padding: 10px 50px;
+	margin: 20px;
+	border-radius: 15px;
+	outline: none;
+}
+
+.two-factor-authentication-submit-button:hover {
+	box-shadow: 2px 2px 20px #7367f0;
+	transition: 0.4s;
+}
+
+.two-factor-authentication-input {
+	width: 500px;
+	padding: 10px;
+	text-align: center;
+	margin: 10px;
+	border-radius: 15px;
+	outline: none;
+	border: 1px solid #d9d9d9;
+	background-color: transparent;
+	font-size: 12px;
+}
+.two-factor-authentication-input:focus {
+	border-color: #7367f0;
+	transition: 0.4s;
+}
+.unchecked {
+	color: #c3c3c3 !important;
+}
+@media (max-width: 900px) {
+	.two-factor-authentication-input {
+		width: 300px;
+		margin: 10px;
+	}
+	.two-factor-authentication-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.two-factor-authentication-profile-card {
+		width: 90%;
+	}
+	.two-factor-authentication-left-side {
+		width: 90%;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+}

@@ -15,7 +15,7 @@ import Password from "./Pages/Password";
 import Login from "./Pages/Login";
 import Forgot_password from "./Pages/Forgot_password";
 import Sign_up from "./Pages/Sign_up";
-
+import Two_factor_authentication from "./Two_factor_authentication";
 const AppLayout = () => (
 	<>
 		<Layout></Layout>
@@ -32,6 +32,10 @@ const AppLayout = () => (
 			<Route path="invitation" element={<Invitation />} />
 			<Route path="authentication" element={<Authentication />} />
 			<Route path="password" element={<Password />} />
+			<Route
+				path="two-factor-authentication"
+				element={<Two_factor_authentication />}
+			/>
 		</Routes>
 	</>
 );
@@ -56,7 +60,27 @@ function App() {
 					<Route path="invitation" element={<Invitation />} />
 					<Route path="authentication" element={<Authentication />} />
 					<Route path="password" element={<Password />} />
+					<Route
+						path="two-factor-authentication"
+						element={<Two_factor_authentication />}
+					/>
 				</Route>
+				<Route path="/" element={<Dashboard />} />
+				<Route path="wallets" element={<Wallets />} />
+				<Route path="crypto-transactions" element={<Crypto_transactions />} />
+				<Route path="rial-transactions" element={<Rial_transactions />} />
+				<Route path="tickets" element={<Tickets />} />
+				<Route path="buy" element={<Buy />} />
+				<Route path="sell" element={<Sell />} />
+				<Route path="orders" element={<Orders />} />
+				<Route path="credit-cards" element={<Credit_cards />} />
+				<Route path="invitation" element={<Invitation />} />
+				<Route path="authentication" element={<Authentication />} />
+				<Route path="password" element={<Password />} />
+				<Route
+					path="two-factor-authentication"
+					element={<Two_factor_authentication />}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);

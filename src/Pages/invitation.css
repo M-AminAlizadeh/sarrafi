@@ -1,0 +1,47 @@
+.invitation-col {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.invitation-span {
+	font-size: 18px;
+}
+.tooltip-x {
+	position: relative;
+	display: inline-block;
+}
+
+.tooltip-x .tooltiptext-x {
+	visibility: hidden;
+	width: 100px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	top: 120%;
+	left: 50%;
+	margin-left: -60px;
+	font-size: 13px;
+}
+
+.tooltip-x .tooltiptext-x::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+}
+.tooltip-x:hover .tooltiptext-x {
+	visibility: visible;
+}
+
+@media (max-width: 600px) {
+	.smaller {
+		font-size: smaller;
+	}
+}

@@ -400,6 +400,14 @@ export default function Layout() {
 									تغییر رمز عبور
 								</Link>
 							</ListItem>
+							<ListItem style={{ textAlign: "right" }} className="hover-effect">
+								<ListItemIcon>
+									<AdjustIcon />
+								</ListItemIcon>
+								<Link to="two-factor-authentication" className="layout-links">
+									ورود دو مرحله ای
+								</Link>
+							</ListItem>
 						</List>
 					</Collapse>
 					<ListItem style={{ textAlign: "right" }} className="hover-effect">
