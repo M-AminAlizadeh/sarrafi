@@ -15,7 +15,7 @@ import Password from "./Pages/Password";
 import Login from "./Pages/Login";
 import Forgot_password from "./Pages/Forgot_password";
 import Sign_up from "./Pages/Sign_up";
-import Two_factor_authentication from "./Two_factor_authentication";
+import Two_factor_authentication from "./Pages/Two_factor_authentication";
 const AppLayout = () => (
 	<>
 		<Layout></Layout>
