@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./forgot-password.css";
 import { Link } from "react-router-dom";
 
 export default function Forgot_password() {
+	// States
+	const [password_input, set_password_input] = useState("");
+	const [password_warning, set_password_warning] = useState("");
+	// States functions
+	const check_form = (e) => {
+		e.preventDefault();
+		console.log(password_input);
+		if (password_input !== "") {
+			set_password_warning(false);
+		} else {
+			set_password_warning(true);
+		}
+	};
 	return (
 		<div className="whole-forgot-password-container">
 			<div
@@ -36,8 +49,16 @@ export default function Forgot_password() {
 						<input
 							type="number"
 							className="forgot-password-page-number-input"
-						></input>
+							onChange={(e) => {
+								set_password_input(e.target.value);
+							}}
+						/>
 					</div>
+					{password_warning ? (
+						<span className="warning">شماره موبایل را بدرستی درج کنید</span>
+					) : (
+						""
+					)}
 					<div className="display-space-between"></div>
 					<div>
 						<Link to="/login">
@@ -52,6 +73,9 @@ export default function Forgot_password() {
 						<button
 							className="forgot-password-page-submit-button"
 							style={{ float: "left" }}
+							onClick={(e) => {
+								check_form(e);
+							}}
 						>
 							بازیابی رمز
 						</button>
