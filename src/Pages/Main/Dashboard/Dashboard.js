@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from "recharts";
-import Convertor from "../../Components/Converter/Converter";
+import Convertor from "../../../Components/Converter/Converter";
 import "./dashboard.css";
 // Artificial object about currencies information
 const currencies_info = [

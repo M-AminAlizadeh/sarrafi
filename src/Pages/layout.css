@@ -20,3 +20,89 @@
 .layout-links .expand-icon {
 	margin-right: 10px;
 }
+.topbar-user-name {
+	font-family: "Vazirmatn";
+}
+
+/* Topbar Left Section */
+
+.layout-topbar-left-section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.layout-topbar-left-section .user-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+}
+
+.user-info-drop-down {
+	position: absolute;
+	direction: rtl;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	background-color: #fff;
+	top: 50px;
+	padding: 10px;
+	font-family: "Vazirmatn";
+}
+
+.user-info-drop-down Link {
+	margin: 10px;
+}
+
+.user-info-drop-down hr {
+	width: 100%;
+}
+
+/* Topbar Right Section */
+
+.layout-topbar-right-section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.topbar-right-side-items {
+	margin: 5px 20px;
+}
+
+.digital-currencies-shortcut {
+	position: relative;
+	user-select: none;
+}
+
+.digital-currencies-drop-down {
+	direction: rtl;
+	background-color: white;
+	padding: 10px;
+	position: absolute;
+	right: -25px;
+	top: 40px;
+}
+
+.drop-down-row-container {
+	margin: 10px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-family: "Vazirmatn";
+}
+
+drop-down-row-container:hover {
+	background-color: lightgray;
+}
+
+.currency-icon-container {
+	margin: 10px 0px 10px 10px;
+}
+
+.currency-name {
+	text-decoration: none !important;
+}

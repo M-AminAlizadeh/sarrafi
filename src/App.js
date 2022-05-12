@@ -1,28 +1,28 @@
-import Dashboard from "./Pages/Dashboard/Dashboard";
-import Wallets from "./Pages/Wallets";
-import Crypto_transactions from "./Pages/Crypto_transactions";
-import Rial_transactions from "./Pages/Rial_transactions";
+import Dashboard from "./Pages/Main/Dashboard/Dashboard";
+import Wallets from "./Pages/Main/Wallets/Wallets";
+import Crypto_transactions from "./Pages/Main/Transactions/Crypto-transactions/Crypto_transactions";
+import Rial_transactions from "./Pages/Main/Transactions/Rial-transactions/Rial_transactions";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Layout from "./Pages/Layout";
-import Tickets from "./Pages/Tickets";
-import Buy from "./Pages/Buy";
-import Sell from "./Pages/Sell";
-import Orders from "./Pages/Orders";
-import Credit_cards from "./Pages/Credit_cards";
-import Toman_deposit from "./Pages/Toman_deposit";
-import Toman_withdrawal from "./Pages/Toman_withdrawal";
-import Invitation from "./Pages/Invitation";
-import Authentication from "./Pages/Authentication";
-import Password from "./Pages/Password";
-import Login from "./Pages/Login";
-import Forgot_password from "./Pages/Forgot_password";
-import Sign_up from "./Pages/Sign_up";
-import Two_factor_authentication from "./Pages/Two_factor_authentication";
+import Tickets from "./Pages/Main/Tickets/Tickets";
+import Buy from "./Pages/Buy-Sell/Buy/Buy";
+import Sell from "./Pages/Buy-Sell/Sell/Sell";
+import Orders from "./Pages/Buy-Sell/Orders/Orders";
+import Credit_cards from "./Pages/User-profile/Credit-cards/Credit_cards";
+import Toman_deposit from "./Pages/Main/Wallets/Toman-deposit/Toman_deposit";
+import Toman_withdrawal from "./Pages/Main/Wallets/Toman-withdrawal/Toman_withdrawal";
+import Invitation from "./Pages/User-profile/Invitation/Invitation";
+import Authentication from "./Pages/User-profile/Authentication/Authentication";
+import Password from "./Pages/User-profile/Password/Password";
+import Login from "./Pages/Signup-Signin/Login/Login";
+import Forgot_password from "./Pages/Signup-Signin/Forgot-password/Forgot_password";
+import Sign_up from "./Pages/Signup-Signin/Sign-up/Sign_up";
+import Two_factor_authentication from "./Pages/User-profile/Two-factor-authentication/Two_factor_authentication";
 import TrendingDownIcon from "@material-ui/icons/TrendingDown";
 import { useState } from "react";
 import PermDeviceInformationIcon from "@material-ui/icons/PermDeviceInformation";
 
-// API **********************************************
+// Currency Info API
 
 const api = [
 	{
@@ -63,7 +63,25 @@ const api = [
 	},
 ];
 
-// API **********************************************
+// User Info API
+
+const user_api = {
+	first_name: "علی",
+	last_name: "غلام پور",
+	phone_number: "09145567149",
+	credit_cards: {
+		"بانک ملی": "6274997087564232",
+		"بانک صادرات": "90789970875612332",
+	},
+	balance: {
+		rial_balance: 1244356,
+		crypto_balance: {
+			bitcoin: 0.0002,
+			tether: 1.54,
+			ethereum: 13,
+		},
+	},
+};
 
 // Deposit Function Starts%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -301,7 +319,7 @@ function Withdrawal() {
 
 const AppLayout = () => (
 	<>
-		<Layout></Layout>
+		<Layout user_api={user_api} currencies_api={api}></Layout>
 		<Routes>
 			<Route path="/" element={<Dashboard />} />
 			<Route path="wallets" element={<Wallets data={api} />} />

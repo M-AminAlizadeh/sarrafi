@@ -97,7 +97,22 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Layout() {
+export default function Layout(props) {
+	// States
+	const [drop_down, set_drop_down] = useState(false);
+	const [user_info_drop_down, set_user_info_drop_down] = useState(false);
+	// States functions
+	// This function drop down topbar digital currencies shortcut
+	const toggle_drop_down = () => {
+		drop_down ? set_drop_down(false) : set_drop_down(true);
+	};
+	// This function drop down tobar user info
+	const toggle_user_info_drop_down = () => {
+		user_info_drop_down
+			? set_user_info_drop_down(false)
+			: set_user_info_drop_down(true);
+	};
+
 	const classes = useStyles();
 	const theme = useTheme();
 	// Expand Functionality Functions Defined For Drawer And Dropdowns
@@ -139,30 +154,154 @@ export default function Layout() {
 						className={classes.title}
 						style={{
 							display: "flex",
-							justifyContent: "flex-start",
+							justifyContent: "space-between",
 							alignItems: "center",
 							fontSize: "14px",
 							cursor: "pointer",
+							border: "1px solid red",
+							overflow: "visible",
 						}}
 					>
-						{/* User Avatar */}
-						<Avatar className={classes.orange}>ام</Avatar>
-						<div
-							className="topbar-user-info"
-							style={{
-								display: "flex",
-								flexDirection: "column",
-								justifyContent: "center",
-								alignItems: "center",
-								marginLeft: "10px",
-								marginRight: "10px",
-							}}
-						>
-							<span className="topbar-user-name">امین علیزاده</span>
-							<span className="topbar-user-phone-number">09050287419</span>
+						<div className="layout-topbar-left-section">
+							<div
+								className="user-info"
+								onClick={() => {
+									toggle_user_info_drop_down();
+								}}
+							>
+								{/* User Avatar */}
+								<Avatar className={classes.orange}>
+									{props.user_api.first_name.slice(0, 2)}
+								</Avatar>
+								<div
+									className="topbar-user-info"
+									style={{
+										display: "flex",
+										flexDirection: "column",
+										justifyContent: "center",
+										alignItems: "center",
+										marginLeft: "10px",
+										marginRight: "10px",
+									}}
+								>
+									<span className="topbar-user-name">
+										{`${props.user_api.first_name} ${props.user_api.last_name}`}
+									</span>
+									<span className="topbar-user-phone-number">
+										{props.user_api.phone_number}
+									</span>
+								</div>
+								{/* User Info DropDown */}
+								{user_info_drop_down ? (
+									<div className="user-info-drop-down">
+										<Link
+											to="/authentication"
+											style={{
+												textDecoration: "none",
+												color: "#555",
+												margin: "5px 0px",
+											}}
+										>
+											<PersonOutlineRoundedIcon />{" "}
+											<span style={{ marginRight: "10px" }}>پروفایل</span>
+										</Link>
+										<Link
+											to="/two-factor-authentication"
+											style={{
+												textDecoration: "none",
+												color: "#555",
+												margin: "5px 0px",
+											}}
+										>
+											<img src="https://img.icons8.com/ios/20/000000/key.png" />
+											<span style={{ marginRight: "10px" }}>
+												ورود دو مرحله ای
+											</span>
+										</Link>
+										<Link
+											to="/password"
+											style={{
+												textDecoration: "none",
+												color: "#555",
+												margin: "5px 0px",
+											}}
+										>
+											<img src="https://img.icons8.com/ios-filled/20/000000/re-enter-pincode.png" />
+											<span style={{ marginRight: "10px" }}>تغییر رمز</span>
+										</Link>
+										<hr />
+										<Link
+											to="/login"
+											style={{
+												textDecoration: "none",
+												color: "#555",
+												margin: "5px 0px",
+											}}
+										>
+											<PowerSettingsNewRoundedIcon />
+											<span style={{ marginRight: "10px" }}> خروج</span>
+										</Link>
+									</div>
+								) : (
+									""
+								)}
+							</div>
+							<div className="topbar-icons">
+								<NotificationsActiveOutlinedIcon />
+							</div>
 						</div>
-						<div className="topbar-icons">
-							<NotificationsActiveOutlinedIcon />
+						{/* Topbar Right Section */}
+						<div className="layout-topbar-right-section">
+							<div
+								className="topbar-right-side-items digital-currencies-shortcut"
+								onClick={() => {
+									toggle_drop_down();
+								}}
+							>
+								<span>رمزارزها</span>{" "}
+								{drop_down ? (
+									<div className="digital-currencies-drop-down">
+										{props.currencies_api.map((item) => {
+											return (
+												<div
+													className="drop-down-row-container"
+													id={props.currencies_api.id}
+												>
+													<div className="currency-icon-container">
+														<img src={item.icon_source} width="30px" />
+													</div>
+													<Link
+														to="/buy"
+														style={{ textDecoration: "none", color: "#555" }}
+													>
+														<span className="currency-name">
+															{item.persian_name}
+														</span>
+													</Link>
+												</div>
+											);
+										})}
+									</div>
+								) : (
+									""
+								)}
+								<img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-pulse-medical-dreamstale-lineal-dreamstale.png" />
+							</div>
+							<div className="topbar-right-side-items">
+								<Link to="/tickets">
+									<ChatBubbleOutlineOutlinedIcon
+										style={{ cursor: "pointer", color: "#626262" }}
+									/>
+								</Link>
+							</div>
+							{/* Topbar Dashboard Icon */}
+							<div className="topbar-right-side-items">
+								<Link to="/">
+									<HomeOutlinedIcon
+										style={{ cursor: "pointer", color: "#626262" }}
+									/>
+								</Link>
+							</div>
 						</div>
 					</Typography>
 					<IconButton

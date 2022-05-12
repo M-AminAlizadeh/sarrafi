@@ -65,7 +65,7 @@ export default function Converter() {
 	);
 	const [unit_value, set_unit_value] = useState();
 	const [toman_value, set_toman_value] = useState();
-	// States funcitons
+	// States functions
 	// This function toggle the dropdown
 	const toggle = () => {
 		toggle_drop_down ? set_toggle_drop_down(false) : set_toggle_drop_down(true);
