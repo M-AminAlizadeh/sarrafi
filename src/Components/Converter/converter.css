@@ -1,0 +1,59 @@
+.converter-container {
+	border: 1px solid red;
+	width: 90%;
+	margin: auto;
+	height: 20vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.converter-inner-container {
+	border: 1px solid green;
+	width: 90%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	direction: rtl;
+}
+
+.converter-inner-container fieldset {
+	direction: rtl;
+}
+
+.converter-choose-currency {
+	position: relative;
+	border: 2px solid orange;
+}
+
+/* Dropdown styling */
+/* Dropdown box */
+.converter-drop-down-box {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+}
+.currency-icon-container img {
+	border-radius: 50%;
+}
+/* Dropdown itselft */
+.converter-drop-down {
+	border: 1px solid rgb(0, 0, 0);
+	top: 60px;
+	background-color: #fff;
+	width: 500px;
+	position: absolute;
+	z-index: 2;
+}
+
+.drop-down-row {
+	margin-bottom: 10px;
+	display: flex;
+	cursor: pointer;
+}
+
+.converter-toman-input,
+.converter-unit-input {
+	text-align: center;
+}

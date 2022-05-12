@@ -1,3 +1,19 @@
+/* Converter Style */
+.dashboard-convertor-container {
+	border: 1px solid green;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.converter-dropdown {
+	border: 1px solid red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* User info Style */
 .dashboard-user-info-and-chart-container {
 	direction: rtl;
 	display: flex;
@@ -10,6 +26,7 @@
 .dashboard-user-image {
 	width: 100px;
 }
+
 .dashboard-user-info-container {
 	flex: 1;
 	direction: rtl;
