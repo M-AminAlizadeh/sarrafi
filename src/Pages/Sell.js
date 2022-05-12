@@ -128,7 +128,7 @@ export default function Sell() {
 					margin: "10px",
 				}}
 			>
-				<h4 dir="rtl"> راهنمای خرید{currency_name}</h4>
+				<h4 dir="rtl"> راهنمای فروش {currency_name}</h4>
 				<hr />
 				<ul className="buy-page-list" dir="rtl">
 					<li>
@@ -203,7 +203,7 @@ export default function Sell() {
 				}}
 			>
 				<h4>
-					<TrendingDownIcon></TrendingDownIcon> خرید ارز
+					<TrendingDownIcon></TrendingDownIcon> فروش ارز
 				</h4>
 				<div
 					style={{
