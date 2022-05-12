@@ -39,3 +39,19 @@
 .unchecked {
 	color: #c3c3c3 !important;
 }
+@media (max-width: 800px) {
+	.credit-cards-table-container {
+		width: 100% !important;
+	}
+	.credit-cards-left-side {
+		width: 90%;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.add-credit-card-container {
+		width: 100%;
+	}
+}

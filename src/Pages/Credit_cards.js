@@ -2,12 +2,53 @@ import "./credit-cards.css";
 import React from "react";
 import { Link } from "react-router-dom";
 import Checkbox from "@material-ui/core/Checkbox";
+import { makeStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+
+// Table Data **********************************************
+const useStyles = makeStyles({
+	table: {
+		minWidth: 650,
+	},
+});
+
+function createData(number, card_number, account_number, shaba, state) {
+	return { number, card_number, account_number, shaba, state };
+}
+
+const rows = [
+	createData(
+		1,
+		6274881116801407,
+		"0200858411607627488",
+		"IR62 0530 0000 0020 0858 4116 07",
+		"ثبت شده"
+	),
+	createData(
+		2,
+		6274881116801407,
+		"0200858411607627488",
+		"IR62 0530 0000 0020 0858 4116 07",
+		"ثبت شده"
+	),
+];
+// Table Data **********************************************
 
 export default function Credit_cards() {
 	const [checked, setChecked] = React.useState(false);
 	const handleChange = (event) => {
 		setChecked(event.target.checked);
 	};
+
+	// Table style ###############
+	const classes = useStyles();
+	// Table style ###############
 	return (
 		<div
 			className="credit-cards-container"
@@ -54,7 +95,12 @@ export default function Credit_cards() {
 							fontSize: "18px",
 						}}
 					>
-						<li className="credit-cards-list-item">اطلاعات و احراز هویت</li>
+						<Link
+							to="/authentication"
+							style={{ textDecoration: "none", color: "#626262" }}
+						>
+							<li className="credit-cards-list-item">اطلاعات و احراز هویت</li>
+						</Link>
 						<Link
 							to="/credit-cards"
 							style={{ textDecoration: "none", color: "#626262" }}
@@ -78,7 +124,7 @@ export default function Credit_cards() {
 			</div>
 			{/* left side */}
 			<div
-				className="two-factor-authentication-left-side"
+				className="credit-cards-left-side"
 				style={{
 					flex: "3",
 					direction: "rtl",
@@ -93,7 +139,10 @@ export default function Credit_cards() {
 					جهت دریافت خدمات و سرویس های وب سایت به صورت آنی، می بایست شماره کارت
 					بانکی که خرید را توسط آن انجام می دهید ثبت نمایید.
 				</p>
-				<div style={{ border: "1px solid #7367F0" }}>
+				<div
+					style={{ border: "1px solid #7367F0" }}
+					className="add-credit-card-container"
+				>
 					<div className={`${checked ? "" : "unchecked"}`}>
 						<Checkbox
 							checked={checked}
@@ -150,6 +199,56 @@ export default function Credit_cards() {
 							""
 						)}
 					</div>
+				</div>
+				<hr />
+				<div
+					style={{ marginTop: "20px" }}
+					className="credit-cards-table-container"
+				>
+					{/* Table Starts &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */}
+					<TableContainer
+						component={Paper}
+						style={{ backgroundColor: "transparent", border: "none" }}
+						actions={[
+							{
+								icon: () => <button>export</button>,
+								toolTip: "Export to Excel",
+								onClick: () => alert("clicked"),
+								isFreeAction: true,
+							},
+						]}
+					>
+						<Table className={classes.table} aria-label="simple table">
+							<TableHead>
+								<TableRow>
+									<TableCell align="center">#</TableCell>
+									<TableCell align="center">شماره کارت </TableCell>
+									<TableCell align="center">شماره حساب </TableCell>
+									<TableCell align="center">شبا</TableCell>
+									<TableCell align="center">وضعیت</TableCell>
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{rows.map((row) => (
+									<TableRow key={row.number}>
+										<TableCell
+											component="th"
+											scope="row"
+											align="center"
+											width="80"
+										>
+											{row.number}
+										</TableCell>
+										<TableCell align="center">{row.card_number}</TableCell>
+										<TableCell align="center">{row.account_number}</TableCell>
+										<TableCell align="center">{row.shaba}</TableCell>
+										<TableCell align="center">{row.state}</TableCell>
+									</TableRow>
+								))}
+							</TableBody>
+						</Table>
+					</TableContainer>
+					{/* Table Ends &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */}
 				</div>
 			</div>
 		</div>
