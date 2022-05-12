@@ -48,7 +48,12 @@ export default function Password() {
 							fontSize: "18px",
 						}}
 					>
-						<li className="password-page-list-item">اطلاعات و احراز هویت</li>
+						<Link
+							to="/authentication"
+							style={{ textDecoration: "none", color: "#626262" }}
+						>
+							<li className="password-page-list-item">اطلاعات و احراز هویت</li>
+						</Link>
 						<Link
 							to="/credit-cards"
 							style={{ textDecoration: "none", color: "#626262" }}
