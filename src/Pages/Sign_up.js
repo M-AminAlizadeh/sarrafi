@@ -1,8 +1,21 @@
-import React from "react";
+import { useState } from "react";
 import "./sign-up.css";
 import { Link } from "react-router-dom";
 
 export default function Signup() {
+	// States
+	const [cell_phone_input, set_cell_phone_input] = useState("");
+	const [cell_phone_warning, set_cell_phone_warning] = useState("");
+	// States functions
+	const check_form = (e) => {
+		e.preventDefault();
+		// Cellphone input
+		if (cell_phone_input !== "") {
+			set_cell_phone_warning(false);
+		} else {
+			set_cell_phone_warning(true);
+		}
+	};
 	return (
 		<div className="whole-signup-container">
 			<div
@@ -33,8 +46,19 @@ export default function Signup() {
 						<label htmlFor="email" className="label">
 							موبایل
 						</label>
-						<input type="number" className="signup-page-number-input"></input>
+						<input
+							type="number"
+							className="signup-page-number-input"
+							onChange={(e) => {
+								set_cell_phone_input(e.target.value);
+							}}
+						/>
 					</div>
+					{cell_phone_warning ? (
+						<span className="warning">شماره موبایل را بدرستی درج کنید</span>
+					) : (
+						""
+					)}
 					<div className="display-space-between"></div>
 					<div>
 						<Link to="/login">
@@ -46,6 +70,9 @@ export default function Signup() {
 							<button
 								className="signup-page-submit-button"
 								style={{ float: "left" }}
+								onClick={(e) => {
+									check_form(e);
+								}}
 							>
 								ثبت نام
 							</button>
