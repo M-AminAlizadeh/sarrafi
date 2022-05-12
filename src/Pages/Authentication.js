@@ -352,6 +352,12 @@ export default function Authentication() {
 						ایشان از شما عکس بگیرد.
 					</p>
 					<button>نمایش تصویر نمونه</button>
+					<p>
+						با کلیک بر روی باکس زیر تصویر را آپلود و یا تصویر را بر روی باکس زیر
+						درگ(بکشید و بندازید) کنید
+					</p>
+					<input type="file"></input>
+					<input type="submit" value="ثبت تصویر"></input>
 				</div>
 			) : (
 				""
