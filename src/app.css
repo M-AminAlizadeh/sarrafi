@@ -1,0 +1,58 @@
+:root {
+	/**************** transition variables *********************/
+	--global-transition: 0.4s;
+	/**************** font variables *********************/
+	--main-font-family: "Vazirmatn";
+	--main-font-size-large: 1.5rem;
+	--main-font-size-medium: 1rem;
+	--main-font-size-small: 0.75rem;
+
+	/**************** color variables *********************/
+	--color-primary: rgb(255, 73, 180);
+	--color-primary-light: rgb(255, 204, 234);
+	--color-secondary: rgb(255, 255, 255);
+	--color-secondary-dark: rgb(240, 240, 240);
+	--primary-text-color: rgb(98, 98, 98);
+	--light-gray-color: rgb(170, 170, 170);
+
+	/**************** btn  variables *********************/
+	/* btn colors */
+	--button-alpha-bg-color: rgb(40, 199, 111);
+	--button-beta-bg-color: rgb(234, 84, 85);
+	--button-primary-bg-color: var(--color-primary);
+	--button-text-color: var(--color-secondary);
+
+	/* btn paddings */
+	--button-padding-x-large: 0.813rem 2.625rem;
+	--button-padding-large: 0.813rem 1.75rem;
+
+	/* btn borders */
+	--button-border-radius-softer: 0.313rem;
+	--button-border-radius-soft: 0.625rem;
+	--button-border-radius-extreme: 1.25rem;
+
+	/* btn box-shadows */
+	--button-box-shadow-primary: 0px 0px 10px var(--color-primary);
+	--button-box-shadow-alpha: 0px 0px 10px var(--button-alpha-bg-color);
+	--button-box-shadow-beta: 0px 0px 10px var(--button-beta-bg-color);
+
+	/**************** input variables *********************/
+
+	/* input colors */
+	--input-text-color: var();
+	--input-bg-color: var(--color-secondary);
+
+	/* input border */
+	--input-border: 0.063rem solid var(--light-gray-color);
+	--input-border-focus-mode: 0.063rem solid var(--color-primary);
+	--input-padding-small: 0.625rem;
+}
+
+/***************************** Component Style Classes *****************************/
+.component_box_shadow {
+	background-color: var(--color-secondary);
+	border: 3px solid #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 8px #555;
+	margin: 0px auto 20px auto;
+}
