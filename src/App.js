@@ -110,7 +110,10 @@ const Deposit = () => {
 	const [binance_address_input, set_binance_address_input] = useState(
 		binance_wallet_address
 	);
-	// const [binance_smart_chain_add]
+	const [network_style, set_network_style] = useState(true);
+	const [binance_network_style, set_binance__network_style] = useState(false);
+	const [binance_smc_network_style, set_binance_smc_network_style] =
+		useState(false);
 	// States functions
 	// This function copy the wallet address to clipboard
 	const copy = (e) => {
@@ -124,15 +127,30 @@ const Deposit = () => {
 	// This function change the wallet address when user click on diffrent networks inside one currency
 	const change_address = (e) => {
 		if (e.target.id == 1) {
+			// change address input
 			set_address_input(digital_currencies_arr[currency_id - 1].address);
+			// change network link style
+			set_network_style(true);
+			set_binance__network_style(false);
+			set_binance_smc_network_style(false);
 		} else if (e.target.id == 2) {
+			// change address input
 			set_address_input(
 				digital_currencies_arr[currency_id - 1].address_binance
 			);
+			// change network link style
+			set_network_style(false);
+			set_binance__network_style(true);
+			set_binance_smc_network_style(false);
 		} else {
+			// change address input
 			set_address_input(
 				digital_currencies_arr[currency_id - 1].address_smartchain
 			);
+			// change network link style
+			set_network_style(false);
+			set_binance__network_style(false);
+			set_binance_smc_network_style(true);
 		}
 	};
 	// Here is what we see inside each deposit page
@@ -164,12 +182,16 @@ const Deposit = () => {
 									onClick={(e) => {
 										change_address(e);
 									}}
+									className={network_style ? "deposite-active-link" : ""}
 								>{`شبکه ${item.persian_name} (${item.abbr}) `}</span>
 								<span
 									id="2"
 									onClick={(e) => {
 										change_address(e);
 									}}
+									className={
+										binance_network_style ? "deposite-active-link" : ""
+									}
 								>
 									شبکه بایننس (BEP2)
 								</span>
@@ -177,6 +199,9 @@ const Deposit = () => {
 									onClick={(e) => {
 										change_address(e);
 									}}
+									className={
+										binance_smc_network_style ? "deposite-active-link" : ""
+									}
 									id="3"
 								>
 									{" "}
@@ -202,19 +227,23 @@ const Deposit = () => {
 										<img src="https://img.icons8.com/dusk/25/000000/copy.png" />
 									</div>
 								</div>{" "}
-								<div className="deposit-wallet-address-container">
-									<p>تگ/ممو آدرس کیف پول:</p>
-									<div>
-										{/* Tag Wallet Address */}
-										<div className="invitation-link-and-number tooltip-x">
-											<span className="tooltiptext-x">{text_2}</span>
-											<span onClick={(e) => copy_2(e)}>
-												{binance_address_input}
-											</span>
+								{binance_network_style ? (
+									<div className="deposit-wallet-address-container">
+										<p>تگ/ممو آدرس کیف پول:</p>
+										<div>
+											{/* Tag Wallet Address */}
+											<div className="invitation-link-and-number tooltip-x">
+												<span className="tooltiptext-x">{text_2}</span>
+												<span onClick={(e) => copy_2(e)}>
+													{binance_address_input}
+												</span>
+											</div>
+											<img src="https://img.icons8.com/dusk/25/000000/copy.png" />{" "}
 										</div>
-										<img src="https://img.icons8.com/dusk/25/000000/copy.png" />{" "}
 									</div>
-								</div>
+								) : (
+									""
+								)}
 								{/* Balance Div */}
 								<div className="deposit-form-crypto-balance">
 									موجودی: <span>0</span> {item.abbr}
