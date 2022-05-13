@@ -11,7 +11,8 @@ import {
 } from "@mui/x-data-grid";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-
+import { Helmet } from "react-helmet";
+const Title = "سلام";
 // Table columns
 const columns = [
 	{ field: "number", headerName: "شماره", width: 100 },
@@ -123,6 +124,9 @@ export default function Invitation() {
 			className="invitation-container"
 			style={{ backgroundColor: "#F8F8F8" }}
 		>
+			<Helmet>
+				<title>{Title}</title>
+			</Helmet>
 			<div
 				className="invitation-page-first-row"
 				style={{
