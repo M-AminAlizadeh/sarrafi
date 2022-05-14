@@ -132,6 +132,7 @@
 }
 .txid-modal-link span {
 	cursor: pointer;
+	user-select: none;
 }
 .deposit-file-upload-conatiner {
 	/* border: 1px solid red; */
@@ -169,4 +170,21 @@
 .deposite-active-link {
 	border-bottom: 1px solid var(--color-primary);
 	color: var(--color-primary);
+}
+/*************** Media Queries  ***************/
+@media (max-width: 800px) {
+	* {
+		font-size: var(--main-font-size-small);
+	}
+	.deposit-wallet-address-container,
+	.deposit-form-crypto-balance,
+	.deposit-currency-value-container,
+	.deposit-file-upload-conatiner {
+		width: 95%;
+	}
+	.deposit-networks-container {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid red;
+	}
 }
