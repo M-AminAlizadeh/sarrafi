@@ -24,6 +24,7 @@ import TrendingDownIcon from "@material-ui/icons/TrendingDown";
 import PermDeviceInformationIcon from "@material-ui/icons/PermDeviceInformation";
 import "./app.css";
 import "./deposit.css";
+import "./withdrawal.css";
 
 //*********************************** Currency Info API ***********************************//
 // This a fake api and built just for testing
@@ -114,6 +115,12 @@ const Deposit = () => {
 	const [binance_network_style, set_binance__network_style] = useState(false);
 	const [binance_smc_network_style, set_binance_smc_network_style] =
 		useState(false);
+	const [currency_value, set_currency_value] = useState("");
+	const [currency_input, set_currency_input] = useState(true);
+	const [txid_value, set_txid_value] = useState("");
+	const [txid_input, set_txid_input] = useState(true);
+	const [modal_toggle, set_modal_toggle] = useState(false);
+	const [success_message, set_success_message] = useState(false);
 	// States functions
 	// This function copy the wallet address to clipboard
 	const copy = (e) => {
@@ -153,6 +160,45 @@ const Deposit = () => {
 			set_binance_smc_network_style(true);
 		}
 	};
+	// This function sets currency value
+	const currency_value_getter = (e) => {
+		set_currency_value(e.target.value);
+	};
+	// This function sets txid value
+	const txid_value_getter = (e) => {
+		set_txid_value(e.target.value);
+	};
+	// This function checks the Form
+	const form_checker = (e) => {
+		e.preventDefault();
+		// Checks currency value input
+		if (currency_value == "") {
+			set_currency_input(false);
+		} else {
+			set_currency_input(true);
+		}
+		// Checks txid value input
+		if (txid_value == "") {
+			set_txid_input(false);
+		} else {
+			set_txid_input(true);
+		}
+		// Checks both of them and show success message
+		console.log(currency_input, txid_input);
+		if (currency_value !== "" && txid_value !== "") {
+			set_success_message(true);
+		}
+	};
+	// This function opens txid modal
+	const txid_modal = () => {
+		// console.log("hi");
+		set_modal_toggle(true);
+	};
+	// This function closes txid modal
+	const close_modal = () => {
+		set_modal_toggle(false);
+	};
+
 	// Here is what we see inside each deposit page
 	return (
 		<div className="deposit-page-container component_box_shadow">
@@ -160,6 +206,38 @@ const Deposit = () => {
 				if (item.name == { name }.name) {
 					return (
 						<div>
+							{/* Modal box container */}
+							{modal_toggle ? (
+								<div className="modal-box-container component_box_shadow">
+									<span className="modal-box-header">TxID چیست؟</span>
+									<p className="modal-box-description">
+										لینک تراکنش یا همان TxID یک عبارت 64 کاراکتری بوده که ترکیبی
+										از اعداد و حروف است و جهت رهگیری تراکنش استفاده می شود.
+										بعنوان مثال:
+										3fc9153b7bdffcdfae092092320612c9c3c94351f600d80ad75f3915909b488b
+										ممکن است TxID را کمی با تأخیر دریافت نمایید، لذا پس از انجام
+										تراکنش چند دقیقه صبر کرده و پس از دریافت درخواست را ثبت
+										نمایید. چنان چه TxID را به درستی وارد نکرده باشید امکان صحت
+										سنجی خودکار وجود نخواهد داشت بنابراین ممکن است تأیید درخواست
+										شما بیش از حد معمول زمان نیاز داشته باشد. دقت نمایید هنگامی
+										که شما انتقال را انجام می دهید، مقداری نیز به عنوان کارمزد
+										توسط سرویس دهنده کیف پول شما کسر می شود، اما شما می بایست
+										مقداری که هنگام انتقال وارد کرده اید را در بخش واریز به ما
+										وارد نمایید.
+									</p>
+									<button
+										className="modal-box-btn"
+										onClick={() => {
+											close_modal();
+										}}
+									>
+										{" "}
+										متوجه شدم!
+									</button>
+								</div>
+							) : (
+								""
+							)}
 							{/* Page Header */}
 							<p className="deposit-header">
 								{" "}
@@ -213,7 +291,8 @@ const Deposit = () => {
 								<img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX10238032.jpg" />
 								<span>برای بزرگ نمایی کلیک کنید</span>
 							</div>
-							{/* Form Container */}
+
+							{/* Form */}
 							<form className="deposit-form">
 								{/* Wallet Address Container */}
 								<div className="deposit-wallet-address-container">
@@ -251,20 +330,51 @@ const Deposit = () => {
 								{/* Currency Value Container */}
 								<div className="deposit-currency-value-container">
 									<p>مقدار {item.persian_name}:</p>
-									<div>
+									<div className={currency_input ? "" : "error-input-border"}>
 										<img src={item.icon_source} />
-										<input type="number" />
+										<input
+											type="number"
+											onChange={(e) => {
+												currency_value_getter(e);
+											}}
+										/>
 										<span>{item.abbr}</span>
 									</div>
+									{currency_input ? (
+										""
+									) : (
+										<span className="error-message">
+											مقدار {item.persian_name} را درج کنید
+										</span>
+									)}
 								</div>
 								{/* TXID Link Container */}
 								<div className="deposit-currency-value-container">
 									<p>لینک تراکنش (TxID)</p>
-									<div>
-										<input type="text" placeholder="TxID" />
+									<div className={txid_input ? "" : "error-input-border"}>
+										<input
+											type="text"
+											placeholder="TxID"
+											onChange={(e) => {
+												txid_value_getter(e);
+											}}
+										/>
 									</div>
+									{txid_input ? (
+										""
+									) : (
+										<span className="error-message">
+											لینک تراکنش را درج کنید
+										</span>
+									)}
 									<p className="txid-modal-link">
-										<span>TxID چیست؟</span>
+										<span
+											onClick={() => {
+												txid_modal();
+											}}
+										>
+											TxID چیست؟
+										</span>
 									</p>
 								</div>
 								{/* File Upload Container */}
@@ -279,7 +389,12 @@ const Deposit = () => {
 										<span>انتخاب فایل</span>
 										<img src="https://img.icons8.com/metro/20/000000/upload.png" />
 									</label>
-									<input type="file" name="form-upload" id="form-upload" />
+									<input
+										type="file"
+										name="form-upload"
+										id="form-upload"
+										accept=".jpg,.jpeg,.png"
+									/>
 									<p>
 										{" "}
 										پسوندهای مجاز: jpg, jpeg, png حداکثر حجم فایل 5 مگابایت
@@ -287,10 +402,26 @@ const Deposit = () => {
 								</div>
 								{/* Submit Container */}
 								<div className="deposit-submit-btn-container">
-									<button type="submit">ثبت درخواست</button>
+									<button
+										type="submit"
+										onClick={(e) => {
+											form_checker(e);
+										}}
+									>
+										ثبت درخواست
+									</button>
+									{/* Success message */}
+									{success_message ? (
+										<div className="success-message-container">
+											<span className="success-message">
+												درخواست شما با موفقیت ثبت شد
+											</span>
+										</div>
+									) : null}
 									<hr />
 								</div>
 							</form>
+
 							<div className="deposit-notice-container">
 								<p className="deposit-notice-header">
 									<img src="https://img.icons8.com/emoji/36/000000/warning-emoji.png" />{" "}
