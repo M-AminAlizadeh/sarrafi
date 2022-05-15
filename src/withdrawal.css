@@ -1,0 +1,76 @@
+/* Transfer Network Container */
+.withdrawal-transfer-network-container {
+	/* border: 1px solid red; */
+	width: 50%;
+}
+.withdrawal-transfer-network-container select {
+	/* border: 1px solid blue; */
+	width: 100%;
+	border: 1px solid var(--light-gray-color);
+	border-radius: var(--button-border-radius-softer);
+	padding: var(--input-padding-small);
+	color: var(--primary-text-color);
+}
+.deposit-currency-value-description {
+	/* border: 1px solid red; */
+	width: 50%;
+	font-weight: 900;
+}
+/* Network Wage */
+.withdrawal-network-wage-container {
+	/* border: 1px solid blue; */
+	width: 50%;
+	margin-top: 10px;
+}
+.withdrawal-network-wage {
+	width: 100%;
+	border: 1px solid var(--light-gray-color);
+	border-radius: var(--button-border-radius-softer);
+	padding: var(--input-padding-small);
+	color: var(--color-primary);
+	background-color: var(--color-secondary-dark);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.withdrawal-network-wage-description {
+	font-size: var(--main-font-size-small);
+	margin-top: 10px;
+}
+.withdrawal-currency-wallet-address-container {
+	/* border: 1px solid red; */
+	width: 50%;
+}
+.withdrawal-currency-wallet-address-container input {
+	width: 100%;
+	text-align: center;
+	border: 1px solid var(--light-gray-color);
+	border-radius: var(--button-border-radius-softer);
+	outline: none;
+	background-color: transparent;
+	padding: var(--input-padding-small);
+}
+.withdrawal-currency-wallet-address-container input + p {
+	font-size: var(--main-font-size-small);
+	margin-top: 10px;
+}
+.deposit-form hr {
+	width: 50%;
+}
+/*************** Media Queries  ***************/
+@media (max-width: 800px) {
+	* {
+		font-size: var(--main-font-size-small);
+	}
+	.deposit-wallet-address-container,
+	.deposit-form-crypto-balance,
+	.deposit-currency-value-container,
+	.withdrawal-transfer-network-container,
+	.withdrawal-network-wage-container,
+	.withdrawal-currency-wallet-address-container,
+	.error-message,
+	.deposit-currency-value-description,
+	.success-message-container {
+		width: 95%;
+	}
+}

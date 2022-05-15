@@ -1,46 +1,44 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import SearchBar from "material-ui-search-bar";
+import { useState } from "react";
 import "./wallets.css";
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles({
-	table: {
-		minWidth: 650,
-	},
-});
-
 const Wallets = (props) => {
-	const classes = useStyles();
-
-	const originalRows = props.data;
-
-	const [rows, setRows] = useState(originalRows);
-	const [searched, setSearched] = useState("");
-
-	const requestSearch = (searchedVal) => {
-		const filteredRows = originalRows.filter((row) => {
-			return row.name.toLowerCase().includes(searchedVal.toLowerCase());
-		});
-		setRows(filteredRows);
+	const currencies_info = props.currencies_api;
+	// States
+	const [api,set_api] = useState(currencies_info)
+	const [search_box, set_search_box] = useState("");
+	// States functions
+	const filter_currency = (e) => {
+		console.log(e.target.value);
 	};
-
-	const cancelSearch = () => {
-		setSearched("");
-		requestSearch(searched);
-	};
-
 	return (
-		<div className="wallets-container">
-			<Paper dir="rtl">
+		<div className="wallets-container component_box_shadow">
+			{/* Header container */}
+			<div className="wallets-header-container">
+				<span className="wallets-header">لیست کیف پول های شما</span>
+			</div>
+			{/* Searchbar container */}
+			<div className="wallets-search-container">
+				<input
+					type="search"
+					placeholder="جستجو"
+					onChange={(e) => {
+						filter_currency(e);
+					}}
+				/>
+			</div>
+			{/* Currencies container */}
+			<div className="wallets-currencies-container">
+				{/* Toman  */}
+				{/* Maping through api */}
+				{
+					api.map(()=>{
+						return(<div className="wallet-currency-row">
+						
+						</div>)
+					})
+				}</div>
+			{/* <Paper dir="rtl">
 				<h3 className="wallets-header">لیست کیف پول های شما</h3>
 				<SearchBar
 					style={{
@@ -229,7 +227,7 @@ const Wallets = (props) => {
 						</TableBody>
 					</Table>
 				</TableContainer>
-			</Paper>
+			</Paper> */}
 		</div>
 	);
 };

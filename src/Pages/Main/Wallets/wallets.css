@@ -1,29 +1,29 @@
 .wallets-container {
+	direction: rtl;
 	width: 90%;
 	margin: auto;
-	border: 3px solid #fff;
-	border-radius: 20px;
-	box-shadow: 0 0 20px #555;
-	overflow: hidden;
-}
-.wallets-crypto-image {
-	width: 40px;
-}
-.wallets-header {
-	padding: 20px;
-	color: #444444;
-}
-.MuiInputBase-root {
-	font-size: 18px !important;
-	font-family: "Vazirmatn" !important;
+	padding: 10px;
 }
 
-.ForwardRef-icon-16 {
-	display: none !important;
+/* Wallet header styling */
+.wallets-header-container {
+	font-size: var(--main-font-size-x-large);
 }
-.MuiTableCell-root {
-	border-bottom: 1px solid #7367f0 !important;
+
+/* Wallet searchbar styling */
+.wallets-search-container {
+	/* border: 2px solid green; */
+	margin-top: 10px;
 }
-.wallets-button:hover {
-	box-shadow: 0 0 10px black;
+.wallets-search-container input {
+	outline: none;
+	border: var(--input-border);
+	padding: var(--input-padding-small) calc(2 * var(--input-padding-small));
 }
+
+.wallets-search-container input:focus {
+	border: var(--input-border-focus-mode) ;
+	/* padding: 200px; */
+}
+
+/* Wallet currencies styling */

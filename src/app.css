@@ -10,7 +10,7 @@
 
 	/**************** color variables *********************/
 	--color-primary: rgb(255, 73, 180);
-	--color-primary-light: rgb(255, 204, 234);
+	--color-primary-light: rgb(255, 214, 238);
 	--color-secondary: rgb(255, 255, 255);
 	--color-secondary-dark: rgb(240, 240, 240);
 	--light-gray-color: rgb(170, 170, 170);
@@ -19,6 +19,7 @@
 	/**************** btn  variables *********************/
 	/* btn colors */
 	--button-alpha-bg-color: rgb(40, 199, 111);
+	--button-alpha-bg-color-lighter: rgb(194, 255, 221);
 	--button-beta-bg-color: rgb(234, 84, 85);
 	--button-primary-bg-color: var(--color-primary);
 	--button-text-color: var(--color-secondary);
