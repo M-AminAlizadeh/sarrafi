@@ -183,15 +183,13 @@ const Deposit = () => {
 		} else {
 			set_txid_input(true);
 		}
-		// Checks both of them and show success message
-		console.log(currency_input, txid_input);
+		// Checks both of them and shows success message
 		if (currency_value !== "" && txid_value !== "") {
 			set_success_message(true);
 		}
 	};
 	// This function opens txid modal
 	const txid_modal = () => {
-		// console.log("hi");
 		set_modal_toggle(true);
 	};
 	// This function closes txid modal
@@ -410,18 +408,18 @@ const Deposit = () => {
 									>
 										ثبت درخواست
 									</button>
-									{/* Success message */}
-									{success_message ? (
-										<div className="success-message-container">
-											<span className="success-message">
-												درخواست شما با موفقیت ثبت شد
-											</span>
-										</div>
-									) : null}
-									<hr />
 								</div>
+								{/* Success message */}
+								{success_message ? (
+									<div className="success-message-container">
+										<span className="success-message">
+											درخواست شما با موفقیت ثبت شد
+										</span>
+									</div>
+								) : null}
+								<hr />
 							</form>
-
+							{/* Notice Container */}
 							<div className="deposit-notice-container">
 								<p className="deposit-notice-header">
 									<img src="https://img.icons8.com/emoji/36/000000/warning-emoji.png" />{" "}
@@ -450,35 +448,122 @@ const Deposit = () => {
 const Withdrawal = () => {
 	// Using params to send data from app.js to withdrawal page of each currency inside Wallet.js
 	let { name } = useParams();
+	// States
+	const [currency_value, set_currency_value] = useState("");
+	const [currency_input, set_currency_input] = useState(true);
+	const [wallet_value, set_wallet_value] = useState("");
+	const [wallet_input, set_wallet_input] = useState(true);
+	const [tag_address_value, set_tag_address_value] = useState("");
+	const [tag_address_input, set_tag_address_input] = useState(true);
+	const [success_message, set_success_message] = useState(false);
+	const [drop_down_check, set_drop_down_check] = useState(false);
+
+	// States Functions
+	// This Function Gets Currency Input's Value
+	const currency_value_getter = (e) => {
+		set_currency_value(e.target.value);
+	};
+	// This Function Gets Wallet Input's Value
+	const wallet_value_getter = (e) => {
+		set_wallet_value(e.target.value);
+	};
+	//  This Function Gets Tag Wallet Input's value
+	const tag_address_value_getter = (e) => {
+		set_tag_address_value(e.target.value);
+	};
+	// This Function Checks The Form
+	const form_checker = (e) => {
+		e.preventDefault();
+		// Currency input
+		if (currency_value !== "") {
+			set_currency_input(true);
+		} else {
+			set_currency_input(false);
+		}
+		// Wallet input
+		if (wallet_value !== "") {
+			set_wallet_input(true);
+		} else {
+			set_wallet_input(false);
+		}
+		// Tag address input
+		if (tag_address_value !== "") {
+			set_tag_address_input(true);
+		} else {
+			set_tag_address_input(false);
+		}
+		if (currency_value !== "" && wallet_value !== "") {
+			set_success_message(true);
+		}
+	};
+	// This function toggles tag address input
+	const toggle_tag_input = (e) => {
+		if (e.target.value == "شبکه بایننس (BNP2)") {
+			set_drop_down_check(true);
+		} else {
+			set_drop_down_check(false);
+		}
+	};
 	// Here is what we see inside each withdrawal page
 	return (
-		<div>
+		<div className="deposit-page-container component_box_shadow">
 			{digital_currencies_arr.map((item) => {
 				if (item.name == { name }.name) {
 					return (
-						<div dir="rtl">
-							<h3>
+						<div>
+							{/* Page Header */}
+							<p className="deposit-header">
 								{" "}
-								برداشت {item.persian_name} <TrendingDownIcon />
-							</h3>
-							<img src={item.icon_source} style={{ width: "100px" }} />
-							<div style={{ border: "1px solid purple" }}>
-								موجودی <span>0</span> {item.abbr}
+								<TrendingDownIcon />
+								برداشت {item.persian_name}
+							</p>
+							{/*  currency icon container */}
+							<div className="deposit-currency-icon-container">
+								<img src={item.icon_source} />
 							</div>
-							<div style={{ border: "1px solid brown" }}>
-								<p>مقدار {item.persian_name}</p>
-								<div>
-									<img src={item.icon_source} style={{ width: "30px" }} />
-									<input type="number" />
-									{item.abbr}
+							{/* Form */}
+							<form action="" className="deposit-form">
+								{/* Balance Div */}
+								<div className="deposit-form-crypto-balance">
+									موجودی: <span>0</span> {item.abbr}
 								</div>
-							</div>
-							<p>موجودی قابل برداشت: 0{item.abbr}</p>
-							<p>برداشت روزانه رمز ارز: معادل 0 از 0 تومان</p>
-							<div>
-								<div>
+								{/* Currency Value Container */}
+								<div className="deposit-currency-value-container">
+									<p>مقدار {item.persian_name}:</p>
+									<div className={currency_input ? "" : "error-input-border"}>
+										<img src={item.icon_source} />
+										<input
+											type="number"
+											onChange={(e) => {
+												currency_value_getter(e);
+											}}
+										/>
+										<span>{item.abbr}</span>
+									</div>
+								</div>
+								{currency_input ? (
+									""
+								) : (
+									<span className="error-message">
+										مقدار {item.persian_name} را درج کنید
+									</span>
+								)}
+								<div className="deposit-currency-value-description">
+									<p>
+										موجودی قابل برداشت:<span> 0</span>
+										{item.abbr}
+									</p>
+									<p>برداشت روزانه رمز ارز: معادل 0 از 0 تومان</p>
+								</div>
+								{/* Transfer Network Container */}
+								<div className="withdrawal-transfer-network-container">
 									<p>شبکه انتقال</p>
-									<select>
+									<select
+										className="input-outline"
+										onChange={(e) => {
+											toggle_tag_input(e);
+										}}
+									>
 										<option>
 											شبکه {item.persian_name} ({item.abbr})
 										</option>
@@ -486,30 +571,106 @@ const Withdrawal = () => {
 										<option>بایننس اسمارت چین (BNP20)</option>
 									</select>
 								</div>
-								<div>
+								{/* Network Wage */}
+								<div className="withdrawal-network-wage-container">
 									<p>کارمزد شبکه</p>
-									<div
-										style={{ border: "1px solid red", height: "40px" }}
-									></div>
+									<div className="withdrawal-network-wage">
+										<span>0.0002{item.abbr}</span>
+									</div>
+									<div className="withdrawal-network-wage-description">
+										<p>
+											کارمزد انتقال مربوط به ثبت تراکنش در شبکه‌ی بیت کوین بوده
+											و وبسایت ما در آن ذینفع نیست.
+										</p>
+										<p>
+											اگر آدرس کیف پول شما در باینسس باشد کارمزد تراکنش صفر
+											خواهد بود.
+										</p>
+									</div>
+								</div>
+								{/* Currency Wallet Address Container */}
+								<div className="withdrawal-currency-wallet-address-container">
+									<p>آدرس کیف پول مقصد یا گیرنده</p>
+									<input
+										type="text"
+										placeholder="آدرس کیف پول"
+										onChange={(e) => {
+											wallet_value_getter(e);
+										}}
+										className={wallet_input ? "" : "error-input-border"}
+									/>
+									{wallet_input ? (
+										""
+									) : (
+										<span className="error-message">
+											آدرس کیف پول را درج کنید
+										</span>
+									)}
 									<p>
-										کارمزد انتقال مربوط به ثبت تراکنش در شبکه‌ی بیت کوین بوده و
-										وبسایت ما در آن ذینفع نیست.
-									</p>
-									<p>
-										اگر آدرس کیف پول شما در باینسس باشد کارمزد تراکنش صفر خواهد
-										بود.
+										نکته مهم:درج کردن آدرس اشتباه ممکن است باعث از دست رفتن
+										منابع مالی شما شود.
 									</p>
 								</div>
-								<p>آدرس کیف پول مقصد یا گیرنده</p>
-								<input type="text" />
-								<p>
-									نکته مهم:درج کردن آدرس اشتباه ممکن است باعث از دست رفتن منابع
-									مالی شما شود.
-								</p>
-								<div>
-									<input type="submit" value="ثبت درخواست"></input>
+								{/* Tag Wallet Address Container */}
+								{drop_down_check ? (
+									<div className="withdrawal-currency-wallet-address-container">
+										<p>تگ/ممو آدرس کیف پول مقصد یا گیرنده </p>
+										<input
+											type="text"
+											placeholder=" تگ آدرس کیف پول "
+											onChange={(e) => {
+												tag_address_value_getter(e);
+											}}
+											className={tag_address_input ? "" : "error-input-border"}
+										/>
+										{tag_address_input ? (
+											""
+										) : (
+											<span className="error-message">
+												تگ آدرس کیف پول را درج کنید
+											</span>
+										)}
+									</div>
+								) : (
+									""
+								)}
+								<div className="deposit-submit-btn-container">
+									<button
+										type="submit"
+										onClick={(e) => {
+											form_checker(e);
+										}}
+									>
+										{" "}
+										ثبت درخواست
+									</button>
 								</div>
+								{/* Success message */}
+								{success_message ? (
+									<div className="success-message-container">
+										<span className="success-message">
+											درخواست شما با موفقیت ثبت شد
+										</span>
+									</div>
+								) : null}
 								<hr />
+							</form>
+							{/* Notice Container */}
+							<div className="deposit-notice-container">
+								<p className="deposit-notice-header">
+									<img src="https://img.icons8.com/emoji/36/000000/warning-emoji.png" />{" "}
+									نکات و هشدارها
+								</p>
+								<p>
+									برای واریز {item.persian_name} به ما، ابتدا میزان{" "}
+									{item.persian_name} مورد نظر را جهت واریز در فیلد مقدار{" "}
+									{item.persian_name} وارد نمایید، پس از آگاهی از مقدار معادل آن{" "}
+									به تومان، دقیقا معادل مقداری که در فیلد مقدار{" "}
+									{item.persian_name} وارد کرده اید را به آدرس کیف پول ما که در
+									همین صفحه ارائه شده است انتقال دهید و سپس لینک یا شماره
+									تراکنشی که به شما ارائه می شود را در بخش لینک تراکنش وارد
+									نموده و دکمه «ثبت درخواست» را کلیک نمایید.
+								</p>
 							</div>
 						</div>
 					);

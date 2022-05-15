@@ -154,6 +154,7 @@
 	background-color: var(--button-primary-bg-color);
 	color: var(--button-text-color);
 	border-radius: var(--button-border-radius-extreme);
+	margin-top: 20px;
 }
 .deposit-submit-btn-container button:hover {
 	box-shadow: var(--button-box-shadow-primary);
@@ -187,4 +188,7 @@
 		flex-direction: column;
 		border: 1px solid red;
 	}
+}
+.deposit-form hr {
+	width: 50%;
 }
