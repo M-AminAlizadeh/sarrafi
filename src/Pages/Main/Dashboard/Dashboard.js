@@ -1,63 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from "recharts";
-import Convertor from "../../../Components/Converter/Converter";
+import Convertor from "../../../../src/Components/Converter/Converter";
+import Table from "../../../../src/Components/Table/Table";
 import "./dashboard.css";
-// Artificial object about currencies information
-const currencies_info = [
-	{
-		id: 1,
-		name: "بیت کوین (bitcoin)",
-		icon: "images/crypto-logos/bitcoin.png",
-		abbreviation: "BTC",
-		world_price: 39309.13,
-		website_price: "3000",
-		balance: 0,
-		in_tomans: 0,
-	},
-	{
-		id: 2,
-		name: "اتریوم (ethereum)",
-		icon: "images/crypto-logos/ethereum.png",
-		abbreviation: "ETH",
-		world_price: 39309.13,
-		website_price: "90",
-		balance: 0,
-		in_tomans: 0,
-	},
-	{
-		id: 3,
-		name: "تتر (tether)",
-		icon: "images/crypto-logos/tether.png",
-		abbreviation: "USDT",
-		world_price: 39309.13,
-		website_price: "5",
-		balance: 0,
-		in_tomans: 0,
-	},
-	{
-		id: 4,
-		name: "دوج کوین (dogecoin)",
-		icon: "images/crypto-logos/dogecoin.png",
-		abbreviation: "DOGE",
-		world_price: 39309.13,
-		website_price: "1000000",
-		balance: 0,
-		in_tomans: 0,
-	},
-	{
-		id: 5,
-		name: "ریپل (ripple)",
-		icon: "images/crypto-logos/xrp.png",
-		abbreviation: "XRP",
-		world_price: 39309.13,
-		website_price: "1,108",
-		balance: 0,
-		in_tomans: 0,
-	},
-];
 
-export default function Dashboard() {
+export default function Dashboard(props) {
+	const currencies_info = props.currencies_api;
 	/////////////////////// States
 	const [dropdown, set_drop_down] = useState(false);
 	const [api_data, set_api_data] = useState(currencies_info);
@@ -99,7 +48,7 @@ export default function Dashboard() {
 		// Dashboard Container
 		<div className="dashboard-container">
 			{/* Converter */}
-			<Convertor />
+			<Convertor currencies_api={currencies_info} />
 			{/* User Info And Chart Container*/}
 			<div className="dashboard-user-info-and-chart-container">
 				{/* User Info */}
@@ -218,7 +167,7 @@ export default function Dashboard() {
 				</div>
 			</div>
 			{/* Dashboard Table */}
-			<div className="dashboard-table-container"></div>
+			<Table />
 		</div>
 	);
 }
