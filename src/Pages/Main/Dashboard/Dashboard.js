@@ -167,7 +167,7 @@ export default function Dashboard(props) {
 				</div>
 			</div>
 			{/* Dashboard Table */}
-			<Table />
+			<Table currencies_api={currencies_info} />
 		</div>
 	);
 }
