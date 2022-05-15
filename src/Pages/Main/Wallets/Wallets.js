@@ -1,15 +1,19 @@
 import { useState } from "react";
-import "./wallets.css";
 import { Link } from "react-router-dom";
+import "./wallets.css";
 
 const Wallets = (props) => {
-	const currencies_info = props.currencies_api;
+	const currencies_info = props.data;
 	// States
-	const [api,set_api] = useState(currencies_info)
-	const [search_box, set_search_box] = useState("");
+	const [api, set_api] = useState(currencies_info);
+	// const [search_box, set_search_box] = useState("");
 	// States functions
 	const filter_currency = (e) => {
-		console.log(e.target.value);
+		api.filter((e) => {
+			api.map((item) => {
+				item.name.includes();
+			});
+		});
 	};
 	return (
 		<div className="wallets-container component_box_shadow">
@@ -29,15 +33,61 @@ const Wallets = (props) => {
 			</div>
 			{/* Currencies container */}
 			<div className="wallets-currencies-container">
+				{/* {console.log(api)} */}
 				{/* Toman  */}
 				{/* Maping through api */}
-				{
-					api.map(()=>{
-						return(<div className="wallet-currency-row">
-						
-						</div>)
-					})
-				}</div>
+				{api.map((item) => {
+					return (
+						<div className="wallet-currency-row">
+							{/* Currency name container*/}
+							<div className="currency-row-info-container">
+								{/* Currency icon container */}
+								<div className="currency-icon-container">
+									<img src={item.icon_source} alt={item.name} width="25px" />
+								</div>
+								{/* Currency names container */}
+								<div className="currency-names-container">
+									<span className="currency-persian-name">
+										{item.persian_name}
+									</span>
+									<span className="currency-english-name">{item.name}</span>
+								</div>
+							</div>
+							{/* Currency price container */}
+							<div className="currency-price-container">
+								<span className="currency-world-price">
+									قیمت جهانی:{item.world_price}دلار
+								</span>
+								<span className="currency-website-price">
+									قیمت وبسایت:{item.website_price}تومان
+								</span>
+							</div>
+							{/* Currency inventory contaienr */}
+							<div className="currency-inventory-container">
+								<span className="currency-inventory">
+									موجودی:{item.our_inventory}
+									{item.abbr}
+								</span>
+								<span className="price_in_toman">
+									معادل:{item.toman_price} تومان
+								</span>
+							</div>
+							{/* Currency btns container */}
+							<div className="currency-btns-container">
+								<Link to={`deposit/${item.name}`}>
+									<button className="deposit">واریز</button>
+								</Link>
+								<Link to={`withdrawal/${item.name}`}>
+									<button className="withdrawl">برداشت</button>
+								</Link>
+								<Link to="/crypto-transactions">
+									<button className="history">تاریخچه</button>
+								</Link>
+							</div>
+						</div>
+					);
+				})}
+			</div>
 			{/* <Paper dir="rtl">
 				<h3 className="wallets-header">لیست کیف پول های شما</h3>
 				<SearchBar

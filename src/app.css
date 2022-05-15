@@ -48,6 +48,7 @@
 	--input-border: 0.063rem solid var(--light-gray-color);
 	--input-border-focus-mode: 0.063rem solid var(--color-primary);
 	--input-padding-small: 0.625rem;
+	--input-border-radius: 0.313rem;
 }
 
 /***************************** Component Style Classes *****************************/

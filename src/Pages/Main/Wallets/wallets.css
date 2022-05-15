@@ -19,11 +19,109 @@
 	outline: none;
 	border: var(--input-border);
 	padding: var(--input-padding-small) calc(2 * var(--input-padding-small));
+	border-radius: var(--input-border-radius);
 }
 
 .wallets-search-container input:focus {
-	border: var(--input-border-focus-mode) ;
+	border: var(--input-border-focus-mode);
 	/* padding: 200px; */
 }
 
 /* Wallet currencies styling */
+.wallets-currencies-container {
+	/* border: 1px solid blue; */
+	/* background-color: var(--color-secondary-dark); */
+	margin-top: 20px;
+}
+
+.wallet-currency-row {
+	/* border: 1px solid orange; */
+	border: var(--input-border);
+	background-color: var(--color-secondary);
+	margin: 20px auto;
+	border-radius: var(--button-border-radius-softer);
+	display: flex;
+	justify-content: space-between;
+	color: var(--primary-text-color);
+}
+
+/* Currency info container */
+.currency-row-info-container {
+	/* border: 1px solid green; */
+	flex: 0.5;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+}
+
+.currency-icon-container {
+	/* border: 1px solid orange; */
+	flex: 1;
+}
+
+.currency-names-container {
+	/* border: 1px solid red; */
+	flex: 2;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.currency-persian-name {
+	font-size: var(--main-font-size-large);
+	font-weight: 900;
+}
+
+.currency-english-name {
+	font-size: var(--main-font-size-small);
+	font-weight: 100;
+	text-transform: capitalize;
+}
+
+/* Currency price container */
+.currency-price-container {
+	/* border: 2px solid pink; */
+	flex: 2;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Currency inventory container */
+.currency-inventory-container {
+	/* border: 1px solid black; */
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/* Currency btns container */
+.currency-btns-container {
+	/* border: 2px solid brown; */
+	padding: 10px;
+	flex: 2;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.currency-btns-container button {
+	/* border: 1px solid red; */
+	border: none;
+	border-radius: var(--button-border-radius-softer);
+	color: var(--color-secondary);
+	padding: var(--button-padding-large);
+}
+
+.currency-btns-container .deposit {
+	background-color: var(--button-alpha-bg-color);
+}
+.currency-btns-container .withdrawl {
+	background-color: var(--button-beta-bg-color);
+}
+.currency-btns-container .history {
+	background-color: var(--color-primary);
+}
