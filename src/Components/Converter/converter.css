@@ -1,59 +1,170 @@
+/* Converter contaienr */
 .converter-container {
-	border: 1px solid red;
+	/* border: 1px solid red; */
+	border-radius: var(--button-border-radius-softer);
 	width: 90%;
-	margin: auto;
-	height: 20vh;
+	margin: 0px auto 20px auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: var(--color-secondary);
 }
-
+/* Converter inner contaienr */
 .converter-inner-container {
-	border: 1px solid green;
+	border: 1px solid var(--light-gray-color);
+	margin: 30px auto;
 	width: 90%;
 	display: flex;
+	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
 	direction: rtl;
+	padding: 20px 10px;
+}
+/* Converter top row contaienr */
+/* Converter bottom row contaienr */
+.converter-top-row,
+.converter-bottom-row {
+	/* border: 2px solid green; */
+	width: 90%;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.converter-bottom-row {
+	justify-content: center;
+	margin-top: 40px;
 }
 
 .converter-inner-container fieldset {
+	/* border:1px solid #000; */
 	direction: rtl;
 }
 
-.converter-choose-currency {
-	position: relative;
-	border: 2px solid orange;
+.converter-choose-currency legend {
+	font-size: var(--main-font-size-medium);
 }
 
-/* Dropdown styling */
-/* Dropdown box */
+/* Dropdown box Styling*/
 .converter-drop-down-box {
+	border: 1px solid var(--light-gray-color);
+	border-radius: var(--button-border-radius-softer);
+	width: 200px;
+	min-width: 100px;
+	padding: var(--input-padding-small);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	cursor: pointer;
 }
-.currency-icon-container img {
+
+.currency-persian-name-container {
+	/* border: 1px solid red; */
+	font-size: var(--main-font-size-large);
+}
+
+.converter-choose-currency {
+	/* border: 2px solid orange; */
+	position: relative;
+}
+.convertor-currency-icon-container img {
 	border-radius: 50%;
 }
-/* Dropdown itselft */
+
+/* Chevron toggle */
+.chevron-container-toggle {
+	transform: rotate(180deg);
+}
+.converter-currency-chevron-container img {
+	width: 24px;
+}
+
+/* Dropdown */
 .converter-drop-down {
-	border: 1px solid rgb(0, 0, 0);
-	top: 60px;
-	background-color: #fff;
-	width: 500px;
+	/* border: 1px solid rgb(0, 0, 0); */
+	top: 90px;
+	background-color: var(--color-secondary);
+	width: 350px;
+	height: 400px;
 	position: absolute;
+	overflow: scroll;
+	overflow-x: hidden;
 	z-index: 2;
 }
 
-.drop-down-row {
-	margin-bottom: 10px;
+/* Dropdown input */
+.converter-drop-down input {
+	border: 1px solid var(--color-secondary-dark);
+	background-color: var(--color-secondary);
+	outline: none;
+	width: 100%;
+	position: sticky;
+	top: 0;
+	left: 0;
+	padding: var(--input-padding-small);
+}
+
+/* Dropdown each row */
+.converter-drop-down-row {
+	/* border: 2px solid orange; */
+	width: 95%;
+	margin: 10px auto;
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	cursor: pointer;
 }
 
+.converter-drop-down-right-side {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: var(--main-font-size-small);
+}
+
+.converter-drop-down-right-side img {
+	margin: 0px 5px;
+}
+
+.converter-drop-down-left-side {
+	font-size: var(--main-font-size-small);
+	display: flex;
+	flex-direction: column;
+}
+
+/* Common properties */
 .converter-toman-input,
 .converter-unit-input {
 	text-align: center;
+}
+.converter-choose-currency > input {
+	outline: none;
+	padding: var(--input-padding-small);
+	border: 1px solid var(--light-gray-color);
+	border-radius: var(--button-border-radius-softer);
+	width: 200px;
+}
+
+/* Converter btns container */
+.converter-btn {
+	padding: var(--button-padding-large);
+	border: none;
+	color: var(--color-secondary);
+	margin: 0px 40px;
+	border-radius: var(--button-border-radius-softer);
+}
+.converter-buy-btn {
+	background-color: var(--button-alpha-bg-color);
+}
+.converter-sell-btn {
+	background-color: var(--button-beta-bg-color);
+}
+
+/* Media Queries */
+@media (max-width: 1000px) {
+	.converter-top-row {
+		flex-direction: column;
+	}
 }
