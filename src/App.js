@@ -36,7 +36,7 @@ const API = {
 			abbr: "BTC",
 			icon_source: "https://cryptologos.cc/logos/bitcoin-btc-logo.svg?v=022",
 			world_price: 39309.13,
-			website_price: "1,108,517,466",
+			website_price: 213,
 			address: "bitcoin address",
 			address_binance: "bitcoin binance address",
 			address_smartchain: "bitcoin smart chain",
@@ -49,7 +49,7 @@ const API = {
 			abbr: "USDT",
 			icon_source: "https://cryptologos.cc/logos/tether-usdt-logo.svg?v=022",
 			world_price: 39309.13,
-			website_price: "1,108,517,466",
+			website_price: 97,
 			address: "tether address",
 			address_binance: "tether binance address",
 			address_smartchain: "tether smart chain",
@@ -61,7 +61,79 @@ const API = {
 			abbr: "ETH",
 			icon_source: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=022",
 			world_price: 39309.13,
-			website_price: "1,108,517,466",
+			website_price: 934,
+			address: "ethereum address",
+			address_binance: "ethereum binance address",
+			address_smartchain: "ethereum smart chain",
+		},
+		{
+			id: 4,
+			name: "ethereum",
+			persian_name: "اتریوم",
+			abbr: "ETH",
+			icon_source: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=022",
+			world_price: 39309.13,
+			website_price: 23,
+			address: "ethereum address",
+			address_binance: "ethereum binance address",
+			address_smartchain: "ethereum smart chain",
+		},
+		{
+			id: 5,
+			name: "ethereum",
+			persian_name: "اتریوم",
+			abbr: "ETH",
+			icon_source: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=022",
+			world_price: 39309.13,
+			website_price: 17,
+			address: "ethereum address",
+			address_binance: "ethereum binance address",
+			address_smartchain: "ethereum smart chain",
+		},
+		{
+			id: 6,
+			name: "ethereum",
+			persian_name: "اتریوم",
+			abbr: "ETH",
+			icon_source: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=022",
+			world_price: 39309.13,
+			website_price: 123312312,
+			address: "ethereum address",
+			address_binance: "ethereum binance address",
+			address_smartchain: "ethereum smart chain",
+		},
+		{
+			id: 7,
+			name: "ethereum",
+			persian_name: "اتریوم",
+			abbr: "ETH",
+			icon_source: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=022",
+			world_price: 39309.13,
+			website_price: 97864,
+			address: "ethereum address",
+			address_binance: "ethereum binance address",
+			address_smartchain: "ethereum smart chain",
+		},
+		{
+			id: 8,
+			name: "ethereum",
+			persian_name: "اتریوم",
+			abbr: "ETH",
+			icon_source: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=022",
+			world_price: 39309.13,
+			website_price: 785345,
+			address: "ethereum address",
+			address_binance: "ethereum binance address",
+			address_smartchain: "ethereum smart chain",
+		},
+		{
+			id: 9,
+			name: "ethereum",
+			persian_name: "اتریوم",
+			abbr: "ETH",
+			icon_source: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=022",
+			world_price: 39309.13,
+			website_price: 8652,
 			address: "ethereum address",
 			address_binance: "ethereum binance address",
 			address_smartchain: "ethereum smart chain",
@@ -396,7 +468,15 @@ const AppLayout = () => (
 			currencies_api={digital_currencies_arr}
 		></Layout>
 		<Routes>
-			<Route path="/" element={<Dashboard />} />
+			<Route
+				path="/"
+				element={
+					<Dashboard
+						user_api={user_api}
+						currencies_api={digital_currencies_arr}
+					/>
+				}
+			/>
 			<Route
 				path="wallets"
 				element={<Wallets data={digital_currencies_arr} />}
