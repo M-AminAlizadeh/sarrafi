@@ -1,0 +1,31 @@
+.table-container {
+	/* border: 1px solid orange; */
+	width: 90%;
+	margin: auto;
+	direction: rtl;
+	background-color: var(--color-secondary);
+	padding: var(--input-padding-small);
+}
+.table-container table {
+	/* border: 1px solid green; */
+	width: 100%;
+}
+
+/* Table header */
+.table-header {
+	/* border: 1px solid red; */
+	background-color: var(--color-secondary-dark);
+}
+
+.table-header th {
+	padding: 5px 0px;
+}
+
+/* Table row for each currency */
+.table-each-currency-row {
+	margin-top: 20px;
+}
+
+.table-each-currency-row:hover {
+	border-bottom: 2px solid var(--color-secondary-dark);
+}
