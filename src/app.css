@@ -3,7 +3,8 @@
 	--global-transition: 0.4s;
 	/**************** font variables *********************/
 	--main-font-family: "Vazirmatn";
-	--main-font-size-large: 1.5rem;
+	--main-font-size-x-large: 1.5rem;
+	--main-font-size-large: 1.2rem;
 	--main-font-size-medium: 1rem;
 	--main-font-size-small: 0.75rem;
 
@@ -12,8 +13,8 @@
 	--color-primary-light: rgb(255, 204, 234);
 	--color-secondary: rgb(255, 255, 255);
 	--color-secondary-dark: rgb(240, 240, 240);
-	--primary-text-color: rgb(98, 98, 98);
 	--light-gray-color: rgb(170, 170, 170);
+	--primary-text-color: rgb(98, 98, 98);
 
 	/**************** btn  variables *********************/
 	/* btn colors */
@@ -55,4 +56,20 @@
 	border-radius: 10px;
 	box-shadow: 0 0 8px #555;
 	margin: 0px auto 20px auto;
+}
+
+/* this website scrollbar style */
+::-webkit-scrollbar {
+	width: 10px;
+	background-color: var(--color-secondary);
+}
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px var(--light-gray-color);
+	border-radius: 10px;
+	background-color: var(--color-secondary);
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	box-shadow: inset 0 0 6px var(--light-gray-color);
+	background-color: var(--light-gray-color);
 }
