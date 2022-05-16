@@ -6,14 +6,14 @@ const Wallets = (props) => {
 	const currencies_info = props.data;
 	// States
 	const [api, set_api] = useState(currencies_info);
-	// const [search_box, set_search_box] = useState("");
 	// States functions
+	// This function filter currencies name when user type in searchbox
 	const filter_currency = (e) => {
-		api.filter((e) => {
-			api.map((item) => {
-				item.name.includes();
-			});
+		const user_input = e.target.value;
+		const filtered_list = currencies_info.filter((item) => {
+			return item.persian_name.includes(user_input);
 		});
+		set_api(filtered_list);
 	};
 	return (
 		<div className="wallets-container component_box_shadow">
@@ -65,8 +65,7 @@ const Wallets = (props) => {
 							{/* Currency inventory contaienr */}
 							<div className="currency-inventory-container">
 								<span className="currency-inventory">
-									موجودی:{item.our_inventory}
-									{item.abbr}
+									موجودی: {item.abbr} {item.our_inventory}
 								</span>
 								<span className="price_in_toman">
 									معادل:{item.toman_price} تومان
