@@ -10,12 +10,16 @@ export default function Converter(props) {
 	const [currency_name, set_currency_name] = useState(
 		currencies_info[0].persian_name
 	);
-	const [currency_icon, set_currency_icon] = useState(currencies_info[0].icon);
+	const [currency_icon, set_currency_icon] = useState(
+		currencies_info[0].icon_source
+	);
 	const [currency_value, set_currency_value] = useState(
 		currencies_info[0].website_price
 	);
-	const [unit_value, set_unit_value] = useState();
-	const [toman_value, set_toman_value] = useState();
+	const [unit_value, set_unit_value] = useState(1);
+	const [toman_value, set_toman_value] = useState(
+		currencies_info[0].website_price
+	);
 	// States functions
 	// This function toggle the dropdown
 	const toggle = () => {
@@ -27,8 +31,9 @@ export default function Converter(props) {
 		api_data.map((item) => {
 			if (e.target.id == item.id) {
 				set_currency_name(item.persian_name);
-				set_currency_icon(item.icon);
+				set_currency_icon(item.icon_source);
 				set_currency_value(item.website_price);
+				set_unit_value(1);
 				set_toman_value(item.website_price);
 			}
 		});
@@ -106,7 +111,7 @@ export default function Converter(props) {
 												{/* Currency icon */}
 												<img
 													id={item.id}
-													src={item.icon}
+													src={item.icon_source}
 													alt={item.persian_name}
 													width="20px"
 												/>

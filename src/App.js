@@ -796,7 +796,7 @@ const AppLayout = () => (
 			<Route path="crypto-transactions" element={<Crypto_transactions />} />
 			<Route path="rial-transactions" element={<Rial_transactions />} />
 			<Route path="tickets" element={<Tickets />} />
-			<Route path="buy" element={<Buy />} />
+			<Route path="buy" element={<Buy data={digital_currencies_arr} />} />
 			<Route path="toman-deposit" element={<Toman_deposit />} />
 			<Route path="toman-withdrawal" element={<Toman_withdrawal />} />
 			<Route path="sell" element={<Sell />} />
@@ -831,7 +831,7 @@ function App() {
 					<Route path="crypto-transactions" element={<Crypto_transactions />} />
 					<Route path="rial-transactions" element={<Rial_transactions />} />
 					<Route path="tickets" element={<Tickets />} />
-					<Route path="buy" element={<Buy />} />
+					<Route path="buy" element={<Buy data={digital_currencies_arr} />} />
 					<Route path="toman-deposit" element={<Toman_deposit />} />
 					<Route path="toman-withdrawal" element={<Toman_withdrawal />} />
 					<Route path="sell" element={<Sell />} />

@@ -2,4 +2,4 @@ Things to do:
   1. Set same all the scroll bars --> Done
   2. Dashboard page converter component --> Done
   3. Dashboard page table component  --> Done
-  4. Wallets page styling ,responsive and proper commenting --> 
+  4. Wallets page styling ,responsive and proper commenting --> Done
