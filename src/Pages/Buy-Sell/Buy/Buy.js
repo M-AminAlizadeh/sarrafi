@@ -4,7 +4,7 @@ import "./buy.css";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
-// Artificial object about currencies information
+// // Artificial object about currencies information
 const currencies_info = [
 	{
 		id: 1,
@@ -58,7 +58,8 @@ const currencies_info = [
 	},
 ];
 
-export default function Buy() {
+export default function Buy(props) {
+	console.log(props.data);
 	/////////////////////// States
 	const [dropdown, set_drop_down] = useState(false);
 	const [api_data, set_api_data] = useState(currencies_info);
@@ -115,22 +116,15 @@ export default function Buy() {
 		}
 	};
 	return (
-		<div className="buy-page-container" style={{ display: "flex" }}>
-			<div
-				className="buy-page-article"
-				style={{
-					flex: 1,
-					boxShadow: " 0 0 20px #555",
-					border: "3px solid #fff",
-					backgroundColor: "#fff",
-					borderRadius: "20px",
-					padding: "20px",
-					margin: "10px",
-				}}
-			>
-				<h4 dir="rtl"> راهنمای خرید{currency_name}</h4>
+		// Page Container
+		<div className="buy-page-container">
+			{/* Left Side Container */}
+			<div className="buy-page-article">
+				{/* Article Header */}
+				<p> راهنمای خرید{currency_name}</p>
 				<hr />
-				<ul className="buy-page-list" dir="rtl">
+				{/* Article List */}
+				<ul className="buy-page-list">
 					<li>
 						کارمزد پرداختی از سوی شما برای تراکنش های رمز ارز ها کارمزد شبکه ارز
 						مدنظر میباشد و مجموعه ما از این کارمزد نفعی ندارد
@@ -188,52 +182,52 @@ export default function Buy() {
 						اسلامی ایران است خدماتی ارائه نمیدهد
 					</li>
 				</ul>
+				<hr />
 			</div>
-			<div
-				className="buy-page-input-container"
-				dir="rtl"
-				style={{
-					flex: "2",
-					boxShadow: " 0 0 20px #555",
-					border: "3px solid #fff",
-					backgroundColor: "#fff",
-					borderRadius: "20px",
-					padding: "10px",
-					margin: "10px",
-				}}
-			>
-				<h4>
+			{/* Right side Container */}
+			<div className="buy-page-input-container component_box_shadow">
+				{/* Right side header */}
+				<p className="buy-page-input-container-header">
 					<TrendingDownIcon></TrendingDownIcon> خرید ارز
-				</h4>
-				<div
-					style={{
-						width: "100%",
-						textAlign: "center",
-						padding: "20px",
-						backgroundColor: "#EAE8FD",
-						color: "#887DF2",
-						fontSize: "17px",
-						borderRadius: "5px",
-					}}
-				>
+				</p>
+				<div className="buy-page-payment-amount">
 					مبلغ پرداختی:<span>{toman_value}</span> تومان
 				</div>
 				{/* Select currency part */}
-				<div className="currency-selection-container">
-					<span>انتخاب ارز</span>
+				<div
+					className="currency-selection-container"
+					style={{
+						border: "1px solid blue",
+						display: "flex",
+						justifyContent: "space-between",
+						alignItems: "center",
+						marginTop: "10px",
+					}}
+				>
 					{/* Main div */}
-					<div className="buy-page-input" onClick={toggle_dropdown}>
+					<span style={{ flex: "1" }}>انتخاب ارز</span>
+					<div
+						className="buy-page-select-box"
+						onClick={toggle_dropdown}
+						style={{
+							border: "var(--input-border)",
+							flex: "3",
+							borderRadius: "var(--button-border-radius-softer)",
+						}}
+					>
 						{/* currency logo */}
-						<div className="currency-logo">
+						<div className="currency-logo" style={{ margin: "10px" }}>
 							<img src={currency_icon} width="30px" />
 						</div>
 						{/* currency name in persian */}
-						<span className="currency-name">{currency_name}</span>
+						<span className="currency-name" style={{ margin: "10px" }}>
+							{currency_name}
+						</span>
 						{/* currency dropdown icon */}
 						<div className="currency-dropdown">
 							<img
 								className={dropdown ? "toggle-drop-down-icon" : ""}
-								src="https://img.icons8.com/ios-glyphs/30/000000/chevron-up.png"
+								src="https://img.icons8.com/ios-glyphs/10/000000/chevron-up.png"
 							/>
 						</div>
 					</div>
@@ -279,13 +273,14 @@ export default function Buy() {
 						""
 					)}
 				</div>
+				{/* Price of Each Coin */}
 				<div
 					style={{
 						// border: "1px solid red",
 						display: "flex",
-						width: "50%",
+						width: "100%",
 						justifyContent: "space-around",
-						marginRight: "10px",
+						paddingRight: "100px",
 					}}
 				>
 					<p>
@@ -299,40 +294,65 @@ export default function Buy() {
 					</p>
 				</div>
 				<hr />
-				<div>
+				<div style={{ border: "1px solid black" }}>
 					<span>مقدار ارز</span>
 					<div
-						className={`currency-value-container ${warning ? "" : "warning"}`}
+						style={{
+							border: "1px solid purple",
+							display: "flex",
+							flexDirection: "column",
+							justifyContent: "center",
+						}}
 					>
-						<label htmlFor="">مقدار {currency_name}</label>
-						<img src={currency_icon} alt={currency_name} width="20px" />
-						<input
-							type="number"
-							className="buy-page-input currency-input-output-value"
-							onChange={handle_conversion}
-							onFocus={(e) => {
-								set_selected("currency");
+						<div
+							style={{
+								border: "1px solid red",
+								display: "flex",
+								alignItems: "center",
 							}}
-							value={currency_value}
-						/>
-						<span className="currency-abbr">{currency_abbr}</span>
+							className={`currency-value-container ${warning ? "" : "warning"}`}
+						>
+							<label htmlFor="" style={{ flex: "1" }}>
+								مقدار {currency_name}
+								<img src={currency_icon} alt={currency_name} width="20px" />
+							</label>
+							<input
+								type="number"
+								style={{
+									flex: "3",
+									textAlign: "center",
+									padding: "20px",
+									outline: "none",
+									borderRadius: "var(--button-border-radius-softer)",
+								}}
+								className="buy-page-currency-count-input"
+								onChange={handle_conversion}
+								onFocus={(e) => {
+									set_selected("currency");
+								}}
+								value={currency_value}
+							/>
+							<span className="currency-abbr">{currency_abbr}</span>
+						</div>
+						<div className={warning ? "" : "warning"}>
+							<span>به تومان</span>
+							<input
+								type="number"
+								className="buy-page-input"
+								value={toman_value}
+								onFocus={(e) => {
+									set_selected("toman");
+								}}
+								onChange={handle_conversion}
+							/>
+						</div>
+						<br></br>
+						<span
+							style={{ position: "relative", bottom: "20px", right: "30px" }}
+						>
+							مبلغ را به تومان نیز می توانید مشخص نمایید.
+						</span>
 					</div>
-					<div className={warning ? "" : "warning"}>
-						<span>به تومان</span>
-						<input
-							type="number"
-							className="buy-page-input"
-							value={toman_value}
-							onFocus={(e) => {
-								set_selected("toman");
-							}}
-							onChange={handle_conversion}
-						/>
-					</div>
-					<br></br>
-					<span style={{ position: "relative", bottom: "20px", right: "30px" }}>
-						مبلغ را به تومان نیز می توانید مشخص نمایید.
-					</span>
 				</div>
 				<div
 					style={{

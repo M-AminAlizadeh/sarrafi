@@ -54,9 +54,9 @@
 /***************************** Component Style Classes *****************************/
 .component_box_shadow {
 	background-color: var(--color-secondary);
-	border: 3px solid #fff;
+	border: 3px solid var(--color-secondary);
 	border-radius: 10px;
-	box-shadow: 0 0 8px #555;
+	box-shadow: 0 0 8px var(--primary-text-color);
 	margin: 0px auto 20px auto;
 }
 
@@ -74,4 +74,55 @@
 	border-radius: 10px;
 	box-shadow: inset 0 0 6px var(--light-gray-color);
 	background-color: var(--light-gray-color);
+}
+/* Error message styling */
+.error-message {
+	color: var(--button-beta-bg-color);
+}
+
+.error-input-border {
+	border: 1px solid var(--button-beta-bg-color) !important;
+}
+
+/* Modal Styling */
+.modal-box-container {
+	/* border: 1px solid red; */
+	position: absolute;
+	z-index: 2;
+	top: 40%;
+	right: 33%;
+	width: 550px;
+	height: 320px;
+	background-color: var(--color-secondary);
+	padding: 20px;
+	border-radius: var(--button-border-radius-softer);
+}
+
+.modal-box-header {
+	font-size: var(--main-font-size-large);
+}
+.modal-box-description {
+	line-height: 20px;
+}
+.modal-box-btn {
+	border-radius: var(--button-border-radius-softer);
+	background-color: var(--light-gray-color);
+	border: none;
+	color: var(--color-secondary);
+	padding: var(--button-padding-large);
+}
+.modal-box-btn:hover {
+	box-shadow: var(--button-box-shadow-primary);
+}
+
+/* Success message styling */
+.success-message-container {
+	border: 1px solid var(--button-alpha-bg-color);
+	margin-top: 20px;
+	border-radius: var(--button-border-radius-softer);
+	text-align: right;
+	color: var(--button-alpha-bg-color);
+	background-color: var(--button-alpha-bg-color-lighter);
+	padding: 1.25rem;
+	width: 100%;
 }

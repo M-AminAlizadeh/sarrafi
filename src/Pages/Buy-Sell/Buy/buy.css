@@ -1,3 +1,54 @@
+/* Page container */
+.buy-page-container {
+	display: flex;
+	color: var(--primary-text-color);
+}
+/*  article(Left Side) */
+.buy-page-article {
+	flex: 1;
+	padding: 20px;
+	margin: 10px;
+}
+.buy-page-article p,
+.buy-page-article ul {
+	direction: rtl;
+}
+.buy-page-article p {
+	font-size: var(--main-font-size-x-large);
+}
+/* Right side */
+.buy-page-input-container {
+	direction: rtl;
+	flex: 2;
+	padding: 10px;
+	margin: 10px !important;
+}
+/* Right side header */
+.buy-page-input-container-header {
+	font-size: var(--main-font-size-x-large);
+}
+/* Payment amount */
+.buy-page-payment-amount {
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+	background-color: var(--color-primary-light);
+	color: var(--color-primary);
+	font-size: var(--main-font-size-medium);
+	border-radius: var(--button-border-radius-softer);
+}
+
+/* Select Box */
+.buy-page-select-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Coin Count Input */
+.buy-page-currency-count-input {
+	border: var(--input-border);
+}
 /* Dropdown section */
 .drop-down-list-container {
 	position: relative;
@@ -53,7 +104,6 @@ textarea:focus {
 .warning {
 	border: 1px solid red !important;
 }
-
 
 /* Media Queries */
 @media (max-width: 1200px) {
