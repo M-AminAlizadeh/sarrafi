@@ -125,3 +125,15 @@
 .currency-btns-container .history {
 	background-color: var(--color-primary);
 }
+
+/* Media queries */
+@media (max-width: 1000px) {
+	.currency-btns-container {
+		/* border: 1px solid red; */
+		flex-direction: column;
+	}
+	.currency-btns-container button {
+		margin-top: 20px;
+		width: 100%;
+	}
+}
