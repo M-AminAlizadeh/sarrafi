@@ -5,3 +5,4 @@ Things to do:
   4. Wallets page styling ,responsive and proper commenting --> Done
   4. Wallets page styling ,responsive and proper commenting --> Done
   5. Wallets page search functionality --> Done
+  6. Tickets page styling ,functionality ,responsive and proper commenting --> Done
