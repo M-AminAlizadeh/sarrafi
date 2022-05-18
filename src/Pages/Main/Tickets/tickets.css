@@ -1,17 +1,16 @@
 .tickets-container {
-	width: 90%;
+	width: 80%;
 	margin: auto;
 	direction: rtl;
 }
 
+/* New ticket container */
 .tickets-new-ticket-container {
-	border: none;
-	background-color: #fff;
-	border-radius: 10px;
+	background-color: var(--color-secondary);
 	padding: 10px 20px;
 }
-
-.tickets-new-ticket-title {
+/* Toggle title */
+.tickets-new-ticket-toggle-title {
 	direction: rtl;
 	display: flex;
 	justify-content: flex-start;
@@ -20,19 +19,27 @@
 	user-select: none;
 }
 
-.new-ticket-title {
+.new-ticket-toggle-title-text-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 18px;
+	font-size: var(--main-font-size-large);
 	letter-spacing: 1px;
 }
 
+/* Form styling */
 .tickets-new-ticket-form-container {
+	/* border: 3px solid pink; */
 	width: 60%;
 	margin: auto;
-	border: 3px solid pink;
 	padding: 10px;
+}
+
+/* form top section styling */
+.tickets-new-ticket-form-top-container {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
 }
 
 .new-ticket-form-unit,
@@ -42,13 +49,7 @@
 	width: 40%;
 }
 
-.tickets-new-ticket-form-top-container {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	margin-bottom: 20px;
-}
-
+/* form order section styling */
 .new-ticket-form-order {
 	display: flex;
 	flex-direction: column;
@@ -61,19 +62,19 @@
 	margin-bottom: 20px;
 }
 
-#form-title,
-#form-unit,
-#form-order,
-#form-explain,
+.form-title,
+.form-unit,
+.form-order,
+.form-explain,
 .form-upload,
-#form-submit {
+.form-submit {
 	outline: none;
 	padding: 10px 15px;
 	border-radius: var(--button-border-radius-softer);
 	border: 1px solid rgb(201, 201, 201);
 }
 
-#form-upload {
+.form-upload {
 	display: none;
 }
 
@@ -97,12 +98,12 @@
 	margin: 20px 0px;
 }
 
-#form-submit {
+.form-submit {
 	padding: 10px 40px;
 	font-size: 20px;
 }
 
-#form-submit:hover {
+.form-submit:hover {
 	box-shadow: 0px 10px 20px black;
 }
 

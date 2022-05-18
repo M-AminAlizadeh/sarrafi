@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import {
 	DataGrid,
@@ -8,7 +7,6 @@ import {
 	gridPageSelector,
 	useGridApiContext,
 	useGridSelector,
-	Toolbar,
 } from "@mui/x-data-grid";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
@@ -26,7 +24,7 @@ const style = {
 	boxShadow: 24,
 	p: 4,
 };
-
+// Table rows
 const rows = [
 	{
 		id: 1,
@@ -38,6 +36,7 @@ const rows = [
 		details: "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
 	},
 ];
+// Table columns
 const columns = [
 	{ field: "number", headerName: "شماره", width: 110 },
 	{
@@ -77,12 +76,11 @@ const columns = [
 		width: 160,
 	},
 ];
-// Pagination
+// Pagination function
 function CustomPagination() {
 	const apiRef = useGridApiContext();
 	const page = useGridSelector(apiRef, gridPageSelector);
 	const pageCount = useGridSelector(apiRef, gridPageCountSelector);
-
 	return (
 		<Pagination
 			color="primary"
@@ -107,9 +105,9 @@ export default function Tickets() {
 	const [check_unit, setCheckUnit] = useState(true);
 	const [check_explain, setCheckExplain] = useState(true);
 	const [open, setOpen] = useState(false);
+	// States functions
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
-	// States functions
 	const form_checker = () => {
 		// Form Title
 		if (form_title !== "") {
@@ -135,12 +133,30 @@ export default function Tickets() {
 		}
 	};
 	return (
-		<div className="tickets-container">
+		// Tickets container
+		<div className="tickets-container component_box_shadow ">
+			{/* Pop up modal */}
+			<Modal
+				dir="rtl"
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<Box sx={style}>
+					<h1>Lorem ipsum dolor sit amet consectetur.</h1>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sequi
+						dolores rerum totam eveniet voluptatibus explicabo labore enim
+						molestiae. Natus!
+					</p>
+				</Box>
+			</Modal>
 			{/* New Ticket section */}
 			<div className="tickets-new-ticket-container">
-				{/* New Ticket Title */}
+				{/* New Ticket toggle title container*/}
 				<div
-					className="tickets-new-ticket-title"
+					className="tickets-new-ticket-toggle-title"
 					onClick={(e) => {
 						setToggle_new_ticket(!toggle_new_ticket);
 					}}
@@ -148,7 +164,7 @@ export default function Tickets() {
 					<div className="new-ticket-image">
 						<img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/000000/external-plus-user-interface-tanah-basah-glyph-tanah-basah-2.png" />
 					</div>
-					<div className="new-ticket-title">
+					<div className="new-ticket-toggle-title-text-container">
 						<sapn> ثبت درخواست جدید</sapn>
 					</div>
 				</div>
@@ -164,23 +180,28 @@ export default function Tickets() {
 									onChange={(e) => {
 										set_form_title(e.target.value);
 									}}
-									className={check_title ? "form-default-border" : "form-alarm"}
+									className={`form-title ${
+										check_title ? "form-default-border" : "form-alarm"
+									}`}
 									type="text"
 									name="form-title"
-									id="form-title"
-									required
 									value={form_title}
 									title="عنوان مورد نظرتان را وارد کنید"
 								/>
-								{check_title ? "" : <span>عنوان خالیست پر کنید</span>}
+								{check_title ? (
+									""
+								) : (
+									<span className="error-message">عنوان خالیست پر کنید</span>
+								)}
 							</div>
 							{/* Form unit part */}
 							<div className="new-ticket-form-unit">
 								<label htmlFor="form-unit">واحد</label>
 								<select
 									name="form-unit"
-									id="form-unit"
-									className={check_unit ? "form-default-border" : "form-alarm"}
+									className={`form-unit ${
+										check_unit ? "form-default-border" : "form-alarm"
+									}`}
 									onChange={(e) => {
 										set_form_unit(e.target.value);
 									}}
@@ -204,7 +225,7 @@ export default function Tickets() {
 						{/* Form order part */}
 						<div className="new-ticket-form-order">
 							<label htmlFor="form-order">در خصوص سفارش</label>
-							<select name="form-order" id="form-order">
+							<select name="form-order" className="form-order">
 								<option value="">هیچکدام</option>
 							</select>
 						</div>
@@ -213,14 +234,15 @@ export default function Tickets() {
 							<label htmlFor="form-explain">توضیحات</label>
 							<textarea
 								name="form-explain"
-								id="form-explain"
 								cols="60"
 								rows="10"
 								value={form_explain}
 								onChange={(e) => {
 									set_form_explain(e.target.value);
 								}}
-								className={check_explain ? "form-default-border" : "form-alarm"}
+								className={`form-explain ${
+									check_explain ? "form-default-border" : "form-alarm"
+								}`}
 							></textarea>
 							{check_explain ? (
 								""
@@ -235,7 +257,12 @@ export default function Tickets() {
 								<span>انتخاب فایل</span>
 								<img src="https://img.icons8.com/metro/20/000000/upload.png" />
 							</label>
-							<input type="file" name="form-upload" id="form-upload" />
+							<input
+								type="file"
+								name="form-upload"
+								className="form-upload"
+								accept="image/*"
+							/>
 							<span className="form-upload-explain">
 								پسوندهای مجاز: jpg, jpeg, png, pdf, doc, docx, zip, rar حداکثر
 								حجم فایل 5 مگابایت
@@ -246,7 +273,7 @@ export default function Tickets() {
 							<button
 								type="submit"
 								name="form-submit"
-								id="form-submit"
+								className="form-submit"
 								value=""
 								onClick={() => {
 									form_checker();
@@ -259,24 +286,8 @@ export default function Tickets() {
 				) : (
 					""
 				)}
-				{/* Pop up modal */}
-				<Modal
-					open={open}
-					onClose={handleClose}
-					aria-labelledby="modal-modal-title"
-					aria-describedby="modal-modal-description"
-				>
-					<Box sx={style}>
-						<Typography id="modal-modal-title" variant="h6" component="h2">
-							درخواست شما با موفقیت ارسال شد
-						</Typography>
-						<Typography id="modal-modal-description" sx={{ mt: 2 }}>
-							کارشناسان ما در اسرع وقت به شما پاسخ میدهند
-						</Typography>
-					</Box>
-				</Modal>
 			</div>
-			{/* Tickets log section */}
+			{/* Tickets log section(Table) */}
 			<div className="tickets-log-container">
 				<div className="ticket-log-title">
 					<h3>پشتیبانی</h3>

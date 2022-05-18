@@ -4,3 +4,4 @@ Things to do:
   3. Dashboard page table component  --> Done
   4. Wallets page styling ,responsive and proper commenting --> Done
   5. Wallets page search functionality --> Done
+  6. Tickets page styling ,responsive and proper commenting -->
