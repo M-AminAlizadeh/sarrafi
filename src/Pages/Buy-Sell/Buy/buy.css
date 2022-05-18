@@ -94,12 +94,6 @@
 	cursor: pointer;
 }
 /* Entering value from user section */
-
-/* Text area sectoin */
-textarea:focus {
-	outline: none !important;
-	border-color: #8378ef !important;
-}
 /* warning */
 .warning {
 	border: 1px solid red !important;
