@@ -2,6 +2,8 @@
 .buy-page-container {
 	display: flex;
 	color: var(--primary-text-color);
+	width: 90%;
+	margin: auto;
 }
 /*  article(Left Side) */
 .buy-page-article {
@@ -19,7 +21,7 @@
 /* Right side */
 .buy-page-input-container {
 	direction: rtl;
-	flex: 2;
+	flex: 1;
 	padding: 10px;
 	margin: 10px !important;
 }
@@ -38,22 +40,224 @@
 	border-radius: var(--button-border-radius-softer);
 }
 
+/* Currency Selection Header */
+.buy-page-currency-selection-header {
+	font-size: var(--main-font-size-large);
+}
+
+/* Currency Selection Container */
+.currency-selection-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+	position: relative;
+	user-select: none;
+}
+
 /* Select Box */
 .buy-page-select-box {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
+	margin: auto;
+	width: 50%;
+	border: var(--input-border);
+	border-radius: var(--button-border-radius-softer);
+}
+
+/* Currency Logo */
+.buy-page-currency-logo {
+	margin: 10px;
+}
+
+/* Currency Name */
+.buy-page-currency-name {
+	margin: 10px;
+}
+
+/* Each Coin Price */
+.buy-page-each-coin-price {
+	/*  border: "1px solid red" */
+	display: flex;
+	width: 100%;
+	justify-content: space-evenly;
+	text-align: center;
+	font-size: var(--main-font-size-small);
+}
+
+/* Coin Count Div (Bigger Than Coin Count Container) */
+.buy-page-coin-count-div {
+	/* border: 1px solid red; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/* Coin Count Container */
+.buy-page-coin-count-container {
+	/* border: 1px solid red; */
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+/* Coin Count Header */
+.buy-page-coin-count-header {
+	font-size: var(--main-font-size-large);
+}
+
+/* Coin Count Small Header On Input */
+.buy-page-coin-count-small-header {
+	/* border: 1px solid red; */
+	width: 50%;
+	font-size: var(--main-font-size-small);
 }
 
 /* Coin Count Input */
 .buy-page-currency-count-input {
 	border: var(--input-border);
+	outline: none;
+	width: 50%;
+	text-align: center;
+	border-radius: var(--button-border-radius-softer);
+	padding: 15px;
+}
+.buy-page-currency-count-input:focus {
+	border: var(--input-border-focus-mode);
+	transition: var(--global-transition);
+}
+/* Coin Count In Tomans Container */
+.buy-page-coin-count-in-tomans-container {
+	/* border: 1px solid green; */
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+}
+
+/* Coin Count Input In Toman */
+.buy-page-currency-count-in-tomans {
+	padding: 15px;
+	width: 50%;
+	border: var(--input-border);
+	border-radius: var(--button-border-radius-softer);
+	outline: none;
+	text-align: center;
+}
+.buy-page-currency-count-in-tomans:focus {
+	border: var(--input-border-focus-mode);
+	transition: var(--global-transition);
+}
+
+/* Span Below Coin Count Input In Toman */
+.buy-page-span-below-toman-input {
+	/* border: 1px solid red; */
+	flex: 1;
+	width: 50%;
+	font-size: var(--main-font-size-small);
+}
+
+/* Notice */
+.buy-page-notice {
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	background-color: var(--color-primary-light);
+	color: var(--color-primary);
+	font-size: var(--main-font-size-small);
+	border-radius: var(--button-border-radius-softer);
+	margin-top: 10px;
+}
+
+/* Further Description */
+.further-description-header {
+	font-size: var(--main-font-size-large);
+}
+
+/* Text Area Container */
+.buy-page-text-area-container {
+	/* border: 1px solid red; */
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+}
+
+/* Text Area */
+.buy-page-text-area {
+	width: 50%;
+	margin: auto;
+	border: var(--input-border);
+	border-radius: var(--button-border-radius-softer);
+	outline: none;
+}
+
+/* Text Area Focus */
+.buy-page-text-area:focus {
+	border: var(--input-border-focus-mode) !important;
+	transition: var(--global-transition);
+}
+
+/* Payment Method */
+.buy-page-payment-method-container {
+	margin: 10px 0px;
+}
+
+/* Second Notice */
+.buy-page-second-notice {
+	text-align: center;
+	border-radius: var(--button-border-radius-softer);
+	background-color: var(--color-secondary-dark);
+	padding: 10px;
+	color: var(--light-gray-color);
+}
+
+/* Only Link */
+.buy-page-link {
+	text-decoration: none;
+	color: var(--color-primary);
+}
+.buy-page-link:hover {
+	color: var(--color-primary);
+}
+
+/* Button */
+.buy-page-submit-btn {
+	background-color: var(--button-primary-bg-color);
+	color: var(--button-text-color);
+	border-radius: var(--button-border-radius-extreme);
+	padding: var(--button-padding-large);
+	outline: none;
+	border: none;
+}
+.buy-page-submit-btn:hover {
+	box-shadow: var(--button-box-shadow-primary);
+	transition: var(--global-transition);
+}
+
+/* Error Message */
+.buy-page-error-message {
+	/* border: 1px solid blue; */
+	width: 60%;
+	text-align: center;
+	font-size: var(--main-font-size-small);
+}
+
+/* DropDown Color Focus */
+.change-drop-down-color {
+	border: var(--input-border-focus-mode) !important;
 }
 /* Dropdown section */
 .drop-down-list-container {
-	position: relative;
-	width: 80%;
+	/* border: 1px solid brown; */
+	position: absolute;
+	top: 70px;
+	right: 175px;
+	z-index: 3;
+	width: 20vw;
+	height: 300px;
 	overflow: auto;
+	background-color: var(--color-secondary);
 }
 
 .toggle-drop-down-icon {
@@ -63,10 +267,14 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border: 1px solid rgb(206, 206, 206);
 	cursor: pointer;
 	margin-bottom: 5px;
 	margin-top: 10px;
+	border: var(--input-border);
+}
+/* First Row In Select List */
+.drop-down-list:nth-of-type(2) {
+	margin-top: 40px;
 }
 
 .drop-down-list .left-side {
@@ -95,20 +303,51 @@
 }
 /* Entering value from user section */
 
-/* Text area sectoin */
-textarea:focus {
-	outline: none !important;
-	border-color: #8378ef !important;
-}
 /* warning */
 .warning {
 	border: 1px solid red !important;
 }
 
 /* Media Queries */
-@media (max-width: 1200px) {
+
+@media (max-width: 600px) {
 	.buy-page-container {
 		flex-wrap: wrap;
 		flex-direction: column;
 	}
+	.buy-page-select-box,
+	.buy-page-currency-count-input,
+	.buy-page-currency-count-in-tomans {
+		width: 80%;
+	}
+	.drop-down-list-container {
+		/* border: 1px solid blue; */
+		right: 100px;
+		width: 50vw;
+	}
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+	.buy-page-container {
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
+	.buy-page-select-box,
+	.buy-page-currency-count-input,
+	.buy-page-currency-count-in-tomans {
+		width: 80%;
+	}
+	.drop-down-list-container {
+		/* border: 1px solid red; */
+		width: 50vw;
+		right: 20%;
+	}
+}
+
+/****************** SELL PAGE ***************** */
+/* Sell Page Span Below Coin Count Input */
+.sell-page-span-below-coin-count-input {
+	/* border: 1px solid red; */
+	width: 50%;
+	font-size: var(--main-font-size-small);
 }
