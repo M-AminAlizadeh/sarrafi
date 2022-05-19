@@ -11,7 +11,11 @@ const Wallets = (props) => {
 	const filter_currency = (e) => {
 		const user_input = e.target.value;
 		const filtered_list = currencies_info.filter((item) => {
-			return item.persian_name.includes(user_input);
+			return (
+				item.persian_name.includes(user_input) ||
+				item.name.toLowerCase().includes(user_input.toLowerCase()) ||
+				item.abbr.toLowerCase().includes(user_input.toLowerCase())
+			);
 		});
 		set_api(filtered_list);
 	};
