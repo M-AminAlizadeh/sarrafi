@@ -62,7 +62,7 @@
 
 /* this website scrollbar style */
 ::-webkit-scrollbar {
-	width: 10px;
+	width: 8px;
 	background-color: var(--color-secondary);
 }
 ::-webkit-scrollbar-track {
@@ -75,11 +75,11 @@
 	box-shadow: inset 0 0 6px var(--light-gray-color);
 	background-color: var(--light-gray-color);
 }
+
 /* Error message styling */
 .error-message {
 	color: var(--button-beta-bg-color);
 }
-
 .error-input-border {
 	border: 1px solid var(--button-beta-bg-color) !important;
 }
@@ -97,7 +97,6 @@
 	padding: 20px;
 	border-radius: var(--button-border-radius-softer);
 }
-
 .modal-box-header {
 	font-size: var(--main-font-size-large);
 }

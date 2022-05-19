@@ -1,14 +1,10 @@
 import { useState } from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
 import {
 	DataGrid,
 	gridPageCountSelector,
 	gridPageSelector,
 	useGridApiContext,
 	useGridSelector,
-	Toolbar,
 } from "@mui/x-data-grid";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
@@ -26,7 +22,7 @@ const style = {
 	boxShadow: 24,
 	p: 4,
 };
-
+// Table rows
 const rows = [
 	{
 		id: 1,
@@ -38,6 +34,7 @@ const rows = [
 		details: "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
 	},
 ];
+// Table columns
 const columns = [
 	{ field: "number", headerName: "شماره", width: 110 },
 	{
@@ -77,12 +74,11 @@ const columns = [
 		width: 160,
 	},
 ];
-// Pagination
+// Pagination function
 function CustomPagination() {
 	const apiRef = useGridApiContext();
 	const page = useGridSelector(apiRef, gridPageSelector);
 	const pageCount = useGridSelector(apiRef, gridPageCountSelector);
-
 	return (
 		<Pagination
 			color="primary"
@@ -106,209 +102,211 @@ export default function Tickets() {
 	const [check_title, setCheckTitle] = useState(true);
 	const [check_unit, setCheckUnit] = useState(true);
 	const [check_explain, setCheckExplain] = useState(true);
-	const [open, setOpen] = useState(false);
-	const handleOpen = () => setOpen(true);
-	const handleClose = () => setOpen(false);
+	const [success_message, set_success_message] = useState(false);
 	// States functions
+	// This function checks the form
 	const form_checker = () => {
 		// Form Title
-		if (form_title !== "") {
-			setCheckTitle(true);
-		} else {
-			setCheckTitle(false);
-		}
+		form_title !== "" ? setCheckTitle(true) : setCheckTitle(false);
 		// Form Unit
-		if (form_unit !== "") {
-			setCheckUnit(true);
-		} else {
-			setCheckUnit(false);
-		}
+		form_unit !== "" ? setCheckUnit(true) : setCheckUnit(false);
 		// Form Explain
-		if (form_explain !== "") {
-			setCheckExplain(true);
-		} else {
-			setCheckExplain(false);
-		}
+		form_unit !== "" ? setCheckExplain(true) : setCheckExplain(false);
 		// Check all elements in form and success pop-up
 		if (form_title !== "" && form_unit !== "" && form_explain !== "") {
-			handleOpen();
+			set_success_message(true);
 		}
 	};
 	return (
+		// Tickets container
 		<div className="tickets-container">
-			{/* New Ticket section */}
-			<div className="tickets-new-ticket-container">
-				{/* New Ticket Title */}
-				<div
-					className="tickets-new-ticket-title"
-					onClick={(e) => {
-						setToggle_new_ticket(!toggle_new_ticket);
-					}}
-				>
-					<div className="new-ticket-image">
-						<img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/000000/external-plus-user-interface-tanah-basah-glyph-tanah-basah-2.png" />
+			<div class="tickets-components-container">
+				{/* New Ticket section */}
+				<div className="tickets-new-ticket-container component_box_shadow">
+					{/* New Ticket toggle title container*/}
+					<div
+						className="tickets-new-ticket-toggle-title"
+						onClick={(e) => {
+							setToggle_new_ticket(!toggle_new_ticket);
+						}}
+					>
+						<div className="new-ticket-image">
+							<img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/000000/external-plus-user-interface-tanah-basah-glyph-tanah-basah-2.png" />
+						</div>
+						<div className="new-ticket-toggle-title-text-container">
+							<sapn> ثبت درخواست جدید</sapn>
+						</div>
 					</div>
-					<div className="new-ticket-title">
-						<sapn> ثبت درخواست جدید</sapn>
-					</div>
-				</div>
-				{/* New Ticket Form */}
-				{toggle_new_ticket ? (
-					<div className="tickets-new-ticket-form-container">
-						{/* Form top container */}
-						<div className="tickets-new-ticket-form-top-container">
-							{/* Form title part */}
-							<div className="new-ticket-form-title">
-								<label htmlFor="form-title">عنوان</label>
-								<input
-									onChange={(e) => {
-										set_form_title(e.target.value);
-									}}
-									className={check_title ? "form-default-border" : "form-alarm"}
-									type="text"
-									name="form-title"
-									id="form-title"
-									required
-									value={form_title}
-									title="عنوان مورد نظرتان را وارد کنید"
-								/>
-								{check_title ? "" : <span>عنوان خالیست پر کنید</span>}
+					{/* New Ticket Form */}
+					{toggle_new_ticket ? (
+						<div className="tickets-new-ticket-form-container">
+							{/* Form top container */}
+							<div className="tickets-new-ticket-form-top-container">
+								{/* Form title part */}
+								<div className="new-ticket-form-title">
+									<label htmlFor="form-title">عنوان</label>
+									<input
+										onChange={(e) => {
+											set_form_title(e.target.value);
+										}}
+										className={`form-title ${
+											check_title ? "" : "error-input-border"
+										}`}
+										type="text"
+										name="form-title"
+										value={form_title}
+										title="عنوان مورد نظرتان را وارد کنید"
+									/>
+									{check_title ? (
+										""
+									) : (
+										<span className="error-message">عنوان خالیست پر کنید</span>
+									)}
+								</div>
+								{/* Form unit part */}
+								<div className="new-ticket-form-unit">
+									<label htmlFor="form-unit">واحد</label>
+									<select
+										name="form-unit"
+										className={`form-unit ${
+											check_unit ? "" : "error-input-border"
+										}`}
+										onChange={(e) => {
+											set_form_unit(e.target.value);
+										}}
+										required
+									>
+										<option
+											value
+											disabled
+											selected
+											className="form-unit-header"
+										>
+											واحد مورد نظر را انتخاب کنید
+										</option>
+										<option value="پیگیری سفارش">پیگیری سفارش</option>
+										<option value="احراز هویت"> احراز هویت</option>
+										<option value="مالی">مالی </option>
+										<option value="سایر">سایر </option>
+									</select>
+									{check_unit ? (
+										""
+									) : (
+										<span className="error-message">
+											لطفا واحد مورد نظر خود را انتخاب کنید{" "}
+										</span>
+									)}
+								</div>
 							</div>
-							{/* Form unit part */}
-							<div className="new-ticket-form-unit">
-								<label htmlFor="form-unit">واحد</label>
-								<select
-									name="form-unit"
-									id="form-unit"
-									className={check_unit ? "form-default-border" : "form-alarm"}
-									onChange={(e) => {
-										set_form_unit(e.target.value);
-									}}
-									required
-								>
-									<option value disabled selected className="form-unit-header">
-										واحد مورد نظر را انتخاب کنید
-									</option>
-									<option value="پیگیری سفارش">پیگیری سفارش</option>
-									<option value="احراز هویت"> احراز هویت</option>
-									<option value="مالی">مالی </option>
-									<option value="سایر">سایر </option>
+							{/* Form order part */}
+							<div className="new-ticket-form-order">
+								<label htmlFor="form-order">در خصوص سفارش</label>
+								<select name="form-order" className="form-order">
+									<option value="">هیچکدام</option>
 								</select>
-								{check_unit ? (
+							</div>
+							{/* Form explain part */}
+							<div className="new-ticket-form-explain">
+								<label htmlFor="form-explain">توضیحات</label>
+								<textarea
+									name="form-explain"
+									cols="60"
+									rows="10"
+									value={form_explain}
+									onChange={(e) => {
+										set_form_explain(e.target.value);
+									}}
+									className={`form-explain ${
+										check_explain ? "" : "error-input-border"
+									}`}
+								></textarea>
+								{check_explain ? (
 									""
 								) : (
-									<span>لطفا واحد مورد نظر خود را انتخاب کنید </span>
+									<span className="error-message">
+										لطفا واحد مورد نظر خود را انتخاب کنید{" "}
+									</span>
 								)}
 							</div>
+							{/* ّForm upload file part */}
+							<div className="new-ticket-form-upload-file">
+								<label htmlFor="">فایل پیوست</label>
+								<label htmlFor="form-upload" className="form-upload">
+									<span>انتخاب فایل</span>
+									<img src="https://img.icons8.com/metro/20/000000/upload.png" />
+								</label>
+								<input
+									type="file"
+									name="form-upload"
+									className="form-upload"
+									id="form-upload"
+									accept="image/*"
+								/>
+								<span className="form-upload-explain">
+									پسوندهای مجاز: jpg, jpeg, png, pdf, doc, docx, zip, rar حداکثر
+									حجم فایل 5 مگابایت
+								</span>
+							</div>
+							{/* Form submit btn */}
+							<div className="new-ticket-form-submit">
+								<button
+									type="submit"
+									name="form-submit"
+									className="form-submit"
+									value=""
+									onClick={() => {
+										form_checker();
+									}}
+								>
+									ارسال درخواست
+								</button>
+							</div>
+							{/* Success message */}
+							{success_message ? (
+								<div className="success-message-container">
+									<span className="success-message">
+										درخواست شما با موفقیت ثبت شد
+									</span>
+								</div>
+							) : null}
 						</div>
-						{/* Form order part */}
-						<div className="new-ticket-form-order">
-							<label htmlFor="form-order">در خصوص سفارش</label>
-							<select name="form-order" id="form-order">
-								<option value="">هیچکدام</option>
-							</select>
-						</div>
-						{/* Form explain part */}
-						<div className="new-ticket-form-explain">
-							<label htmlFor="form-explain">توضیحات</label>
-							<textarea
-								name="form-explain"
-								id="form-explain"
-								cols="60"
-								rows="10"
-								value={form_explain}
-								onChange={(e) => {
-									set_form_explain(e.target.value);
-								}}
-								className={check_explain ? "form-default-border" : "form-alarm"}
-							></textarea>
-							{check_explain ? (
-								""
-							) : (
-								<span>لطفا واحد مورد نظر خود را انتخاب کنید </span>
-							)}
-						</div>
-						{/* ّForm upload file part */}
-						<div className="new-ticket-form-upload-file">
-							<label htmlFor="">فایل پیوست</label>
-							<label htmlFor="form-upload" className="form-upload">
-								<span>انتخاب فایل</span>
-								<img src="https://img.icons8.com/metro/20/000000/upload.png" />
-							</label>
-							<input type="file" name="form-upload" id="form-upload" />
-							<span className="form-upload-explain">
-								پسوندهای مجاز: jpg, jpeg, png, pdf, doc, docx, zip, rar حداکثر
-								حجم فایل 5 مگابایت
-							</span>
-						</div>
-						{/* Form submit btn */}
-						<div className="new-ticket-form-submit">
-							<button
-								type="submit"
-								name="form-submit"
-								id="form-submit"
-								value=""
-								onClick={() => {
-									form_checker();
-								}}
-							>
-								ارسال درخواست
-							</button>
-						</div>
-					</div>
-				) : (
-					""
-				)}
-				{/* Pop up modal */}
-				<Modal
-					open={open}
-					onClose={handleClose}
-					aria-labelledby="modal-modal-title"
-					aria-describedby="modal-modal-description"
-				>
-					<Box sx={style}>
-						<Typography id="modal-modal-title" variant="h6" component="h2">
-							درخواست شما با موفقیت ارسال شد
-						</Typography>
-						<Typography id="modal-modal-description" sx={{ mt: 2 }}>
-							کارشناسان ما در اسرع وقت به شما پاسخ میدهند
-						</Typography>
-					</Box>
-				</Modal>
-			</div>
-			{/* Tickets log section */}
-			<div className="tickets-log-container">
-				<div className="ticket-log-title">
-					<h3>پشتیبانی</h3>
-					<p>لیست تیکت های ارسال شده را مشاهده میکنید</p>
+					) : (
+						""
+					)}
 				</div>
-				<div className="ticket-log-table">
-					<div style={{ width: "90%", margin: "auto" }} dir="rtl">
-						{/* Title and description part */}
-						<div className="crypto_transactions-info-container">
-							<div className="crypto_transactions-title-container">
-								<p>لیست تراکنش های رمزارز</p>
+				{/* Tickets log section(Table) */}
+				<div className="tickets-log-container component_box_shadow">
+					<div className="tickets-log-title-text-container">
+						<sapn className="tickets-log-title">پشتیبانی</sapn>
+						<span className="tickets-log-description">
+							لیست تیکت های ارسال شده را مشاهده میکنید
+						</span>
+					</div>
+					<div className="ticket-log-table">
+						<div>
+							{/* Title and description part */}
+							<div className="crypto_transactions-info-container">
+								<div className="crypto_transactions-title-container">
+									<p>لیست تراکنش های رمزارز</p>
+								</div>
+								<div className="crypto_transactions-description-container"></div>
 							</div>
-							<div className="crypto_transactions-description-container">
-								<p>با کلیک روی عناوین جدول تراکنش مورد نظر خود را پیدا کنید</p>
-							</div>
+							{/* log Table */}
+							<DataGrid
+								rows={rows}
+								columns={columns}
+								pageSize={10}
+								autoHeight
+								style={{ textAlign: "right" }}
+								disableColumnMenu
+								disableColumnSelector
+								disableSelectionOnClick
+								toolbar={["pdfExport"]}
+								components={{
+									Pagination: CustomPagination,
+								}}
+							/>
 						</div>
-
-						{/* Table */}
-						<DataGrid
-							rows={rows}
-							columns={columns}
-							pageSize={10}
-							autoHeight
-							style={{ textAlign: "right" }}
-							disableColumnMenu
-							disableColumnSelector
-							disableSelectionOnClick
-							toolbar={["pdfExport"]}
-							components={{
-								Pagination: CustomPagination,
-							}}
-						/>
 					</div>
 				</div>
 			</div>
