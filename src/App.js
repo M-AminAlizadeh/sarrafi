@@ -799,7 +799,7 @@ const AppLayout = () => (
 			<Route path="buy" element={<Buy data={digital_currencies_arr} />} />
 			<Route path="toman-deposit" element={<Toman_deposit />} />
 			<Route path="toman-withdrawal" element={<Toman_withdrawal />} />
-			<Route path="sell" element={<Sell />} />
+			<Route path="sell" element={<Sell data={digital_currencies_arr} />} />
 			<Route path="orders" element={<Orders />} />
 			<Route path="credit-cards" element={<Credit_cards />} />
 			<Route path="invitation" element={<Invitation />} />
@@ -834,7 +834,7 @@ function App() {
 					<Route path="buy" element={<Buy data={digital_currencies_arr} />} />
 					<Route path="toman-deposit" element={<Toman_deposit />} />
 					<Route path="toman-withdrawal" element={<Toman_withdrawal />} />
-					<Route path="sell" element={<Sell />} />
+					<Route path="sell" element={<Sell data={digital_currencies_arr} />} />
 					<Route path="orders" element={<Orders />} />
 					<Route path="credit-cards" element={<Credit_cards />} />
 					<Route path="invitation" element={<Invitation />} />
