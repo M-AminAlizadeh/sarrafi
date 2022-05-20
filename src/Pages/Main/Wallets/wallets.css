@@ -26,6 +26,42 @@
 	border: var(--input-border-focus-mode);
 	/* padding: 200px; */
 }
+/* Wallet toman styling */
+.wallet-toman-row {
+	/* border: 1px solid green; */
+	border: 1px solid var(--color-primary);
+	border-radius: var(--button-border-radius-softer);
+	background-color: var(--color-primary-light);
+	display: flex;
+	justify-content: space-betweens;
+	align-items: center;
+	padding: var(--button-padding-large);
+	color: var(--primary-text-color);
+}
+
+.toman-row-info-container {
+	/* border: 1px solid red; */
+	flex: 1;
+}
+.toman-row-info-container span {
+	font-size: var(--main-font-size-x-large);
+}
+
+.toman-inventory-container {
+	/* border: 1px solid green; */
+	flex: 4;
+}
+.toman-inventory-container span {
+	font-size: var(--main-font-size-large);
+	color: var(--color-primary);
+}
+.toman-btns-container {
+	/* border: 1px solid #000; */
+	flex: 2;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
 
 /* Wallet currencies styling */
 .wallets-currencies-container {
@@ -108,7 +144,8 @@
 	align-items: center;
 }
 
-.currency-btns-container button {
+.currency-btns-container button,
+.toman-btns-container button {
 	/* border: 1px solid red; */
 	border: none;
 	border-radius: var(--button-border-radius-softer);
@@ -116,24 +153,66 @@
 	padding: var(--button-padding-large);
 }
 
-.currency-btns-container .deposit {
+.btns-container-sell-buy {
+	/* border: 1px solid red; */
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.btns-container-history {
+	/* border: 2px solid blue; */
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.deposit {
 	background-color: var(--button-alpha-bg-color);
+	/* width: 40%; */
 }
-.currency-btns-container .withdrawl {
+.withdrawl {
 	background-color: var(--button-beta-bg-color);
+	flex: 1;
+	/* width: 40%; */
 }
-.currency-btns-container .history {
+.history {
 	background-color: var(--color-primary);
 }
 
 /* Media queries */
-@media (max-width: 1000px) {
-	.currency-btns-container {
+@media (min-width: 768px) and(max-width: 1000px) {
+	.currency-btns-container,
+	.toman-btns-container {
 		/* border: 1px solid red; */
 		flex-direction: column;
 	}
-	.currency-btns-container button {
+	.currency-btns-container button,
+	.toman-btns-container button {
 		margin-top: 20px;
 		width: 100%;
+	}
+}
+
+@media (max-width: 767px) {
+	.wallet-currency-row,
+	.wallet-toman-row {
+		flex-direction: column;
+	}
+	.currency-row-info-container {
+		/* border: 2px solid pink; */
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.currency-price-container {
+		/* border: 1px solid green; */
+		align-items: flex-start;
+	}
+	.currency-btns-container {
+		/* border: 1px solid orange; */
+		flex-direction: column;
+		justify-content: stretch;
 	}
 }
