@@ -41,7 +41,7 @@
 	/**************** input variables *********************/
 
 	/* input colors */
-	--input-text-color: var();
+	--input-text-color: var(--primary-text-color);
 	--input-bg-color: var(--color-secondary);
 
 	/* input border */
