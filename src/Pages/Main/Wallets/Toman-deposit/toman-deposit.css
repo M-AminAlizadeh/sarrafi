@@ -1,0 +1,73 @@
+.toman-deposit-container {
+	border: 1px solid red;
+	width: 90%;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+  margin-bottom: 50px;
+}
+/* Right side styling */
+.toman-deposit-right-side {
+	/* border: 1px solid green; */
+	flex: 1;
+	background-color: var(--color-secondary);
+}
+
+.toman-portal-header {
+	/* border: 1px solid red; */
+	text-align: right;
+	margin: 20px 0px;
+}
+
+.toman-portal-header > span {
+	font-size: var(--main-font-size-x-large);
+	user-select: none;
+}
+
+.toman-deposit-value {
+	/* border: 1px solid blue; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.toman-deposit-value input {
+	text-align: center;
+	border: var(--input-border);
+	outline: none;
+	border-radius: var(--button-border-radius-softer);
+	padding: var(--button-padding-x-large);
+	background-color: transparent;
+}
+
+.toman-deposit-value input:focus {
+	border: var(--input-border-focus-mode);
+}
+
+.toman-deposit-explain {
+	/* border: 1px solid orange; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+  margin:10px 0px;
+  margin:10px 0px;
+}
+
+.toman-deposit-explain textarea {
+	border: var(--input-border);
+	outline: none;
+	border-radius: var(--button-border-radius-softer);
+	padding: 10px;
+	background-color: transparent;
+}
+
+.toman-deposit-explain textarea:focus {
+	border: var(--input-border-focus-mode);
+}
+
+/* Left side styling */
+.toman-deposit-left-side {
+	border: 1px solid rgb(11, 0, 128);
+	flex: 1;
+	background-color: var(--color-secondary);
+}
