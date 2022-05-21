@@ -847,7 +847,13 @@ function App() {
 					<Route path="rial-transactions" element={<Rial_transactions />} />
 					<Route path="tickets" element={<Tickets />} />
 					<Route path="buy" element={<Buy data={digital_currencies_arr} />} />
+<<<<<<< HEAD
 					<Route path="sell" element={<Sell />} />
+=======
+					<Route path="toman-deposit" element={<Toman_deposit />} />
+					<Route path="toman-withdrawal" element={<Toman_withdrawal />} />
+					<Route path="sell" element={<Sell data={digital_currencies_arr} />} />
+>>>>>>> b03838a1c59301bf53dd35f4384532df2069b566
 					<Route path="orders" element={<Orders />} />
 					<Route path="credit-cards" element={<Credit_cards />} />
 					<Route path="invitation" element={<Invitation />} />

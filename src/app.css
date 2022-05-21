@@ -117,7 +117,7 @@
 /* Success message styling */
 .success-message-container {
 	border: 1px solid var(--button-alpha-bg-color);
-	margin-top: 20px;
+	margin: 20px 0px;
 	border-radius: var(--button-border-radius-softer);
 	text-align: right;
 	color: var(--button-alpha-bg-color);

@@ -1,7 +1,7 @@
 /* Transfer Network Container */
 .withdrawal-transfer-network-container {
 	/* border: 1px solid red; */
-	width: 50%;
+	width: 100%;
 }
 .withdrawal-transfer-network-container select {
 	/* border: 1px solid blue; */
@@ -13,13 +13,13 @@
 }
 .deposit-currency-value-description {
 	/* border: 1px solid red; */
-	width: 50%;
+	width: 100%;
 	font-weight: 900;
 }
 /* Network Wage */
 .withdrawal-network-wage-container {
 	/* border: 1px solid blue; */
-	width: 50%;
+	width: 100%;
 	margin-top: 10px;
 }
 .withdrawal-network-wage {
@@ -39,7 +39,7 @@
 }
 .withdrawal-currency-wallet-address-container {
 	/* border: 1px solid red; */
-	width: 50%;
+	width: 100%;
 }
 .withdrawal-currency-wallet-address-container input {
 	width: 100%;
