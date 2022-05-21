@@ -7,25 +7,29 @@ export default function Toman_deposit(props) {
 	const user_info = props.user_info;
 	// States
 	const [toman_input, set_toman_input] = useState("");
-	const [error, set_error] = useState(true);
+	const [success_message, set_success_message] = useState(false);
+	const [error_message, set_error_message] = useState(false);
 	//States functions
+	// This function changes the toman value by user input
 	const toman_value = (e) => {
 		const user_input = e.target.value;
 		set_toman_input(user_input);
-		console.log(error);
 	};
+	// This function checks the form
 	const form_checker = (e) => {
 		e.preventDefault();
-		if (toman_input == "") {
-			set_error(false);
+		if (toman_input === "") {
+			set_error_message(true);
+			set_success_message(false);
 		} else {
-			set_error(true);
+			set_error_message(false);
+			set_success_message(true);
 		}
 	};
 	return (
 		<div className="toman-deposit-container" dir="rtl">
 			{/* Toman Bank portal Container */}
-			<div className="toman-deposit-right-side">
+			<div className="toman-deposit-right-side component_box_shadow">
 				<p className="deposit-header">
 					{" "}
 					<TrendingUpIcon />
@@ -45,15 +49,20 @@ export default function Toman_deposit(props) {
 						<input
 							type="number"
 							placeholder="مبلغ به تومان"
-							className={error ? "" : "error-input-border"}
+							className={error_message ? "error-input-border" : ""}
 							onChange={(e) => {
 								toman_value(e);
 							}}
 						/>
 					</div>
+					{error_message ? (
+						<span className="error-message">مبلغ را درج کنید</span>
+					) : (
+						""
+					)}
 					<div className="toman-deposit-explain">
 						<span>توضیحات اضافه</span>
-						<textarea cols="60" rows="10"></textarea>
+						<textarea cols="60" rows="5"></textarea>
 					</div>
 					<div className="deposit-submit-btn-container">
 						<button
@@ -65,6 +74,14 @@ export default function Toman_deposit(props) {
 							ثبت و پرداخت
 						</button>
 					</div>
+					{/* Success message */}
+					{success_message ? (
+						<div className="success-message-container">
+							<span className="success-message">
+								درخواست شما با موفقیت ثبت شد
+							</span>
+						</div>
+					) : null}
 				</form>
 			</div>
 			{/* Toman notice container */}
@@ -88,7 +105,7 @@ export default function Toman_deposit(props) {
 					<li>
 						چنان چه کیف پول خود را توسط چندین کارت بانکی شارژ می کنید، به منظور
 						جلوگیری از تأخیر در انجام سفارش، اطلاعات کارت بانکی خود را در بخش
-						<Link to="credit-cards">کارت های بانکی من</Link> ثبت نمایید.
+						<Link to="/credit-cards"> کارت های بانکی من </Link> ثبت نمایید.
 					</li>
 				</ul>
 			</div>

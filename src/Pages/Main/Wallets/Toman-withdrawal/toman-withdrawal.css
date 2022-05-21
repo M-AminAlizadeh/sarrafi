@@ -1,0 +1,14 @@
+.toman-withdrawal-credit-cards-container {
+	margin: 30px 0px;
+}
+.toman-withdrawal-credit-cards-container select {
+	padding: 0.813rem 0px;
+	border: var(--input-border);
+	border-radius: var(--button-border-radius-softer);
+	outline: none;
+	width: 100%;
+}
+
+.toman-withdrawal-credit-cards-container select:focus{
+  border:var(--input-border-focus-mode);
+}
