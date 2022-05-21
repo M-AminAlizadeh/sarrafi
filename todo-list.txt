@@ -6,3 +6,7 @@ Things to do:
   4. Wallets page styling ,responsive and proper commenting --> Done
   5. Wallets page search functionality --> Done
   6. Tickets page styling ,functionality ,responsive and proper commenting --> Done
+  7. Crypto-Transaction page styling ,responsive and proper commenting --> 
+  8. Edit api in App.js --> Done
+  9. Toman wallet building --> Done
+  10. Toman deposite styling ,functionality ,responsive and proper commenting --> 
