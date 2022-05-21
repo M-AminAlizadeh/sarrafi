@@ -55,10 +55,10 @@ const Wallets = (props) => {
 					{/* Toman btns container */}
 					<div className="toman-btns-container">
 						<div className="btns-container-sell-buy">
-							<Link to={`deposit/toman`}>
+							<Link to="deposit/toman">
 								<button className="deposit">واریز</button>
 							</Link>
-							<Link to={`withdrawal/toman`}>
+							<Link to="withdrawal/toman">
 								<button className="withdrawl">برداشت</button>
 							</Link>
 						</div>
