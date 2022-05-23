@@ -196,7 +196,7 @@ export default function Sell(props) {
 										}}
 										id={currency.id}
 									>
-										<div class="right-side" id={currency.id}>
+										<div className="right-side" id={currency.id}>
 											<img
 												src={currency.icon_source}
 												width="20px"
