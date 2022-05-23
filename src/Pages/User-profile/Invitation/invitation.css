@@ -1,3 +1,49 @@
+/* Page Container */
+.invitation-container {
+	color: var(--primary-text-color);
+	direction: rtl;
+}
+
+/* First Row */
+.invitation-page-first-row {
+	display: flex;
+	justify-content: space-evenly;
+	margin: 20px;
+	flex-wrap: wrap;
+}
+
+/* Second Row(Component) */
+.invitation-page-second-row {
+	margin: 20px !important;
+}
+
+/* Page Header */
+.invitation-page-header {
+	font-size: var(--main-font-size-large);
+	margin: 20px;
+}
+
+/* Copy Link and Number Container */
+.invitation-link-container {
+	border: var(--input-border-focus-mode);
+	display: flex;
+	justify-content: space-evenly;
+	font-size: 18px;
+	color: var(--color-primary);
+	padding: 20px;
+	margin: 10px;
+	border-radius: var(--button-border-radius-soft);
+	flex-wrap: wrap;
+}
+
+/* Two Boxes */
+.invitation-box-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 .invitation-col {
 	display: flex;
 	flex-direction: column;
@@ -41,7 +87,10 @@
 }
 
 @media (max-width: 600px) {
-	.smaller {
-		font-size: smaller;
+	.invitation-box-container {
+		font-size: var(--main-font-size-small);
+	}
+	.invitation-page-header {
+		font-size: var(--main-font-size-medium);
 	}
 }

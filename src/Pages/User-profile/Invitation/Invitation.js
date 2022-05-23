@@ -120,26 +120,12 @@ export default function Invitation() {
 		return navigator.clipboard.writeText("https://panel.exonyx.ir/ref/53054");
 	};
 	return (
-		<div
-			className="invitation-container"
-			style={{ backgroundColor: "#F8F8F8" }}
-		>
+		<div className="invitation-container">
 			<Helmet>
 				<title>{Title}</title>
 			</Helmet>
-			<div
-				className="invitation-page-first-row"
-				style={{
-					display: "flex",
-					justifyContent: "space-evenly",
-					backgroundColor: "#fff",
-					border: "3px solid #fff",
-					borderRadius: "20px",
-					margin: "20px",
-					boxShadow: " 0 0 20px #555",
-					flexWrap: "wrap",
-				}}
-			>
+			{/* First Component */}
+			<div className="invitation-page-first-row">
 				<div className="invitation-col">
 					<img src="https://img.icons8.com/doodle/96/000000/pie-chart--v1.png" />
 					<div dir="rtl">
@@ -167,54 +153,15 @@ export default function Invitation() {
 					<p>تعداد کاربر معرفی شده</p>
 				</div>
 			</div>
-			<div
-				className="invitation-page-second-row"
-				style={{
-					border: "3px solid #fff",
-					borderRadius: "20px",
-					margin: "20px",
-					boxShadow: " 0 0 20px #555",
-				}}
-			>
-				<p
-					style={{
-						fontSize: "20px",
-						color: "#636363",
-						direction: "rtl",
-						margin: "20px",
-					}}
-				>
-					معرفی و درآمد از اکس اونیکس
-				</p>
-				<p
-					dir="rtl"
-					style={{ fontSize: "16px", color: "#636363", margin: "20px" }}
-				>
+			<div className="invitation-page-second-row component_box_shadow">
+				<p className="invitation-page-header">معرفی و درآمد از اکس اونیکس</p>
+				<p className="invitation-page-header">
 					با معرفی اکس اونیکس به دوستان خود از هر بار خرید دوستانتان پورسانت
 					دریافت کنید.
 				</p>
-				<div
-					style={{
-						display: "flex",
-						justifyContent: "space-evenly",
-						fontSize: "18px",
-						color: "#7367F0",
-						padding: "20px",
-						margin: "10px",
-						borderRadius: "10px",
-						borderColor: "#7367F0",
-						flexWrap: "wrap",
-					}}
-				>
-					<div
-						style={{
-							display: "flex",
-							flexDirection: "column",
-							justifyContent: "center",
-							alignItems: "center",
-						}}
-					>
-						<p className="smaller">کد معرفی برای ثبت نام از طریق اپلیکیشن:</p>
+				<div className="invitation-link-container">
+					<div className="invitation-box-container">
+						<p>کد معرفی برای ثبت نام از طریق اپلیکیشن:</p>
 						<div
 							className="invitation-link-and-number tooltip-x"
 							style={{ cursor: "pointer" }}
@@ -224,17 +171,8 @@ export default function Invitation() {
 							<img src="https://img.icons8.com/dusk/30/000000/copy.png" /> 53054
 						</div>
 					</div>
-					<div
-						style={{
-							display: "flex",
-							flexDirection: "column",
-							justifyContent: "center",
-							alignItems: "center",
-						}}
-					>
-						<p className="smaller">
-							لینک عضویت از طریق سایت و بدون وارد کردن کد معرف:
-						</p>
+					<div className="invitation-box-container">
+						<p>لینک عضویت از طریق سایت و بدون وارد کردن کد معرف:</p>
 						<span
 							className="invitation-link-and-number tooltip-x"
 							style={{ cursor: "pointer" }}
@@ -248,15 +186,9 @@ export default function Invitation() {
 				</div>
 				<p dir="rtl" style={{ margin: "20px" }}>
 					تا این لحظه <span>{rows.length}</span> نفر معرفی کرده اید.{" "}
-					<span style={{ color: "#1795A4", cursor: "pointer" }}>
-						لیست دوستان معرفی شده
-					</span>
 				</p>
 
-				<p
-					dir="rtl"
-					style={{ margin: "20px", fontSize: "20px", color: "#555" }}
-				>
+				<p dir="rtl" className="invitation-page-header">
 					جدول خرید های دوستان معرفی شده توسط شما
 				</p>
 				{/* Table */}
