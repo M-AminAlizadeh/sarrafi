@@ -1,28 +1,109 @@
+/* Page Container */
+.two-factor-authentication-container {
+	direction: rtl;
+	display: flex;
+	flex-wrap: wrap;
+	color: var(--primary-text-color);
+}
+
+/* Profile Card */
+.two-factor-authentication-profile-card {
+	flex: 1;
+	margin: 10px !important;
+	height: 400px;
+}
+
+/* Profile Card Inner Div */
+.two-factor-authentication-profile-card-inner-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* User Icon */
+.two-factor-authentication-user-icon {
+	padding: 5px;
+	width: 100px;
+}
+
+/* User Name */
+.two-factor-authentication-user-name {
+	padding: 5px;
+}
+
+/* User Number */
+.two-factor-authentication-user-phone-number {
+	padding: 5px;
+}
+
+/* Links */
+.two-factor-authentication-link {
+	text-decoration: none;
+	color: var(--primary-text-color);
+}
+
+/* List */
+.two-factor-authentication-menu-container ul {
+	font-size: var(--main-font-size-medium);
+	padding: 20px;
+	list-style: none;
+}
+
+/* List Items */
 .two-factor-authentication-list-item {
 	padding: 10px;
-	border-bottom: 1px solid #d9d9d9;
+	border-bottom: 1px solid var(--light-gray-color);
 	width: 100%;
 	cursor: pointer;
 }
 
-.active {
-	background-color: #7367f0;
-	color: #fff;
+/* List Item Active State */
+
+.profile-menu-active {
+	background-color: var(--color-primary);
+	color: var(--color-secondary);
+}
+
+/* Left Side */
+.two-factor-authentication-left-side {
+	flex: 3;
+	margin: 10px !important;
+	padding: 20px;
+}
+
+/* Input container */
+.two-factor-authentication-input-container {
+	border: var(--input-border-focus-mode);
+}
+
+/* Paragraph Styles */
+.two-factor-authentication-paragraph-styles {
+	padding: 15px;
 }
 
 .two-factor-authentication-submit-button {
-	background-color: #7367f0;
-	color: #fff;
+	background-color: var(--color-primary);
+	color: var(--color-secondary);
 	border: none;
 	padding: 10px 50px;
 	margin: 20px;
-	border-radius: 15px;
+	border-radius: var(--button-border-radius-extreme);
 	outline: none;
 }
 
+.two-factor-authentication-code {
+	font-size: 25px;
+}
+
+/* Barcode Image */
+.two-factor-authentication-barcode-image {
+	width: 200px;
+}
+
 .two-factor-authentication-submit-button:hover {
-	box-shadow: 2px 2px 20px #7367f0;
-	transition: 0.4s;
+	box-shadow: var(--button-box-shadow-primary);
+	transition: var(--global-transition);
 }
 
 .two-factor-authentication-input {
@@ -30,20 +111,20 @@
 	padding: 10px;
 	text-align: center;
 	margin: 10px;
-	border-radius: 15px;
+	border-radius: var(--button-border-radius-extreme);
 	outline: none;
-	border: 1px solid #d9d9d9;
+	border: var(--input-border);
 	background-color: transparent;
-	font-size: 12px;
+	font-size: var(--main-font-size-small);
 }
 .two-factor-authentication-input:focus {
-	border-color: #7367f0;
-	transition: 0.4s;
+	border: var(--input-border-focus-mode);
+	transition: var(--global-transition);
 }
 .unchecked {
-	color: #c3c3c3 !important;
+	color: var(--light-gray-color) !important;
 }
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
 	.two-factor-authentication-input {
 		width: 300px;
 		margin: 10px;
