@@ -1,45 +1,138 @@
+/* Page container */
+.credit-cards-container {
+	direction: rtl;
+	display: flex;
+	flex-wrap: wrap;
+	color: var(--primary-text-color);
+}
+
+/* Profile Card (Right Side) */
+.credit-cards-profile-card {
+	flex: 1;
+	direction: rtl;
+	margin: 10px !important;
+	color: #626262;
+	height: 400px;
+}
+
+/* Smaller div  */
+.credit-cards-profile-card-inside-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* User Icon */
+.credit-cards-user-icon {
+	width: 100px;
+	padding: 5px;
+}
+
+/* User name */
+.credit-cards-user-name {
+	padding: 5px;
+}
+
+/* User phone number */
+.credit-cards-user-phone-number {
+	padding: 5px;
+}
+
+/* Menu List Right Side */
+.credit-cards-menu-container ul {
+	list-style: none;
+	padding: 20px;
+	font-size: var(--main-font-size-medium);
+}
+
+/* Links in the menu */
+.credit-cards-menu-links {
+	text-decoration: none;
+	color: var(--primary-text-color);
+}
+
+/* Left Side */
+.credit-cards-left-side {
+	flex: 3;
+	direction: rtl;
+	margin: 10px !important;
+	padding: 20px;
+}
+
+.credit-cards-left-side p {
+	font-size: var(--main-font-size-medium);
+}
+
+.credit-cards-add-credit-card-container {
+	border: var(--input-border-focus-mode);
+}
+
 .credit-cards-list-item {
 	padding: 10px;
-	border-bottom: 1px solid #d9d9d9;
+	border-bottom: 1px solid var(--light-gray-color);
 	width: 100%;
 	cursor: pointer;
 }
-.active {
-	background-color: #7367f0;
-	color: #fff;
+
+/* Table Container */
+.credit-cards-table-container {
+	margin-top: 20px;
+}
+
+/* Select Box */
+.credit-cards-select-box {
+	cursor: pointer;
+	text-align: center;
+}
+
+.profile-menu-active {
+	background-color: var(--color-primary) !important;
+	color: var(--color-secondary);
+	border: 1px solid var(--color-primary);
 }
 .credit-cards-submit-button {
-	background-color: #7367f0;
-	color: #fff;
+	background-color: var(--button-primary-bg-color);
+	color: var(--color-secondary);
 	border: none;
 	padding: 10px 50px;
 	margin: 20px;
-	border-radius: 15px;
+	border-radius: var(--button-border-radius-extreme);
 	outline: none;
 }
 .credit-cards-submit-button:hover {
-	box-shadow: 2px 2px 20px #7367f0;
-	transition: 0.4s;
+	box-shadow: var(--button-box-shadow-primary);
+	transition: var(--global-transition);
+}
+.credit-cards-input-container {
+	padding: 20px;
 }
 .credit-cards-input {
 	width: 300px;
 	padding: 10px;
 	text-align: center;
 	margin: 10px;
-	border-radius: 15px;
+	border-radius: var(--button-border-radius-soft);
 	outline: none;
-	border: 1px solid #d9d9d9;
+	border: var(--input-border);
 	background-color: transparent;
 	font-size: 12px;
+	text-align: center;
 }
 .credit-cards-input:focus {
-	border-color: #7367f0;
-	transition: 0.4s;
+	border: var(--input-border-focus-mode);
+	transition: var(--global-transition);
 }
 .unchecked {
-	color: #c3c3c3 !important;
+	color: var(--light-gray-color) !important;
 }
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
+	.credit-cards-input-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 	.credit-cards-table-container {
 		width: 100% !important;
 	}
@@ -51,7 +144,7 @@
 		justify-content: center;
 		align-items: center;
 	}
-	.add-credit-card-container {
+	.credit-cards-add-credit-card-container {
 		width: 100%;
 	}
 }

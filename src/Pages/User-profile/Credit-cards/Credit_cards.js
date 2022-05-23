@@ -50,72 +50,34 @@ export default function Credit_cards() {
 	const classes = useStyles();
 	// Table style ###############
 	return (
-		<div
-			className="credit-cards-container"
-			dir="rtl"
-			style={{ display: "flex", flexWrap: "wrap" }}
-		>
-			<div
-				className="credit-cards-profile-card"
-				style={{
-					flex: "1",
-					direction: "rtl",
-					margin: "10px",
-					border: "3px solid #fff",
-					boxShadow: " 0 0 20px #555",
-					borderRadius: "20px",
-					color: "#626262",
-					height: "400px",
-				}}
-			>
-				<div
-					style={{
-						display: "flex",
-						flexDirection: "column",
-						justifyContent: "center",
-						alignItems: "center",
-					}}
-				>
+		// Page Container
+		<div className="credit-cards-container">
+			{/* Right Side */}
+			<div className="credit-cards-profile-card">
+				<div className="credit-cards-profile-card-inside-div">
 					<img
+						className="credit-cards-user-icon"
 						src="images/user-icon/user.png"
-						style={{ width: "100px", padding: "5px" }}
 					/>
-					<span className="" style={{ padding: "5px" }}>
-						امین علیزاده
-					</span>
-					<span className="" style={{ padding: "5px" }}>
-						09050287419
-					</span>
+					<span className="credit-cards-user-name">امین علیزاده</span>
+					<span className="credit-cards-user-phone-number">09050287419</span>
 				</div>
 				<div className="credit-cards-menu-container">
-					<ul
-						style={{
-							listStyle: "none",
-							padding: "20px",
-							fontSize: "18px",
-						}}
-					>
-						<Link
-							to="/authentication"
-							style={{ textDecoration: "none", color: "#626262" }}
-						>
+					<ul>
+						<Link className="credit-cards-menu-links" to="/authentication">
 							<li className="credit-cards-list-item">اطلاعات و احراز هویت</li>
 						</Link>
-						<Link
-							to="/credit-cards"
-							style={{ textDecoration: "none", color: "#626262" }}
-						>
-							<li className="credit-cards-list-item active">کارت های بانکی</li>
+						<Link className="credit-cards-menu-links" to="/credit-cards">
+							<li className="credit-cards-list-item profile-menu-active">
+								کارت های بانکی
+							</li>
 						</Link>
-						<Link
-							to="/password"
-							style={{ textDecoration: "none", color: "#626262" }}
-						>
+						<Link className="credit-cards-menu-links" to="/password">
 							<li className="credit-cards-list-item">کلمه عبور</li>
 						</Link>
 						<Link
+							className="credit-cards-menu-links"
 							to="/two-factor-authentication"
-							style={{ textDecoration: "none", color: "#626262" }}
 						>
 							<li className="credit-cards-list-item">ورود دو مرحله‌ای</li>
 						</Link>
@@ -123,26 +85,12 @@ export default function Credit_cards() {
 				</div>
 			</div>
 			{/* left side */}
-			<div
-				className="credit-cards-left-side"
-				style={{
-					flex: "3",
-					direction: "rtl",
-					margin: "10px",
-					border: "3px solid #fff",
-					boxShadow: " 0 0 20px #555",
-					borderRadius: "20px",
-					padding: "20px",
-				}}
-			>
-				<p style={{ fontSize: "16px", color: "#626262" }}>
+			<div className="credit-cards-left-side component_box_shadow">
+				<p>
 					جهت دریافت خدمات و سرویس های وب سایت به صورت آنی، می بایست شماره کارت
 					بانکی که خرید را توسط آن انجام می دهید ثبت نمایید.
 				</p>
-				<div
-					style={{ border: "1px solid #7367F0" }}
-					className="add-credit-card-container"
-				>
+				<div className="credit-cards-add-credit-card-container">
 					<div className={`${checked ? "" : "unchecked"}`}>
 						<Checkbox
 							checked={checked}
@@ -151,36 +99,33 @@ export default function Credit_cards() {
 						/>
 						<span>افزودن کارت بانکی</span>
 						{checked ? (
-							<div className="credit-cards-first-row-input-container">
+							<div className="credit-cards-input-container">
 								<label>شماره کارت</label>
 								<input
 									className="credit-cards-input"
 									type="number"
 									placeholder="شماره کارت"
-									style={{ textAlign: "center" }}
 								/>
 								<label>شماره حساب</label>
 								<input
 									className="credit-cards-input"
 									type="number"
 									placeholder="شماره حساب"
-									style={{ textAlign: "center" }}
 								/>
-								<label>شماره شبا بدون IR</label>
+								<br />
+								<label>شماره شبا </label>
 								<input
 									className="credit-cards-input"
 									type="number"
 									placeholder="شماره شبا بدون IR"
-									style={{ textAlign: "center" }}
 								/>
 								<label>نام بانک</label>
 								<select
-									className="credit-cards-input"
+									className="credit-cards-input credit-cards-select-box"
 									type="number"
 									value="نام بانک"
-									style={{ textAlign: "center" }}
 								>
-									<option value="" selected disabled>
+									<option selected disabled>
 										انتخاب بانک
 									</option>
 									<option>بانک ملی</option>
@@ -189,6 +134,7 @@ export default function Credit_cards() {
 									<option>بانک آینده</option>
 									<option>بانک صادرات</option>
 								</select>
+								<br />
 								<input
 									type="submit"
 									value="فعال سازی"
@@ -201,10 +147,7 @@ export default function Credit_cards() {
 					</div>
 				</div>
 				<hr />
-				<div
-					style={{ marginTop: "20px" }}
-					className="credit-cards-table-container"
-				>
+				<div className="credit-cards-table-container">
 					{/* Table Starts &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */}
 					<TableContainer
 						component={Paper}
