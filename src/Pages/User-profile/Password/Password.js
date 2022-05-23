@@ -1,6 +1,44 @@
 import "./password.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 export default function Password() {
+	// States
+	const [current_password_value, set_current_password_value] = useState("");
+	const [current_password_error, set_current_password_error] = useState(false);
+	const [new_password_value, set_new_password_value] = useState("");
+	const [new_password_error, set_new_password_error] = useState(false);
+	const [new_password_repeat_value, set_new_password_repeat_value] =
+		useState("");
+	const [new_password_repeat_error, set_new_password_repeat_error] =
+		useState(false);
+	const [check_new_password, set_check_new_password] = useState(false);
+	// States function
+	const form_checker = () => {
+		// Current password
+		if (current_password_value == "") {
+			set_current_password_error(true);
+		} else {
+			set_current_password_error(false);
+		}
+		// New password
+		if (new_password_value == "") {
+			set_new_password_error(true);
+		} else {
+			set_new_password_error(false);
+		}
+		// Repeat new password
+		if (new_password_repeat_value == "") {
+			set_new_password_repeat_error(true);
+		} else {
+			set_new_password_repeat_error(false);
+		}
+		// Checks new password and it's repeat value are same or not
+		if (new_password_value !== new_password_repeat_value) {
+			set_check_new_password(true);
+		} else {
+			set_check_new_password(false);
+		}
+	};
 	return (
 		// Page Container
 		<div className="password-page-container">
@@ -59,8 +97,16 @@ export default function Password() {
 							id="first-password-input"
 							type="password"
 							placeholder="رمز‌ فعلی"
-							className="password-page-password-input"
-						></input>
+							className={`password-page-password-input ${
+								current_password_error ? "error-input-border" : null
+							}`}
+							onChange={(e) => {
+								set_current_password_value(e.target.value);
+							}}
+						/>
+						{current_password_error ? (
+							<span className="error-message">رمز فعلی را وارد کنید</span>
+						) : null}
 					</div>
 					<div>
 						<label htmlFor="second-password-input">رمز عبور جدید</label>
@@ -68,8 +114,16 @@ export default function Password() {
 							id="second-password-input"
 							type="password"
 							placeholder="رمز‌ جدید"
-							className="password-page-password-input"
-						></input>
+							className={`password-page-password-input ${
+								new_password_error ? "error-input-border" : null
+							}`}
+							onChange={(e) => {
+								set_new_password_value(e.target.value);
+							}}
+						/>
+						{new_password_error ? (
+							<span className="error-message">رمز عبور جدید را وارد کنید</span>
+						) : null}
 					</div>
 					<div>
 						<label htmlFor="third-password-input">تکرار رمز جدید</label>
@@ -77,15 +131,31 @@ export default function Password() {
 							id="third-password-input"
 							type="password"
 							placeholder="تکرار‌ رمز‌ جدید"
-							className="password-page-password-input"
-						></input>
+							className={`password-page-password-input ${
+								new_password_repeat_error ? "error-input-border" : null
+							}`}
+							onChange={(e) => {
+								set_new_password_repeat_value(e.target.value);
+							}}
+						/>
+						{new_password_repeat_error ? (
+							<span className="error-message">رمز عبور جدید را وارد کنید</span>
+						) : null}
+						{check_new_password ? (
+							<span className="error-message">
+								تکرار رمز عبور با رمز عبور یکسان نیست
+							</span>
+						) : null}
 					</div>
 					{/* Submit Button */}
 					<input
 						className="password-page-submit-button"
 						type="submit"
 						value="ثبت تغییرات"
-					></input>
+						onClick={() => {
+							form_checker();
+						}}
+					/>
 				</div>
 			</div>
 		</div>
