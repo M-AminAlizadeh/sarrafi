@@ -797,7 +797,7 @@ const AppLayout = () => (
 				element={<Toman_deposit user_info={user_api} />}
 			/>
 			<Route
-				path="wallets/deposit/withdrawal"
+				path="wallets/withdrawal/toman"
 				element={<Toman_withdrawal user_info={user_api} />}
 			/>
 			<Route path="crypto-transactions" element={<Crypto_transactions />} />
@@ -840,7 +840,7 @@ function App() {
 						element={<Toman_deposit user_info={user_api} />}
 					/>
 					<Route
-						path="wallets/deposit/withdrawal"
+						path="wallets/withdrawal/toman"
 						element={<Toman_withdrawal user_info={user_api} />}
 					/>
 					<Route path="crypto-transactions" element={<Crypto_transactions />} />

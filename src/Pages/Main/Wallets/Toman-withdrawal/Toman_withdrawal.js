@@ -1,33 +1,141 @@
-import React from "react";
+import { useState } from "react";
+import TrendingDownIcon from "@material-ui/icons/TrendingDown";
+import "./toman-withdrawal.css";
 
-export default function Toman_withdrawal() {
+export default function Toman_withdrawal(props) {
+	const user_credit_cards_list = props.user_info.credit_cards;
+	// States
+	const [toman_input, set_toman_input] = useState("");
+	const [credit_card, set_credit_card] = useState("");
+	const [success_message, set_success_message] = useState(false);
+	const [error_message_input, set_error_message_input] = useState(false);
+	const [error_message_credit_card, set_error_message_credit_card] =
+		useState(false);
+	//States functions
+	// This function changes the toman value by user input
+	const toman_value = (e) => {
+		const user_input = e.target.value;
+		set_toman_input(user_input);
+	};
+	// This function changes credit card name by user selection
+	const select_credit_card = (e) => {
+		set_credit_card(e.target.value);
+	};
+	// This function checks the form
+	const form_checker = (e) => {
+		e.preventDefault();
+		// Toman Input
+		if (toman_input == "") {
+			set_error_message_input(true);
+		} else {
+			set_error_message_input(false);
+		}
+		// Credit Card
+		if (credit_card == "") {
+			set_error_message_credit_card(true);
+		} else {
+			set_error_message_credit_card(false);
+		}
+		// Success message
+		if (credit_card !== "" && toman_input !== "") {
+			set_success_message(true);
+		} else {
+			set_success_message(false);
+		}
+	};
+
 	return (
-		<div className="toman-withdrawal-container" dir="rtl">
-			<div className="toman-withdrawal-right-side">
-				<h4> انتقال به حساب بانکی</h4>
-				<div>
-					قابل برداشت: <span>0</span>ومان
+		<div className="toman-deposit-container" dir="rtl">
+			{/* Toman Bank portal Container */}
+			<div className="toman-deposit-right-side component_box_shadow">
+				<p className="deposit-header">
+					{" "}
+					<TrendingDownIcon />
+					افزایش موجودی
+				</p>
+				{/* Balance Div */}
+				<div className="deposit-form-crypto-balance">
+					قابل برداشت: <span>0</span> تومان
 				</div>
 				<span>حداقل مبلغ قابل برداشت 50,000 تومان است.</span>
-				<div>
-					<span>مبلغ</span>
-					<input type="number" />
-				</div>
-				<div>
-					<span>کارت بانکی جهت واریز</span>
-					<select>
-						<option>کارت بانکی جهت واریز</option>
-					</select>
-					<span>لیست کارت بانکی های تایید شده را مشاهده میکنید.</span>
-				</div>
-				<div>
-					<span>توضیحات اضافه</span>
-					<textarea name="" id="" cols="30" rows="10"></textarea>
-				</div>
-				<input type="submit" />
+				{/* Form */}
+				<form className="toman-deposit-form">
+					<div className="toman-portal-header">
+						<span>واریز از درگاه</span>
+					</div>
+					<div className="toman-deposit-value">
+						<span>مبلغ</span>
+						<input
+							type="number"
+							placeholder="مبلغ به تومان"
+							className={error_message_input ? "error-input-border" : ""}
+							onChange={(e) => {
+								toman_value(e);
+							}}
+						/>
+					</div>
+					{error_message_input ? (
+						<span className="error-message">مبلغ را درج کنید</span>
+					) : (
+						""
+					)}
+					<div
+						className={`toman-withdrawal-credit-cards-container
+						`}
+					>
+						<span>کارت بانکی جهت واریز:</span>
+						<select
+							name=""
+							id="credit-cards"
+							className={error_message_credit_card ? "error-input-border" : ""}
+							onChange={(e) => {
+								select_credit_card(e);
+							}}
+						>
+							<option disabled selected value="false">
+								کارت بانکی مورد نظر را انتخاب کنید
+							</option>
+							{Object.keys(user_credit_cards_list).map((card) => {
+								return (
+									<>
+										<option value={card}>{card}</option>
+									</>
+								);
+							})}
+						</select>
+						{error_message_credit_card ? (
+							<span className="error-message">کارت بانکی را انتخاب کنید</span>
+						) : (
+							""
+						)}
+					</div>
+					<div className="toman-deposit-explain">
+						<span>توضیحات اضافه</span>
+						<textarea cols="60" rows="5"></textarea>
+					</div>
+					<div className="deposit-submit-btn-container">
+						<button
+							type="submit"
+							onClick={(e) => {
+								form_checker(e);
+							}}
+						>
+							ثبت و پرداخت
+						</button>
+					</div>
+					{/* Success message */}
+					{success_message ? (
+						<div className="success-message-container">
+							<span className="success-message">
+								درخواست شما با موفقیت ثبت شد
+							</span>
+						</div>
+					) : null}
+				</form>
 			</div>
-			<div className="toman-withdrawal-left-side">
-				<h4> نکات و هشدارها</h4>
+			{/* Toman notice container */}
+			<div className="toman-deposit-left-side">
+				<p> نکات و هشدارها</p>
 				<hr />
 				<ul>
 					<li>

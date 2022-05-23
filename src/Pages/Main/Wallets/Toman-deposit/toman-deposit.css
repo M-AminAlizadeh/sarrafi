@@ -1,16 +1,17 @@
 .toman-deposit-container {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	width: 90%;
 	margin: auto;
 	display: flex;
 	justify-content: space-between;
-  margin-bottom: 50px;
+	margin-bottom: 50px;
 }
 /* Right side styling */
 .toman-deposit-right-side {
 	/* border: 1px solid green; */
 	flex: 1;
 	background-color: var(--color-secondary);
+	padding: 20px;
 }
 
 .toman-portal-header {
@@ -49,8 +50,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-  margin:10px 0px;
-  margin:10px 0px;
+	margin: 10px 0px;
 }
 
 .toman-deposit-explain textarea {
@@ -67,7 +67,32 @@
 
 /* Left side styling */
 .toman-deposit-left-side {
-	border: 1px solid rgb(11, 0, 128);
+	/* border: 1px solid rgb(11, 0, 128); */
 	flex: 1;
-	background-color: var(--color-secondary);
+	background-color: transparent;
+	padding: 20px;
+}
+
+.toman-deposit-left-side > p {
+	font-size: var(--main-font-size-x-large);
+}
+
+.toman-deposit-left-side > ul {
+	font-size: var(--main-font-size-medium);
+}
+
+.toman-deposit-left-side > ul li {
+	margin: 30px 0px;
+}
+
+.toman-deposit-left-side ul li a {
+	text-decoration: none;
+	color: var(--color-primary);
+}
+
+/* Media queries */
+@media (max-width: 980px) {
+	.toman-deposit-container {
+		flex-direction: column;
+	}
 }
