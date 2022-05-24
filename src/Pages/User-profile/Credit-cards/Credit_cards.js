@@ -1,5 +1,5 @@
 import "./credit-cards.css";
-import React from "react";
+import { useState, React } from "react";
 import { Link } from "react-router-dom";
 import Checkbox from "@material-ui/core/Checkbox";
 import { makeStyles } from "@material-ui/core/styles";
@@ -41,11 +41,46 @@ const rows = [
 // Table Data **********************************************
 
 export default function Credit_cards() {
-	const [checked, setChecked] = React.useState(false);
+	const [checked, setChecked] = useState(false);
 	const handleChange = (event) => {
 		setChecked(event.target.checked);
 	};
-
+	// States
+	const [card_number, set_card_number] = useState("");
+	const [card_number_error, set_card_number_error] = useState(false);
+	const [account_number, set_account_number] = useState("");
+	const [account_number_error, set_account_number_error] = useState(false);
+	const [shaba_number, set_shaba_number] = useState("");
+	const [shaba_number_error, set_shaba_number_error] = useState(false);
+	const [bank_name, set_bank_name] = useState("");
+	const [bank_name_error, set_bank_name_error] = useState(false);
+	// States functions
+	const form_checker = () => {
+		// Card number error
+		if (card_number == "") {
+			set_card_number_error(true);
+		} else {
+			set_card_number_error(false);
+		}
+		// Acccount number error
+		if (account_number == "") {
+			set_account_number_error(true);
+		} else {
+			set_account_number_error(false);
+		}
+		// Shaba number error
+		if (shaba_number == "") {
+			set_shaba_number_error(true);
+		} else {
+			set_shaba_number_error(false);
+		}
+		// Bank name error
+		if (bank_name == "") {
+			set_bank_name_error(true);
+		} else {
+			set_bank_name_error(false);
+		}
+	};
 	// Table style ###############
 	const classes = useStyles();
 	// Table style ###############
@@ -100,45 +135,88 @@ export default function Credit_cards() {
 						<span>افزودن کارت بانکی</span>
 						{checked ? (
 							<div className="credit-cards-input-container">
-								<label>شماره کارت</label>
+								<label htmlFor="card-number">شماره کارت</label>
 								<input
-									className="credit-cards-input"
+									className={`credit-cards-input ${
+										card_number_error ? "error-input-border" : null
+									}`}
 									type="number"
 									placeholder="شماره کارت"
+									id="card-number"
+									onChange={(e) => {
+										set_card_number(e.target.value);
+									}}
 								/>
-								<label>شماره حساب</label>
+								{card_number_error ? (
+									<span className="error-message">
+										شماره کارت خالیست پر کنید
+									</span>
+								) : null}
+								<label htmlFor="account-number">شماره حساب</label>
 								<input
-									className="credit-cards-input"
+									className={`credit-cards-input ${
+										account_number_error ? "error-input-border" : null
+									}`}
 									type="number"
 									placeholder="شماره حساب"
+									id="account-number"
+									onChange={(e) => {
+										set_account_number(e.target.value);
+									}}
 								/>
+								{account_number_error ? (
+									<span className="error-message">
+										شماره حساب خالیست پر کنید
+									</span>
+								) : null}
 								<br />
-								<label>شماره شبا </label>
+								<label htmlFor="shaba-number">شماره شبا </label>
 								<input
-									className="credit-cards-input"
+									className={`credit-cards-input ${
+										shaba_number_error ? "error-input-border" : null
+									}`}
 									type="number"
 									placeholder="شماره شبا بدون IR"
+									id="shaba-number"
+									onChange={(e) => {
+										set_shaba_number(e.target.value);
+									}}
 								/>
+								{shaba_number_error ? (
+									<span className="error-message">
+										شماره حساب خالیست پر کنید
+									</span>
+								) : null}
 								<label>نام بانک</label>
 								<select
-									className="credit-cards-input credit-cards-select-box"
-									type="number"
-									value="نام بانک"
+									className={`credit-cards-input credit-cards-select-box ${
+										bank_name_error ? "error-input-border" : null
+									}`}
+									defaultValue="انتخاب بانک"
+									onChange={(e) => {
+										set_bank_name(e.target.value);
+									}}
 								>
-									<option selected disabled>
-										انتخاب بانک
-									</option>
-									<option>بانک ملی</option>
-									<option>بانک ملت</option>
-									<option>بانک مسکن</option>
-									<option>بانک آینده</option>
-									<option>بانک صادرات</option>
+									<option disabled>انتخاب بانک</option>
+									<option value="بانک ملی">بانک ملی</option>
+									<option value="بانک ملت">بانک ملت</option>
+									<option value="بانک مسکن">بانک مسکن</option>
+									<option value="بانک آینده">بانک آینده</option>
+									<option value="بانک صادرات">بانک صادرات</option>
 								</select>
+								{bank_name_error ? (
+									<span className="error-message">
+										هیچ بانکی انتخاب نکرده اید
+									</span>
+								) : null}
 								<br />
 								<input
 									type="submit"
 									value="فعال سازی"
 									className="credit-cards-submit-button"
+									onClick={() => {
+										form_checker();
+									}}
 								/>
 							</div>
 						) : (
@@ -148,7 +226,7 @@ export default function Credit_cards() {
 				</div>
 				<hr />
 				<div className="credit-cards-table-container">
-					{/* Table Starts &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */}
+					{/* Table Starts */}
 					<TableContainer
 						component={Paper}
 						style={{ backgroundColor: "transparent", border: "none" }}
@@ -191,7 +269,7 @@ export default function Credit_cards() {
 							</TableBody>
 						</Table>
 					</TableContainer>
-					{/* Table Ends &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */}
+					{/* Table Ends*/}
 				</div>
 			</div>
 		</div>
