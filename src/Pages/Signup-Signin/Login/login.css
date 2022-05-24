@@ -1,15 +1,3 @@
-:root {
-	--link-color: #6c4bb4;
-	--primary-color-opacity: #e9d5ff;
-	--white-shade: #f0f8ff;
-	--secondary-color: #1e293b;
-	--primary-padding: 8px;
-	--pilled-shape-radius: 40px;
-	--color1: #36eb84;
-	--color2: #2bcdb5;
-	--primary-gradient: linear-gradient(to right, var(--color2), var(--color1));
-}
-
 .whole-login-container {
 	font-family: "Vazirmatn";
 	min-height: 100vh;
@@ -20,10 +8,22 @@
 	padding: 50px;
 }
 
+/* Image Container */
+.login-page-image-container {
+	width: 50%;
+	height: 53vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Image */
+.login-page-image {
+	width: 50%;
+}
+
 .login-page-main-card-container {
 	padding: 15px;
-	border-radius: 10px;
-	box-shadow: 2px 2px 10px #353636;
 	background: #fff;
 	width: 40%;
 }
@@ -39,10 +39,10 @@
 .log-in::after {
 	content: "";
 	display: block;
-	width: 60%;
+	width: 100%;
 	height: 3px;
 	margin-top: 8px;
-	background: var(--primary-gradient);
+	background: var(--color-primary) !important;
 	margin-inline: auto;
 }
 .login-page-form-input {
@@ -53,10 +53,10 @@
 .login-page-number-input,
 .login-page-password-input {
 	padding: var(--primary-padding);
-	width: 90%;
-	border-radius: var(--pilled-shape-radius);
+	width: 100%;
+	border-radius: var(--button-border-radius-extreme);
 	border: none;
-	background: #e7fdf0;
+	background: var(--color-primary-lightest);
 	color: var(--secondary-color);
 	outline: none;
 	border: 1px solid transparent;
@@ -69,8 +69,9 @@
 }
 .login-page-number-input:focus-visible,
 .login-page-password-input:focus-visible {
-	border: 1px solid var(--color1);
+	border: var(--input-border-focus-mode);
 	background: transparent;
+	transition: var(--global-transition);
 }
 .label {
 	color: var(--secondary-color);
@@ -100,13 +101,13 @@
 	padding: var(--primary-padding);
 	border-radius: var(--pilled-shape-radius);
 	border: none;
-	background: var(--primary-gradient);
+	background: var(--color-primary);
 	color: var(--white-shade);
 	margin: 20px 0 20px 0;
 }
 .login-page-submit-button:hover {
-	box-shadow: 0 0 10px black;
-	transition: 0.4s;
+	box-shadow: var(--button-box-shadow-primary);
+	transition: var(--global-transition);
 }
 .chekbox-label {
 	font-size: 16px;
@@ -115,7 +116,7 @@
 
 .forgot-password-link {
 	text-decoration: none;
-	color: var(--link-color);
+	color: var(--color-primary) !important;
 	font-size: 16px;
 }
 input::-webkit-outer-spin-button,
