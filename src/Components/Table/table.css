@@ -14,18 +14,22 @@
 /* Table header */
 .table-header {
 	/* border: 1px solid red; */
+	width: 100%;
 	background-color: var(--color-secondary-dark);
 }
 
 .table-header th {
-	padding: 5px 0px;
+	padding: 5px 5px;
 }
 
 /* Table row for each currency */
 .table-each-currency-row {
 	margin-top: 20px;
+	border-bottom: 2px solid transparent;
 }
 
 .table-each-currency-row:hover {
 	border-bottom: 2px solid var(--color-secondary-dark);
+	transition: var(--global-transition);
+	transform: translateY(-5px);
 }
