@@ -1,5 +1,8 @@
 import "./authentication.css";
 import { useState } from "react";
+import DatePicker from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
 export default function Authentication() {
 	const [level_1, set_level_1] = useState(true);
 	const [level_2, set_level_2] = useState(false);
@@ -30,6 +33,7 @@ export default function Authentication() {
 				padding: "20px",
 			}}
 		>
+			<DatePicker calendar={persian} locale={persian_fa} />
 			<h4>سطوح کاربری و احراز هویت</h4>
 			<p>
 				در این قسمت میتوانید احراز هویت خود را تکمیل نمایید و برای ارتقاء سطح
