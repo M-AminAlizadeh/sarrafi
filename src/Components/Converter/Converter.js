@@ -82,7 +82,7 @@ export default function Converter(props) {
 									toggle_drop_down ? "chevron-container-toggle" : null
 								}`}
 							>
-								<img src="https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/24/000000/external-chevron-arrows-tanah-basah-basic-outline-tanah-basah-2.png" />
+								<img src="https://img.icons8.com/ios-glyphs/24/000000/chevron-up.png" />
 							</div>
 						</div>
 						{/* Dropdown itself */}
