@@ -41,14 +41,14 @@ export default function Buy(props) {
 			}
 		});
 	};
-	// this function filter items base on user input value
+	// this function filters items base on user input value
 	const filter_currency = (e) => {
 		const filtered = currencies_info.filter((currency) => {
 			return currency.name.includes(e.target.value);
 		});
 		set_api_data(filtered);
 	};
-	// this function for calculate and show price from currency to Toman and viceversa
+	// this function calculates and shows price from currency to Toman and viceversa
 	const handle_conversion = (e) => {
 		if (selected == "currency") {
 			set_currency_value(e.target.value);
@@ -58,7 +58,7 @@ export default function Buy(props) {
 			set_currency_value(e.target.value / currency_price_toman);
 		}
 	};
-	// this function is for checking form
+	// this function is for checking the form
 	const check_form = () => {
 		if (toman_value == "") {
 			set_warning(false);
@@ -159,7 +159,7 @@ export default function Buy(props) {
 					>
 						{/* currency logo */}
 						<div className="buy-page-currency-logo">
-							<img src={currency_icon} width="30px" />
+							<img src={currency_icon} width="30px" height="30px" />
 						</div>
 						{/* currency name in persian */}
 						<span className="buy-page-currency-name">{currency_name}</span>
@@ -199,7 +199,8 @@ export default function Buy(props) {
 										<div class="right-side" id={currency.id}>
 											<img
 												src={currency.icon_source}
-												width="20px"
+												width="30px"
+												height="30px"
 												id={currency.id}
 											/>
 											<span id={currency.id}>
@@ -239,7 +240,12 @@ export default function Buy(props) {
 						<div className="buy-page-coin-count-container">
 							<label className="buy-page-coin-count-small-header" htmlFor="">
 								مقدار {currency_name}
-								<img src={currency_icon} alt={currency_name} width="15px" />
+								<img
+									src={currency_icon}
+									alt={currency_name}
+									width="15px"
+									height="15px"
+								/>
 							</label>
 							<input
 								placeholder={currency_abbr}
