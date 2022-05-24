@@ -11,6 +11,7 @@
 	/**************** color variables *********************/
 	--color-primary: rgb(255, 73, 180);
 	--color-primary-light: rgb(255, 214, 238);
+	--color-primary-lightest: rgb(255, 240, 249);
 	--color-secondary: rgb(255, 255, 255);
 	--color-secondary-dark: rgb(240, 240, 240);
 	--light-gray-color: rgb(170, 170, 170);
