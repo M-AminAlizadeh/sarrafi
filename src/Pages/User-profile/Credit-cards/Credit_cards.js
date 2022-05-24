@@ -12,6 +12,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 // Table Data **********************************************
+
 const useStyles = makeStyles({
 	table: {
 		minWidth: 650,
@@ -21,31 +22,27 @@ const useStyles = makeStyles({
 function createData(number, card_number, account_number, shaba, state) {
 	return { number, card_number, account_number, shaba, state };
 }
-
-const rows = [
-	createData(
-		1,
-		6274881116801407,
-		"0200858411607627488",
-		"IR62 0530 0000 0020 0858 4116 07",
-		"ثبت شده"
-	),
-	createData(
-		2,
-		6274881116801407,
-		"0200858411607627488",
-		"IR62 0530 0000 0020 0858 4116 07",
-		"ثبت شده"
-	),
-];
 // Table Data **********************************************
 
-export default function Credit_cards() {
-	const [checked, setChecked] = useState(false);
-	const handleChange = (event) => {
-		setChecked(event.target.checked);
-	};
+export default function Credit_cards(props) {
+	const user_info = props.user_info;
+	const user_credit_cards = props.user_info.credit_cards;
+	console.log(user_credit_cards);
+	const rows = [];
+	user_credit_cards.map((cc, index) => {
+		rows.push(
+			createData(
+				++index,
+				cc.card_number,
+				cc.account_number,
+				cc.shaba_number,
+				cc.situation
+			)
+		);
+	});
+
 	// States
+	const [checked, setChecked] = useState(false);
 	const [card_number, set_card_number] = useState("");
 	const [card_number_error, set_card_number_error] = useState(false);
 	const [account_number, set_account_number] = useState("");
@@ -55,6 +52,9 @@ export default function Credit_cards() {
 	const [bank_name, set_bank_name] = useState("");
 	const [bank_name_error, set_bank_name_error] = useState(false);
 	// States functions
+	const handleChange = (event) => {
+		setChecked(event.target.checked);
+	};
 	const form_checker = () => {
 		// Card number error
 		if (card_number == "") {
@@ -94,8 +94,12 @@ export default function Credit_cards() {
 						className="credit-cards-user-icon"
 						src="images/user-icon/user.png"
 					/>
-					<span className="credit-cards-user-name">امین علیزاده</span>
-					<span className="credit-cards-user-phone-number">09050287419</span>
+					<span className="credit-cards-user-name">
+						{user_info.first_name + " " + user_info.last_name}
+					</span>
+					<span className="credit-cards-user-phone-number">
+						{user_info.phone_number}
+					</span>
 				</div>
 				<div className="credit-cards-menu-container">
 					<ul>
