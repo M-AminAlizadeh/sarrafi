@@ -147,10 +147,22 @@ const API = {
 		first_name: "علی",
 		last_name: "غلام پور",
 		phone_number: "09145567149",
-		credit_cards: {
-			"بانک ملی": "6274997087564232",
-			"بانک صادرات": "90789970875612332",
-		},
+		credit_cards: [
+			{
+				bank_name: "بانک ملی",
+				card_number: "6274997087564232",
+				account_number: "0200858411607627488",
+				shaba_number: "IR62 0530 0000 0020 0858 4116 07",
+				situation: "ثبت شده",
+			},
+			{
+				bank_name: "بانک صادرات",
+				card_number: "90789970875612332",
+				account_number: "0200858411607627488",
+				shaba_number: "IR62 0530 0000 0020 0858 4116 07",
+				situation: "ثبت نشده",
+			},
+		],
 		balance: {
 			rial_balance: 1244356,
 			crypto_balance: {
@@ -792,13 +804,19 @@ const AppLayout = () => (
 			<Route path="buy" element={<Buy data={digital_currencies_arr} />} />
 			<Route path="sell" element={<Sell data={digital_currencies_arr} />} />
 			<Route path="orders" element={<Orders />} />
-			<Route path="credit-cards" element={<Credit_cards />} />
+			<Route
+				path="credit-cards"
+				element={<Credit_cards user_info={user_api} />}
+			/>
 			<Route path="invitation" element={<Invitation />} />
-			<Route path="authentication" element={<Authentication />} />
-			<Route path="password" element={<Password />} />
+			<Route
+				path="authentication"
+				element={<Authentication user_info={user_api} />}
+			/>
+			<Route path="password" element={<Password user_info={user_api} />} />
 			<Route
 				path="two-factor-authentication"
-				element={<Two_factor_authentication />}
+				element={<Two_factor_authentication user_info={user_api} />}
 			/>
 		</Routes>
 	</>
@@ -837,13 +855,19 @@ function App() {
 					<Route path="toman-withdrawal" element={<Toman_withdrawal />} />
 					<Route path="sell" element={<Sell data={digital_currencies_arr} />} />
 					<Route path="orders" element={<Orders />} />
-					<Route path="credit-cards" element={<Credit_cards />} />
+					<Route
+						path="credit-cards"
+						element={<Credit_cards user_info={user_api} />}
+					/>
 					<Route path="invitation" element={<Invitation />} />
-					<Route path="authentication" element={<Authentication />} />
-					<Route path="password" element={<Password />} />
+					<Route
+						path="authentication"
+						element={<Authentication user_info={user_api} />}
+					/>
+					<Route path="password" element={<Password user_info={user_api} />} />
 					<Route
 						path="two-factor-authentication"
-						element={<Two_factor_authentication />}
+						element={<Two_factor_authentication user_info={user_api} />}
 					/>
 				</Route>
 			</Routes>
