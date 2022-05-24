@@ -189,7 +189,7 @@ function CustomPagination() {
 
 export default function Crypto_transactions() {
 	return (
-		<div className="crypto-transactions-container">
+		<div className="crypto-transactions-container component_box_shadow">
 			<div style={{ width: "90%", margin: "auto" }} dir="rtl">
 				{/* Title and description part */}
 				<div className="crypto_transactions-info-container">

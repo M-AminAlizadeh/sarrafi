@@ -15,23 +15,12 @@
 	font-size: 14px;
 }
 .one-sixth {
-	width: 12% !important;
+	width: 30% !important;
 }
 .two-sixth {
-	width: 26% !important;
+	width: 100% !important;
 }
-.three-sixth {
-	width: 40% !important;
-}
-.four-sixth {
-	width: 58% !important;
-}
-.five-sixth {
-	width: 72% !important;
-}
-.six-sixth {
-	width: 88% !important;
-}
+
 .active-border {
 	border-color: #7367f0 !important;
 }

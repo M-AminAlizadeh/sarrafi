@@ -159,7 +159,7 @@ export default function Sell(props) {
 					>
 						{/* currency logo */}
 						<div className="buy-page-currency-logo">
-							<img src={currency_icon} width="30px" />
+							<img src={currency_icon} width="30px" height="30px" />
 						</div>
 						{/* currency name in persian */}
 						<span className="buy-page-currency-name">{currency_name}</span>
@@ -200,6 +200,7 @@ export default function Sell(props) {
 											<img
 												src={currency.icon_source}
 												width="20px"
+												height="20px"
 												id={currency.id}
 											/>
 											<span id={currency.id}>
@@ -239,7 +240,12 @@ export default function Sell(props) {
 						<div className="buy-page-coin-count-container">
 							<label className="buy-page-coin-count-small-header" htmlFor="">
 								مقدار {currency_name}
-								<img src={currency_icon} alt={currency_name} width="15px" />
+								<img
+									src={currency_icon}
+									alt={currency_name}
+									width="15px"
+									height="15px"
+								/>
 							</label>
 							<input
 								placeholder={currency_abbr}

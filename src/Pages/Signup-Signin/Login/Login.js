@@ -25,33 +25,38 @@ export default function Login() {
 		}
 	};
 	return (
+		// Page Container
 		<div className="whole-login-container">
-			<div
-				className="login-page-image-container"
-				style={{
-					width: "50%",
-					height: "53vh",
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center",
-				}}
-			>
-				<img src="images/main-logo/cointiger.svg" style={{ width: "50%" }} />
+			{/* Image Container */}
+			<div className="login-page-image-container">
+				{/* Image Itself */}
+				<img
+					src="images/main-logo/cointiger.svg"
+					className="login-page-image"
+				/>
 			</div>
-			<div className="login-page-main-card-container" dir="rtl">
+			{/* Right Side */}
+			<div
+				className="login-page-main-card-container component_box_shadow"
+				dir="rtl"
+			>
+				{/* Header Container */}
 				<div className="login-page-item-container">
 					<h2 className="log-in">ورود</h2>
 				</div>
-				<div className="login-page-item-container"></div>
+				{/* Sub-Header Container */}
 				<div className="login-page-item-container">
 					<p>خوش آمدید، لطفا شماره موبایل و کلمه عبور خود را درج کنید</p>
 				</div>
+				{/* Form */}
 				<form>
 					<div className="login-page-form-input">
-						<label htmlFor="email" className="label">
+						<label htmlFor="number" className="label">
 							موبایل
 						</label>
+						{/* Phone Number Input */}
 						<input
+							id="number"
 							type="number"
 							className="login-page-number-input"
 							onChange={(e) => {
@@ -59,11 +64,14 @@ export default function Login() {
 							}}
 						/>
 						{cell_phone_warning ? (
-							<span className="warning">شماره موبایل را بدرستی درج کنید</span>
+							<span className="error-message">
+								شماره موبایل را بدرستی درج کنید
+							</span>
 						) : (
 							""
 						)}
 					</div>
+					{/* Password Input */}
 					<div className="login-page-form-input">
 						<label htmlFor="password" className="label">
 							کلمه عبور
@@ -77,11 +85,12 @@ export default function Login() {
 						/>
 					</div>
 					{password_warning ? (
-						<span className="warning">کلمه عبور را بدرستی درج کنید</span>
+						<span className="error-message">کلمه عبور را بدرستی درج کنید</span>
 					) : (
 						""
 					)}
 					<div className="display-space-between">
+						{/* Checkbox Container */}
 						<div>
 							<input type="checkbox"></input>
 							<label htmlFor="password" className="chekbox-label">
@@ -95,6 +104,7 @@ export default function Login() {
 						</div>
 					</div>
 					<div>
+						{/* Right Button */}
 						<button
 							type="submit"
 							className="login-page-submit-button"
@@ -105,6 +115,7 @@ export default function Login() {
 							ورود
 						</button>
 						<Link to="/sign-up">
+							{/* Left Button */}
 							<button
 								className="login-page-submit-button"
 								style={{ float: "left" }}

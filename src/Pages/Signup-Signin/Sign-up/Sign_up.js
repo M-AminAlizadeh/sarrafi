@@ -17,20 +17,19 @@ export default function Signup() {
 		}
 	};
 	return (
+		// Page Container
 		<div className="whole-signup-container">
-			<div
-				className="signup-page-image-container"
-				style={{
-					width: "50%",
-					height: "53vh",
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center",
-				}}
-			>
-				<img src="images/illustrations/register.png" style={{ width: "50%" }} />
+			{/* Image Container */}
+			<div className="signup-page-image-container">
+				<img
+					src="images/illustrations/register.png"
+					className="signup-page-image"
+				/>
 			</div>
-			<div className="signup-page-main-card-container" dir="rtl">
+			<div
+				className="signup-page-main-card-container component_box_shadow"
+				dir="rtl"
+			>
 				<div className="signup-page-item-container">
 					<h2 className="log-in">ثبت نام</h2>
 				</div>
@@ -55,7 +54,9 @@ export default function Signup() {
 						/>
 					</div>
 					{cell_phone_warning ? (
-						<span className="warning">شماره موبایل را بدرستی درج کنید</span>
+						<span className="error-message">
+							شماره موبایل را بدرستی درج کنید
+						</span>
 					) : (
 						""
 					)}

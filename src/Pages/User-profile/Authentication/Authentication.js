@@ -3,92 +3,16 @@ import { useState } from "react";
 export default function Authentication() {
 	const [level_1, set_level_1] = useState(true);
 	const [level_2, set_level_2] = useState(false);
-	const [level_3, set_level_3] = useState(false);
-	const [level_4, set_level_4] = useState(false);
-	const [level_5, set_level_5] = useState(false);
-	const [level_6, set_level_6] = useState(false);
 
 	const display_1 = () => {
 		// display level one
 		set_level_1(true);
 		// hide level two
 		set_level_2(false);
-		// hide level three
-		set_level_3(false);
-		// hide level four
-		set_level_4(false);
-		// hide level five
-		set_level_5(false);
-		// hide level six
-		set_level_6(false);
 	};
 	const display_2 = () => {
 		// display level two
 		set_level_2(true);
-		// hide level one
-		set_level_1(false);
-		// hide level three
-		set_level_3(false);
-		// hide level four
-		set_level_4(false);
-		// hide level five
-		set_level_5(false);
-		// hide level six
-		set_level_6(false);
-	};
-	const display_3 = () => {
-		// display level three
-		set_level_3(true);
-		// hide level six
-		set_level_6(false);
-		// hide level five
-		set_level_5(false);
-		// hide level four
-		set_level_4(false);
-		// hide level two
-		set_level_2(false);
-		// hide level one
-		set_level_1(false);
-	};
-	const display_4 = () => {
-		// display level four
-		set_level_4(true);
-		// hide level six
-		set_level_6(false);
-		// hide level five
-		set_level_5(false);
-		// hide level three
-		set_level_3(false);
-		// hide level two
-		set_level_2(false);
-		// hide level one
-		set_level_1(false);
-	};
-	const display_5 = () => {
-		// display level five
-		set_level_5(true);
-		// hide level six
-		set_level_6(false);
-		// hide level four
-		set_level_4(false);
-		// hide level three
-		set_level_3(false);
-		// hide level two
-		set_level_2(false);
-		// hide level one
-		set_level_1(false);
-	};
-	const display_6 = () => {
-		// display level six
-		set_level_6(true);
-		// hide level five
-		set_level_5(false);
-		// hide level four
-		set_level_4(false);
-		// hide level three
-		set_level_3(false);
-		// hide level two
-		set_level_2(false);
 		// hide level one
 		set_level_1(false);
 	};
@@ -121,36 +45,10 @@ export default function Authentication() {
 					alignItems: "center",
 				}}
 			>
-				<h1>
-					{level_1
-						? "۱"
-						: level_2
-						? "۲"
-						: level_3
-						? "۳"
-						: level_4
-						? "۴"
-						: level_5
-						? "۵"
-						: "۶"}
-				</h1>
+				<h1>{level_1 ? "۱" : "۲"}</h1>
 				<p>
 					حساب کاربری شما در سطح
-					<span>
-						{" "}
-						{level_1
-							? "یک"
-							: level_2
-							? "دو"
-							: level_3
-							? "سه"
-							: level_4
-							? "چهار"
-							: level_5
-							? "پنج"
-							: "شش"}
-					</span>{" "}
-					قراردارد.
+					<span> {level_1 ? "یک" : "دو"}</span> قراردارد.
 				</p>
 				<hr style={{ width: "50%" }} />
 			</div>
@@ -174,19 +72,7 @@ export default function Authentication() {
 				}}
 			>
 				<div
-					className={`${
-						level_1
-							? "one-sixth"
-							: level_2
-							? "two-sixth"
-							: level_3
-							? "three-sixth"
-							: level_4
-							? "four-sixth"
-							: level_5
-							? "five-sixth"
-							: "six-sixth"
-					}`}
+					className={`${level_1 ? "one-sixth" : "two-sixth"}`}
 					style={{
 						border: "1px solid #7367F0",
 						width: "90%",
@@ -203,7 +89,7 @@ export default function Authentication() {
 				<div
 					style={{
 						border: "1px solid #d9d9d9",
-						width: "90%",
+						width: "100%",
 						position: "absolute",
 						top: "50%",
 						right: "0",
@@ -214,9 +100,7 @@ export default function Authentication() {
 				></div>
 				<div
 					className={`authentication-levels btn-level-one ${
-						level_1 || level_2 || level_3 || level_4 || level_5 || level_6
-							? "active-border"
-							: ""
+						level_1 || level_2 ? "active-border" : ""
 					} ${level_1 ? "active" : ""}`}
 					id="1"
 					onClick={() => {
@@ -228,9 +112,7 @@ export default function Authentication() {
 				</div>
 				<div
 					className={`authentication-levels btn-level-two ${
-						level_2 || level_3 || level_4 || level_5 || level_6
-							? "active-border"
-							: ""
+						level_2 ? "active-border" : ""
 					} ${level_2 ? "active" : ""}`}
 					id="2"
 					onClick={() => {
@@ -239,54 +121,6 @@ export default function Authentication() {
 				>
 					<p>۲</p>
 					<span>سطح دو</span>
-				</div>
-				<div
-					className={`authentication-levels btn-level-three ${
-						level_3 || level_4 || level_5 || level_6 ? "active-border" : ""
-					} ${level_3 ? "active" : ""}`}
-					id="3"
-					onClick={() => {
-						display_3();
-					}}
-				>
-					<p>۳</p>
-					<span>سطح سه</span>
-				</div>
-				<div
-					className={`authentication-levels btn-level-four ${
-						level_4 || level_5 || level_6 ? "active-border" : ""
-					} ${level_4 ? "active" : ""}`}
-					id="4"
-					onClick={() => {
-						display_4();
-					}}
-				>
-					<p>۴</p>
-					<span>سطح چهار</span>
-				</div>
-				<div
-					className={`authentication-levels btn-level-five ${
-						level_5 || level_6 ? "active-border" : ""
-					} ${level_5 ? "active" : ""}`}
-					id="5"
-					onClick={() => {
-						display_5();
-					}}
-				>
-					<p>۵</p>
-					<span>سطح پنج</span>
-				</div>
-				<div
-					className={`authentication-levels btn-level-six ${
-						level_6 ? "active-border" : ""
-					} ${level_6 ? "active" : ""}`}
-					id="6"
-					onClick={() => {
-						display_6();
-					}}
-				>
-					<p>۶</p>
-					<span>سطح شش</span>
 				</div>
 			</div>
 
@@ -358,34 +192,6 @@ export default function Authentication() {
 					</p>
 					<input type="file"></input>
 					<input type="submit" value="ثبت تصویر"></input>
-				</div>
-			) : (
-				""
-			)}
-			{level_3 ? (
-				<div className="level-three-container levels-info-container">
-					<h1>سطح ۳</h1>
-				</div>
-			) : (
-				""
-			)}
-			{level_4 ? (
-				<div className="level-four-container levels-info-container">
-					<h1>سطح ۴</h1>
-				</div>
-			) : (
-				""
-			)}
-			{level_5 ? (
-				<div className="level-five-container levels-info-container">
-					<h1>سطح ۵</h1>
-				</div>
-			) : (
-				""
-			)}
-			{level_6 ? (
-				<div className="level-six-container levels-info-container">
-					<h1>سطح ۶</h1>
 				</div>
 			) : (
 				""

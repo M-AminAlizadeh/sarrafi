@@ -50,7 +50,7 @@ export default function Dashboard(props) {
 			{/* Converter */}
 			<Convertor currencies_api={currencies_info} />
 			{/* User Info And Chart Container*/}
-			<div className="dashboard-user-info-and-chart-container">
+			<div className="dashboard-user-info-and-chart-container component_box_shadow">
 				{/* User Info */}
 				<div className="dashboard-user-info-container">
 					<div className="dashboard-user-info-upper-level">
@@ -118,7 +118,8 @@ export default function Dashboard(props) {
 							to="authentication"
 							className="dashboard-user-info-profile-link"
 						>
-							پروفایل و سطح کاربری
+							{" "}
+							پروفایل و سطح کاربری{" "}
 						</Link>
 						مراجعه کنید.
 					</p>
