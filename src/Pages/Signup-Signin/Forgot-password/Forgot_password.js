@@ -18,19 +18,10 @@ export default function Forgot_password() {
 	};
 	return (
 		<div className="whole-forgot-password-container">
-			<div
-				className="forgot-password-page-image-container"
-				style={{
-					width: "50%",
-					height: "53vh",
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center",
-				}}
-			>
+			<div className="forgot-password-page-image-container">
 				<img
 					src="images/illustrations/Password_Isometric.png"
-					style={{ width: "50%" }}
+					className="forgot-password-page-image"
 				/>
 			</div>
 			<div className="forgot-password-page-main-card-container" dir="rtl">
