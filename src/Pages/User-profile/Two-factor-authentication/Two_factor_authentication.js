@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Checkbox from "@material-ui/core/Checkbox";
 import "./two-factor-authentication.css";
 
-export default function Two_factor_authentication() {
+export default function Two_factor_authentication(props) {
+	const user_info = props.user_info;
 	// States
 	const [checked_sms_auth, set_checked_sms_auth] = useState(false);
 	const [checked_google_auth, set_checked_google_auth] = useState(false);
@@ -48,10 +49,10 @@ export default function Two_factor_authentication() {
 						src="images/user-icon/user.png"
 					/>
 					<span className="two-factor-authentication-user-name">
-						امین علیزاده
+						{user_info.first_name + " " + user_info.last_name}
 					</span>
 					<span className="two-factor-authentication-user-phone-number">
-						09050287419
+						{user_info.phone_number}
 					</span>
 				</div>
 				<div className="two-factor-authentication-menu-container">
