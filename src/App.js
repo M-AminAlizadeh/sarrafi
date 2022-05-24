@@ -779,7 +779,7 @@ const AppLayout = () => (
 				path="/"
 				element={
 					<Dashboard
-						user_api={user_api}
+						user_info={user_api}
 						currencies_api={digital_currencies_arr}
 					/>
 				}
@@ -830,7 +830,15 @@ function App() {
 				<Route path="forgot-password" element={<Forgot_password />} />
 				<Route path="sign-up" element={<Sign_up />} />
 				<Route path="/" element={<AppLayout />}>
-					<Route path="/" element={<Dashboard />} />
+					<Route
+						path="/"
+						element={
+							<Dashboard
+								user_info={user_api}
+								currencies_api={digital_currencies_arr}
+							/>
+						}
+					/>
 					<Route
 						path="wallets"
 						element={
