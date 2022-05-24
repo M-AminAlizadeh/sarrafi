@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import "./forgot-password.css";
 import { Link } from "react-router-dom";
 
@@ -39,14 +39,18 @@ export default function Forgot_password() {
 						</label>
 						<input
 							type="number"
-							className="forgot-password-page-number-input"
+							className={`forgot-password-page-number-input ${
+								password_warning ? "error-input-border" : null
+							}`}
 							onChange={(e) => {
 								set_password_input(e.target.value);
 							}}
 						/>
 					</div>
 					{password_warning ? (
-						<span className="warning">شماره موبایل را بدرستی درج کنید</span>
+						<span className="error-message">
+							شماره موبایل را بدرستی درج کنید
+						</span>
 					) : (
 						""
 					)}
