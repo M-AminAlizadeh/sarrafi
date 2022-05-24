@@ -1,26 +1,169 @@
-.authentication-levels {
+/* Page Container */
+.authentication-container {
+	direction: rtl;
+	width: 90%;
+	margin: auto;
+	padding: 20px;
+	color: var(--primary-text-color);
+}
+
+/* Calendar Starts */
+
+/* Calendar Ends */
+
+/* Header */
+.authentication-header {
+	font-size: var(--main-font-size-large);
+}
+
+/* Big Number Container */
+.authentication-level-number-container {
+	/* border: 1px solid red; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border: 3px solid #d9d9d9;
+}
+
+/* Big Number */
+.authentication-big-number {
+	font-size: 100px;
+	color: var(--color-primary);
+}
+
+/* Persian Level */
+.authentication-level-number-container span {
+	color: var(--color-primary);
+}
+
+/* The Line Below Big Number */
+.authentication-level-number-container hr {
+	width: 40%;
+	border: var(--input-border-focus-mode);
+}
+
+/* Unordered List Header */
+.authentication-list-header {
+	font-size: var(--main-font-size-large);
+}
+
+/* Hr after Ul */
+.authentication-line-after-ul {
+	border: var(--input-border-focus-mode);
+	width: 80%;
+	margin: 30px auto;
+}
+
+/* Levels Container */
+.authentication-levels-container {
+	/* border: 1px solid blue; */
+	display: flex;
+	justify-content: space-evenly;
+	position: relative;
+}
+
+/* Progress Line */
+.authentication-progress-line {
+	border: var(--input-border-focus-mode);
+	width: 90%;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	height: 3px;
+	background-color: var(--color-primary);
+	border-radius: 10px;
+	z-index: 2;
+	transition: var(--global-transition);
+}
+
+/* The Gray Bar Below Progress Bar */
+.authentication-gray-bar {
+	border: var(--color-secondary-dark);
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	height: 3px;
+	background-color: var(--color-secondary-dark);
+	border-radius: 10px;
+}
+
+/* Circles */
+.authentication-levels {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 3px solid var(--color-secondary-dark);
 	border-radius: 50%;
 	width: 80px;
 	height: 80px;
 	cursor: pointer;
 	z-index: 3;
-	background-color: #fff;
-	transition: 0.4s;
+	background-color: var(--color-secondary);
+	transition: var(--global-transition);
 	margin: 30px;
-	font-size: 14px;
+	font-size: var(--main-font-size-small);
 }
-.one-sixth {
+
+/* Level One Input Container */
+.authentication-level-one-input-container {
+	/* border: 1px solid black; */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	margin: auto;
+}
+
+/* Divs Inside Level One Input Container */
+.authentication-level-one-input-container div {
+	/* border: 1px solid green; */
+	display: flex;
+	flex-direction: column;
+	margin: 5px 10px;
+}
+
+/* Inputs Inside Divs Inside Level One Input Container */
+.authentication-level-one-input-container div input {
+	/* width: 50%; */
+	border: var(--input-border);
+	border-radius: var(--button-border-radius-extreme);
+	width: 300px;
+	padding: 7px;
+	text-align: center;
+}
+
+.authentication-level-one-input-container div input:focus {
+	border: var(--input-border-focus-mode);
+	transition: var(--global-transition);
+	outline: none;
+}
+
+.authentication-level-one-input-container div input[type="submit"] {
+	background-color: var(--button-primary-bg-color);
+	color: var(--color-secondary);
+	border: none;
+	padding: 10px;
+}
+
+.authentication-level-one-input-container div input[type="submit"]:hover {
+	box-shadow: var(--button-box-shadow-primary);
+	transition: var(--global-transition);
+}
+
+.half {
 	width: 30% !important;
 }
-.two-sixth {
+.full {
 	width: 100% !important;
 }
 
 .active-border {
-	border-color: #7367f0 !important;
+	border-color: var(--color-primary) !important;
+}
+.active {
+	color: var(--color-secondary);
+	background-color: var(--color-primary);
 }
