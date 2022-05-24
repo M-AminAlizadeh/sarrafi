@@ -1,18 +1,42 @@
-import React from "react";
-import "./two-factor-authentication.css";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import Checkbox from "@material-ui/core/Checkbox";
+import "./two-factor-authentication.css";
 
 export default function Two_factor_authentication() {
-	const [checked, setChecked] = React.useState(false);
-	const [checked_2, setChecked_2] = React.useState(false);
-
-	const handleChange = (event) => {
-		setChecked(event.target.checked);
+	// States
+	const [checked_sms_auth, set_checked_sms_auth] = useState(false);
+	const [checked_google_auth, set_checked_google_auth] = useState(false);
+	const [sms_auth_code_value, set_sms_auth_code_value] = useState("");
+	const [sms_auth_code_error, set_sms_auth_code_error] = useState(false);
+	const [google_auth_code_value, set_google_auth_code_value] = useState("");
+	const [google_auth_code_error, set_google_auth_code_error] = useState(false);
+	// States functions
+	// This function is for toggle sms authentication
+	const sms_auth_toggle = (e) => {
+		set_checked_sms_auth(e.target.checked);
 	};
 
-	const handleChange_2 = (event) => {
-		setChecked_2(event.target.checked);
+	// This function is for toggle google authentication
+	const google_auth_toggle = (e) => {
+		set_checked_google_auth(e.target.checked);
+	};
+	//
+	// This function is for check sms authentication code is empty or not
+	const sms_submit = () => {
+		if (sms_auth_code_value == "") {
+			set_sms_auth_code_error(true);
+		} else {
+			set_sms_auth_code_error(false);
+		}
+	};
+	// This function is for check google authentication code is empty or not
+	const google_submit = () => {
+		if (google_auth_code_value == "") {
+			set_google_auth_code_error(true);
+		} else {
+			set_google_auth_code_error(false);
+		}
 	};
 
 	return (
@@ -64,29 +88,40 @@ export default function Two_factor_authentication() {
 				</p>
 				<div className="two-factor-authentication-input-container">
 					<div
-						className={`${checked ? "" : "unchecked"}`}
+						className={`${checked_sms_auth ? "" : "unchecked"}`}
 						style={{ borderBottom: "1px solid var(--color-primary)" }}
 					>
 						<Checkbox
-							checked={checked}
-							onChange={handleChange}
+							checked={checked_sms_auth}
+							onChange={sms_auth_toggle}
 							inputProps={{ "aria-label": "primary checkbox" }}
 						/>
 						<span>احراز هویت دو مرحله ای از طریق کد پیامکی</span>
-						{checked ? (
+						{checked_sms_auth ? (
 							<div className="two-factor-authentication-first-row-input-container">
 								<input
-									className="two-factor-authentication-input"
+									className={`two-factor-authentication-input ${
+										sms_auth_code_error ? "error-input-border" : null
+									}`}
 									type="text"
 									placeholder="عدد 5 رقمی"
 									style={{ textAlign: "center" }}
 									maxLength="5"
+									onChange={(e) => {
+										set_sms_auth_code_value(e.target.value);
+									}}
 								/>
 								<input
 									type="submit"
 									value="فعال سازی"
 									className="two-factor-authentication-submit-button"
+									onClick={() => {
+										sms_submit();
+									}}
 								/>
+								{sms_auth_code_error ? (
+									<span className="error-message">رمزی وارد نکرده اید </span>
+								) : null}
 							</div>
 						) : (
 							""
@@ -97,10 +132,10 @@ export default function Two_factor_authentication() {
 							کنید.
 						</p>
 					</div>
-					<div className={`${checked_2 ? "" : "unchecked"}`}>
+					<div className={`${checked_google_auth ? "" : "unchecked"}`}>
 						<Checkbox
-							checked={checked_2}
-							onChange={handleChange_2}
+							checked={checked_google_auth}
+							onChange={google_auth_toggle}
 							inputProps={{ "aria-label": "primary checkbox" }}
 						/>
 						<span>احراز هویت دو مرحله ای با Google Authenticator</span>
@@ -135,20 +170,31 @@ export default function Two_factor_authentication() {
 								سازی را کلیک نمایید.
 							</li>
 						</ol>
-						{checked_2 ? (
+						{checked_google_auth ? (
 							<div className="two-factor-authentication-first-row-input-container">
 								<input
-									className="two-factor-authentication-input"
+									className={`two-factor-authentication-input ${
+										google_auth_code_error ? "error-input-border" : null
+									}`}
 									type="text"
 									placeholder="عدد 6 رقمی"
 									style={{ textAlign: "center" }}
 									maxLength="5"
+									onChange={(e) => {
+										set_google_auth_code_value(e.target.value);
+									}}
 								/>
 								<input
 									type="submit"
 									value="فعال سازی"
 									className="two-factor-authentication-submit-button"
+									onClick={() => {
+										google_submit();
+									}}
 								/>
+								{google_auth_code_error ? (
+									<span className="error-message">رمزی وارد نکرده اید </span>
+								) : null}
 							</div>
 						) : (
 							""
