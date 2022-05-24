@@ -157,13 +157,12 @@ export default function Layout(props) {
 							justifyContent: "space-between",
 							alignItems: "center",
 							fontSize: "14px",
-							cursor: "pointer",
-							border: "1px solid red",
 							overflow: "visible",
 						}}
 					>
 						<div className="layout-topbar-left-section">
 							<div
+								style={{ cursor: "pointer" }}
 								className="user-info"
 								onClick={() => {
 									toggle_user_info_drop_down();
@@ -252,41 +251,6 @@ export default function Layout(props) {
 						</div>
 						{/* Topbar Right Section */}
 						<div className="layout-topbar-right-section">
-							<div
-								className="topbar-right-side-items digital-currencies-shortcut"
-								onClick={() => {
-									toggle_drop_down();
-								}}
-							>
-								<span>رمزارزها</span>{" "}
-								{drop_down ? (
-									<div className="digital-currencies-drop-down">
-										{props.currencies_api.map((item) => {
-											return (
-												<div
-													className="drop-down-row-container"
-													id={props.currencies_api.id}
-												>
-													<div className="currency-icon-container">
-														<img src={item.icon_source} width="30px" />
-													</div>
-													<Link
-														to="/buy"
-														style={{ textDecoration: "none", color: "#555" }}
-													>
-														<span className="currency-name">
-															{item.persian_name}
-														</span>
-													</Link>
-												</div>
-											);
-										})}
-									</div>
-								) : (
-									""
-								)}
-								<img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-pulse-medical-dreamstale-lineal-dreamstale.png" />
-							</div>
 							<div className="topbar-right-side-items">
 								<Link to="/tickets">
 									<ChatBubbleOutlineOutlinedIcon
