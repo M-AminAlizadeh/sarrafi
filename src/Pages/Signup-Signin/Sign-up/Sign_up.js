@@ -47,7 +47,9 @@ export default function Signup() {
 						</label>
 						<input
 							type="number"
-							className="signup-page-number-input"
+							className={`signup-page-number-input ${
+								cell_phone_warning ? "error-input-border" : null
+							}`}
 							onChange={(e) => {
 								set_cell_phone_input(e.target.value);
 							}}

@@ -7,6 +7,8 @@ import "./dashboard.css";
 
 export default function Dashboard(props) {
 	const currencies_info = props.currencies_api;
+	const user_info = props.user_info;
+	console.log(user_info);
 	/////////////////////// States
 	const [dropdown, set_drop_down] = useState(false);
 	const [api_data, set_api_data] = useState(currencies_info);
@@ -61,8 +63,12 @@ export default function Dashboard(props) {
 								alt="user-profile-image"
 							/>
 						</div>
-						<div className="dashboard-user-name">امین علیزاده</div>
-						<div className="dashboard-user-phone-number">09050287419</div>
+						<div className="dashboard-user-name">
+							{user_info.first_name + " " + user_info.last_name}
+						</div>
+						<div className="dashboard-user-phone-number">
+							{user_info.phone_number}
+						</div>
 					</div>
 					<div className="dashboard-user-info-table-container">
 						<h6 className="dashboard-user-info-header">

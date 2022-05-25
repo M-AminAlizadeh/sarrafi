@@ -1,7 +1,8 @@
 import "./password.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-export default function Password() {
+export default function Password(props) {
+	const user_info = props.user_info;
 	// States
 	const [current_password_value, set_current_password_value] = useState("");
 	const [current_password_error, set_current_password_error] = useState(false);
@@ -49,8 +50,12 @@ export default function Password() {
 						className="password-page-user-icon"
 						src="images/user-icon/user.png"
 					/>
-					<span className="password-page-user-name">امین علیزاده</span>
-					<span className="password-page-user-phone-number">09050287419</span>
+					<span className="password-page-user-name">
+						{user_info.first_name + " " + user_info.last_name}
+					</span>
+					<span className="password-page-user-phone-number">
+						{user_info.phone_number}
+					</span>
 				</div>
 				{/* List Container */}
 				<div className="password-page-menu-container">

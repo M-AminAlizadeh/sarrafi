@@ -58,7 +58,9 @@ export default function Login() {
 						<input
 							id="number"
 							type="number"
-							className="login-page-number-input"
+							className={`login-page-number-input ${
+								cell_phone_warning ? "error-input-border" : null
+							}`}
 							onChange={(e) => {
 								set_cell_phone_input(e.target.value);
 							}}
@@ -78,7 +80,9 @@ export default function Login() {
 						</label>
 						<input
 							type="password"
-							className="login-page-password-input"
+							className={`login-page-password-input ${
+								password_warning ? "error-input-border" : null
+							}`}
 							onChange={(e) => {
 								set_password_input(e.target.value);
 							}}

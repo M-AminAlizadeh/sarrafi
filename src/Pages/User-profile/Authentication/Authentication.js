@@ -1,6 +1,8 @@
 import "./authentication.css";
 import { useState } from "react";
-import { Calendar, DatePicker } from "react-persian-datepicker";
+import DatePicker from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
 export default function Authentication() {
 	const style = {
 		border: "1px solid red",
@@ -22,10 +24,13 @@ export default function Authentication() {
 	};
 
 	return (
-		// Page Container
-		<div className="authentication-container component_box_shadow">
-			{/* Header */}
-			<p className="authentication-header">سطوح کاربری و احراز هویت</p>
+		<div
+			className="authentication-container component_box_shadow"
+			dir="rtl"
+
+		>
+			<DatePicker calendar={persian} locale={persian_fa} />
+			<h4>سطوح کاربری و احراز هویت</h4>
 			<p>
 				در این قسمت میتوانید احراز هویت خود را تکمیل نمایید و برای ارتقاء سطح
 				کاربری خود فقط باید اطلاعات آن سطح را تکمیل نمایید.
