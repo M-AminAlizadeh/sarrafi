@@ -24,8 +24,6 @@ import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineO
 import TrendingDownIcon from "@material-ui/icons/TrendingDown";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import DnsOutlinedIcon from "@material-ui/icons/DnsOutlined";
-import ListRoundedIcon from "@material-ui/icons/ListRounded";
-import ChangeHistoryRoundedIcon from "@material-ui/icons/ChangeHistoryRounded";
 import FlashOnRoundedIcon from "@material-ui/icons/FlashOnRounded";
 import CreditCardRoundedIcon from "@material-ui/icons/CreditCardRounded";
 import PersonOutlineRoundedIcon from "@material-ui/icons/PersonOutlineRounded";
@@ -98,6 +96,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Layout(props) {
+	// Website name
+	const website_name = props.website_name;
 	// States
 	const [drop_down, set_drop_down] = useState(false);
 	const [user_info_drop_down, set_user_info_drop_down] = useState(false);
@@ -316,12 +316,12 @@ export default function Layout(props) {
 								fontSize: "14px",
 							}}
 						>
-							Website Name
+							{website_name}
 						</h1>
 					</div>
 					<div className="website-logo-container">
 						<img
-							src="/images/website-logo/website-logo.jpg"
+							src="https://img.icons8.com/color/96/000000/bmw--v1.png"
 							alt="website logo"
 							style={{
 								width: "80%",
