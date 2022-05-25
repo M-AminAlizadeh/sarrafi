@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from "recharts";
 import Convertor from "../../../../src/Components/Converter/Converter";
 import Table from "../../../../src/Components/Table/Table";
+import { Helmet } from "react-helmet";
 import "./dashboard.css";
 
 export default function Dashboard(props) {
 	const currencies_info = props.currencies_api;
 	const user_info = props.user_info;
+	const page_title = props.page_title;
 	console.log(user_info);
 	/////////////////////// States
 	const [dropdown, set_drop_down] = useState(false);
@@ -49,6 +51,9 @@ export default function Dashboard(props) {
 	return (
 		// Dashboard Container
 		<div className="dashboard-container">
+			<Helmet>
+				<title>{page_title}</title>
+			</Helmet>
 			{/* Converter */}
 			<Convertor currencies_api={currencies_info} />
 			{/* User Info And Chart Container*/}
@@ -59,7 +64,7 @@ export default function Dashboard(props) {
 						<div className="dashboard-user-image-container">
 							<img
 								className="dashboard-user-image"
-								src="images/user-icon/user.png"
+								src="https://img.icons8.com/ios-filled/100/ff49b4/user.png"
 								alt="user-profile-image"
 							/>
 						</div>
