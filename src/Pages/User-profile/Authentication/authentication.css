@@ -7,10 +7,6 @@
 	color: var(--primary-text-color);
 }
 
-/* Calendar Starts */
-
-/* Calendar Ends */
-
 /* Header */
 .authentication-header {
 	font-size: var(--main-font-size-large);
@@ -120,15 +116,38 @@
 /* Level one First Row Of Inputs */
 .authentication-level-one-first-row,
 .authentication-level-one-second-row {
-	flex-direction: row !important;
+	/* border: 1px solid red; */
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
 }
 
 /* Divs Inside Level One Input Container */
-.authentication-level-one-input-container div {
+.authentication-level-one-name-input-container,
+.authentication-level-one-last-name-input-container,
+.authentication-level-one-id-input-container,
+.authentication-level-one-parent-name-input-container {
 	/* border: 1px solid green; */
 	display: flex;
 	flex-direction: column;
 	margin: 5px 10px;
+}
+
+/* DatePicker Container */
+.authentication-level-one-datepicker-container {
+	/* border: 1px solid purple; */
+	margin: 10px;
+}
+
+.authentication-level-one-datepicker-container label {
+	margin: 10px;
+}
+
+.rmdp-input {
+	/* border: 1px solid yellow !important; */
+	padding: 15px !important;
 }
 
 /* Inputs Inside Divs Inside Level One Input Container */

@@ -24,12 +24,7 @@ export default function Authentication() {
 	};
 
 	return (
-		<div
-			className="authentication-container component_box_shadow"
-			dir="rtl"
-
-		>
-			<DatePicker calendar={persian} locale={persian_fa} />
+		<div className="authentication-container component_box_shadow">
 			<h4>سطوح کاربری و احراز هویت</h4>
 			<p>
 				در این قسمت میتوانید احراز هویت خود را تکمیل نمایید و برای ارتقاء سطح
@@ -104,11 +99,11 @@ export default function Authentication() {
 					</ul>
 					<div className="authentication-level-one-input-container">
 						<div className="authentication-level-one-first-row">
-							<div>
+							<div className="authentication-level-one-name-input-container">
 								<label htmlFor="name">نام</label>
 								<input type="text"></input>
 							</div>
-							<div>
+							<div className="authentication-level-one-last-name-input-container">
 								<label htmlFor="last-name">نام خانوادگی</label>
 								<input type="text"></input>
 							</div>
@@ -116,19 +111,27 @@ export default function Authentication() {
 						<div className="authentication-level-one-second-row">
 							<div>
 								<label htmlFor="ID">کد ملی</label>
-								<input type="number"></input>
+								<input
+									type="number"
+									className="authentication-level-one-id-input-container"
+								></input>
 							</div>
-							<div>
+							<div className="authentication-level-one-parent-name-input-container">
 								<label htmlFor="name">نام پدر</label>
 								<input type="text"></input>
 							</div>
 						</div>
-						<div>
+						<div className="authentication-level-one-datepicker-container">
 							<label htmlFor="name">
 								تاریخ تولد (هجده سال به بالا امکان ثبت وجود دارد)
 							</label>
+							<br />
+							<DatePicker
+								calendar={persian}
+								locale={persian_fa}
+								className="date-picker"
+							/>
 						</div>
-
 						<div>
 							<input type="submit" value="ثبت اطلاعات"></input>
 						</div>
