@@ -117,6 +117,12 @@
 	margin: auto;
 }
 
+/* Level one First Row Of Inputs */
+.authentication-level-one-first-row,
+.authentication-level-one-second-row {
+	flex-direction: row !important;
+}
+
 /* Divs Inside Level One Input Container */
 .authentication-level-one-input-container div {
 	/* border: 1px solid green; */
@@ -153,6 +159,80 @@
 	transition: var(--global-transition);
 }
 
+.authentication-level-two-modal-button {
+	border: var(--input-border-focus-mode);
+	margin: 20px auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	padding: 10px;
+	cursor: pointer;
+	color: var(--color-primary);
+	border-radius: var(--button-border-radius-soft);
+	user-select: none;
+}
+
+.authentication-level-two-modal-button:hover {
+	background-color: var(--color-primary-lightest);
+	transition: var(--global-transition);
+}
+
+/* Level Two Contract */
+.authentication-level-two-contract-paragraph {
+	/* border: 1px solid red; */
+	margin: auto;
+	width: 50%;
+	line-height: 1.5rem;
+}
+
+/* Line Between Contract And Notice In Level Two */
+.authentication-level-two-hr {
+	width: 50%;
+	margin: 20px auto;
+}
+
+/* Level Two Notice Below Contract */
+.authentication-level-two-notice {
+	/* border: 1px solid blue; */
+	width: 50%;
+	margin: auto;
+	line-height: 1.5rem;
+}
+
+/* Level Two Input Container */
+.authentication-level-two-input-container {
+	/* border: 1px solid brown; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+}
+
+/* Input File */
+.authentication-level-two-input-container input[type="file"] {
+	border: 1px solid pink;
+	width: 50%;
+}
+
+/* Level Two Submit Button */
+.authentication-level-two-submit-button {
+	width: 200px;
+	padding: 10px;
+	margin: 10px;
+	border-radius: var(--button-border-radius-extreme);
+	outline: none;
+	border: none;
+	background-color: var(--button-primary-bg-color);
+	color: var(--color-secondary);
+}
+
+.authentication-level-two-submit-button:hover {
+	box-shadow: var(--button-box-shadow-primary);
+	transition: var(--global-transition);
+}
+
 .half {
 	width: 30% !important;
 }
@@ -166,4 +246,26 @@
 .active {
 	color: var(--color-secondary);
 	background-color: var(--color-primary);
+}
+
+@media (max-width: 1200px) {
+	.authentication-levels {
+		width: 60px;
+		height: 60px;
+		font-size: var(--main-font-size-small);
+	}
+
+	.authentication-level-one-input-container {
+		/* border: 1px solid blue; */
+		width: 100%;
+	}
+	.authentication-level-one-first-row,
+	.authentication-level-one-second-row {
+		flex-direction: column !important;
+	}
+	.authentication-level-two-contract-paragraph,
+	.authentication-level-two-notice,
+	.authentication-level-two-hr {
+		width: 80%;
+	}
 }

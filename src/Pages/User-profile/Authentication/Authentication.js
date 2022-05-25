@@ -24,7 +24,6 @@ export default function Authentication() {
 	return (
 		// Page Container
 		<div className="authentication-container component_box_shadow">
-			<DatePicker styles={style} />
 			{/* Header */}
 			<p className="authentication-header">سطوح کاربری و احراز هویت</p>
 			<p>
@@ -99,10 +98,7 @@ export default function Authentication() {
 						<li>ممنوع بودن خرید ارز دیجیتال</li>
 					</ul>
 					<div className="authentication-level-one-input-container">
-						<div
-							className="authentication-level-one-first-row"
-							style={{ flexDirection: "row" }}
-						>
+						<div className="authentication-level-one-first-row">
 							<div>
 								<label htmlFor="name">نام</label>
 								<input type="text"></input>
@@ -112,10 +108,7 @@ export default function Authentication() {
 								<input type="text"></input>
 							</div>
 						</div>
-						<div
-							className="authentication-level-one-second-row"
-							style={{ flexDirection: "row" }}
-						>
+						<div className="authentication-level-one-second-row">
 							<div>
 								<label htmlFor="ID">کد ملی</label>
 								<input type="number"></input>
@@ -146,12 +139,12 @@ export default function Authentication() {
 						در این مرحله مدراک شما باید توسط پشتیبانی تایید گردد که در کمترین
 						زمان ممکن این کار انجام میشود.
 					</p>
-					<p>امکانات و محدودیت های سطح دو:</p>
+					<p className="authentication-header">امکانات و محدودیت های سطح دو:</p>
 					<ul>
 						<li>خرید ارز دیجیتال با محدودیت روزانه 7,000,000 تومان</li>
 						<li>ممنوع بودن برداشت رمز ارزها</li>
 					</ul>
-					<p>
+					<p className="authentication-level-two-contract-paragraph">
 						متن قرارداد:<br></br> "احراز هویت جهت خرید ارز های دیجیتال از سایت
 						<br></br> نام و نام خانوادگی :<br></br> شماره موبایل :<br></br>
 						اینجانب تمامی قوانین وبسایت را خوانده و می پذیرم همچنین از خدمات
@@ -161,21 +154,26 @@ export default function Authentication() {
 						آن دسترسی ندارد. در صورت انجام موارد غیرقانونی تمامی عواقب آن به
 						عهده اینجانب می باشد."
 					</p>
-					<hr />
-					<p>
+					<hr className="authentication-level-two-hr" />
+					<p className="authentication-level-two-notice">
 						نکات :<br></br>- منظور از سلفی این است که چهره شما نیز مشخص باشد به
 						همراه قرارداد و کارت شناسایی.<br></br> - حتما با دوربین پشت گوشی
 						عکسبرداری کنید تا متون در عکس برعکس نیوفتد.<br></br> - تصویر خوانا و
 						واضح باشد ، توصیه میشود در عکسبرداری از یک شخص دیگر کمک بخواهید و
 						ایشان از شما عکس بگیرد.
 					</p>
-					<button>نمایش تصویر نمونه</button>
-					<p>
-						با کلیک بر روی باکس زیر تصویر را آپلود و یا تصویر را بر روی باکس زیر
-						درگ(بکشید و بندازید) کنید
-					</p>
-					<input type="file"></input>
-					<input type="submit" value="ثبت تصویر"></input>
+					<div className="authentication-level-two-modal-button">
+						نمایش تصویر نمونه
+					</div>
+					<div className="authentication-level-two-input-container">
+						<p>با کلیک بر روی باکس زیر تصویر را آپلود کنید</p>
+						<input type="file"></input>
+						<input
+							className="authentication-level-two-submit-button"
+							type="submit"
+							value="ثبت تصویر"
+						></input>
+					</div>
 				</div>
 			) : (
 				""
