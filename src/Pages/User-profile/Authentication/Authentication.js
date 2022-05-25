@@ -24,11 +24,7 @@ export default function Authentication() {
 	};
 
 	return (
-		<div
-			className="authentication-container component_box_shadow"
-			dir="rtl"
-
-		>
+		<div className="authentication-container component_box_shadow" dir="rtl">
 			<DatePicker calendar={persian} locale={persian_fa} />
 			<h4>سطوح کاربری و احراز هویت</h4>
 			<p>
