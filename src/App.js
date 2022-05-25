@@ -20,11 +20,13 @@ import Login from "./Pages/Signup-Signin/Login/Login";
 import Forgot_password from "./Pages/Signup-Signin/Forgot-password/Forgot_password";
 import Sign_up from "./Pages/Signup-Signin/Sign-up/Sign_up";
 import Two_factor_authentication from "./Pages/User-profile/Two-factor-authentication/Two_factor_authentication";
+import { Helmet } from "react-helmet";
 import TrendingDownIcon from "@material-ui/icons/TrendingDown";
 import "./app.css";
 import "./deposit.css";
 import "./withdrawal.css";
-
+const website_name = "نام وبسایت";
+const dashboard_title = "داشبورد" + " - " + website_name;
 //*********************************** Currency Info API ***********************************//
 // This a fake api and built just for testing
 const API = {
@@ -180,6 +182,7 @@ const user_api = API.user_info;
 let wallet_address;
 let binance_wallet_address;
 let currency_id;
+let currency_persian_name;
 const Deposit = () => {
 	// Using params to send data from app.js to deposit page of each currency inside Wallet.js
 	let { name } = useParams();
@@ -189,8 +192,12 @@ const Deposit = () => {
 			wallet_address = item.address;
 			currency_id = item.id;
 			binance_wallet_address = item.tag_address_binance;
+			currency_persian_name = item.persian_name;
 		}
 	});
+	// Currency deposit title
+	const currency_deposit_title =
+		"واریز" + " " + currency_persian_name + " - " + website_name;
 	// States
 	const [text, set_text] = useState("کلیک و کپی");
 	const [text_2, set_text_2] = useState("کلیک و کپی");
@@ -291,6 +298,10 @@ const Deposit = () => {
 				if (item.name == { name }.name) {
 					return (
 						<div>
+							{/* Page title */}
+							<Helmet>
+								<title>{currency_deposit_title}</title>
+							</Helmet>
 							{/* Modal box container */}
 							{modal_toggle ? (
 								<div className="modal-box-container component_box_shadow">
@@ -373,7 +384,7 @@ const Deposit = () => {
 							</div>
 							{/* QR Container */}
 							<div className="deposit-qr-container">
-								<img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX10238032.jpg" />
+								<img src="https://img.icons8.com/external-dreamstale-green-shadow-dreamstale/64/000000/external-qr-code-finances-and-shopping-dreamstale-green-shadow-dreamstale.png" />
 								<span>برای بزرگ نمایی کلیک کنید</span>
 							</div>
 
@@ -535,6 +546,18 @@ const Deposit = () => {
 const Withdrawal = () => {
 	// Using params to send data from app.js to withdrawal page of each currency inside Wallet.js
 	let { name } = useParams();
+	// Get the currency id and wallet address from api and fetch it
+	digital_currencies_arr.map((item) => {
+		if (item.name == { name }.name) {
+			wallet_address = item.address;
+			currency_id = item.id;
+			binance_wallet_address = item.tag_address_binance;
+			currency_persian_name = item.persian_name;
+		}
+	});
+	// Currency withdrawal title
+	const currency_withdrawal_title =
+		"برداشت" + " " + currency_persian_name + " - " + website_name;
 	// States
 	const [currency_value, set_currency_value] = useState("");
 	const [currency_input, set_currency_input] = useState(true);
@@ -598,6 +621,10 @@ const Withdrawal = () => {
 				if (item.name == { name }.name) {
 					return (
 						<div>
+							{/* Page title */}
+							<Helmet>
+								<title>{currency_withdrawal_title}</title>
+							</Helmet>
 							{/* Page Header */}
 							<p className="deposit-header">
 								{" "}
