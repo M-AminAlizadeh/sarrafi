@@ -185,7 +185,10 @@
 	.deposit-networks-container {
 		display: flex;
 		flex-direction: column;
-		border: 1px solid red;
+		/* border: 1px solid red; */
+	}
+	.deposit-form {
+		width: 100%;
 	}
 }
 .deposit-form hr {

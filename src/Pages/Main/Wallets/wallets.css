@@ -200,12 +200,29 @@
 	.wallet-currency-row,
 	.wallet-toman-row {
 		flex-direction: column;
+		/* border: 1px solid red; */
 	}
 	.currency-row-info-container {
 		/* border: 2px solid pink; */
 		flex-direction: column;
-		align-items: flex-start;
+		align-items: center;
 	}
+
+	.toman-inventory-container span {
+		font-size: var(--main-font-size-medium);
+	}
+
+	.currency-icon-container img {
+		width: 35px;
+	}
+
+	.currency-names-container {
+		/* border: 1px solid red; */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 	.currency-price-container {
 		/* border: 1px solid green; */
 		align-items: flex-start;
@@ -214,5 +231,32 @@
 		/* border: 1px solid orange; */
 		flex-direction: column;
 		justify-content: stretch;
+	}
+
+	.currency-btns-container a,
+	.toman-btns-container a {
+		margin: 10px;
+	}
+
+	.btns-container-sell-buy a {
+		/* border: 1px solid red; */
+		width: 50%;
+	}
+
+	.btns-container-history a,
+	.toman-btns-container {
+		width: 100%;
+		/* border: 1px solid blue; */
+	}
+	.btns-container-history button,
+	.btns-container-sell-buy button {
+		/* border: 1px solid black; */
+		width: 100%;
+	}
+
+	.currency-price-container,
+	.currency-inventory-container {
+		align-items: center;
+		font-size: var(--main-font-size-medium);
 	}
 }

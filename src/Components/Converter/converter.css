@@ -168,3 +168,17 @@
 		flex-direction: column;
 	}
 }
+@media (max-width: 550px) {
+	.converter-drop-down {
+		/* border: 1px solid red !important; */
+		width: 80vw;
+		left: -50px;
+	}
+}
+.converter-choose-currency {
+	/* border: 1px solid blue; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}

@@ -96,3 +96,9 @@
 		flex-direction: column;
 	}
 }
+@media (max-width: 600px) {
+	.toman-deposit-right-side {
+		/* border: 1px solid red !important; */
+		width: 90%;
+	}
+}

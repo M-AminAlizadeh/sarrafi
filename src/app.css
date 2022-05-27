@@ -80,6 +80,7 @@
 /* Error message styling */
 .error-message {
 	color: var(--button-beta-bg-color);
+	font-size: var(--main-font-size-small);
 }
 .error-input-border {
 	border: 1px solid var(--button-beta-bg-color) !important;
