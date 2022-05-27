@@ -1,6 +1,7 @@
 import "./password.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 export default function Password(props) {
 	const user_info = props.user_info;
 	// States
@@ -43,6 +44,9 @@ export default function Password(props) {
 	return (
 		// Page Container
 		<div className="password-page-container">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			{/* Profile Card */}
 			<div className="password-page-profile-card ">
 				<div className="password-page-profile-card-inside-div">

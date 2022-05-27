@@ -8,6 +8,7 @@ import {
 } from "@mui/x-data-grid";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
+import { Helmet } from "react-helmet";
 import "./rial_transactions.css";
 
 const columns = [
@@ -180,9 +181,12 @@ function CustomPagination() {
 	);
 }
 
-export default function rial_transactions() {
+export default function rial_transactions(props) {
 	return (
 		<div className="rial-transactions-container">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			<div style={{ width: "90%", margin: "auto" }} dir="rtl">
 				{/* Title and description part */}
 				<div className="crypto_transactions-info-container">

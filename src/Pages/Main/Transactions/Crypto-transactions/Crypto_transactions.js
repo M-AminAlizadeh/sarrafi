@@ -8,7 +8,7 @@ import {
 } from "@mui/x-data-grid";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-
+import { Helmet } from "react-helmet";
 import "./crypto_transactions.css";
 
 const columns = [
@@ -187,9 +187,12 @@ function CustomPagination() {
 	);
 }
 
-export default function Crypto_transactions() {
+export default function Crypto_transactions(props) {
 	return (
 		<div className="crypto-transactions-container component_box_shadow">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			<div style={{ width: "90%", margin: "auto" }} dir="rtl">
 				{/* Title and description part */}
 				<div className="crypto_transactions-info-container">

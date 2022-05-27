@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./toman-deposit.css";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
-
+import { Helmet } from "react-helmet";
 export default function Toman_deposit(props) {
 	const user_info = props.user_info;
 	// States
@@ -28,6 +28,9 @@ export default function Toman_deposit(props) {
 	};
 	return (
 		<div className="toman-deposit-container" dir="rtl">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			{/* Toman Bank portal Container */}
 			<div className="toman-deposit-right-side component_box_shadow">
 				<p className="deposit-header">

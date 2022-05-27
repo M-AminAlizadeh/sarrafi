@@ -8,6 +8,7 @@ import {
 } from "@mui/x-data-grid";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
+import { Helmet } from "react-helmet";
 
 const columns = [
 	{ field: "number", headerName: "شماره", width: 110 },
@@ -186,9 +187,12 @@ function CustomPagination() {
 	);
 }
 
-export default function Orders() {
+export default function Orders(props) {
 	return (
 		<div className="crypto-transactions-container component_box_shadow">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			<div style={{ width: "90%", margin: "auto" }} dir="rtl">
 				{/* Title and description part */}
 				<div className="crypto_transactions-info-container">

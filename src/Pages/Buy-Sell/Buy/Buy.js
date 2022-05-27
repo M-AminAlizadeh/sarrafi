@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TrendingDownIcon from "@material-ui/icons/TrendingDown";
+import { Helmet } from "react-helmet";
 import "./buy.css";
 import { Link } from "react-router-dom";
 
@@ -77,6 +78,9 @@ export default function Buy(props) {
 	return (
 		// Page Container
 		<div className="buy-page-container">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			{/* Left Side Container */}
 			<div className="buy-page-article">
 				{/* Article Header */}

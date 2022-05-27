@@ -10,6 +10,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { Helmet } from "react-helmet";
 
 // Table Data **********************************************
 
@@ -87,6 +88,9 @@ export default function Credit_cards(props) {
 	return (
 		// Page Container
 		<div className="credit-cards-container">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			{/* Right Side */}
 			<div className="credit-cards-profile-card">
 				<div className="credit-cards-profile-card-inside-div">

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TrendingDownIcon from "@material-ui/icons/TrendingDown";
 import "./toman-withdrawal.css";
-
+import { Helmet } from "react-helmet";
 export default function Toman_withdrawal(props) {
 	const user_credit_cards_list = props.user_info.credit_cards;
 	// States
@@ -46,6 +46,9 @@ export default function Toman_withdrawal(props) {
 
 	return (
 		<div className="toman-deposit-container" dir="rtl">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			{/* Toman Bank portal Container */}
 			<div className="toman-deposit-right-side component_box_shadow">
 				<p className="deposit-header">

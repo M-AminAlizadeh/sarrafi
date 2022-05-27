@@ -1,9 +1,13 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import "./404.css";
 import { Link } from "react-router-dom";
-export default function _404() {
+export default function _404(props) {
 	return (
 		<div>
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			<div class="err_page">
 				<div class="err_page_left">
 					<img src="images/illustrations/404.svg" />

@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import Checkbox from "@material-ui/core/Checkbox";
 import "./two-factor-authentication.css";
+import { Helmet } from "react-helmet";
 
 export default function Two_factor_authentication(props) {
 	const user_info = props.user_info;
@@ -42,6 +43,9 @@ export default function Two_factor_authentication(props) {
 
 	return (
 		<div className="two-factor-authentication-container">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			<div className="two-factor-authentication-profile-card">
 				<div className="two-factor-authentication-profile-card-inner-div">
 					<img

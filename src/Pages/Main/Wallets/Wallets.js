@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./wallets.css";
-
+import { Helmet } from "react-helmet";
 const Wallets = (props) => {
 	const currencies_info = props.data;
 	const user_info = props.user_info;
@@ -22,6 +22,9 @@ const Wallets = (props) => {
 	};
 	return (
 		<div className="wallets-container component_box_shadow">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			{/* Header container */}
 			<div className="wallets-header-container">
 				<span className="wallets-header">لیست کیف پول های شما</span>

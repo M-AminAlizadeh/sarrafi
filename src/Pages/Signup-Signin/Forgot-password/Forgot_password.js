@@ -1,8 +1,9 @@
 import { React, useState } from "react";
 import "./forgot-password.css";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
-export default function Forgot_password() {
+export default function Forgot_password(props) {
 	// States
 	const [password_input, set_password_input] = useState("");
 	const [password_warning, set_password_warning] = useState("");
@@ -18,6 +19,9 @@ export default function Forgot_password() {
 	};
 	return (
 		<div className="whole-forgot-password-container">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			<div className="forgot-password-page-image-container">
 				<img
 					src="images/illustrations/Password_Isometric.png"

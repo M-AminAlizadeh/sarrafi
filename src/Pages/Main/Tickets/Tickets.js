@@ -8,6 +8,7 @@ import {
 } from "@mui/x-data-grid";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
+import { Helmet } from "react-helmet";
 import "./tickets.css";
 
 const style = {
@@ -93,7 +94,7 @@ function CustomPagination() {
 		/>
 	);
 }
-export default function Tickets() {
+export default function Tickets(props) {
 	// States
 	const [toggle_new_ticket, setToggle_new_ticket] = useState(false);
 	const [form_title, set_form_title] = useState("");
@@ -120,6 +121,9 @@ export default function Tickets() {
 	return (
 		// Tickets container
 		<div className="tickets-container">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			<div class="tickets-components-container">
 				{/* New Ticket section */}
 				<div className="tickets-new-ticket-container component_box_shadow">

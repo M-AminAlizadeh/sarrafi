@@ -12,7 +12,7 @@ import {
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import { Helmet } from "react-helmet";
-const Title = "سلام";
+
 // Table columns
 const columns = [
 	{ field: "number", headerName: "شماره", width: 100 },
@@ -107,7 +107,7 @@ function CustomPagination() {
 	);
 }
 
-export default function Invitation() {
+export default function Invitation(props) {
 	const [text, set_text] = useState("کلیک و کپی");
 	const [text_2, set_text_2] = useState("کلیک و کپی");
 
@@ -122,7 +122,7 @@ export default function Invitation() {
 	return (
 		<div className="invitation-container">
 			<Helmet>
-				<title>{Title}</title>
+				<title>{props.page_title}</title>
 			</Helmet>
 			{/* First Component */}
 			<div className="invitation-page-first-row">

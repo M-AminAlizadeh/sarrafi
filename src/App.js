@@ -28,7 +28,25 @@ import "./deposit.css";
 import "./withdrawal.css";
 //*********************************** Currency Info API ***********************************//
 const website_name = "نام وبسایت";
-const dashboard_title = "داشبورد" + " - " + website_name;
+const dashboard_title = `داشبورد - ${website_name}`;
+const wallets_title = `کیف پول ها - ${website_name}`;
+const toman_deposit_title = `واریز تومانی - ${website_name}`;
+const toman_withdrawal_title = `برداشت تومانی - ${website_name}`;
+const crypto_transactions_title = `تراکنش های رمز ارز - ${website_name}`;
+const rial_transactions_title = `تراکنش های ریالی - ${website_name}`;
+const tickets_title = `پشتیبانی - ${website_name}`;
+const buy_title = `خرید ارز - ${website_name}`;
+const sell_title = `فروش ارز - ${website_name}`;
+const orders_title = `سفارشات - ${website_name}`;
+const credit_cards_title = `کارت های بانکی - ${website_name}`;
+const invitation_title = `کسب درامد - ${website_name}`;
+const auth_title = `سطح کاربری و احراز هویت - ${website_name}`;
+const password_title = `تغییر رمز عبور - ${website_name}`;
+const two_factor_auth_title = `ورود ۲ مرحله ای - ${website_name}`;
+const _404_title = "صفحه ی مورد نظر یافت نشد";
+const login_title = `ورود`;
+const signup_title = `ثبت نام`;
+const forgot_password_title = `بازیابی رمز عبور`;
 // This a fake api and built just for testing
 const API = {
 	digital_currency_info: [
@@ -816,37 +834,80 @@ const AppLayout = () => (
 			/>
 			<Route
 				path="wallets"
-				element={<Wallets data={digital_currencies_arr} user_info={user_api} />}
+				element={
+					<Wallets
+						data={digital_currencies_arr}
+						user_info={user_api}
+						page_title={wallets_title}
+					/>
+				}
 			/>
 			<Route path="wallets/deposit/:name" element={<Deposit />} />
 			<Route path="wallets/withdrawal/:name" element={<Withdrawal />} />
 			<Route
 				path="wallets/deposit/toman"
-				element={<Toman_deposit user_info={user_api} />}
+				element={
+					<Toman_deposit
+						user_info={user_api}
+						page_title={toman_deposit_title}
+					/>
+				}
 			/>
 			<Route
 				path="wallets/withdrawal/toman"
-				element={<Toman_withdrawal user_info={user_api} />}
+				element={
+					<Toman_withdrawal
+						user_info={user_api}
+						page_title={toman_withdrawal_title}
+					/>
+				}
 			/>
-			<Route path="crypto-transactions" element={<Crypto_transactions />} />
-			<Route path="rial-transactions" element={<Rial_transactions />} />
-			<Route path="tickets" element={<Tickets />} />
-			<Route path="buy" element={<Buy data={digital_currencies_arr} />} />
-			<Route path="sell" element={<Sell data={digital_currencies_arr} />} />
-			<Route path="orders" element={<Orders />} />
+			<Route
+				path="crypto-transactions"
+				element={<Crypto_transactions page_title={crypto_transactions_title} />}
+			/>
+			<Route
+				path="rial-transactions"
+				element={<Rial_transactions page_title={rial_transactions_title} />}
+			/>
+			<Route path="tickets" element={<Tickets page_title={tickets_title} />} />
+			<Route
+				path="buy"
+				element={<Buy data={digital_currencies_arr} page_title={buy_title} />}
+			/>
+			<Route
+				path="sell"
+				element={<Sell data={digital_currencies_arr} page_title={sell_title} />}
+			/>
+			<Route path="orders" element={<Orders page_title={orders_title} />} />
 			<Route
 				path="credit-cards"
-				element={<Credit_cards user_info={user_api} />}
+				element={
+					<Credit_cards user_info={user_api} page_title={credit_cards_title} />
+				}
 			/>
-			<Route path="invitation" element={<Invitation />} />
+			<Route
+				path="invitation"
+				element={<Invitation page_title={invitation_title} />}
+			/>
 			<Route
 				path="authentication"
-				element={<Authentication user_info={user_api} />}
+				element={
+					<Authentication user_info={user_api} page_title={auth_title} />
+				}
 			/>
-			<Route path="password" element={<Password user_info={user_api} />} />
+			<Route
+				path="password"
+				element={<Password user_info={user_api} page_title={password_title} />}
+			/>
 			<Route
 				path="two-factor-authentication"
-				element={<Two_factor_authentication user_info={user_api} />}
+				element={
+					<Two_factor_authentication
+						user_info={user_api}
+						page_title={two_factor_auth_title}
+					/>
+				}
 			/>
 		</Routes>
 	</>
@@ -856,10 +917,13 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="*" element={<_404 />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="forgot-password" element={<Forgot_password />} />
-				<Route path="sign-up" element={<Sign_up />} />
+				<Route path="*" element={<_404 page_title={_404_title} />} />
+				<Route path="/login" element={<Login page_title={login_title} />} />
+				<Route
+					path="forgot-password"
+					element={<Forgot_password page_title={forgot_password_title} />}
+				/>
+				<Route path="sign-up" element={<Sign_up page_title={signup_title} />} />
 				<Route path="/" element={<AppLayout website_name={website_name} />}>
 					<Route
 						path="/"
@@ -874,40 +938,98 @@ function App() {
 					<Route
 						path="wallets"
 						element={
-							<Wallets data={digital_currencies_arr} user_info={user_api} />
+							<Wallets
+								data={digital_currencies_arr}
+								user_info={user_api}
+								page_title={wallets_title}
+							/>
 						}
 					/>
 					<Route path="wallets/deposit/:name" element={<Deposit />} />
 					<Route path="wallets/withdrawal/:name" element={<Withdrawal />} />
 					<Route
 						path="wallets/deposit/toman"
-						element={<Toman_deposit user_info={user_api} />}
+						element={
+							<Toman_deposit
+								user_info={user_api}
+								page_title={toman_deposit_title}
+							/>
+						}
 					/>
 					<Route
 						path="wallets/withdrawal/toman"
-						element={<Toman_withdrawal user_info={user_api} />}
+						element={
+							<Toman_withdrawal
+								user_info={user_api}
+								page_title={toman_withdrawal_title}
+							/>
+						}
 					/>
-					<Route path="crypto-transactions" element={<Crypto_transactions />} />
-					<Route path="rial-transactions" element={<Rial_transactions />} />
-					<Route path="tickets" element={<Tickets />} />
-					<Route path="buy" element={<Buy data={digital_currencies_arr} />} />
+					<Route
+						path="crypto-transactions"
+						element={
+							<Crypto_transactions page_title={crypto_transactions_title} />
+						}
+					/>
+					<Route
+						path="rial-transactions"
+						element={<Rial_transactions page_title={rial_transactions_title} />}
+					/>
+					<Route
+						path="tickets"
+						element={<Tickets page_title={tickets_title} />}
+					/>
+					<Route
+						path="buy"
+						element={
+							<Buy data={digital_currencies_arr} page_title={buy_title} />
+						}
+					/>
 					<Route path="toman-deposit" element={<Toman_deposit />} />
-					<Route path="toman-withdrawal" element={<Toman_withdrawal />} />
-					<Route path="sell" element={<Sell data={digital_currencies_arr} />} />
-					<Route path="orders" element={<Orders />} />
+					<Route
+						path="toman-withdrawal"
+						element={<Toman_withdrawal page_title={toman_withdrawal_title} />}
+					/>
+					<Route
+						path="sell"
+						element={
+							<Sell data={digital_currencies_arr} page_title={sell_title} />
+						}
+					/>
+					<Route path="orders" element={<Orders page_title={orders_title} />} />
 					<Route
 						path="credit-cards"
-						element={<Credit_cards user_info={user_api} />}
+						element={
+							<Credit_cards
+								user_info={user_api}
+								page_title={credit_cards_title}
+							/>
+						}
 					/>
-					<Route path="invitation" element={<Invitation />} />
+					<Route
+						path="invitation"
+						element={<Invitation page_title={invitation_title} />}
+					/>
 					<Route
 						path="authentication"
-						element={<Authentication user_info={user_api} />}
+						element={
+							<Authentication user_info={user_api} page_title={auth_title} />
+						}
 					/>
-					<Route path="password" element={<Password user_info={user_api} />} />
+					<Route
+						path="password"
+						element={
+							<Password user_info={user_api} page_title={password_title} />
+						}
+					/>
 					<Route
 						path="two-factor-authentication"
-						element={<Two_factor_authentication user_info={user_api} />}
+						element={
+							<Two_factor_authentication
+								user_info={user_api}
+								page_title={two_factor_auth_title}
+							/>
+						}
 					/>
 				</Route>
 			</Routes>

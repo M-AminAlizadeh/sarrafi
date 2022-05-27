@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "./sign-up.css";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
-export default function Signup() {
+export default function Signup(props) {
 	// States
 	const [cell_phone_input, set_cell_phone_input] = useState("");
 	const [cell_phone_warning, set_cell_phone_warning] = useState("");
@@ -19,6 +20,9 @@ export default function Signup() {
 	return (
 		// Page Container
 		<div className="whole-signup-container">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			{/* Image Container */}
 			<div className="signup-page-image-container">
 				<img

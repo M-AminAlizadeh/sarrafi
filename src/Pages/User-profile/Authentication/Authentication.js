@@ -3,7 +3,9 @@ import { useState } from "react";
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
-export default function Authentication() {
+import { Helmet } from "react-helmet";
+
+export default function Authentication(props) {
 	const style = {
 		border: "1px solid red",
 	};
@@ -25,6 +27,9 @@ export default function Authentication() {
 
 	return (
 		<div className="authentication-container component_box_shadow">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			<h4>سطوح کاربری و احراز هویت</h4>
 			<p>
 				در این قسمت میتوانید احراز هویت خود را تکمیل نمایید و برای ارتقاء سطح

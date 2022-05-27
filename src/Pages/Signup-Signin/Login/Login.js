@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./login.css";
+import { Helmet } from "react-helmet";
 
-export default function Login() {
+export default function Login(props) {
 	// States
 	const [cell_phone_input, set_cell_phone_input] = useState("");
 	const [password_input, set_password_input] = useState("");
@@ -27,6 +28,9 @@ export default function Login() {
 	return (
 		// Page Container
 		<div className="whole-login-container">
+			<Helmet>
+				<title>{props.page_title}</title>
+			</Helmet>
 			{/* Image Container */}
 			<div className="login-page-image-container">
 				{/* Image Itself */}
