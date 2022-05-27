@@ -95,10 +95,10 @@ export default function Toman_withdrawal(props) {
 							<option disabled selected value="false">
 								کارت بانکی مورد نظر را انتخاب کنید
 							</option>
-							{Object.keys(user_credit_cards_list).map((card) => {
+							{user_credit_cards_list.map((card) => {
 								return (
 									<>
-										<option value={card}>{card}</option>
+										<option value={card.bank_name}>{card.bank_name}</option>
 									</>
 								);
 							})}

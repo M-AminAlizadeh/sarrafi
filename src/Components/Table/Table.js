@@ -21,7 +21,7 @@ export default function Table(props) {
 								<td>
 									<img
 										src={item.icon_source}
-										alt=""
+										alt={item.name}
 										width="30px"
 										height="40px"
 									/>
