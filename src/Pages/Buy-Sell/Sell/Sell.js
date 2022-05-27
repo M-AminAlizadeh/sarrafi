@@ -43,8 +43,13 @@ export default function Sell(props) {
 	};
 	// this function filter items base on user input value
 	const filter_currency = (e) => {
+		const user_input = e.target.value;
 		const filtered = currencies_info.filter((currency) => {
-			return currency.name.includes(e.target.value);
+			return (
+				currency.persian_name.includes(user_input) ||
+				currency.name.toLowerCase().includes(user_input.toLowerCase()) ||
+				currency.abbr.toLowerCase().includes(user_input.toLowerCase())
+			);
 		});
 		set_api_data(filtered);
 	};
@@ -147,165 +152,168 @@ export default function Sell(props) {
 				<div className="buy-page-payment-amount">
 					مبلغ دریافتی:<span>{toman_value}</span> تومان
 				</div>
-				{/* Select currency part */}
-				<p className="buy-page-currency-selection-header">انتخاب ارز</p>
-				<div className="currency-selection-container">
-					{/* Main div */}
-					<div
-						className={`buy-page-select-box ${
-							dropdown ? "change-drop-down-color" : ""
-						}`}
-						onClick={toggle_dropdown}
-					>
-						{/* currency logo */}
-						<div className="buy-page-currency-logo">
-							<img src={currency_icon} width="30px" height="30px" />
-						</div>
-						{/* currency name in persian */}
-						<span className="buy-page-currency-name">{currency_name}</span>
-						{/* currency dropdown icon */}
-						<div className="buy-page-currency-dropdown">
-							<img
-								className={dropdown ? "toggle-drop-down-icon" : ""}
-								src="https://img.icons8.com/ios-glyphs/10/000000/chevron-up.png"
-							/>
-						</div>
-					</div>
-					{/* Drop down list */}
-					{dropdown ? (
-						<div className="drop-down-list-container">
-							{/* Search box */}
-							<div className="search-box-container">
-								<input
-									style={{ cursor: "text" }}
-									type="search"
-									name="search-bar"
-									id="search-bar"
-									placeholder="جستجو بر اساس اسم..."
-									onChange={(e) => {
-										filter_currency(e);
-									}}
+				<form action="">
+					{/* Select currency part */}
+					<p className="buy-page-currency-selection-header">انتخاب ارز</p>
+					<div className="currency-selection-container">
+						{/* Main div */}
+						<div
+							className={`buy-page-select-box ${
+								dropdown ? "change-drop-down-color" : ""
+							}`}
+							onClick={toggle_dropdown}
+						>
+							{/* currency logo */}
+							<div className="buy-page-currency-logo">
+								<img src={currency_icon} width="30px" height="30px" />
+							</div>
+							{/* currency name in persian */}
+							<span className="buy-page-currency-name">{currency_name}</span>
+							{/* currency dropdown icon */}
+							<div className="buy-page-currency-dropdown">
+								<img
+									className={dropdown ? "toggle-drop-down-icon" : ""}
+									src="https://img.icons8.com/ios-glyphs/10/000000/chevron-up.png"
 								/>
 							</div>
-							{api_data.map((currency) => {
-								return (
-									<div
-										className="drop-down-list"
-										onClick={(e) => {
-											fetch_currency(e);
+						</div>
+						{/* Drop down list */}
+						{dropdown ? (
+							<div className="drop-down-list-container">
+								{/* Search box */}
+								<div className="search-box-container">
+									<input
+										style={{ cursor: "text" }}
+										type="search"
+										name="search-bar"
+										id="search-bar"
+										placeholder="جستجو بر اساس اسم..."
+										onChange={(e) => {
+											filter_currency(e);
 										}}
-										id={currency.id}
-									>
-										<div className="right-side" id={currency.id}>
-											<img
-												src={currency.icon_source}
-												width="20px"
-												height="20px"
-												id={currency.id}
-											/>
-											<span id={currency.id}>
-												{currency.persian_name}({currency.name})
-											</span>
+									/>
+								</div>
+								{api_data.map((currency) => {
+									return (
+										<div
+											className="drop-down-list"
+											onClick={(e) => {
+												fetch_currency(e);
+											}}
+											id={currency.id}
+										>
+											<div className="right-side" id={currency.id}>
+												<img
+													src={currency.icon_source}
+													width="20px"
+													height="20px"
+													id={currency.id}
+												/>
+												<span id={currency.id}>
+													{currency.persian_name}({currency.name})
+												</span>
+											</div>
+											<div className="left-side" id={currency.id}>
+												<span id={currency.id}>قیمت خرید</span>
+												<span className="buy-price" id={currency.id}>
+													{currency.website_price}تومان
+												</span>
+											</div>
 										</div>
-										<div className="left-side" id={currency.id}>
-											<span id={currency.id}>قیمت خرید</span>
-											<span className="buy-price" id={currency.id}>
-												{currency.website_price}تومان
-											</span>
-										</div>
-									</div>
-								);
-							})}
+									);
+								})}
+							</div>
+						) : (
+							""
+						)}
+					</div>
+					{/* Price of Each Coin */}
+					<div className="buy-page-each-coin-price">
+						<p>
+							قیمت هر واحد
+							<span className="currency-name">{currency_name}:</span>
+						</p>
+						<p>
+							<span className="currency-value-in-toman">
+								{currency_price_toman}
+							</span>
+							تومان
+						</p>
+					</div>
+					<hr />
+					<div>
+						<span className="buy-page-coin-count-header">مقدار ارز</span>
+						<div className="buy-page-coin-count-div">
+							<div className="buy-page-coin-count-container">
+								<label className="buy-page-coin-count-small-header" htmlFor="">
+									مقدار {currency_name}
+									<img
+										src={currency_icon}
+										alt={currency_name}
+										width="15px"
+										height="15px"
+									/>
+								</label>
+								<input
+									placeholder={currency_abbr}
+									type="number"
+									className={`buy-page-currency-count-input  ${
+										warning ? "" : "error-input-border"
+									}`}
+									onChange={handle_conversion}
+									onFocus={(e) => {
+										set_selected("currency");
+									}}
+									value={currency_value}
+								/>
+								<span className="sell-page-span-below-coin-count-input">
+									موجودی قابل تبدیل کیف پول {currency_name} :
+								</span>
+							</div>
+							{warning ? (
+								""
+							) : (
+								<span className="buy-page-error-message error-message">
+									مقدار را وارد کنید
+								</span>
+							)}
+						</div>
+					</div>
+					<p className="buy-page-further-description-header">توضیحات اضافه</p>
+					<div className="buy-page-text-area-container">
+						<textarea className="buy-page-text-area" rows="5"></textarea>
+					</div>
+					<div>
+						<div className="buy-page-payment-method-container">
+							<span>نحوه دریافت : </span>
+							<span>واریز به کیف پول</span>
+						</div>
+						<p className="buy-page-second-notice">
+							خرید و فروش فقط از طریق کیف پول تومانی شما انجام میشود. برای
+							افزایش موجودی به بخش
+							<Link className="buy-page-link" to="/wallets">
+								{" "}
+								کیف پول تومانی{" "}
+							</Link>
+							رجوع کنید.
+						</p>
+					</div>
+					{success_message ? (
+						<div className="buy-page-success-message success-message-container">
+							پرداخت شما با موفقیت انجام شد
 						</div>
 					) : (
 						""
 					)}
-				</div>
-				{/* Price of Each Coin */}
-				<div className="buy-page-each-coin-price">
-					<p>
-						قیمت هر واحد<span className="currency-name">{currency_name}:</span>
-					</p>
-					<p>
-						<span className="currency-value-in-toman">
-							{currency_price_toman}
-						</span>
-						تومان
-					</p>
-				</div>
-				<hr />
-				<div>
-					<span className="buy-page-coin-count-header">مقدار ارز</span>
-					<div className="buy-page-coin-count-div">
-						<div className="buy-page-coin-count-container">
-							<label className="buy-page-coin-count-small-header" htmlFor="">
-								مقدار {currency_name}
-								<img
-									src={currency_icon}
-									alt={currency_name}
-									width="15px"
-									height="15px"
-								/>
-							</label>
-							<input
-								placeholder={currency_abbr}
-								type="number"
-								className={`buy-page-currency-count-input  ${
-									warning ? "" : "error-input-border"
-								}`}
-								onChange={handle_conversion}
-								onFocus={(e) => {
-									set_selected("currency");
-								}}
-								value={currency_value}
-							/>
-							<span className="sell-page-span-below-coin-count-input">
-								موجودی قابل تبدیل کیف پول {currency_name} :
-							</span>
-						</div>
-						{warning ? (
-							""
-						) : (
-							<span className="buy-page-error-message error-message">
-								مقدار را وارد کنید
-							</span>
-						)}
-					</div>
-				</div>
-				<p className="buy-page-further-description-header">توضیحات اضافه</p>
-				<div className="buy-page-text-area-container">
-					<textarea className="buy-page-text-area" rows="5"></textarea>
-				</div>
-				<div>
-					<div className="buy-page-payment-method-container">
-						<span>نحوه دریافت : </span>
-						<span>واریز به کیف پول</span>
-					</div>
-					<p className="buy-page-second-notice">
-						خرید و فروش فقط از طریق کیف پول تومانی شما انجام میشود. برای افزایش
-						موجودی به بخش
-						<Link className="buy-page-link" to="/wallets">
-							{" "}
-							کیف پول تومانی{" "}
-						</Link>
-						رجوع کنید.
-					</p>
-				</div>
-				{success_message ? (
-					<div className="buy-page-success-message success-message-container">
-						پرداخت شما با موفقیت انجام شد
-					</div>
-				) : (
-					""
-				)}
-				<button
-					className="buy-page-submit-btn"
-					type="submit"
-					size="lg"
-					onClick={check_form}
-				>
-					ثبت و پرداخت
-				</button>
+					<button
+						className="buy-page-submit-btn"
+						type="submit"
+						size="lg"
+						onClick={check_form}
+					>
+						ثبت و پرداخت
+					</button>
+				</form>
 			</div>
 		</div>
 	);
