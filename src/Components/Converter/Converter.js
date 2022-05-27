@@ -70,7 +70,12 @@ export default function Converter(props) {
 						<div className="converter-drop-down-box" onClick={toggle}>
 							{/* Currency icon */}
 							<div className="converter-currency-icon-container">
-								<img src={currency_icon} alt={currency_name} width="30px" />
+								<img
+									src={currency_icon}
+									alt={currency_name}
+									width="30px"
+									height="30px"
+								/>
 							</div>
 							{/* Currency persian name */}
 							<div className="currency-persian-name-container">
@@ -169,12 +174,12 @@ export default function Converter(props) {
 				<div class="converter-bottom-row">
 					{/* Converter btns */}
 					<div>
-						<Link to="sell">
+						<Link to="sell" style={{ border: "1px solid blue" }}>
 							<button className="converter-btn converter-sell-btn">فروش</button>
 						</Link>
 					</div>
 					<div>
-						<Link to="buy">
+						<Link to="buy" style={{ border: "1px solid blue" }}>
 							<button className="converter-btn converter-buy-btn">خرید</button>
 						</Link>
 					</div>
