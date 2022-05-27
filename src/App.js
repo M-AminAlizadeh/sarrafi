@@ -22,6 +22,7 @@ import Sign_up from "./Pages/Signup-Signin/Sign-up/Sign_up";
 import Two_factor_authentication from "./Pages/User-profile/Two-factor-authentication/Two_factor_authentication";
 import { Helmet } from "react-helmet";
 import TrendingDownIcon from "@material-ui/icons/TrendingDown";
+import _404 from "./Pages/404/_404";
 import "./app.css";
 import "./deposit.css";
 import "./withdrawal.css";
@@ -853,6 +854,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
+				<Route path="*" element={<_404 />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="forgot-password" element={<Forgot_password />} />
 				<Route path="sign-up" element={<Sign_up />} />
