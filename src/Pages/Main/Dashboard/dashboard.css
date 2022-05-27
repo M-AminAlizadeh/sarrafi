@@ -45,7 +45,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	border-bottom: 2px solid #7367f0;
+	border-bottom: 2px solid var(--color-primary);
 	border-radius: 10px;
 }
 .dashboard-user-name {
@@ -79,7 +79,7 @@
 }
 .dashboard-user-info-profile-link {
 	text-decoration: none;
-	color: #6456ee;
+	color: var(--color-primary);
 }
 .dashboard-user-info-profile-link-container {
 	margin: 20px;
@@ -147,4 +147,16 @@
 .MuiTableCell-root {
 	font-family: "Vazirmatn", sans-serif !important;
 	color: #6b6b6b !important;
+}
+
+@media (max-width: 1000px) {
+	.dashboard-user-info-table-container {
+		font-size: var(--main-font-size-small);
+	}
+	.dashboard-user-info-table-container td {
+		font-size: var(--main-font-size-small) !important;
+	}
+	.dashboard-user-info-and-chart-container {
+		flex-direction: column;
+	}
 }

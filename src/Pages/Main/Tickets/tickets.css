@@ -172,10 +172,8 @@
 		/* border: 1px solid green; */
 		width: 100%;
 	}
-}
-
-@media (max-width: 450px) {
-	* {
-		font-size: var(--main-font-size-small);
+	.tickets-new-ticket-form-container {
+		/* border: 1px solid blue; */
+		width: 100%;
 	}
 }
