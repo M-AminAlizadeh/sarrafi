@@ -231,8 +231,17 @@
 
 /* Input File */
 .authentication-level-two-input-container input[type="file"] {
-	border: 1px solid pink;
+	border: var(--input-border);
+	border-radius: var(--button-border-radius-softer);
+	padding: 10px;
 	width: 50%;
+	cursor: pointer;
+}
+
+.authentication-level-two-input-container input[type="file"]:hover {
+	border: var(--input-border-focus-mode);
+	box-shadow: var(--button-box-shadow-primary);
+	transition: var(--global-transition);
 }
 
 /* Level Two Submit Button */
@@ -284,7 +293,8 @@
 	}
 	.authentication-level-two-contract-paragraph,
 	.authentication-level-two-notice,
-	.authentication-level-two-hr {
+	.authentication-level-two-hr,
+	.authentication-level-two-input-container input[type="file"] {
 		width: 80%;
 	}
 }
