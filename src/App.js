@@ -64,6 +64,12 @@ const API = {
 			address_binance: "bitcoin binance address",
 			address_smartchain: "bitcoin smart chain",
 			tag_address_binance: "tag address binance",
+			qr_code:
+				"https://img.icons8.com/external-dreamstale-green-shadow-dreamstale/64/000000/external-qr-code-finances-and-shopping-dreamstale-green-shadow-dreamstale.png",
+			binance_qr_code:
+				"https://img.icons8.com/external-tulpahn-outline-color-tulpahn/64/000000/external-qr-code-mobile-user-interface-tulpahn-outline-color-tulpahn.png",
+			smartchain_qr_code:
+				"https://img.icons8.com/external-kmg-design-outline-color-kmg-design/64/000000/external-qr-code-protection-and-security-kmg-design-outline-color-kmg-design.png",
 		},
 		{
 			id: 2,
@@ -202,6 +208,9 @@ let wallet_address;
 let binance_wallet_address;
 let currency_id;
 let currency_persian_name;
+let qr_code;
+let binance_qr_code;
+let smartchain_qr_code;
 const Deposit = () => {
 	// Using params to send data from app.js to deposit page of each currency inside Wallet.js
 	let { name } = useParams();
@@ -212,6 +221,9 @@ const Deposit = () => {
 			currency_id = item.id;
 			binance_wallet_address = item.tag_address_binance;
 			currency_persian_name = item.persian_name;
+			qr_code = item.qr_code;
+			binance_qr_code = item.binance_qr_code;
+			smartchain_qr_code = item.smartchain_qr_code;
 		}
 	});
 	// Currency deposit title
@@ -234,6 +246,13 @@ const Deposit = () => {
 	const [txid_input, set_txid_input] = useState(true);
 	const [modal_toggle, set_modal_toggle] = useState(false);
 	const [success_message, set_success_message] = useState(false);
+	const [qr_magnify, set_qr_magnify] = useState(false);
+	const [currency_qr_code, set_curency_qr_code] = useState(qr_code);
+	const [binance_currency_qr_code, set_binance_curency_qr_code] =
+		useState(binance_qr_code);
+	const [smartchain_currency_qr_code, set_smartchain_curency_qr_code] =
+		useState(smartchain_qr_code);
+	const [qrcode, set_qrcode] = useState(currency_qr_code);
 	// States functions
 	// This function copy the wallet address to clipboard
 	const copy = (e) => {
@@ -253,6 +272,7 @@ const Deposit = () => {
 			set_network_style(true);
 			set_binance__network_style(false);
 			set_binance_smc_network_style(false);
+			set_qrcode(currency_qr_code);
 		} else if (e.target.id == 2) {
 			// change address input
 			set_address_input(
@@ -262,6 +282,7 @@ const Deposit = () => {
 			set_network_style(false);
 			set_binance__network_style(true);
 			set_binance_smc_network_style(false);
+			set_qrcode(binance_currency_qr_code);
 		} else {
 			// change address input
 			set_address_input(
@@ -271,6 +292,7 @@ const Deposit = () => {
 			set_network_style(false);
 			set_binance__network_style(false);
 			set_binance_smc_network_style(true);
+			set_qrcode(smartchain_currency_qr_code);
 		}
 	};
 	// This function sets currency value
@@ -309,6 +331,10 @@ const Deposit = () => {
 	const close_modal = () => {
 		set_modal_toggle(false);
 	};
+	// This function magnifies qrcode image
+	const magnify = (e) => {
+		set_qr_magnify(true);
+	};
 
 	// Here is what we see inside each deposit page
 	return (
@@ -325,20 +351,23 @@ const Deposit = () => {
 							{modal_toggle ? (
 								<div className="modal-box-container component_box_shadow">
 									<span className="modal-box-header">TxID چیست؟</span>
-									<p className="modal-box-description">
+									<p
+										className="modal-box-description"
+										style={{ width: "100%" }}
+									>
 										لینک تراکنش یا همان TxID یک عبارت 64 کاراکتری بوده که ترکیبی
 										از اعداد و حروف است و جهت رهگیری تراکنش استفاده می شود.
-										بعنوان مثال:
-										3fc9153b7bdffcdfae092092320612c9c3c94351f600d80ad75f3915909b488b
-										ممکن است TxID را کمی با تأخیر دریافت نمایید، لذا پس از انجام
-										تراکنش چند دقیقه صبر کرده و پس از دریافت درخواست را ثبت
-										نمایید. چنان چه TxID را به درستی وارد نکرده باشید امکان صحت
-										سنجی خودکار وجود نخواهد داشت بنابراین ممکن است تأیید درخواست
-										شما بیش از حد معمول زمان نیاز داشته باشد. دقت نمایید هنگامی
-										که شما انتقال را انجام می دهید، مقداری نیز به عنوان کارمزد
-										توسط سرویس دهنده کیف پول شما کسر می شود، اما شما می بایست
-										مقداری که هنگام انتقال وارد کرده اید را در بخش واریز به ما
-										وارد نمایید.
+										بعنوان مثال: 3fc9153b7bdffcdf
+										ae092092320612c9c3c94351f600d80ad75f3915909b488b ممکن است
+										TxID را کمی با تأخیر دریافت نمایید، لذا پس از انجام تراکنش
+										چند دقیقه صبر کرده و پس از دریافت درخواست را ثبت نمایید.
+										چنان چه TxID را به درستی وارد نکرده باشید امکان صحت سنجی
+										خودکار وجود نخواهد داشت بنابراین ممکن است تأیید درخواست شما
+										بیش از حد معمول زمان نیاز داشته باشد. دقت نمایید هنگامی که
+										شما انتقال را انجام می دهید، مقداری نیز به عنوان کارمزد توسط
+										سرویس دهنده کیف پول شما کسر می شود، اما شما می بایست مقداری
+										که هنگام انتقال وارد کرده اید را در بخش واریز به ما وارد
+										نمایید.
 									</p>
 									<button
 										className="modal-box-btn"
@@ -350,9 +379,24 @@ const Deposit = () => {
 										متوجه شدم!
 									</button>
 								</div>
-							) : (
-								""
-							)}
+							) : null}
+							{/* Modal QR Code  */}
+							{qr_magnify ? (
+								<div className="modal-box-container component_box_shadow">
+									<div>
+										<img src={qrcode} style={{ width: "100%" }} />
+									</div>
+									<button
+										className="modal-box-btn"
+										onClick={() => {
+											set_qr_magnify(false);
+										}}
+									>
+										{" "}
+										بستن
+									</button>
+								</div>
+							) : null}
 							{/* Page Header */}
 							<p className="deposit-header">
 								{" "}
@@ -403,7 +447,12 @@ const Deposit = () => {
 							</div>
 							{/* QR Container */}
 							<div className="deposit-qr-container">
-								<img src="https://img.icons8.com/external-dreamstale-green-shadow-dreamstale/64/000000/external-qr-code-finances-and-shopping-dreamstale-green-shadow-dreamstale.png" />
+								<img
+									src={qrcode}
+									onClick={(e) => {
+										magnify(e);
+									}}
+								/>
 								<span>برای بزرگ نمایی کلیک کنید</span>
 							</div>
 

@@ -89,15 +89,21 @@
 /* Modal Styling */
 .modal-box-container {
 	/* border: 1px solid red; */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
 	position: absolute;
 	z-index: 2;
-	top: 40%;
-	right: 33%;
-	width: 550px;
-	height: 320px;
+	top: 50%;
+	right: 23%;
+	width: 50vw;
+	min-width: 200px;
+	height: 60vh;
 	background-color: var(--color-secondary);
 	padding: 20px;
 	border-radius: var(--button-border-radius-softer);
+	overflow: scroll;
 }
 .modal-box-header {
 	font-size: var(--main-font-size-large);
