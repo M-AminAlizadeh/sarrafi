@@ -25,9 +25,9 @@ import TrendingDownIcon from "@material-ui/icons/TrendingDown";
 import "./app.css";
 import "./deposit.css";
 import "./withdrawal.css";
+//*********************************** Currency Info API ***********************************//
 const website_name = "نام وبسایت";
 const dashboard_title = "داشبورد" + " - " + website_name;
-//*********************************** Currency Info API ***********************************//
 // This a fake api and built just for testing
 const API = {
 	digital_currency_info: [
@@ -800,6 +800,7 @@ const AppLayout = () => (
 		<Layout
 			user_api={user_api}
 			currencies_api={digital_currencies_arr}
+			website_name={website_name}
 		></Layout>
 		<Routes>
 			<Route
@@ -808,6 +809,7 @@ const AppLayout = () => (
 					<Dashboard
 						user_info={user_api}
 						currencies_api={digital_currencies_arr}
+						page_title={dashboard_title}
 					/>
 				}
 			/>
@@ -856,13 +858,14 @@ function App() {
 				<Route path="/login" element={<Login />} />
 				<Route path="forgot-password" element={<Forgot_password />} />
 				<Route path="sign-up" element={<Sign_up />} />
-				<Route path="/" element={<AppLayout />}>
+				<Route path="/" element={<AppLayout website_name={website_name} />}>
 					<Route
 						path="/"
 						element={
 							<Dashboard
 								user_info={user_api}
 								currencies_api={digital_currencies_arr}
+								page_title={dashboard_title}
 							/>
 						}
 					/>
