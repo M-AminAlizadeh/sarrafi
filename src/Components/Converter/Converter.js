@@ -178,14 +178,14 @@ export default function Converter(props) {
 				<div class="converter-bottom-row">
 					{/* Converter btns */}
 					<div>
-						<Link to="sell" style={{ border: "1px solid blue" }}>
-							<button className="converter-btn converter-sell-btn">فروش</button>
-						</Link>
+						<button className="converter-btn converter-sell-btn">
+							<Link to="sell">فروش</Link>
+						</button>
 					</div>
 					<div>
-						<Link to="buy" style={{ border: "1px solid blue" }}>
-							<button className="converter-btn converter-buy-btn">خرید</button>
-						</Link>
+						<button className="converter-btn converter-buy-btn">
+							<Link to="buy">خرید</Link>
+						</button>
 					</div>
 				</div>
 			</div>

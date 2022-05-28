@@ -29,6 +29,7 @@ import CreditCardRoundedIcon from "@material-ui/icons/CreditCardRounded";
 import PersonOutlineRoundedIcon from "@material-ui/icons/PersonOutlineRounded";
 import PowerSettingsNewRoundedIcon from "@material-ui/icons/PowerSettingsNewRounded";
 import ClearRoundedIcon from "@material-ui/icons/ClearRounded";
+import Notification from "../Components/Notification/Notification";
 import "./layout.css";
 // Expand Functionality Imports
 import ExpandLess from "@material-ui/icons/ExpandLess";
@@ -101,6 +102,7 @@ export default function Layout(props) {
 	// States
 	const [drop_down, set_drop_down] = useState(false);
 	const [user_info_drop_down, set_user_info_drop_down] = useState(false);
+	const [notification_drop_down, set_notificatoin_drop_down] = useState(false);
 	// States functions
 	// This function drop down topbar digital currencies shortcut
 	const toggle_drop_down = () => {
@@ -112,7 +114,14 @@ export default function Layout(props) {
 			? set_user_info_drop_down(false)
 			: set_user_info_drop_down(true);
 	};
-
+	// This function toggle notification drop-down
+	const notification_toggle = () => {
+		if (notification_drop_down == false) {
+			set_notificatoin_drop_down(true);
+		} else {
+			set_notificatoin_drop_down(false);
+		}
+	};
 	const classes = useStyles();
 	const theme = useTheme();
 	// Expand Functionality Functions Defined For Drawer And Dropdowns
@@ -246,8 +255,21 @@ export default function Layout(props) {
 								)}
 							</div>
 							<div className="topbar-icons">
-								<NotificationsActiveOutlinedIcon />
+								<div className="layout-notification-icon-container">
+									<NotificationsActiveOutlinedIcon
+										style={{ cursor: "pointer" }}
+										onClick={() => {
+											notification_toggle();
+										}}
+									/>
+									<span className="layout-notification-badge">
+										{props.notifications.length}
+									</span>
+								</div>
 							</div>
+							{notification_drop_down ? (
+								<Notification notifications={props.notifications} />
+							) : null}
 						</div>
 						{/* Topbar Right Section */}
 						<div className="layout-topbar-right-section">

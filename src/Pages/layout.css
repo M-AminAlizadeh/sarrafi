@@ -106,3 +106,24 @@ drop-down-row-container:hover {
 .currency-name {
 	text-decoration: none !important;
 }
+
+.layout-notification-icon-container {
+	/* border: 1px solid red; */
+	position: relative;
+	padding: 8px;
+}
+.layout-notification-badge {
+	border-radius: 100%;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--button-beta-bg-color);
+	color: var(--color-secondary);
+	user-select: none;
+}
