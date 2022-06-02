@@ -13,6 +13,11 @@
 	scrollbar-width: none;
 }
 
+.notification-container a {
+	text-decoration: none;
+	color: var(--primary-text-color);
+}
+
 .notification-numbers-container {
 	/* border: 1px solid blue; */
 	display: flex;

@@ -20,10 +20,12 @@ export default function Notification(props) {
 				noti.map((item) => {
 					return (
 						<div>
-							<div className="notification-row">
-								<p>{item.title}</p>
-								<p>{`${item.body.slice(0, 49)} ...`}</p>
-							</div>
+							<Link to="/tickets">
+								<div className="notification-row">
+									<p>{item.title}</p>
+									<p>{`${item.body.slice(0, 49)} ...`}</p>
+								</div>
+							</Link>
 						</div>
 					);
 				})
