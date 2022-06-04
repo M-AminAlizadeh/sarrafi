@@ -64,7 +64,7 @@ export default function Dashboard(props) {
 						<div className="dashboard-user-image-container">
 							<img
 								className="dashboard-user-image"
-								src="https://img.icons8.com/ios-filled/100/ff49b4/user.png"
+								src="https://img.icons8.com/ios-filled/100/49B4AF/user.png"
 								alt="user-profile-image"
 							/>
 						</div>

@@ -56,7 +56,7 @@
 	width: 100%;
 	border-radius: var(--pilled-shape-radius);
 	border: none;
-	background: var(--color-primary-lightest);
+	background: var(--color-primary-light);
 	color: var(--secondary-color);
 	outline: none;
 	border: 1px solid transparent;

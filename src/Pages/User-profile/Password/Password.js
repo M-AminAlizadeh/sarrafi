@@ -52,7 +52,7 @@ export default function Password(props) {
 				<div className="password-page-profile-card-inside-div">
 					<img
 						className="password-page-user-icon"
-						src="images/user-icon/user.png"
+						src="https://img.icons8.com/ios-filled/100/49B4AF/user.png"
 					/>
 					<span className="password-page-user-name">
 						{user_info.first_name + " " + user_info.last_name}

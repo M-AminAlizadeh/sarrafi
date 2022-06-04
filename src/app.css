@@ -9,8 +9,8 @@
 	--main-font-size-small: 0.75rem;
 
 	/**************** color variables *********************/
-	--color-primary: rgb(255, 73, 180);
-	--color-primary-light: rgb(255, 214, 238);
+	--color-primary: rgb(73, 180, 175);
+	--color-primary-light: rgb(209, 253, 251);
 	--color-primary-lightest: rgb(255, 240, 249);
 	--color-secondary: rgb(255, 255, 255);
 	--color-secondary-dark: rgb(240, 240, 240);
@@ -56,8 +56,8 @@
 .component_box_shadow {
 	background-color: var(--color-secondary);
 	border: 3px solid var(--color-secondary);
-	border-radius: 10px;
-	box-shadow: 0 0 8px var(--primary-text-color);
+	border-radius: 5px;
+	box-shadow: 0 0 8px var(--color-primary);
 	margin: 0px auto 20px auto;
 }
 

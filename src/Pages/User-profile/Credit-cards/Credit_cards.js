@@ -96,7 +96,7 @@ export default function Credit_cards(props) {
 				<div className="credit-cards-profile-card-inside-div">
 					<img
 						className="credit-cards-user-icon"
-						src="images/user-icon/user.png"
+						src="https://img.icons8.com/ios-filled/100/49B4AF/user.png"
 					/>
 					<span className="credit-cards-user-name">
 						{user_info.first_name + " " + user_info.last_name}

@@ -50,7 +50,7 @@ export default function Two_factor_authentication(props) {
 				<div className="two-factor-authentication-profile-card-inner-div">
 					<img
 						className="two-factor-authentication-user-icon"
-						src="images/user-icon/user.png"
+						src="https://img.icons8.com/ios-filled/100/49B4AF/user.png"
 					/>
 					<span className="two-factor-authentication-user-name">
 						{user_info.first_name + " " + user_info.last_name}
