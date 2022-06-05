@@ -216,6 +216,22 @@ const API = {
 				body: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.",
 			},
 		],
+		orders: [
+			{ id: 1, title: "خرید تتر" },
+			{ id: 2, title: "فروش بیت کوین" },
+			{ id: 3, title: " عدم واریز" },
+		],
+		tickets: [
+			{
+				id: 1,
+				number: "1",
+				title: " عدم انتقال وجه",
+				unit: "پیگیری سفارش",
+				situation: "در حال بررسی",
+				datetime: "1400/2/30",
+				details: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ",
+			},
+		],
 	},
 };
 
@@ -232,6 +248,20 @@ let qr_code;
 let binance_qr_code;
 let smartchain_qr_code;
 const Deposit = () => {
+	// Crypto deposit class
+	function Crypto_deposit(crypto_value, txid_link, file) {
+		this.crypto_value = crypto_value;
+		this.txid_link = txid_link;
+		this.file = file;
+	}
+	const crypto_data = () => {
+		const crypto_obj = new Crypto_deposit(
+			currency_value,
+			txid_value,
+			file_value
+		);
+		console.log(crypto_obj);
+	};
 	// Using params to send data from app.js to deposit page of each currency inside Wallet.js
 	let { name } = useParams();
 	// Get the currency id and wallet address from api and fetch it
@@ -273,6 +303,7 @@ const Deposit = () => {
 	const [smartchain_currency_qr_code, set_smartchain_curency_qr_code] =
 		useState(smartchain_qr_code);
 	const [qrcode, set_qrcode] = useState(currency_qr_code);
+	const [file_value, set_file_value] = useState("");
 	// States functions
 	// This function copy the wallet address to clipboard
 	const copy = (e) => {
@@ -341,6 +372,7 @@ const Deposit = () => {
 		// Checks both of them and shows success message
 		if (currency_value !== "" && txid_value !== "") {
 			set_success_message(true);
+			crypto_data();
 		}
 	};
 	// This function opens txid modal
@@ -578,6 +610,9 @@ const Deposit = () => {
 										name="form-upload"
 										id="form-upload"
 										accept=".jpg,.jpeg,.png"
+										onChange={(e) => {
+											set_file_value(e.target.value);
+										}}
 									/>
 									<p>
 										{" "}
@@ -632,6 +667,28 @@ const Deposit = () => {
 
 //*********************************** Withdrawal Function ***********************************//
 const Withdrawal = () => {
+	let transfer_network_default;
+	// Crypto withdrawal class
+	function Crypto_withdrawal(
+		crypto_value,
+		transfer_network,
+		wallet_value,
+		tag_address_value
+	) {
+		this.crypto_value = crypto_value;
+		this.transfer_network = transfer_network;
+		this.wallet_value = wallet_value;
+		this.tag_address_value = tag_address_value;
+	}
+	const crypto_data = () => {
+		const crypto_obj = new Crypto_withdrawal(
+			currency_value,
+			transfer_network,
+			wallet_value,
+			tag_address_value
+		);
+		console.log(crypto_obj);
+	};
 	// Using params to send data from app.js to withdrawal page of each currency inside Wallet.js
 	let { name } = useParams();
 	// Get the currency id and wallet address from api and fetch it
@@ -655,6 +712,9 @@ const Withdrawal = () => {
 	const [tag_address_input, set_tag_address_input] = useState(true);
 	const [success_message, set_success_message] = useState(false);
 	const [drop_down_check, set_drop_down_check] = useState(false);
+	const [transfer_network, set_transfer_network] = useState(
+		transfer_network_default
+	);
 
 	// States Functions
 	// This Function Gets Currency Input's Value
@@ -692,6 +752,7 @@ const Withdrawal = () => {
 		}
 		if (currency_value !== "" && wallet_value !== "") {
 			set_success_message(true);
+			crypto_data();
 		}
 	};
 	// This function toggles tag address input
@@ -764,10 +825,13 @@ const Withdrawal = () => {
 										className="input-outline"
 										onChange={(e) => {
 											toggle_tag_input(e);
+											set_transfer_network(e.target.value);
 										}}
 									>
 										<option>
-											شبکه {item.persian_name} ({item.abbr})
+											{
+												(transfer_network_default = `	شبکه ${item.persian_name} (${item.abbr})`)
+											}
 										</option>
 										<option>شبکه بایننس (BNP2)</option>
 										<option>بایننس اسمارت چین (BNP20)</option>
@@ -940,7 +1004,10 @@ const AppLayout = () => (
 				path="rial-transactions"
 				element={<Rial_transactions page_title={rial_transactions_title} />}
 			/>
-			<Route path="tickets" element={<Tickets page_title={tickets_title} />} />
+			<Route
+				path="tickets"
+				element={<Tickets page_title={tickets_title} user_info={user_api} />}
+			/>
 			<Route
 				path="buy"
 				element={<Buy data={digital_currencies_arr} page_title={buy_title} />}
@@ -1055,7 +1122,9 @@ function App() {
 					/>
 					<Route
 						path="tickets"
-						element={<Tickets page_title={tickets_title} />}
+						element={
+							<Tickets page_title={tickets_title} user_info={user_api} />
+						}
 					/>
 					<Route
 						path="buy"

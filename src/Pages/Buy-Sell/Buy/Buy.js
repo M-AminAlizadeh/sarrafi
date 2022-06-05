@@ -6,8 +6,24 @@ import { Link } from "react-router-dom";
 
 export default function Buy(props) {
 	const [success_message, set_success_message] = useState(false);
-
 	const currencies_info = props.data;
+	// buy currency class
+	class Buy_currency {
+		constructor(currency_name, currency_value, toman_value, description) {
+			this.currency_name = currency_name;
+			this.currency_value = currency_value;
+			this.toman_value = toman_value;
+			this.description = description;
+		}
+	}
+	const buy_send_data = () => {
+		const buy_data = new Buy_currency(
+			currency_name,
+			currency_value,
+			toman_value,
+			description_value
+		);
+	};
 	/////////////////////// States
 	const [dropdown, set_drop_down] = useState(false);
 	const [api_data, set_api_data] = useState(currencies_info);
@@ -24,6 +40,7 @@ export default function Buy(props) {
 	const [selected, set_selected] = useState("");
 	const [currency_value, set_currency_value] = useState();
 	const [toman_value, set_toman_value] = useState("");
+	const [description_value, set_description_value] = useState("");
 	const [warning, set_warning] = useState(true);
 	/////////////////////// States functions
 	// this function just toggles dropdown list
@@ -64,8 +81,13 @@ export default function Buy(props) {
 			set_currency_value(e.target.value / currency_price_toman);
 		}
 	};
+	// this function changes user description text
+	const fetch_description = (e) => {
+		set_description_value(e.target.value);
+	};
 	// this function is for checking the form
-	const check_form = () => {
+	const check_form = (e) => {
+		// e.preventDefault();
 		if (toman_value == "") {
 			set_warning(false);
 		} else {
@@ -73,6 +95,7 @@ export default function Buy(props) {
 		}
 		if (toman_value !== "") {
 			set_success_message(true);
+			buy_send_data();
 		}
 	};
 	return (
@@ -180,56 +203,56 @@ export default function Buy(props) {
 									src="https://img.icons8.com/ios-glyphs/10/000000/chevron-up.png"
 								/>
 							</div>
-						</div>
-						{/* Drop down list */}
-						{dropdown ? (
-							<div className="drop-down-list-container">
-								{/* Search box */}
-								<div className="search-box-container">
-									<input
-										style={{ cursor: "text" }}
-										type="search"
-										name="search-bar"
-										id="search-bar"
-										placeholder="جستجو بر اساس اسم..."
-										onChange={(e) => {
-											filter_currency(e);
-										}}
-									/>
-								</div>
-								{api_data.map((currency) => {
-									return (
-										<div
-											className="drop-down-list"
-											onClick={(e) => {
-												fetch_currency(e);
+							{/* Drop down list */}
+							{dropdown ? (
+								<div className="drop-down-list-container component_box_shadow">
+									{/* Search box */}
+									<div className="search-box-container">
+										<input
+											style={{ cursor: "text" }}
+											type="search"
+											name="search-bar"
+											id="search-bar"
+											placeholder="جستجو بر اساس اسم..."
+											onChange={(e) => {
+												filter_currency(e);
 											}}
-											id={currency.id}
-										>
-											<div class="right-side" id={currency.id}>
-												<img
-													src={currency.icon_source}
-													width="30px"
-													height="30px"
-													id={currency.id}
-												/>
-												<span id={currency.id}>
-													{currency.persian_name}({currency.name})
-												</span>
+										/>
+									</div>
+									{api_data.map((currency) => {
+										return (
+											<div
+												className="drop-down-list"
+												onClick={(e) => {
+													fetch_currency(e);
+												}}
+												id={currency.id}
+											>
+												<div class="right-side" id={currency.id}>
+													<img
+														src={currency.icon_source}
+														width="30px"
+														height="30px"
+														id={currency.id}
+													/>
+													<span id={currency.id}>
+														{currency.persian_name}({currency.name})
+													</span>
+												</div>
+												<div className="left-side" id={currency.id}>
+													<span id={currency.id}>قیمت خرید</span>
+													<span className="buy-price" id={currency.id}>
+														{currency.website_price}تومان
+													</span>
+												</div>
 											</div>
-											<div className="left-side" id={currency.id}>
-												<span id={currency.id}>قیمت خرید</span>
-												<span className="buy-price" id={currency.id}>
-													{currency.website_price}تومان
-												</span>
-											</div>
-										</div>
-									);
-								})}
-							</div>
-						) : (
-							""
-						)}
+										);
+									})}
+								</div>
+							) : (
+								""
+							)}
+						</div>
 					</div>
 					{/* Price of Each Coin */}
 					<div className="buy-page-each-coin-price">
@@ -313,7 +336,13 @@ export default function Buy(props) {
 					</div>
 					<p className="buy-page-further-description-header">توضیحات اضافه</p>
 					<div className="buy-page-text-area-container">
-						<textarea className="buy-page-text-area" rows="5"></textarea>
+						<textarea
+							className="buy-page-text-area"
+							rows="5"
+							onChange={(e) => {
+								fetch_description(e);
+							}}
+						></textarea>
 					</div>
 					<div>
 						<div className="buy-page-payment-method-container">
@@ -343,7 +372,9 @@ export default function Buy(props) {
 						className="buy-page-submit-btn"
 						type="submit"
 						size="lg"
-						onClick={check_form}
+						onClick={(e) => {
+							check_form(e);
+						}}
 					>
 						ثبت و پرداخت
 					</button>

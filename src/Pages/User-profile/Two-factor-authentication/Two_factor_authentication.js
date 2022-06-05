@@ -6,6 +6,26 @@ import { Helmet } from "react-helmet";
 
 export default function Two_factor_authentication(props) {
 	const user_info = props.user_info;
+	// password sms code class
+	class Sms_code {
+		constructor(code) {
+			this.code = code;
+		}
+	}
+	const sms_code_data = () => {
+		const sms_data = new Sms_code(sms_auth_code_value);
+		console.log(sms_data);
+	};
+	// password qr code class
+	class Qr_code {
+		constructor(code) {
+			this.code = code;
+		}
+	}
+	const qr_code_data = () => {
+		const qr_data = new Qr_code(google_auth_code_value);
+		console.log(qr_data);
+	};
 	// States
 	const [checked_sms_auth, set_checked_sms_auth] = useState(false);
 	const [checked_google_auth, set_checked_google_auth] = useState(false);
@@ -30,6 +50,7 @@ export default function Two_factor_authentication(props) {
 			set_sms_auth_code_error(true);
 		} else {
 			set_sms_auth_code_error(false);
+			sms_code_data();
 		}
 	};
 	// This function is for check google authentication code is empty or not
@@ -38,6 +59,7 @@ export default function Two_factor_authentication(props) {
 			set_google_auth_code_error(true);
 		} else {
 			set_google_auth_code_error(false);
+			qr_code_data();
 		}
 	};
 
@@ -184,7 +206,7 @@ export default function Two_factor_authentication(props) {
 									type="text"
 									placeholder="عدد 6 رقمی"
 									style={{ textAlign: "center" }}
-									maxLength="5"
+									maxLength="6"
 									onChange={(e) => {
 										set_google_auth_code_value(e.target.value);
 									}}

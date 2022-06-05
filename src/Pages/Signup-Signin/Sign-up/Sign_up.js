@@ -4,6 +4,17 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 export default function Signup(props) {
+	// signup class
+	class Signup {
+		constructor(phone_number) {
+			this.phone_number = phone_number;
+		}
+	}
+	const signup_data = () => {
+		const signup_user_data = new Signup(cell_phone_input);
+		console.log(signup_user_data);
+	};
+
 	// States
 	const [cell_phone_input, set_cell_phone_input] = useState("");
 	const [cell_phone_warning, set_cell_phone_warning] = useState("");
@@ -13,6 +24,7 @@ export default function Signup(props) {
 		// Cellphone input
 		if (cell_phone_input !== "") {
 			set_cell_phone_warning(false);
+			signup_data();
 		} else {
 			set_cell_phone_warning(true);
 		}

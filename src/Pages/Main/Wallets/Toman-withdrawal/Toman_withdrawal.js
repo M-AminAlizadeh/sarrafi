@@ -4,6 +4,22 @@ import "./toman-withdrawal.css";
 import { Helmet } from "react-helmet";
 export default function Toman_withdrawal(props) {
 	const user_credit_cards_list = props.user_info.credit_cards;
+	// toman deposit class
+	class Toman_withdrawal {
+		constructor(toman_value, credit_card, description) {
+			this.toman_value = toman_value;
+			this.credit_card = credit_card;
+			this.description = description;
+		}
+	}
+	const Toman_withdrawal_data = () => {
+		const toman_data = new Toman_withdrawal(
+			toman_input,
+			credit_card,
+			description_value
+		);
+		console.log(toman_data);
+	};
 	// States
 	const [toman_input, set_toman_input] = useState("");
 	const [credit_card, set_credit_card] = useState("");
@@ -11,6 +27,8 @@ export default function Toman_withdrawal(props) {
 	const [error_message_input, set_error_message_input] = useState(false);
 	const [error_message_credit_card, set_error_message_credit_card] =
 		useState(false);
+	const [description_value, set_description_value] = useState("");
+
 	//States functions
 	// This function changes the toman value by user input
 	const toman_value = (e) => {
@@ -39,6 +57,7 @@ export default function Toman_withdrawal(props) {
 		// Success message
 		if (credit_card !== "" && toman_input !== "") {
 			set_success_message(true);
+			Toman_withdrawal_data();
 		} else {
 			set_success_message(false);
 		}
@@ -114,7 +133,13 @@ export default function Toman_withdrawal(props) {
 					</div>
 					<div className="toman-deposit-explain">
 						<span>توضیحات اضافه</span>
-						<textarea cols="60" rows="5"></textarea>
+						<textarea
+							cols="60"
+							rows="5"
+							onChange={(e) => {
+								set_description_value(e.target.value);
+							}}
+						></textarea>
 					</div>
 					<div className="deposit-submit-btn-container">
 						<button

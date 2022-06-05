@@ -57,6 +57,7 @@
 
 /* Select Box */
 .buy-page-select-box {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -252,9 +253,8 @@
 	/* border: 1px solid brown; */
 	position: absolute;
 	top: 70px;
-	right: 175px;
 	z-index: 3;
-	width: 20vw;
+	width: 100%;
 	height: 300px;
 	overflow: auto;
 	background-color: var(--color-secondary);
@@ -312,13 +312,9 @@
 	}
 	.buy-page-select-box,
 	.buy-page-currency-count-input,
-	.buy-page-currency-count-in-tomans {
+	.buy-page-currency-count-in-tomans,
+	.buy-page-text-area {
 		width: 80%;
-	}
-	.drop-down-list-container {
-		/* border: 1px solid blue; */
-		right: 100px;
-		width: 50vw;
 	}
 }
 
@@ -329,13 +325,9 @@
 	}
 	.buy-page-select-box,
 	.buy-page-currency-count-input,
-	.buy-page-currency-count-in-tomans {
+	.buy-page-currency-count-in-tomans,
+	.buy-page-text-area {
 		width: 80%;
-	}
-	.drop-down-list-container {
-		/* border: 1px solid red; */
-		width: 50vw;
-		right: 20%;
 	}
 }
 

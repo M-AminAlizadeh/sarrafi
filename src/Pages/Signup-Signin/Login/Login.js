@@ -4,6 +4,18 @@ import "./login.css";
 import { Helmet } from "react-helmet";
 
 export default function Login(props) {
+	// login class
+	class Login {
+		constructor(phone_number, password) {
+			this.phone_number = phone_number;
+			this.password = password;
+		}
+	}
+	const login_data = () => {
+		const login_user_data = new Login(cell_phone_input, password_input);
+		console.log(login_user_data);
+	};
+
 	// States
 	const [cell_phone_input, set_cell_phone_input] = useState("");
 	const [password_input, set_password_input] = useState("");
@@ -23,6 +35,9 @@ export default function Login(props) {
 			set_password_warning(false);
 		} else {
 			set_password_warning(true);
+		}
+		if (password_input !== "" && cell_phone_input !== "") {
+			login_data();
 		}
 	};
 	return (

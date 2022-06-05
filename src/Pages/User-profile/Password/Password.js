@@ -4,6 +4,16 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 export default function Password(props) {
 	const user_info = props.user_info;
+	class Password {
+		constructor(current_password, new_password) {
+			this.current_password = current_password;
+			this.new_password = new_password;
+		}
+	}
+	const password_data = () => {
+		const pass_data = new Password(current_password_value, new_password_value);
+		console.log(pass_data);
+	};
 	// States
 	const [current_password_value, set_current_password_value] = useState("");
 	const [current_password_error, set_current_password_error] = useState(false);
@@ -39,6 +49,14 @@ export default function Password(props) {
 			set_check_new_password(true);
 		} else {
 			set_check_new_password(false);
+		}
+		if (
+			new_password_value == new_password_repeat_value &&
+			new_password_repeat_value !== "" &&
+			new_password_value !== "" &&
+			current_password_value !== ""
+		) {
+			password_data();
 		}
 	};
 	return (
@@ -99,7 +117,7 @@ export default function Password(props) {
 					مرحله ای را نیز فعال کنید.
 				</p>
 				{/* Input Container */}
-				<div className="password-page-input-container">
+				<form className="password-page-input-container">
 					<div>
 						<label htmlFor="first-password-input">رمز عبور فعلی</label>
 						<input
@@ -165,7 +183,7 @@ export default function Password(props) {
 							form_checker();
 						}}
 					/>
-				</div>
+				</form>
 			</div>
 		</div>
 	);

@@ -93,62 +93,62 @@ export default function Converter(props) {
 							>
 								<img src="https://img.icons8.com/ios-glyphs/24/000000/chevron-up.png" />
 							</div>
-						</div>
-						{/* Dropdown itself */}
-						{toggle_drop_down ? (
-							<div className="converter-drop-down component_box_shadow">
-								{/* Searchbar */}
-								<input
-									type="search"
-									placeholder="جستجو بر اساس اسم یا نماد..."
-									onChange={(e) => {
-										filter_items(e);
-									}}
-								/>
-								{api_data.map((item) => {
-									return (
-										// Dropdown Row
-										<div
-											className="converter-drop-down-row"
-											onClick={(e) => {
-												choose_currency(e);
-											}}
-											id={item.id}
-										>
-											{/* Dropdown right side */}
-											<div className="converter-drop-down-right-side">
-												{/* Currency icon */}
-												<img
-													id={item.id}
-													src={item.icon_source}
-													alt={item.persian_name}
-													width="20px"
-												/>
-												{/* Currency persian name */}
-												<span id={item.id} className="currency-name">
-													{item.persian_name}
-												</span>{" "}
-												{/* Currency abbreviation */}
-												<span id={item.id} className="currency-abbr">
-													({item.abbr})
-												</span>
-											</div>
-											{/* Dropdown left side */}
+							{/* Dropdown itself */}
+							{toggle_drop_down ? (
+								<div className="converter-drop-down component_box_shadow">
+									{/* Searchbar */}
+									<input
+										type="search"
+										placeholder="جستجو بر اساس اسم یا نماد..."
+										onChange={(e) => {
+											filter_items(e);
+										}}
+									/>
+									{api_data.map((item) => {
+										return (
+											// Dropdown Row
 											<div
+												className="converter-drop-down-row"
+												onClick={(e) => {
+													choose_currency(e);
+												}}
 												id={item.id}
-												className="converter-drop-down-left-side"
 											>
-												<span>قیمت خرید:</span>
-												{/* Currency price */}
-												<span className="currency-price">
-													{item.website_price}تومان
-												</span>
+												{/* Dropdown right side */}
+												<div className="converter-drop-down-right-side">
+													{/* Currency icon */}
+													<img
+														id={item.id}
+														src={item.icon_source}
+														alt={item.persian_name}
+														width="20px"
+													/>
+													{/* Currency persian name */}
+													<span id={item.id} className="currency-name">
+														{item.persian_name}
+													</span>{" "}
+													{/* Currency abbreviation */}
+													<span id={item.id} className="currency-abbr">
+														({item.abbr})
+													</span>
+												</div>
+												{/* Dropdown left side */}
+												<div
+													id={item.id}
+													className="converter-drop-down-left-side"
+												>
+													<span>قیمت خرید:</span>
+													{/* Currency price */}
+													<span className="currency-price">
+														{item.website_price}تومان
+													</span>
+												</div>
 											</div>
-										</div>
-									);
-								})}
-							</div>
-						) : null}
+										);
+									})}
+								</div>
+							) : null}
+						</div>
 					</fieldset>
 					{/* Converter Unit */}
 					<fieldset className="converter-choose-currency converter-unit">

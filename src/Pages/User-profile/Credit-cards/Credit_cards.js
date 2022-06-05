@@ -28,7 +28,6 @@ function createData(number, card_number, account_number, shaba, state) {
 export default function Credit_cards(props) {
 	const user_info = props.user_info;
 	const user_credit_cards = props.user_info.credit_cards;
-	console.log(user_credit_cards);
 	const rows = [];
 	user_credit_cards.map((cc, index) => {
 		rows.push(
@@ -41,6 +40,25 @@ export default function Credit_cards(props) {
 			)
 		);
 	});
+
+	// credit cards class
+	class Credit_cards {
+		constructor(card_number, account_number, shaba_number, bank_name) {
+			this.card_number = card_number;
+			this.account_number = account_number;
+			this.shaba_number = shaba_number;
+			this.bank_name = bank_name;
+		}
+	}
+	const credit_cards_data = () => {
+		const credit_cards_user_data = new Credit_cards(
+			card_number,
+			account_number,
+			shaba_number,
+			bank_name
+		);
+		console.log(credit_cards_user_data);
+	};
 
 	// States
 	const [checked, setChecked] = useState(false);
@@ -80,6 +98,14 @@ export default function Credit_cards(props) {
 			set_bank_name_error(true);
 		} else {
 			set_bank_name_error(false);
+		}
+		if (
+			card_number !== "" &&
+			account_number !== "" &&
+			shaba_number !== "" &&
+			bank_name !== ""
+		) {
+			credit_cards_data();
 		}
 	};
 	// Table style ###############

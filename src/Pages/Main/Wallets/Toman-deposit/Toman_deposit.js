@@ -5,10 +5,22 @@ import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import { Helmet } from "react-helmet";
 export default function Toman_deposit(props) {
 	const user_info = props.user_info;
+	// toman deposit class
+	class Toman_deposit {
+		constructor(toman_value, description) {
+			this.toman_value = toman_value;
+			this.description = description;
+		}
+	}
+	const Toman_deposit_data = () => {
+		const toman_data = new Toman_deposit(toman_input, description_value);
+		console.log(toman_data);
+	};
 	// States
 	const [toman_input, set_toman_input] = useState("");
 	const [success_message, set_success_message] = useState(false);
 	const [error_message, set_error_message] = useState(false);
+	const [description_value, set_description_value] = useState("");
 	//States functions
 	// This function changes the toman value by user input
 	const toman_value = (e) => {
@@ -24,6 +36,7 @@ export default function Toman_deposit(props) {
 		} else {
 			set_error_message(false);
 			set_success_message(true);
+			Toman_deposit_data();
 		}
 	};
 	return (
@@ -65,7 +78,13 @@ export default function Toman_deposit(props) {
 					)}
 					<div className="toman-deposit-explain">
 						<span>توضیحات اضافه</span>
-						<textarea cols="60" rows="5"></textarea>
+						<textarea
+							cols="60"
+							rows="5"
+							onChange={(e) => {
+								set_description_value(e.target.value);
+							}}
+						></textarea>
 					</div>
 					<div className="deposit-submit-btn-container">
 						<button

@@ -4,15 +4,25 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 export default function Forgot_password(props) {
+	// forgot password class
+	class Forgot_password {
+		constructor(phone_number) {
+			this.phone_number = phone_number;
+		}
+	}
+	const forgot_password_data = () => {
+		const forgot_password_user_data = new Forgot_password(cell_phone_input);
+		console.log(forgot_password_user_data);
+	};
 	// States
-	const [password_input, set_password_input] = useState("");
+	const [cell_phone_input, set_cell_phone_input] = useState("");
 	const [password_warning, set_password_warning] = useState("");
 	// States functions
 	const check_form = (e) => {
 		e.preventDefault();
-		console.log(password_input);
-		if (password_input !== "") {
+		if (cell_phone_input !== "") {
 			set_password_warning(false);
+			forgot_password_data();
 		} else {
 			set_password_warning(true);
 		}
@@ -47,7 +57,7 @@ export default function Forgot_password(props) {
 								password_warning ? "error-input-border" : null
 							}`}
 							onChange={(e) => {
-								set_password_input(e.target.value);
+								set_cell_phone_input(e.target.value);
 							}}
 						/>
 					</div>

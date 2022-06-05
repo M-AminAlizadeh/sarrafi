@@ -6,12 +6,54 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import { Helmet } from "react-helmet";
 
 export default function Authentication(props) {
+	// authentication class
+	class Authentication {
+		constructor(
+			user_name,
+			user_last_name,
+			user_parent_name,
+			user_identication,
+			user_birth_date
+		) {
+			this.user_name = user_name;
+			this.user_last_name = user_last_name;
+			this.user_parent_name = user_parent_name;
+			this.user_identication = user_identication;
+			this.user_birth_date = user_birth_date;
+		}
+	}
+	const authentication_data = () => {
+		const authentication_user_data = new Authentication(
+			user_name,
+			user_last_name,
+			user_parent_name,
+			user_identication,
+			user_birth_date
+		);
+		console.log(authentication_user_data);
+	};
+
 	const style = {
 		border: "1px solid red",
 	};
+	// States
 	const [level_1, set_level_1] = useState(true);
 	const [level_2, set_level_2] = useState(false);
-
+	const [user_name, set_user_name] = useState("");
+	const [user_name_warning, set_user_name_warning] = useState(false);
+	const [user_last_name, set_user_last_name] = useState("");
+	const [user_last_name_warning, set_user_last_name_warning] = useState(false);
+	const [user_parent_name, set_user_parent_name] = useState("");
+	const [user_parent_name_warning, set_user_parent_name_warning] =
+		useState(false);
+	const [user_identication, set_user_identication] = useState("");
+	const [user_identication_warning, set_user_identication_warning] =
+		useState(false);
+	// اینا موندن
+	const [user_birth_date, set_user_birth_date] = useState("");
+	const [user_birth_date_warning, set_user_birth_date_warning] =
+		useState(false);
+	// state functions
 	const display_1 = () => {
 		// display level one
 		set_level_1(true);
@@ -23,6 +65,43 @@ export default function Authentication(props) {
 		set_level_2(true);
 		// hide level one
 		set_level_1(false);
+	};
+	// this function check the Form
+	const form_checker = () => {
+		if (user_name == "") {
+			set_user_name_warning(true);
+		} else {
+			set_user_name_warning(false);
+		}
+		if (user_last_name == "") {
+			set_user_last_name_warning(true);
+		} else {
+			set_user_last_name_warning(false);
+		}
+		if (user_identication == "") {
+			set_user_identication_warning(true);
+		} else {
+			set_user_identication_warning(false);
+		}
+		if (user_parent_name == "") {
+			set_user_parent_name_warning(true);
+		} else {
+			set_user_parent_name_warning(false);
+		}
+		if (user_birth_date == "") {
+			set_user_birth_date_warning(true);
+		} else {
+			set_user_birth_date_warning(false);
+		}
+		if (
+			user_name !== "" &&
+			user_last_name !== "" &&
+			user_identication !== "" &&
+			user_parent_name !== ""
+			// user_birth_date !== ""
+		) {
+			authentication_data();
+		}
 	};
 
 	return (
@@ -106,11 +185,25 @@ export default function Authentication(props) {
 						<div className="authentication-level-one-first-row">
 							<div className="authentication-level-one-name-input-container">
 								<label htmlFor="name">نام</label>
-								<input type="text"></input>
+								<input
+									type="text"
+									onChange={(e) => {
+										set_user_name(e.target.value);
+									}}
+									className={user_name_warning ? "error-input-border" : null}
+								></input>
 							</div>
 							<div className="authentication-level-one-last-name-input-container">
 								<label htmlFor="last-name">نام خانوادگی</label>
-								<input type="text"></input>
+								<input
+									type="text"
+									onChange={(e) => {
+										set_user_last_name(e.target.value);
+									}}
+									className={
+										user_last_name_warning ? "error-input-border" : null
+									}
+								></input>
 							</div>
 						</div>
 						<div className="authentication-level-one-second-row">
@@ -118,12 +211,25 @@ export default function Authentication(props) {
 								<label htmlFor="ID">کد ملی</label>
 								<input
 									type="number"
-									className="authentication-level-one-id-input-container"
+									className={`authentication-level-one-id-input-container ${
+										user_identication_warning ? "error-input-border" : null
+									}`}
+									onChange={(e) => {
+										set_user_identication(e.target.value);
+									}}
 								></input>
 							</div>
 							<div className="authentication-level-one-parent-name-input-container">
 								<label htmlFor="name">نام پدر</label>
-								<input type="text"></input>
+								<input
+									type="text"
+									onChange={(e) => {
+										set_user_parent_name(e.target.value);
+									}}
+									className={
+										user_parent_name_warning ? "error-input-border" : null
+									}
+								></input>
 							</div>
 						</div>
 						<div className="authentication-level-one-datepicker-container">
@@ -135,10 +241,18 @@ export default function Authentication(props) {
 								calendar={persian}
 								locale={persian_fa}
 								className="date-picker"
+								placeholder="تاریخ تولدتان  را وارد کنید"
 							/>
 						</div>
+
 						<div>
-							<input type="submit" value="ثبت اطلاعات"></input>
+							<input
+								type="submit"
+								value="ثبت اطلاعات"
+								onClick={() => {
+									form_checker();
+								}}
+							></input>
 						</div>
 					</div>
 				</div>
