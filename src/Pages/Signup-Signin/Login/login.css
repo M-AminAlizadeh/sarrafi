@@ -54,7 +54,7 @@
 .login-page-number-input,
 .login-page-password-input {
 	padding: var(--primary-padding);
-	width: 100%;
+	width: 90%;
 	border-radius: var(--button-border-radius-extreme);
 	border: none;
 	background: var(--color-primary-light);

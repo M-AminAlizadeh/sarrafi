@@ -10,7 +10,7 @@ export default function Dashboard(props) {
 	const currencies_info = props.currencies_api;
 	const user_info = props.user_info;
 	const page_title = props.page_title;
-	console.log(user_info);
+	// console.log(user_info);
 	/////////////////////// States
 	const [dropdown, set_drop_down] = useState(false);
 	const [api_data, set_api_data] = useState(currencies_info);
@@ -24,7 +24,7 @@ export default function Dashboard(props) {
 	// this function just toggle dropdown list
 	const toggle_dropdown = () => {
 		dropdown ? set_drop_down(false) : set_drop_down(true);
-		console.log("hi");
+		// console.log("hi");
 	};
 	// this function shows all currencies inside dropdown list and when click on each item replace the currency info and hide dropdown list
 	const fetch_currency = (e) => {
@@ -81,46 +81,48 @@ export default function Dashboard(props) {
 							<span className="dashboard-user-authentication-level">1</span>
 						</h6>
 						<table className="dashboard-user-info-table">
-							<tr>
-								<td className="daily-crypto-withdrawals">
-									برداشت روزانه رمز ارز
-								</td>
-								<td>
-									<span>0</span> تومان از <span>0</span> میلیون تومان
-								</td>
-							</tr>
-							<tr>
-								<td className="daily-crypto-purchase">
-									خرید روزانه ارز دیجیتال
-								</td>
-								<td>
-									<span>0</span> تومان از <span>0</span> میلیون تومان
-								</td>
-							</tr>
-							<tr>
-								<td className="crypto-transaction-limitation">
-									محدودیت معامله رمز ارز
-								</td>
-								<td className="crypto-transaction-limitation-status">
-									محدودیتی وجود ندارد
-								</td>
-							</tr>
-							<tr>
-								<td className="crypto-buying-limitation">
-									محدودیت خرید رمز ارز
-								</td>
-								<td className="crypto-buying-limitation-status">
-									محدودیتی وجود ندارد
-								</td>
-							</tr>
-							<tr>
-								<td className="crypto-and-rial-deposit-limitation">
-									محدودیت واریز ریالی و رمز ارز
-								</td>
-								<td className="crypto-and-rial-deposit-limitation-status">
-									محدودیتی وجود ندارد
-								</td>
-							</tr>
+							<tbody>
+								<tr>
+									<td className="daily-crypto-withdrawals">
+										برداشت روزانه رمز ارز
+									</td>
+									<td>
+										<span>0</span> تومان از <span>0</span> میلیون تومان
+									</td>
+								</tr>
+								<tr>
+									<td className="daily-crypto-purchase">
+										خرید روزانه ارز دیجیتال
+									</td>
+									<td>
+										<span>0</span> تومان از <span>0</span> میلیون تومان
+									</td>
+								</tr>
+								<tr>
+									<td className="crypto-transaction-limitation">
+										محدودیت معامله رمز ارز
+									</td>
+									<td className="crypto-transaction-limitation-status">
+										محدودیتی وجود ندارد
+									</td>
+								</tr>
+								<tr>
+									<td className="crypto-buying-limitation">
+										محدودیت خرید رمز ارز
+									</td>
+									<td className="crypto-buying-limitation-status">
+										محدودیتی وجود ندارد
+									</td>
+								</tr>
+								<tr>
+									<td className="crypto-and-rial-deposit-limitation">
+										محدودیت واریز ریالی و رمز ارز
+									</td>
+									<td className="crypto-and-rial-deposit-limitation-status">
+										محدودیتی وجود ندارد
+									</td>
+								</tr>
+							</tbody>
 						</table>
 					</div>
 					<p className="dashboard-user-info-profile-link-container">

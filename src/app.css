@@ -1,3 +1,10 @@
+* {
+	font-family: "Vazirmatn" !important;
+}
+button {
+	cursor: pointer !important;
+}
+
 :root {
 	/**************** transition variables *********************/
 	--global-transition: 0.4s;
@@ -11,7 +18,6 @@
 	/**************** color variables *********************/
 	--color-primary: rgb(73, 180, 175);
 	--color-primary-light: rgb(209, 253, 251);
-	--color-primary-lightest: rgb(255, 240, 249);
 	--color-secondary: rgb(255, 255, 255);
 	--color-secondary-dark: rgb(240, 240, 240);
 	--light-gray-color: rgb(170, 170, 170);

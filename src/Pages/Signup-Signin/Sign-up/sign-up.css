@@ -53,7 +53,7 @@
 }
 .signup-page-number-input {
 	padding: var(--primary-padding);
-	width: 100%;
+	width: 90%;
 	border-radius: var(--pilled-shape-radius);
 	border: none;
 	background: var(--color-primary-light);

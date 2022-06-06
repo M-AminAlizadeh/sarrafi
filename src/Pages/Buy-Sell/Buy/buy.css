@@ -47,12 +47,15 @@
 
 /* Currency Selection Container */
 .currency-selection-container {
+	/* border: 1px solid green !important; */
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-top: 10px;
 	position: relative;
 	user-select: none;
+	width: 100%;
+	margin: auto;
 }
 
 /* Select Box */

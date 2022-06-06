@@ -267,7 +267,9 @@
 .full {
 	width: 100% !important;
 }
-
+.auth-submit-btn {
+	cursor: pointer;
+}
 .active-border {
 	border-color: var(--color-primary) !important;
 }

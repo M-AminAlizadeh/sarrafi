@@ -17,9 +17,9 @@ export default function Notification(props) {
 					اعلانی موجود نیست
 				</div>
 			) : (
-				noti.map((item) => {
+				noti.map((item, index) => {
 					return (
-						<div>
+						<div key={index}>
 							<Link to="/tickets">
 								<div className="notification-row">
 									<p>{item.title}</p>

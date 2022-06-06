@@ -50,11 +50,10 @@
 /* Dropdown box Styling*/
 .converter-drop-down-box {
 	position: relative;
-	border: 1px solid var(--light-gray-color);
+	/* border: 1px solid var(--light-gray-color); */
 	border-radius: var(--button-border-radius-softer);
 	width: 300px;
 	min-width: 100px;
-	padding: var(--input-padding-small);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -69,6 +68,8 @@
 .converter-choose-currency {
 	/* border: 2px solid orange; */
 	position: relative;
+	border-radius: var(--button-border-radius-softer);
+	border: var(--input-border);
 }
 .convertor-currency-icon-container img {
 	border-radius: 50%;
@@ -106,6 +107,7 @@
 	top: 0;
 	left: 0;
 	padding: var(--input-padding-small);
+	margin-bottom: 10px;
 }
 
 /* Dropdown each row */
@@ -143,8 +145,7 @@
 }
 .converter-choose-currency > input {
 	outline: none;
-	padding: var(--input-padding-small);
-	border: 1px solid var(--light-gray-color);
+	border: 1px solid transparent;
 	border-radius: var(--button-border-radius-softer);
 	width: 200px;
 }

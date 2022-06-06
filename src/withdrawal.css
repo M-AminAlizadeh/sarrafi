@@ -10,6 +10,8 @@
 	border-radius: var(--button-border-radius-softer);
 	padding: var(--input-padding-small);
 	color: var(--primary-text-color);
+	outline: none;
+	cursor: pointer;
 }
 .deposit-currency-value-description {
 	/* border: 1px solid red; */

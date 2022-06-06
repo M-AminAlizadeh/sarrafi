@@ -136,7 +136,7 @@ export default function Tickets(props) {
 			<Helmet>
 				<title>{props.page_title}</title>
 			</Helmet>
-			<div class="tickets-components-container">
+			<div className="tickets-components-container">
 				{/* New Ticket section */}
 				<div className="tickets-new-ticket-container component_box_shadow">
 					{/* New Ticket toggle title container*/}
@@ -150,7 +150,7 @@ export default function Tickets(props) {
 							<img src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/000000/external-plus-user-interface-tanah-basah-glyph-tanah-basah-2.png" />
 						</div>
 						<div className="new-ticket-toggle-title-text-container">
-							<sapn> ثبت درخواست جدید</sapn>
+							<span> ثبت درخواست جدید</span>
 						</div>
 					</div>
 					{/* New Ticket Form */}
@@ -183,6 +183,7 @@ export default function Tickets(props) {
 								<div className="new-ticket-form-unit">
 									<label htmlFor="form-unit">واحد</label>
 									<select
+										defaultValue={"واحد مورد نظر را انتخاب کنید"}
 										name="form-unit"
 										className={`form-unit ${
 											check_unit ? "" : "error-input-border"
@@ -193,9 +194,8 @@ export default function Tickets(props) {
 										required
 									>
 										<option
-											value
+											value="واحد مورد نظر را انتخاب کنید"
 											disabled
-											selected
 											className="form-unit-header"
 										>
 											واحد مورد نظر را انتخاب کنید
@@ -218,17 +218,22 @@ export default function Tickets(props) {
 							<div className="new-ticket-form-order">
 								<label htmlFor="form-order">در خصوص سفارش</label>
 								<select
+									defaultValue={"هیچکدام"}
 									name="form-order"
 									className="form-order"
 									onChange={(e) => {
 										set_form_order(e.target.value);
 									}}
 								>
-									<option value="هیچکدام" selected>
+									<option value="هیچکدام" disabled>
 										هیچکدام
 									</option>
-									{orders_list.map((item) => {
-										return <option value={item.title}>{item.title}</option>;
+									{orders_list.map((item, index) => {
+										return (
+											<option value={item.title} key={index}>
+												{item.title}
+											</option>
+										);
 									})}
 								</select>
 							</div>
@@ -257,16 +262,12 @@ export default function Tickets(props) {
 							</div>
 							{/* ّForm upload file part */}
 							<div className="new-ticket-form-upload-file">
-								<label htmlFor="">فایل پیوست</label>
-								<label htmlFor="form-upload" className="form-upload">
+								<label htmlFor="form-upload">
 									<span>انتخاب فایل</span>
-									<img src="https://img.icons8.com/metro/20/000000/upload.png" />
 								</label>
 								<input
 									type="file"
 									name="form-upload"
-									className="form-upload"
-									id="form-upload"
 									accept="image/*"
 									onChange={(e) => {
 										set_form_file(e.target.value);
@@ -307,7 +308,7 @@ export default function Tickets(props) {
 				{/* Tickets log section(Table) */}
 				<div className="tickets-log-container component_box_shadow">
 					<div className="tickets-log-title-text-container">
-						<sapn className="tickets-log-title">پشتیبانی</sapn>
+						<span className="tickets-log-title">پشتیبانی</span>
 						<span className="tickets-log-description">
 							لیست تیکت های ارسال شده را مشاهده میکنید
 						</span>

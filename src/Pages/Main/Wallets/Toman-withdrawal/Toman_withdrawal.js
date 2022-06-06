@@ -107,6 +107,7 @@ export default function Toman_withdrawal(props) {
 					>
 						<span>کارت بانکی جهت واریز:</span>
 						<select
+							defaultValue={"کارت بانکی مورد نظر را انتخاب کنید"}
 							name=""
 							id="credit-cards"
 							className={error_message_credit_card ? "error-input-border" : ""}
@@ -114,14 +115,14 @@ export default function Toman_withdrawal(props) {
 								select_credit_card(e);
 							}}
 						>
-							<option disabled selected value="false">
+							<option disabled value="کارت بانکی مورد نظر را انتخاب کنید">
 								کارت بانکی مورد نظر را انتخاب کنید
 							</option>
-							{user_credit_cards_list.map((card) => {
+							{user_credit_cards_list.map((card, index) => {
 								return (
-									<>
-										<option value={card.bank_name}>{card.bank_name}</option>
-									</>
+									<option value={card.bank_name} key={index}>
+										{card.bank_name}
+									</option>
 								);
 							})}
 						</select>

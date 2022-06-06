@@ -28,9 +28,9 @@ export default function Authentication(props) {
 			user_last_name,
 			user_parent_name,
 			user_identication,
-			user_birth_date
+			`${value.year}/${value.month.number}/${value.day}`
 		);
-		console.log(authentication_user_data);
+		// console.log(authentication_user_data);
 	};
 
 	const style = {
@@ -50,7 +50,7 @@ export default function Authentication(props) {
 	const [user_identication_warning, set_user_identication_warning] =
 		useState(false);
 	// اینا موندن
-	const [user_birth_date, set_user_birth_date] = useState("");
+	const [value, setValue] = useState("");
 	const [user_birth_date_warning, set_user_birth_date_warning] =
 		useState(false);
 	// state functions
@@ -88,11 +88,11 @@ export default function Authentication(props) {
 		} else {
 			set_user_parent_name_warning(false);
 		}
-		if (user_birth_date == "") {
-			set_user_birth_date_warning(true);
-		} else {
-			set_user_birth_date_warning(false);
-		}
+		// if (user_birth_date == "") {
+		// 	set_user_birth_date_warning(true);
+		// } else {
+		// 	set_user_birth_date_warning(false);
+		// }
 		if (
 			user_name !== "" &&
 			user_last_name !== "" &&
@@ -102,6 +102,10 @@ export default function Authentication(props) {
 		) {
 			authentication_data();
 		}
+	};
+	const x = () => {
+		setValue(value);
+		console.log(value);
 	};
 
 	return (
@@ -181,7 +185,7 @@ export default function Authentication(props) {
 						<li>ممنوع بودن برداشت رمز ارزها</li>
 						<li>ممنوع بودن خرید ارز دیجیتال</li>
 					</ul>
-					<div className="authentication-level-one-input-container">
+					<form className="authentication-level-one-input-container">
 						<div className="authentication-level-one-first-row">
 							<div className="authentication-level-one-name-input-container">
 								<label htmlFor="name">نام</label>
@@ -242,11 +246,13 @@ export default function Authentication(props) {
 								locale={persian_fa}
 								className="date-picker"
 								placeholder="تاریخ تولدتان  را وارد کنید"
+								value={value}
+								onChange={setValue}
 							/>
 						</div>
-
 						<div>
 							<input
+								className="auth-submit-btn"
 								type="submit"
 								value="ثبت اطلاعات"
 								onClick={() => {
@@ -254,7 +260,7 @@ export default function Authentication(props) {
 								}}
 							></input>
 						</div>
-					</div>
+					</form>
 				</div>
 			) : (
 				""
@@ -296,7 +302,7 @@ export default function Authentication(props) {
 						<p>با کلیک بر روی باکس زیر تصویر را آپلود کنید</p>
 						<input type="file"></input>
 						<input
-							className="authentication-level-two-submit-button"
+							className="authentication-level-two-submit-button auth-submit-btn"
 							type="submit"
 							value="ثبت تصویر"
 						></input>

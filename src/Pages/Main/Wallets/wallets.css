@@ -47,6 +47,12 @@
 	font-size: var(--main-font-size-x-large);
 }
 
+.toman-icon-container {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
 .toman-inventory-container {
 	/* border: 1px solid green; */
 	flex: 4;
@@ -106,7 +112,6 @@
 
 .currency-persian-name {
 	font-size: var(--main-font-size-large);
-	font-weight: 900;
 }
 
 .currency-english-name {

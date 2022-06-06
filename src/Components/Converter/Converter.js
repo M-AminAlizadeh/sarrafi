@@ -27,7 +27,6 @@ export default function Converter(props) {
 	};
 	// This funciton choose each currency and fetch its data and display it in dropdown box
 	const choose_currency = (e) => {
-		set_toggle_drop_down(false);
 		api_data.map((item) => {
 			if (e.target.id == item.id) {
 				set_currency_name(item.persian_name);
@@ -37,10 +36,10 @@ export default function Converter(props) {
 				set_toman_value(item.website_price);
 			}
 		});
+		set_toggle_drop_down(false);
 	};
 	// This funciton filter the currencies while user typing
 	const filter_items = (e) => {
-		// console.log(e.target.value);
 		const user_input = e.target.value;
 		const filtered_list = currencies_info.filter((item) => {
 			return (
@@ -53,8 +52,6 @@ export default function Converter(props) {
 	};
 	// This function covert unit to toman
 	const unit_to_toman_converter = (e) => {
-		// console.log(typeof e.target.value);
-		console.log(toman_value);
 		set_unit_value(Number(e.target.value));
 		set_toman_value(Number(e.target.value) * Number(currency_value));
 	};
@@ -66,7 +63,7 @@ export default function Converter(props) {
 	return (
 		<div className="converter-container component_box_shadow">
 			<div className="converter-inner-container">
-				<div class="converter-top-row">
+				<div className="converter-top-row">
 					{/* Converter Choose Currency */}
 					<fieldset className="converter-choose-currency">
 						<legend>انتخاب ارز:</legend>
@@ -91,64 +88,65 @@ export default function Converter(props) {
 									toggle_drop_down ? "chevron-container-toggle" : null
 								}`}
 							>
-								<img src="https://img.icons8.com/ios-glyphs/24/000000/chevron-up.png" />
+								<img src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/undefined/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya-4.png" />
 							</div>
-							{/* Dropdown itself */}
-							{toggle_drop_down ? (
-								<div className="converter-drop-down component_box_shadow">
-									{/* Searchbar */}
-									<input
-										type="search"
-										placeholder="جستجو بر اساس اسم یا نماد..."
-										onChange={(e) => {
-											filter_items(e);
-										}}
-									/>
-									{api_data.map((item) => {
-										return (
-											// Dropdown Row
-											<div
-												className="converter-drop-down-row"
-												onClick={(e) => {
-													choose_currency(e);
-												}}
-												id={item.id}
-											>
-												{/* Dropdown right side */}
-												<div className="converter-drop-down-right-side">
-													{/* Currency icon */}
-													<img
-														id={item.id}
-														src={item.icon_source}
-														alt={item.persian_name}
-														width="20px"
-													/>
-													{/* Currency persian name */}
-													<span id={item.id} className="currency-name">
-														{item.persian_name}
-													</span>{" "}
-													{/* Currency abbreviation */}
-													<span id={item.id} className="currency-abbr">
-														({item.abbr})
-													</span>
-												</div>
-												{/* Dropdown left side */}
-												<div
-													id={item.id}
-													className="converter-drop-down-left-side"
-												>
-													<span>قیمت خرید:</span>
-													{/* Currency price */}
-													<span className="currency-price">
-														{item.website_price}تومان
-													</span>
-												</div>
-											</div>
-										);
-									})}
-								</div>
-							) : null}
 						</div>
+						{/* Dropdown itself */}
+						{toggle_drop_down ? (
+							<div className="converter-drop-down component_box_shadow">
+								{/* Searchbar */}
+								<input
+									type="search"
+									placeholder="جستجو بر اساس اسم یا نماد..."
+									onChange={(e) => {
+										filter_items(e);
+									}}
+								/>
+								{api_data.map((item, index) => {
+									return (
+										// Dropdown Row
+										<div
+											className="converter-drop-down-row"
+											onClick={(e) => {
+												choose_currency(e);
+											}}
+											id={item.id}
+											key={index}
+										>
+											{/* Dropdown right side */}
+											<div className="converter-drop-down-right-side">
+												{/* Currency icon */}
+												<img
+													id={item.id}
+													src={item.icon_source}
+													alt={item.persian_name}
+													width="20px"
+												/>
+												{/* Currency persian name */}
+												<span id={item.id} className="currency-name">
+													{item.persian_name}
+												</span>{" "}
+												{/* Currency abbreviation */}
+												<span id={item.id} className="currency-abbr">
+													({item.abbr})
+												</span>
+											</div>
+											{/* Dropdown left side */}
+											<div
+												id={item.id}
+												className="converter-drop-down-left-side"
+											>
+												<span>قیمت خرید:</span>
+												{/* Currency price */}
+												<span className="currency-price">
+													{item.website_price}تومان
+												</span>
+											</div>
+										</div>
+									);
+								})}
+							</div>
+						) : null}
 					</fieldset>
 					{/* Converter Unit */}
 					<fieldset className="converter-choose-currency converter-unit">
@@ -175,7 +173,7 @@ export default function Converter(props) {
 						/>
 					</fieldset>
 				</div>
-				<div class="converter-bottom-row">
+				<div className="converter-bottom-row">
 					{/* Converter btns */}
 					<div>
 						<button className="converter-btn converter-sell-btn">

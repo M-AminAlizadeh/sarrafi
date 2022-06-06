@@ -203,56 +203,55 @@ export default function Buy(props) {
 									src="https://img.icons8.com/ios-glyphs/10/000000/chevron-up.png"
 								/>
 							</div>
-							{/* Drop down list */}
-							{dropdown ? (
-								<div className="drop-down-list-container component_box_shadow">
-									{/* Search box */}
-									<div className="search-box-container">
-										<input
-											style={{ cursor: "text" }}
-											type="search"
-											name="search-bar"
-											id="search-bar"
-											placeholder="جستجو بر اساس اسم..."
-											onChange={(e) => {
-												filter_currency(e);
-											}}
-										/>
-									</div>
-									{api_data.map((currency) => {
-										return (
-											<div
-												className="drop-down-list"
-												onClick={(e) => {
-													fetch_currency(e);
-												}}
-												id={currency.id}
-											>
-												<div class="right-side" id={currency.id}>
-													<img
-														src={currency.icon_source}
-														width="30px"
-														height="30px"
-														id={currency.id}
-													/>
-													<span id={currency.id}>
-														{currency.persian_name}({currency.name})
-													</span>
-												</div>
-												<div className="left-side" id={currency.id}>
-													<span id={currency.id}>قیمت خرید</span>
-													<span className="buy-price" id={currency.id}>
-														{currency.website_price}تومان
-													</span>
-												</div>
-											</div>
-										);
-									})}
-								</div>
-							) : (
-								""
-							)}
 						</div>
+						{/* Drop down list */}
+						{dropdown ? (
+							<div className="drop-down-list-container component_box_shadow">
+								{/* Search box */}
+								<div className="search-box-container">
+									<input
+										style={{ cursor: "text" }}
+										type="search"
+										name="search-bar"
+										id="search-bar"
+										placeholder="جستجو بر اساس اسم..."
+										onChange={(e) => {
+											filter_currency(e);
+										}}
+									/>
+								</div>
+								{api_data.map((currency, index) => {
+									return (
+										<div
+											key={index}
+											className="drop-down-list"
+											onClick={(e) => {
+												fetch_currency(e);
+											}}
+											id={currency.id}
+										>
+											<div className="right-side" id={currency.id}>
+												<img
+													src={currency.icon_source}
+													width="30px"
+													height="30px"
+													id={currency.id}
+												/>
+												<span id={currency.id}>
+													{currency.persian_name}({currency.name})
+												</span>
+											</div>
+											<div className="left-side" id={currency.id}>
+												<span id={currency.id}>قیمت خرید</span>
+												<span className="buy-price" id={currency.id}>
+													{currency.website_price}تومان
+												</span>
+											</div>
+										</div>
+									);
+								})}
+							</div>
+						) : null}
 					</div>
 					{/* Price of Each Coin */}
 					<div className="buy-page-each-coin-price">
@@ -291,7 +290,7 @@ export default function Buy(props) {
 									onFocus={(e) => {
 										set_selected("currency");
 									}}
-									value={currency_value}
+									value={currency_value || ""}
 								/>
 							</div>
 							{warning ? (
@@ -311,7 +310,7 @@ export default function Buy(props) {
 									className={`buy-page-currency-count-in-tomans ${
 										warning ? "" : "error-input-border"
 									}`}
-									value={toman_value}
+									value={toman_value || ""}
 									onFocus={(e) => {
 										set_selected("toman");
 									}}

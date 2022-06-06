@@ -69,9 +69,9 @@ const Wallets = (props) => {
 				</div>
 
 				{/* Maping through api */}
-				{api.map((item) => {
+				{api.map((item,index) => {
 					return (
-						<div className="wallet-currency-row">
+						<div className="wallet-currency-row" key={index}>
 							{/* Currency name container*/}
 							<div className="currency-row-info-container">
 								{/* Currency icon container */}

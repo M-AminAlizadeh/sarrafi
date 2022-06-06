@@ -217,9 +217,42 @@ const API = {
 			},
 		],
 		orders: [
-			{ id: 1, title: "خرید تتر" },
-			{ id: 2, title: "فروش بیت کوین" },
-			{ id: 3, title: " عدم واریز" },
+			{
+				id: 1,
+				number: "1",
+				currency: "بیت کوین",
+				type: "واریز",
+				amount: "100",
+				balance: "0.0065",
+				datetime: "1400/1/20",
+				situation: "موفق",
+				details:
+					"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+			},
+			{
+				id: 2,
+				number: "2",
+				currency: "بیت کوین",
+				type: "واریز",
+				amount: "100",
+				balance: "0.0065",
+				datetime: "1400/1/20",
+				situation: "موفق",
+				details:
+					"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+			},
+			{
+				id: 3,
+				number: "3",
+				currency: "بیت کوین",
+				type: "واریز",
+				amount: "100",
+				balance: "0.0065",
+				datetime: "1400/1/20",
+				situation: "موفق",
+				details:
+					"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+			},
 		],
 		tickets: [
 			{
@@ -249,10 +282,12 @@ let binance_qr_code;
 let smartchain_qr_code;
 const Deposit = () => {
 	// Crypto deposit class
-	function Crypto_deposit(crypto_value, txid_link, file) {
-		this.crypto_value = crypto_value;
-		this.txid_link = txid_link;
-		this.file = file;
+	class Crypto_deposit {
+		constructor(crypto_value, txid_link, file) {
+			this.crypto_value = crypto_value;
+			this.txid_link = txid_link;
+			this.file = file;
+		}
 	}
 	const crypto_data = () => {
 		const crypto_obj = new Crypto_deposit(
@@ -391,10 +426,10 @@ const Deposit = () => {
 	// Here is what we see inside each deposit page
 	return (
 		<div className="deposit-page-container component_box_shadow">
-			{digital_currencies_arr.map((item) => {
+			{digital_currencies_arr.map((item, index) => {
 				if (item.name == { name }.name) {
 					return (
-						<div>
+						<div key={index}>
 							{/* Page title */}
 							<Helmet>
 								<title>{currency_deposit_title}</title>
@@ -601,15 +636,13 @@ const Deposit = () => {
 											(اختیاری و جهت سرعت بخشیدن به زمان تایید تراکنش)
 										</span>
 									</p>
-									<label htmlFor="form-upload" className="form-upload">
+									<label htmlFor="form-upload">
 										<span>انتخاب فایل</span>
-										<img src="https://img.icons8.com/metro/20/000000/upload.png" />
 									</label>
 									<input
 										type="file"
 										name="form-upload"
-										id="form-upload"
-										accept=".jpg,.jpeg,.png"
+										className="deposit-file-input"
 										onChange={(e) => {
 											set_file_value(e.target.value);
 										}}
@@ -766,10 +799,10 @@ const Withdrawal = () => {
 	// Here is what we see inside each withdrawal page
 	return (
 		<div className="deposit-page-container component_box_shadow">
-			{digital_currencies_arr.map((item) => {
+			{digital_currencies_arr.map((item, index) => {
 				if (item.name == { name }.name) {
 					return (
-						<div>
+						<div key={index}>
 							{/* Page title */}
 							<Helmet>
 								<title>{currency_withdrawal_title}</title>
@@ -822,12 +855,14 @@ const Withdrawal = () => {
 								<div className="withdrawal-transfer-network-container">
 									<p>شبکه انتقال</p>
 									<select
-										className="input-outline"
 										onChange={(e) => {
 											toggle_tag_input(e);
 											set_transfer_network(e.target.value);
 										}}
 									>
+										<option selected disabled value="">
+											شبکه انتقال را انتخاب کنید
+										</option>
 										<option>
 											{
 												(transfer_network_default = `	شبکه ${item.persian_name} (${item.abbr})`)
@@ -1016,7 +1051,10 @@ const AppLayout = () => (
 				path="sell"
 				element={<Sell data={digital_currencies_arr} page_title={sell_title} />}
 			/>
-			<Route path="orders" element={<Orders page_title={orders_title} />} />
+			<Route
+				path="orders"
+				element={<Orders page_title={orders_title} user_info={user_api} />}
+			/>
 			<Route
 				path="credit-cards"
 				element={
@@ -1062,7 +1100,7 @@ function App() {
 				/>
 				<Route path="sign-up" element={<Sign_up page_title={signup_title} />} />
 				<Route
-					path="/"
+					path="/*"
 					element={
 						<AppLayout
 							website_name={website_name}
@@ -1071,7 +1109,7 @@ function App() {
 					}
 				>
 					<Route
-						path="/"
+						path="/*"
 						element={
 							<Dashboard
 								user_info={user_api}
@@ -1143,7 +1181,10 @@ function App() {
 							<Sell data={digital_currencies_arr} page_title={sell_title} />
 						}
 					/>
-					<Route path="orders" element={<Orders page_title={orders_title} />} />
+					<Route
+						path="orders"
+						element={<Orders page_title={orders_title} user_info={user_api} />}
+					/>
 					<Route
 						path="credit-cards"
 						element={
