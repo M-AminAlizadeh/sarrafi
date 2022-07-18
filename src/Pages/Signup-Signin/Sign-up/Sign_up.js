@@ -2,12 +2,21 @@ import { useState } from "react";
 import "./sign-up.css";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import axios from "axios";
+
+const client = axios.create({
+	baseURL: "https://api-vercel.iran.liara.run/user/login",
+});
+
+const client_code = axios.create({
+	baseURL: "https://api-vercel.iran.liara.run/user/verifyLogin",
+});
 
 export default function Signup(props) {
 	// signup class
 	class Signup {
-		constructor(phone_number) {
-			this.phone_number = phone_number;
+		constructor(phoneNumber) {
+			this.phoneNumber = phoneNumber;
 		}
 	}
 	const signup_data = () => {
@@ -15,9 +24,24 @@ export default function Signup(props) {
 		console.log(signup_user_data);
 	};
 
+	// code class
+	class Code {
+		constructor(smsCode, phoneNumber) {
+			this.smsCode = smsCode;
+			this.phoneNumber = phoneNumber;
+		}
+	}
+
+	const code_data = () => {
+		const user_code_data = new Code(code_input, cell_phone_input);
+		console.log(user_code_data);
+	};
 	// States
 	const [cell_phone_input, set_cell_phone_input] = useState("");
+	const [code_input, set_code_input] = useState("");
 	const [cell_phone_warning, set_cell_phone_warning] = useState("");
+	const [posts, setPosts] = useState([]);
+	const [codes, setCodes] = useState([]);
 	// States functions
 	const check_form = (e) => {
 		e.preventDefault();
@@ -28,6 +52,28 @@ export default function Signup(props) {
 		} else {
 			set_cell_phone_warning(true);
 		}
+		// Get code
+		post_phoneNumber(cell_phone_input);
+	};
+
+	const post_phoneNumber = (cell_phone_input) => {
+		client
+			.post("", {
+				phoneNumber: cell_phone_input,
+			})
+			.then((res) => {
+				setPosts([res.data, ...posts]);
+			});
+	};
+	const send_code = (code_input) => {
+		client_code
+			.post("", {
+				smsCode: code_input,
+				phoneNumber: cell_phone_input,
+			})
+			.then((res) => {
+				setCodes([res.data, ...codes]);
+			});
 	};
 	return (
 		// Page Container
@@ -70,6 +116,21 @@ export default function Signup(props) {
 								set_cell_phone_input(e.target.value);
 							}}
 						/>
+						<input
+							type="number"
+							onChange={(e) => {
+								set_code_input(e.target.value);
+							}}
+						/>
+						<button
+							onClick={(e) => {
+								e.preventDefault();
+								code_data();
+								send_code(code_input);
+							}}
+						>
+							ارسال کد
+						</button>
 					</div>
 					{cell_phone_warning ? (
 						<span className="error-message">
