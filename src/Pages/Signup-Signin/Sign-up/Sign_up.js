@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./sign-up.css";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import axios from "axios";
+import { Cookies } from "react-cookie";
 
 const client = axios.create({
 	baseURL: "https://api-vercel.iran.liara.run/user/login",
@@ -11,6 +12,8 @@ const client = axios.create({
 const client_code = axios.create({
 	baseURL: "https://api-vercel.iran.liara.run/user/verifyLogin",
 });
+
+const cookies = new Cookies();
 
 export default function Signup(props) {
 	// signup class
@@ -73,6 +76,8 @@ export default function Signup(props) {
 			})
 			.then((res) => {
 				setCodes([res.data, ...codes]);
+				const token = res.data.Token;
+				cookies.set("x-auth-token", token);
 			});
 	};
 	return (
