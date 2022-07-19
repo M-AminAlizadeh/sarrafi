@@ -43,6 +43,7 @@ export default function Signup(props) {
 	const [cell_phone_input, set_cell_phone_input] = useState("");
 	const [code_input, set_code_input] = useState("");
 	const [cell_phone_warning, set_cell_phone_warning] = useState("");
+	const [code_warning, set_code_warning] = useState("");
 	const [posts, setPosts] = useState([]);
 	const [codes, setCodes] = useState([]);
 	// States functions
@@ -65,7 +66,12 @@ export default function Signup(props) {
 				phoneNumber: cell_phone_input,
 			})
 			.then((res) => {
-				setPosts([res.data, ...posts]);
+				console.log(res.data.err)
+				if(res.data.ok === true){
+					setPosts([res.data, ...posts]);
+				}else{
+					set_cell_phone_warning(res.data.err)
+				}
 			});
 	};
 	const send_code = (code_input) => {
@@ -76,8 +82,13 @@ export default function Signup(props) {
 			})
 			.then((res) => {
 				setCodes([res.data, ...codes]);
-				const token = res.data.Token;
-				cookies.set("x-auth-token", token);
+				console.log(res);
+				if (res.data.ok == true) {
+					const token = res.data.Token;
+					cookies.set("x-auth-token", token);
+				} else {
+					set_code_warning();
+				}
 			});
 	};
 	return (
