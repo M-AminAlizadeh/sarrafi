@@ -5,11 +5,17 @@ import "./buy.css";
 import { Link } from "react-router-dom";
 
 export default function Buy(props) {
-	const [success_message, set_success_message] = useState(false);
+	const [success_message, set_success_message] =
+		useState(false);
 	const currencies_info = props.data;
 	// buy currency class
 	class Buy_currency {
-		constructor(currency_name, currency_value, toman_value, description) {
+		constructor(
+			currency_name,
+			currency_value,
+			toman_value,
+			description
+		) {
 			this.currency_name = currency_name;
 			this.currency_value = currency_value;
 			this.toman_value = toman_value;
@@ -33,14 +39,16 @@ export default function Buy(props) {
 	const [currency_name, set_currency_name] = useState(
 		currencies_info[0].persian_name
 	);
-	const [currency_abbr, set_currency_abbr] = useState(currencies_info[0].abbr);
-	const [currency_price_toman, set_currency_price_toman] = useState(
-		currencies_info[0].website_price
+	const [currency_abbr, set_currency_abbr] = useState(
+		currencies_info[0].abbr
 	);
+	const [currency_price_toman, set_currency_price_toman] =
+		useState(currencies_info[0].website_price);
 	const [selected, set_selected] = useState("");
 	const [currency_value, set_currency_value] = useState();
 	const [toman_value, set_toman_value] = useState("");
-	const [description_value, set_description_value] = useState("");
+	const [description_value, set_description_value] =
+		useState("");
 	const [warning, set_warning] = useState(true);
 	/////////////////////// States functions
 	// this function just toggles dropdown list
@@ -65,8 +73,12 @@ export default function Buy(props) {
 		const filtered = currencies_info.filter((currency) => {
 			return (
 				currency.persian_name.includes(user_input) ||
-				currency.name.toLowerCase().includes(user_input.toLowerCase()) ||
-				currency.abbr.toLowerCase().includes(user_input.toLowerCase())
+				currency.name
+					.toLowerCase()
+					.includes(user_input.toLowerCase()) ||
+				currency.abbr
+					.toLowerCase()
+					.includes(user_input.toLowerCase())
 			);
 		});
 		set_api_data(filtered);
@@ -75,10 +87,14 @@ export default function Buy(props) {
 	const handle_conversion = (e) => {
 		if (selected == "currency") {
 			set_currency_value(e.target.value);
-			set_toman_value(e.target.value * currency_price_toman);
+			set_toman_value(
+				e.target.value * currency_price_toman
+			);
 		} else {
 			set_toman_value(e.target.value);
-			set_currency_value(e.target.value / currency_price_toman);
+			set_currency_value(
+				e.target.value / currency_price_toman
+			);
 		}
 	};
 	// this function changes user description text
@@ -112,60 +128,73 @@ export default function Buy(props) {
 				{/* Article List */}
 				<ul className="buy-page-list">
 					<li>
-						کارمزد پرداختی از سوی شما برای تراکنش های رمز ارز ها کارمزد شبکه ارز
-						مدنظر میباشد و مجموعه ما از این کارمزد نفعی ندارد
+						کارمزد پرداختی از سوی شما برای تراکنش های
+						رمز ارز ها کارمزد شبکه ارز مدنظر میباشد و
+						مجموعه ما از این کارمزد نفعی ندارد
 					</li>
 					<br />
 					<li>
-						اخیرا ویروس و تروجان تغییر دهنده آدرس در زمانی کپی کردن آن گسترش
-						یافته است.حتما در پس از کپی ادرس خود و اعمال آن در کادر کیف ارز مد
-						نظر دقت فرمائید و آن را با ادرس خود مقایسه نمائید.
+						اخیرا ویروس و تروجان تغییر دهنده آدرس در
+						زمانی کپی کردن آن گسترش یافته است.حتما در
+						پس از کپی ادرس خود و اعمال آن در کادر کیف
+						ارز مد نظر دقت فرمائید و آن را با ادرس
+						خود مقایسه نمائید.
 					</li>
 					<br />
 					<li>
-						از آنجایی که تراکنش های رمز ارز ها غیر قابل بازگشت است، چنانچه آدرس
-						عمومی شخص دریافت کننده اعتبار را به اشتباه اعلام کنید، تراکنش ارسال
-						شده قابل بازگشت نخواهد بود. بنابراین توصیه می کنیم پیش از ثبت سفارش،
-						از آدرس عمومی (Public Address) دریافت کننده مطمئن شوید.
+						از آنجایی که تراکنش های رمز ارز ها غیر
+						قابل بازگشت است، چنانچه آدرس عمومی شخص
+						دریافت کننده اعتبار را به اشتباه اعلام
+						کنید، تراکنش ارسال شده قابل بازگشت نخواهد
+						بود. بنابراین توصیه می کنیم پیش از ثبت
+						سفارش، از آدرس عمومی (Public Address)
+						دریافت کننده مطمئن شوید.
 					</li>
 					<br />
 					<li>
-						با توجه به غیر قابل برگشت بودن تراکنش رمز ارز ها امکان لغو تراکنش یا
-						بازگشت دادن وجه پس از انجام امکان پذیر نیست.
+						با توجه به غیر قابل برگشت بودن تراکنش رمز
+						ارز ها امکان لغو تراکنش یا بازگشت دادن
+						وجه پس از انجام امکان پذیر نیست.
 					</li>
 					<br />
 					<li>
-						به این دلیل که ارز های رمزنگاری شده تحت تاثیر برخی از عوامل ممکن است
-						صعود یا سقوط ارزش را به صورت ناگهانی تجربه کنند،مجموعه ما همانگونه
-						که منفعتی در قبال افزایش ارزش آن نمی برد، مسئولیتی هم در قبال سقوط
-						قیمت آن نخواهد داشت.
+						به این دلیل که ارز های رمزنگاری شده تحت
+						تاثیر برخی از عوامل ممکن است صعود یا سقوط
+						ارزش را به صورت ناگهانی تجربه کنند،مجموعه
+						ما همانگونه که منفعتی در قبال افزایش ارزش
+						آن نمی برد، مسئولیتی هم در قبال سقوط قیمت
+						آن نخواهد داشت.
 					</li>
 					<br />
 					<li>
-						مجموعه ما تنها در مورد پرداخت مبلغ سفارش مسئولیت دارد و وظیفه پیگیری
-						های بعدی سفارش، برعهده شماست.
+						مجموعه ما تنها در مورد پرداخت مبلغ سفارش
+						مسئولیت دارد و وظیفه پیگیری های بعدی
+						سفارش، برعهده شماست.
 					</li>
 					<br />
 					<li>
-						در هنگام خرید فقط مجاز به پرداخت با کارت‌های تایید شده در سایت
-						می‌باشید، در غیر این‌صورت وجه پرداختی به صورت اتوماتیک به کارت
-						واریزی عودت داده خواهد شد.
+						در هنگام خرید فقط مجاز به پرداخت با
+						کارت‌های تایید شده در سایت می‌باشید، در
+						غیر این‌صورت وجه پرداختی به صورت اتوماتیک
+						به کارت واریزی عودت داده خواهد شد.
 					</li>
 					<br />
 					<li>
-						پیش از ثبت درخواست و پرداخت وجه، از میزان ارز وارد شده اطمینان حاصل
-						نمایید.
+						پیش از ثبت درخواست و پرداخت وجه، از میزان
+						ارز وارد شده اطمینان حاصل نمایید.
 					</li>
 					<br />
 					<li>
-						خرید رمز ارز ها فقط از طریق کیف پول انجام میشود و خرید از درگاه برای
-						رمز ارز ها امکان پذیر نیست و بایستی ابتدا از طریق درگاه کیف پول خود
-						را شارژ کنید.
+						خرید رمز ارز ها فقط از طریق کیف پول انجام
+						میشود و خرید از درگاه برای رمز ارز ها
+						امکان پذیر نیست و بایستی ابتدا از طریق
+						درگاه کیف پول خود را شارژ کنید.
 					</li>
 					<br />
 					<li>
-						وبسایت ما برای سایت هایی که فعالیت آن ها بر خلاف قوانین جمهوری
-						اسلامی ایران است خدماتی ارائه نمیدهد
+						وبسایت ما برای سایت هایی که فعالیت آن ها
+						بر خلاف قوانین جمهوری اسلامی ایران است
+						خدماتی ارائه نمیدهد
 					</li>
 				</ul>
 				<hr />
@@ -174,32 +203,47 @@ export default function Buy(props) {
 			<div className="buy-page-input-container component_box_shadow">
 				{/* Right side header */}
 				<p className="buy-page-input-container-header">
-					<TrendingDownIcon></TrendingDownIcon> خرید ارز
+					<TrendingDownIcon></TrendingDownIcon> خرید
+					ارز
 				</p>
 				<div className="buy-page-payment-amount">
 					مبلغ پرداختی:<span>{toman_value}</span> تومان
 				</div>
 				<form action="">
 					{/* Select currency part */}
-					<p className="buy-page-currency-selection-header">انتخاب ارز</p>
+					<p className="buy-page-currency-selection-header">
+						انتخاب ارز
+					</p>
 					<div className="currency-selection-container">
 						{/* Main div */}
 						<div
 							className={`buy-page-select-box ${
-								dropdown ? "change-drop-down-color" : ""
+								dropdown
+									? "change-drop-down-color"
+									: ""
 							}`}
 							onClick={toggle_dropdown}
 						>
 							{/* currency logo */}
 							<div className="buy-page-currency-logo">
-								<img src={currency_icon} width="30px" height="30px" />
+								<img
+									src={currency_icon}
+									width="30px"
+									height="30px"
+								/>
 							</div>
 							{/* currency name in persian */}
-							<span className="buy-page-currency-name">{currency_name}</span>
+							<span className="buy-page-currency-name">
+								{currency_name}
+							</span>
 							{/* currency dropdown icon */}
 							<div className="buy-page-currency-dropdown">
 								<img
-									className={dropdown ? "toggle-drop-down-icon" : ""}
+									className={
+										dropdown
+											? "toggle-drop-down-icon"
+											: ""
+									}
 									src="https://img.icons8.com/ios-glyphs/10/000000/chevron-up.png"
 								/>
 							</div>
@@ -210,7 +254,9 @@ export default function Buy(props) {
 								{/* Search box */}
 								<div className="search-box-container">
 									<input
-										style={{ cursor: "text" }}
+										style={{
+											cursor: "text",
+										}}
 										type="search"
 										name="search-bar"
 										id="search-bar"
@@ -220,36 +266,79 @@ export default function Buy(props) {
 										}}
 									/>
 								</div>
-								{api_data.map((currency, index) => {
-									return (
-										<div
-											key={index}
-											className="drop-down-list"
-											onClick={(e) => {
-												fetch_currency(e);
-											}}
-											id={currency.id}
-										>
-											<div className="right-side" id={currency.id}>
-												<img
-													src={currency.icon_source}
-													width="30px"
-													height="30px"
-													id={currency.id}
-												/>
-												<span id={currency.id}>
-													{currency.persian_name}({currency.name})
-												</span>
+								{api_data.map(
+									(currency, index) => {
+										return (
+											<div
+												key={index}
+												className="drop-down-list"
+												onClick={(e) => {
+													fetch_currency(
+														e
+													);
+												}}
+												id={currency.id}
+											>
+												<div
+													className="right-side"
+													id={
+														currency.id
+													}
+												>
+													<img
+														src={
+															currency.icon_source
+														}
+														width="30px"
+														height="30px"
+														id={
+															currency.id
+														}
+													/>
+													<span
+														id={
+															currency.id
+														}
+													>
+														{
+															currency.persian_name
+														}
+														(
+														{
+															currency.name
+														}
+														)
+													</span>
+												</div>
+												<div
+													className="left-side"
+													id={
+														currency.id
+													}
+												>
+													<span
+														id={
+															currency.id
+														}
+													>
+														قیمت خرید
+													</span>
+													<span
+														className="buy-price"
+														id={
+															currency.id
+														}
+													>
+														{
+															currency.website_price
+														}
+														تومان
+													</span>
+												</div>
 											</div>
-											<div className="left-side" id={currency.id}>
-												<span id={currency.id}>قیمت خرید</span>
-												<span className="buy-price" id={currency.id}>
-													{currency.website_price}تومان
-												</span>
-											</div>
-										</div>
-									);
-								})}
+										);
+									}
+								)}
 							</div>
 						) : null}
 					</div>
@@ -257,7 +346,9 @@ export default function Buy(props) {
 					<div className="buy-page-each-coin-price">
 						<p>
 							قیمت هر واحد
-							<span className="currency-name">{currency_name}:</span>
+							<span className="currency-name">
+								{currency_name}:
+							</span>
 						</p>
 						<p>
 							<span className="currency-value-in-toman">
@@ -268,10 +359,15 @@ export default function Buy(props) {
 					</div>
 					<hr />
 					<div>
-						<span className="buy-page-coin-count-header">مقدار ارز</span>
+						<span className="buy-page-coin-count-header">
+							مقدار ارز
+						</span>
 						<div className="buy-page-coin-count-div">
 							<div className="buy-page-coin-count-container">
-								<label className="buy-page-coin-count-small-header" htmlFor="">
+								<label
+									className="buy-page-coin-count-small-header"
+									htmlFor=""
+								>
 									مقدار {currency_name}
 									<img
 										src={currency_icon}
@@ -284,7 +380,9 @@ export default function Buy(props) {
 									placeholder={currency_abbr}
 									type="number"
 									className={`buy-page-currency-count-input  ${
-										warning ? "" : "error-input-border"
+										warning
+											? ""
+											: "error-input-border"
 									}`}
 									onChange={handle_conversion}
 									onFocus={(e) => {
@@ -302,13 +400,17 @@ export default function Buy(props) {
 							)}
 							<div
 								className={`buy-page-coin-count-in-tomans-container `}
-								style={{ flexDirection: "column" }}
+								style={{
+									flexDirection: "column",
+								}}
 							>
 								<input
 									placeholder="تومان"
 									type="number"
 									className={`buy-page-currency-count-in-tomans ${
-										warning ? "" : "error-input-border"
+										warning
+											? ""
+											: "error-input-border"
 									}`}
 									value={toman_value || ""}
 									onFocus={(e) => {
@@ -317,7 +419,8 @@ export default function Buy(props) {
 									onChange={handle_conversion}
 								/>
 								<span className="buy-page-span-below-toman-input">
-									مبلغ را به تومان نیز می توانید مشخص نمایید.
+									مبلغ را به تومان نیز می
+									توانید مشخص نمایید.
 								</span>
 							</div>
 							{warning ? (
@@ -330,10 +433,12 @@ export default function Buy(props) {
 						</div>
 					</div>
 					<div className="buy-page-notice">
-						نکته: در رمز ارزها مقدار خریداری شده به کیف پول رمز ارز شما اضافه
-						میشود.
+						نکته: در رمز ارزها مقدار خریداری شده به
+						کیف پول رمز ارز شما اضافه میشود.
 					</div>
-					<p className="buy-page-further-description-header">توضیحات اضافه</p>
+					<p className="buy-page-further-description-header">
+						توضیحات اضافه
+					</p>
 					<div className="buy-page-text-area-container">
 						<textarea
 							className="buy-page-text-area"
@@ -351,9 +456,13 @@ export default function Buy(props) {
 							</span>
 						</div>
 						<p className="buy-page-second-notice">
-							خرید و فروش فقط از طریق کیف پول تومانی شما انجام میشود. برای
-							افزایش موجودی به بخش
-							<Link className="buy-page-link" to="/wallets">
+							خرید و فروش فقط از طریق کیف پول
+							تومانی شما انجام میشود. برای افزایش
+							موجودی به بخش
+							<Link
+								className="buy-page-link"
+								to="/wallets"
+							>
 								{" "}
 								کیف پول تومانی{" "}
 							</Link>
@@ -373,6 +482,7 @@ export default function Buy(props) {
 						size="lg"
 						onClick={(e) => {
 							check_form(e);
+							e.preventDefault();
 						}}
 					>
 						ثبت و پرداخت

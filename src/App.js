@@ -1,6 +1,11 @@
 //*********************************** Imports ***********************************//
 import { useState } from "react";
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import {
+	BrowserRouter,
+	Routes,
+	Route,
+	useParams,
+} from "react-router-dom";
 import Dashboard from "./Pages/Main/Dashboard/Dashboard";
 import Wallets from "./Pages/Main/Wallets/Wallets";
 import Crypto_transactions from "./Pages/Main/Transactions/Crypto-transactions/Crypto_transactions";
@@ -55,10 +60,11 @@ const API = {
 			name: "bitcoin",
 			persian_name: "بیت کوین",
 			abbr: "BTC",
-			icon_source: "https://cryptologos.cc/logos/bitcoin-btc-logo.svg?v=022",
-			world_price: 39309.13,
-			toman_price: 1378,
-			website_price: 213,
+			icon_source:
+				"https://cryptologos.cc/logos/bitcoin-btc-logo.svg?v=022",
+			world_price: 23.5753,
+			toman_price: 755000000,
+			website_price: 755000000,
 			our_inventory: 0.1,
 			address: "bitcoin address",
 			address_binance: "bitcoin binance address",
@@ -76,7 +82,8 @@ const API = {
 			name: "tether",
 			persian_name: "تتر",
 			abbr: "USDT",
-			icon_source: "https://cryptologos.cc/logos/tether-usdt-logo.svg?v=022",
+			icon_source:
+				"https://cryptologos.cc/logos/tether-usdt-logo.svg?v=022",
 			world_price: 39309.13,
 			toman_price: 1378,
 			website_price: 97,
@@ -90,7 +97,8 @@ const API = {
 			name: "ethereum",
 			persian_name: "اتریوم",
 			abbr: "ETH",
-			icon_source: "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=022",
+			icon_source:
+				"https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=022",
 			world_price: 39309.13,
 			toman_price: 1378,
 			website_price: 934,
@@ -104,7 +112,8 @@ const API = {
 			name: "Stellar",
 			persian_name: "استلار",
 			abbr: "XLM",
-			icon_source: "https://cryptologos.cc/logos/stellar-xlm-logo.svg?v=022",
+			icon_source:
+				"https://cryptologos.cc/logos/stellar-xlm-logo.svg?v=022",
 			world_price: 823,
 			toman_price: 92834,
 			website_price: 907,
@@ -118,7 +127,8 @@ const API = {
 			name: "Dogecoin",
 			persian_name: "دوج کوین",
 			abbr: "DOGE",
-			icon_source: "https://cryptologos.cc/logos/dogecoin-doge-logo.svg?v=022",
+			icon_source:
+				"https://cryptologos.cc/logos/dogecoin-doge-logo.svg?v=022",
 			world_price: 900,
 			toman_price: 2351,
 			website_price: 321,
@@ -132,7 +142,8 @@ const API = {
 			name: "Binance Coin",
 			persian_name: "بایننس کوین",
 			abbr: "BNB",
-			icon_source: "https://cryptologos.cc/logos/bnb-bnb-logo.svg?v=022",
+			icon_source:
+				"https://cryptologos.cc/logos/bnb-bnb-logo.svg?v=022",
 			world_price: 658,
 			toman_price: 98456,
 			website_price: 92123312,
@@ -146,7 +157,8 @@ const API = {
 			name: "Monero",
 			persian_name: "مونرو",
 			abbr: "XMR",
-			icon_source: "https://cryptologos.cc/logos/monero-xmr-logo.svg?v=022",
+			icon_source:
+				"https://cryptologos.cc/logos/monero-xmr-logo.svg?v=022",
 			world_price: 300,
 			toman_price: 8,
 			website_price: 8.9784,
@@ -160,7 +172,8 @@ const API = {
 			name: "Litecoin",
 			persian_name: "لیت کوین",
 			abbr: "LTC",
-			icon_source: "https://cryptologos.cc/logos/litecoin-ltc-logo.svg?v=022",
+			icon_source:
+				"https://cryptologos.cc/logos/litecoin-ltc-logo.svg?v=022",
 			world_price: 534,
 			toman_price: 89,
 			website_price: 0.23,
@@ -262,7 +275,8 @@ const API = {
 				unit: "پیگیری سفارش",
 				situation: "در حال بررسی",
 				datetime: "1400/2/30",
-				details: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ",
+				details:
+					"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ",
 			},
 		],
 	},
@@ -313,30 +327,43 @@ const Deposit = () => {
 	});
 	// Currency deposit title
 	const currency_deposit_title =
-		"واریز" + " " + currency_persian_name + " - " + website_name;
+		"واریز" +
+		" " +
+		currency_persian_name +
+		" - " +
+		website_name;
 	// States
 	const [text, set_text] = useState("کلیک و کپی");
 	const [text_2, set_text_2] = useState("کلیک و کپی");
-	const [address_input, set_address_input] = useState(wallet_address);
-	const [binance_address_input, set_binance_address_input] = useState(
-		binance_wallet_address
-	);
+	const [address_input, set_address_input] =
+		useState(wallet_address);
+	const [binance_address_input, set_binance_address_input] =
+		useState(binance_wallet_address);
 	const [network_style, set_network_style] = useState(true);
-	const [binance_network_style, set_binance__network_style] = useState(false);
-	const [binance_smc_network_style, set_binance_smc_network_style] =
+	const [binance_network_style, set_binance__network_style] =
 		useState(false);
+	const [
+		binance_smc_network_style,
+		set_binance_smc_network_style,
+	] = useState(false);
 	const [currency_value, set_currency_value] = useState("");
 	const [currency_input, set_currency_input] = useState(true);
 	const [txid_value, set_txid_value] = useState("");
 	const [txid_input, set_txid_input] = useState(true);
 	const [modal_toggle, set_modal_toggle] = useState(false);
-	const [success_message, set_success_message] = useState(false);
+	const [success_message, set_success_message] =
+		useState(false);
 	const [qr_magnify, set_qr_magnify] = useState(false);
-	const [currency_qr_code, set_curency_qr_code] = useState(qr_code);
-	const [binance_currency_qr_code, set_binance_curency_qr_code] =
-		useState(binance_qr_code);
-	const [smartchain_currency_qr_code, set_smartchain_curency_qr_code] =
-		useState(smartchain_qr_code);
+	const [currency_qr_code, set_curency_qr_code] =
+		useState(qr_code);
+	const [
+		binance_currency_qr_code,
+		set_binance_curency_qr_code,
+	] = useState(binance_qr_code);
+	const [
+		smartchain_currency_qr_code,
+		set_smartchain_curency_qr_code,
+	] = useState(smartchain_qr_code);
 	const [qrcode, set_qrcode] = useState(currency_qr_code);
 	const [file_value, set_file_value] = useState("");
 	// States functions
@@ -353,7 +380,9 @@ const Deposit = () => {
 	const change_address = (e) => {
 		if (e.target.id == 1) {
 			// change address input
-			set_address_input(digital_currencies_arr[currency_id - 1].address);
+			set_address_input(
+				digital_currencies_arr[currency_id - 1].address
+			);
 			// change network link style
 			set_network_style(true);
 			set_binance__network_style(false);
@@ -362,7 +391,8 @@ const Deposit = () => {
 		} else if (e.target.id == 2) {
 			// change address input
 			set_address_input(
-				digital_currencies_arr[currency_id - 1].address_binance
+				digital_currencies_arr[currency_id - 1]
+					.address_binance
 			);
 			// change network link style
 			set_network_style(false);
@@ -372,7 +402,8 @@ const Deposit = () => {
 		} else {
 			// change address input
 			set_address_input(
-				digital_currencies_arr[currency_id - 1].address_smartchain
+				digital_currencies_arr[currency_id - 1]
+					.address_smartchain
 			);
 			// change network link style
 			set_network_style(false);
@@ -432,29 +463,48 @@ const Deposit = () => {
 						<div key={index}>
 							{/* Page title */}
 							<Helmet>
-								<title>{currency_deposit_title}</title>
+								<title>
+									{currency_deposit_title}
+								</title>
 							</Helmet>
 							{/* Modal box container */}
 							{modal_toggle ? (
 								<div className="modal-box-container component_box_shadow">
-									<span className="modal-box-header">TxID چیست؟</span>
+									<span className="modal-box-header">
+										TxID چیست؟
+									</span>
 									<p
 										className="modal-box-description"
 										style={{ width: "100%" }}
 									>
-										لینک تراکنش یا همان TxID یک عبارت 64 کاراکتری بوده که ترکیبی
-										از اعداد و حروف است و جهت رهگیری تراکنش استفاده می شود.
-										بعنوان مثال: 3fc9153b7bdffcdf
-										ae092092320612c9c3c94351f600d80ad75f3915909b488b ممکن است
-										TxID را کمی با تأخیر دریافت نمایید، لذا پس از انجام تراکنش
-										چند دقیقه صبر کرده و پس از دریافت درخواست را ثبت نمایید.
-										چنان چه TxID را به درستی وارد نکرده باشید امکان صحت سنجی
-										خودکار وجود نخواهد داشت بنابراین ممکن است تأیید درخواست شما
-										بیش از حد معمول زمان نیاز داشته باشد. دقت نمایید هنگامی که
-										شما انتقال را انجام می دهید، مقداری نیز به عنوان کارمزد توسط
-										سرویس دهنده کیف پول شما کسر می شود، اما شما می بایست مقداری
-										که هنگام انتقال وارد کرده اید را در بخش واریز به ما وارد
-										نمایید.
+										لینک تراکنش یا همان TxID
+										یک عبارت 64 کاراکتری بوده
+										که ترکیبی از اعداد و حروف
+										است و جهت رهگیری تراکنش
+										استفاده می شود. بعنوان
+										مثال: 3fc9153b7bdffcdf
+										ae092092320612c9c3c94351f600d80ad75f3915909b488b
+										ممکن است TxID را کمی با
+										تأخیر دریافت نمایید، لذا
+										پس از انجام تراکنش چند
+										دقیقه صبر کرده و پس از
+										دریافت درخواست را ثبت
+										نمایید. چنان چه TxID را
+										به درستی وارد نکرده باشید
+										امکان صحت سنجی خودکار
+										وجود نخواهد داشت بنابراین
+										ممکن است تأیید درخواست
+										شما بیش از حد معمول زمان
+										نیاز داشته باشد. دقت
+										نمایید هنگامی که شما
+										انتقال را انجام می دهید،
+										مقداری نیز به عنوان
+										کارمزد توسط سرویس دهنده
+										کیف پول شما کسر می شود،
+										اما شما می بایست مقداری
+										که هنگام انتقال وارد کرده
+										اید را در بخش واریز به ما
+										وارد نمایید.
 									</p>
 									<button
 										className="modal-box-btn"
@@ -471,12 +521,19 @@ const Deposit = () => {
 							{qr_magnify ? (
 								<div className="modal-box-container component_box_shadow">
 									<div>
-										<img src={qrcode} style={{ width: "100%" }} />
+										<img
+											src={qrcode}
+											style={{
+												width: "100%",
+											}}
+										/>
 									</div>
 									<button
 										className="modal-box-btn"
 										onClick={() => {
-											set_qr_magnify(false);
+											set_qr_magnify(
+												false
+											);
 										}}
 									>
 										{" "}
@@ -494,7 +551,8 @@ const Deposit = () => {
 							<div className="deposit-currency-icon-container">
 								<img src={item.icon_source} />
 								<p>
-									مبلغ واریزی را به کیف پول زیر منتقل کنید و سپس فرم زیر را
+									مبلغ واریزی را به کیف پول زیر
+									منتقل کنید و سپس فرم زیر را
 									تکمیل نمایید.
 								</p>
 								<hr />
@@ -506,7 +564,11 @@ const Deposit = () => {
 									onClick={(e) => {
 										change_address(e);
 									}}
-									className={network_style ? "deposite-active-link" : ""}
+									className={
+										network_style
+											? "deposite-active-link"
+											: ""
+									}
 								>{`شبکه ${item.persian_name} (${item.abbr}) `}</span>
 								<span
 									id="2"
@@ -514,7 +576,9 @@ const Deposit = () => {
 										change_address(e);
 									}}
 									className={
-										binance_network_style ? "deposite-active-link" : ""
+										binance_network_style
+											? "deposite-active-link"
+											: ""
 									}
 								>
 									شبکه بایننس (BEP2)
@@ -524,7 +588,9 @@ const Deposit = () => {
 										change_address(e);
 									}}
 									className={
-										binance_smc_network_style ? "deposite-active-link" : ""
+										binance_smc_network_style
+											? "deposite-active-link"
+											: ""
 									}
 									id="3"
 								>
@@ -540,7 +606,9 @@ const Deposit = () => {
 										magnify(e);
 									}}
 								/>
-								<span>برای بزرگ نمایی کلیک کنید</span>
+								<span>
+									برای بزرگ نمایی کلیک کنید
+								</span>
 							</div>
 
 							{/* Form */}
@@ -551,21 +619,41 @@ const Deposit = () => {
 									<div>
 										{/* Currency Wallet Address */}
 										<div className="invitation-link-and-number tooltip-x">
-											<span className="tooltiptext-x ">{text}</span>
-											<span onClick={(e) => copy(e)}>{address_input}</span>
+											<span className="tooltiptext-x ">
+												{text}
+											</span>
+											<span
+												onClick={(e) =>
+													copy(e)
+												}
+											>
+												{address_input}
+											</span>
 										</div>
 										<img src="https://img.icons8.com/dusk/25/000000/copy.png" />
 									</div>
 								</div>{" "}
 								{binance_network_style ? (
 									<div className="deposit-wallet-address-container">
-										<p>تگ/ممو آدرس کیف پول:</p>
+										<p>
+											تگ/ممو آدرس کیف پول:
+										</p>
 										<div>
 											{/* Tag Wallet Address */}
 											<div className="invitation-link-and-number tooltip-x">
-												<span className="tooltiptext-x">{text_2}</span>
-												<span onClick={(e) => copy_2(e)}>
-													{binance_address_input}
+												<span className="tooltiptext-x">
+													{text_2}
+												</span>
+												<span
+													onClick={(
+														e
+													) =>
+														copy_2(e)
+													}
+												>
+													{
+														binance_address_input
+													}
 												</span>
 											</div>
 											<img src="https://img.icons8.com/dusk/25/000000/copy.png" />{" "}
@@ -576,17 +664,33 @@ const Deposit = () => {
 								)}
 								{/* Balance Div */}
 								<div className="deposit-form-crypto-balance">
-									موجودی: <span>0</span> {item.abbr}
+									موجودی: <span>0</span>{" "}
+									{item.abbr}
 								</div>
 								{/* Currency Value Container */}
 								<div className="deposit-currency-value-container">
-									<p>مقدار {item.persian_name}:</p>
-									<div className={currency_input ? "" : "error-input-border"}>
-										<img src={item.icon_source} />
+									<p>
+										مقدار {item.persian_name}
+										:
+									</p>
+									<div
+										className={
+											currency_input
+												? ""
+												: "error-input-border"
+										}
+									>
+										<img
+											src={
+												item.icon_source
+											}
+										/>
 										<input
 											type="number"
 											onChange={(e) => {
-												currency_value_getter(e);
+												currency_value_getter(
+													e
+												);
 											}}
 										/>
 										<span>{item.abbr}</span>
@@ -595,19 +699,29 @@ const Deposit = () => {
 										""
 									) : (
 										<span className="error-message">
-											مقدار {item.persian_name} را درج کنید
+											مقدار{" "}
+											{item.persian_name}{" "}
+											را درج کنید
 										</span>
 									)}
 								</div>
 								{/* TXID Link Container */}
 								<div className="deposit-currency-value-container">
 									<p>لینک تراکنش (TxID)</p>
-									<div className={txid_input ? "" : "error-input-border"}>
+									<div
+										className={
+											txid_input
+												? ""
+												: "error-input-border"
+										}
+									>
 										<input
 											type="text"
 											placeholder="TxID"
 											onChange={(e) => {
-												txid_value_getter(e);
+												txid_value_getter(
+													e
+												);
 											}}
 										/>
 									</div>
@@ -615,7 +729,8 @@ const Deposit = () => {
 										""
 									) : (
 										<span className="error-message">
-											لینک تراکنش را درج کنید
+											لینک تراکنش را درج
+											کنید
 										</span>
 									)}
 									<p className="txid-modal-link">
@@ -631,9 +746,12 @@ const Deposit = () => {
 								{/* File Upload Container */}
 								<div className="deposit-file-upload-conatiner">
 									<p>
-										عکس رسید واریز از کیف پول مبدا اخیاری{" "}
+										عکس رسید واریز از کیف پول
+										مبدا اخیاری{" "}
 										<span>
-											(اختیاری و جهت سرعت بخشیدن به زمان تایید تراکنش)
+											(اختیاری و جهت سرعت
+											بخشیدن به زمان تایید
+											تراکنش)
 										</span>
 									</p>
 									<label htmlFor="form-upload">
@@ -644,12 +762,16 @@ const Deposit = () => {
 										name="form-upload"
 										className="deposit-file-input"
 										onChange={(e) => {
-											set_file_value(e.target.value);
+											set_file_value(
+												e.target.value
+											);
 										}}
 									/>
 									<p>
 										{" "}
-										پسوندهای مجاز: jpg, jpeg, png حداکثر حجم فایل 5 مگابایت
+										پسوندهای مجاز: jpg, jpeg,
+										png حداکثر حجم فایل 5
+										مگابایت
 									</p>
 								</div>
 								{/* Submit Container */}
@@ -667,7 +789,8 @@ const Deposit = () => {
 								{success_message ? (
 									<div className="success-message-container">
 										<span className="success-message">
-											درخواست شما با موفقیت ثبت شد
+											درخواست شما با موفقیت
+											ثبت شد
 										</span>
 									</div>
 								) : null}
@@ -680,14 +803,23 @@ const Deposit = () => {
 									نکات و هشدارها
 								</p>
 								<p>
-									برای واریز {item.persian_name} به ما، ابتدا میزان{" "}
-									{item.persian_name} مورد نظر را جهت واریز در فیلد مقدار{" "}
-									{item.persian_name} وارد نمایید، پس از آگاهی از مقدار معادل آن{" "}
-									به تومان، دقیقا معادل مقداری که در فیلد مقدار{" "}
-									{item.persian_name} وارد کرده اید را به آدرس کیف پول ما که در
-									همین صفحه ارائه شده است انتقال دهید و سپس لینک یا شماره
-									تراکنشی که به شما ارائه می شود را در بخش لینک تراکنش وارد
-									نموده و دکمه «ثبت درخواست» را کلیک نمایید.
+									برای واریز{" "}
+									{item.persian_name} به ما،
+									ابتدا میزان{" "}
+									{item.persian_name} مورد نظر
+									را جهت واریز در فیلد مقدار{" "}
+									{item.persian_name} وارد
+									نمایید، پس از آگاهی از مقدار
+									معادل آن به تومان، دقیقا
+									معادل مقداری که در فیلد مقدار{" "}
+									{item.persian_name} وارد کرده
+									اید را به آدرس کیف پول ما که
+									در همین صفحه ارائه شده است
+									انتقال دهید و سپس لینک یا
+									شماره تراکنشی که به شما ارائه
+									می شود را در بخش لینک تراکنش
+									وارد نموده و دکمه «ثبت
+									درخواست» را کلیک نمایید.
 								</p>
 							</div>
 						</div>
@@ -735,16 +867,24 @@ const Withdrawal = () => {
 	});
 	// Currency withdrawal title
 	const currency_withdrawal_title =
-		"برداشت" + " " + currency_persian_name + " - " + website_name;
+		"برداشت" +
+		" " +
+		currency_persian_name +
+		" - " +
+		website_name;
 	// States
 	const [currency_value, set_currency_value] = useState("");
 	const [currency_input, set_currency_input] = useState(true);
 	const [wallet_value, set_wallet_value] = useState("");
 	const [wallet_input, set_wallet_input] = useState(true);
-	const [tag_address_value, set_tag_address_value] = useState("");
-	const [tag_address_input, set_tag_address_input] = useState(true);
-	const [success_message, set_success_message] = useState(false);
-	const [drop_down_check, set_drop_down_check] = useState(false);
+	const [tag_address_value, set_tag_address_value] =
+		useState("");
+	const [tag_address_input, set_tag_address_input] =
+		useState(true);
+	const [success_message, set_success_message] =
+		useState(false);
+	const [drop_down_check, set_drop_down_check] =
+		useState(false);
 	const [transfer_network, set_transfer_network] = useState(
 		transfer_network_default
 	);
@@ -805,7 +945,9 @@ const Withdrawal = () => {
 						<div key={index}>
 							{/* Page title */}
 							<Helmet>
-								<title>{currency_withdrawal_title}</title>
+								<title>
+									{currency_withdrawal_title}
+								</title>
 							</Helmet>
 							{/* Page Header */}
 							<p className="deposit-header">
@@ -818,20 +960,39 @@ const Withdrawal = () => {
 								<img src={item.icon_source} />
 							</div>
 							{/* Form */}
-							<form action="" className="deposit-form">
+							<form
+								action=""
+								className="deposit-form"
+							>
 								{/* Balance Div */}
 								<div className="deposit-form-crypto-balance">
-									موجودی: <span>0</span> {item.abbr}
+									موجودی: <span>0</span>{" "}
+									{item.abbr}
 								</div>
 								{/* Currency Value Container */}
 								<div className="deposit-currency-value-container">
-									<p>مقدار {item.persian_name}:</p>
-									<div className={currency_input ? "" : "error-input-border"}>
-										<img src={item.icon_source} />
+									<p>
+										مقدار {item.persian_name}
+										:
+									</p>
+									<div
+										className={
+											currency_input
+												? ""
+												: "error-input-border"
+										}
+									>
+										<img
+											src={
+												item.icon_source
+											}
+										/>
 										<input
 											type="number"
 											onChange={(e) => {
-												currency_value_getter(e);
+												currency_value_getter(
+													e
+												);
 											}}
 										/>
 										<span>{item.abbr}</span>
@@ -841,15 +1002,20 @@ const Withdrawal = () => {
 									""
 								) : (
 									<span className="error-message">
-										مقدار {item.persian_name} را درج کنید
+										مقدار {item.persian_name}{" "}
+										را درج کنید
 									</span>
 								)}
 								<div className="deposit-currency-value-description">
 									<p>
-										موجودی قابل برداشت:<span> 0</span>
+										موجودی قابل برداشت:
+										<span> 0</span>
 										{item.abbr}
 									</p>
-									<p>برداشت روزانه رمز ارز: معادل 0 از 0 تومان</p>
+									<p>
+										برداشت روزانه رمز ارز:
+										معادل 0 از 0 تومان
+									</p>
 								</div>
 								{/* Transfer Network Container */}
 								<div className="withdrawal-transfer-network-container">
@@ -857,78 +1023,118 @@ const Withdrawal = () => {
 									<select
 										onChange={(e) => {
 											toggle_tag_input(e);
-											set_transfer_network(e.target.value);
+											set_transfer_network(
+												e.target.value
+											);
 										}}
 									>
-										<option selected disabled value="">
-											شبکه انتقال را انتخاب کنید
+										<option
+											selected
+											disabled
+											value=""
+										>
+											شبکه انتقال را انتخاب
+											کنید
 										</option>
 										<option>
 											{
 												(transfer_network_default = `	شبکه ${item.persian_name} (${item.abbr})`)
 											}
 										</option>
-										<option>شبکه بایننس (BNP2)</option>
-										<option>بایننس اسمارت چین (BNP20)</option>
+										<option>
+											شبکه بایننس (BNP2)
+										</option>
+										<option>
+											بایننس اسمارت چین
+											(BNP20)
+										</option>
 									</select>
 								</div>
 								{/* Network Wage */}
 								<div className="withdrawal-network-wage-container">
 									<p>کارمزد شبکه</p>
 									<div className="withdrawal-network-wage">
-										<span>0.0002{item.abbr}</span>
+										<span>
+											0.0002{item.abbr}
+										</span>
 									</div>
 									<div className="withdrawal-network-wage-description">
 										<p>
-											کارمزد انتقال مربوط به ثبت تراکنش در شبکه‌ی بیت کوین بوده
-											و وبسایت ما در آن ذینفع نیست.
+											کارمزد انتقال مربوط
+											به ثبت تراکنش در
+											شبکه‌ی بیت کوین بوده
+											و وبسایت ما در آن
+											ذینفع نیست.
 										</p>
 										<p>
-											اگر آدرس کیف پول شما در باینسس باشد کارمزد تراکنش صفر
-											خواهد بود.
+											اگر آدرس کیف پول شما
+											در باینسس باشد کارمزد
+											تراکنش صفر خواهد بود.
 										</p>
 									</div>
 								</div>
 								{/* Currency Wallet Address Container */}
 								<div className="withdrawal-currency-wallet-address-container">
-									<p>آدرس کیف پول مقصد یا گیرنده</p>
+									<p>
+										آدرس کیف پول مقصد یا
+										گیرنده
+									</p>
 									<input
 										type="text"
 										placeholder="آدرس کیف پول"
 										onChange={(e) => {
-											wallet_value_getter(e);
+											wallet_value_getter(
+												e
+											);
 										}}
-										className={wallet_input ? "" : "error-input-border"}
+										className={
+											wallet_input
+												? ""
+												: "error-input-border"
+										}
 									/>
 									{wallet_input ? (
 										""
 									) : (
 										<span className="error-message">
-											آدرس کیف پول را درج کنید
+											آدرس کیف پول را درج
+											کنید
 										</span>
 									)}
 									<p>
-										نکته مهم:درج کردن آدرس اشتباه ممکن است باعث از دست رفتن
-										منابع مالی شما شود.
+										نکته مهم:درج کردن آدرس
+										اشتباه ممکن است باعث از
+										دست رفتن منابع مالی شما
+										شود.
 									</p>
 								</div>
 								{/* Tag Wallet Address Container */}
 								{drop_down_check ? (
 									<div className="withdrawal-currency-wallet-address-container">
-										<p>تگ/ممو آدرس کیف پول مقصد یا گیرنده </p>
+										<p>
+											تگ/ممو آدرس کیف پول
+											مقصد یا گیرنده{" "}
+										</p>
 										<input
 											type="text"
 											placeholder=" تگ آدرس کیف پول "
 											onChange={(e) => {
-												tag_address_value_getter(e);
+												tag_address_value_getter(
+													e
+												);
 											}}
-											className={tag_address_input ? "" : "error-input-border"}
+											className={
+												tag_address_input
+													? ""
+													: "error-input-border"
+											}
 										/>
 										{tag_address_input ? (
 											""
 										) : (
 											<span className="error-message">
-												تگ آدرس کیف پول را درج کنید
+												تگ آدرس کیف پول
+												را درج کنید
 											</span>
 										)}
 									</div>
@@ -950,7 +1156,8 @@ const Withdrawal = () => {
 								{success_message ? (
 									<div className="success-message-container">
 										<span className="success-message">
-											درخواست شما با موفقیت ثبت شد
+											درخواست شما با موفقیت
+											ثبت شد
 										</span>
 									</div>
 								) : null}
@@ -963,14 +1170,23 @@ const Withdrawal = () => {
 									نکات و هشدارها
 								</p>
 								<p>
-									برای واریز {item.persian_name} به ما، ابتدا میزان{" "}
-									{item.persian_name} مورد نظر را جهت واریز در فیلد مقدار{" "}
-									{item.persian_name} وارد نمایید، پس از آگاهی از مقدار معادل آن{" "}
-									به تومان، دقیقا معادل مقداری که در فیلد مقدار{" "}
-									{item.persian_name} وارد کرده اید را به آدرس کیف پول ما که در
-									همین صفحه ارائه شده است انتقال دهید و سپس لینک یا شماره
-									تراکنشی که به شما ارائه می شود را در بخش لینک تراکنش وارد
-									نموده و دکمه «ثبت درخواست» را کلیک نمایید.
+									برای واریز{" "}
+									{item.persian_name} به ما،
+									ابتدا میزان{" "}
+									{item.persian_name} مورد نظر
+									را جهت واریز در فیلد مقدار{" "}
+									{item.persian_name} وارد
+									نمایید، پس از آگاهی از مقدار
+									معادل آن به تومان، دقیقا
+									معادل مقداری که در فیلد مقدار{" "}
+									{item.persian_name} وارد کرده
+									اید را به آدرس کیف پول ما که
+									در همین صفحه ارائه شده است
+									انتقال دهید و سپس لینک یا
+									شماره تراکنشی که به شما ارائه
+									می شود را در بخش لینک تراکنش
+									وارد نموده و دکمه «ثبت
+									درخواست» را کلیک نمایید.
 								</p>
 							</div>
 						</div>
@@ -1011,8 +1227,14 @@ const AppLayout = () => (
 					/>
 				}
 			/>
-			<Route path="wallets/deposit/:name" element={<Deposit />} />
-			<Route path="wallets/withdrawal/:name" element={<Withdrawal />} />
+			<Route
+				path="wallets/deposit/:name"
+				element={<Deposit />}
+			/>
+			<Route
+				path="wallets/withdrawal/:name"
+				element={<Withdrawal />}
+			/>
 			<Route
 				path="wallets/deposit/toman"
 				element={
@@ -1033,47 +1255,88 @@ const AppLayout = () => (
 			/>
 			<Route
 				path="crypto-transactions"
-				element={<Crypto_transactions page_title={crypto_transactions_title} />}
+				element={
+					<Crypto_transactions
+						page_title={crypto_transactions_title}
+					/>
+				}
 			/>
 			<Route
 				path="rial-transactions"
-				element={<Rial_transactions page_title={rial_transactions_title} />}
+				element={
+					<Rial_transactions
+						page_title={rial_transactions_title}
+					/>
+				}
 			/>
 			<Route
 				path="tickets"
-				element={<Tickets page_title={tickets_title} user_info={user_api} />}
+				element={
+					<Tickets
+						page_title={tickets_title}
+						user_info={user_api}
+					/>
+				}
 			/>
 			<Route
 				path="buy"
-				element={<Buy data={digital_currencies_arr} page_title={buy_title} />}
+				element={
+					<Buy
+						data={digital_currencies_arr}
+						page_title={buy_title}
+					/>
+				}
 			/>
 			<Route
 				path="sell"
-				element={<Sell data={digital_currencies_arr} page_title={sell_title} />}
+				element={
+					<Sell
+						data={digital_currencies_arr}
+						page_title={sell_title}
+					/>
+				}
 			/>
 			<Route
 				path="orders"
-				element={<Orders page_title={orders_title} user_info={user_api} />}
+				element={
+					<Orders
+						page_title={orders_title}
+						user_info={user_api}
+					/>
+				}
 			/>
 			<Route
 				path="credit-cards"
 				element={
-					<Credit_cards user_info={user_api} page_title={credit_cards_title} />
+					<Credit_cards
+						user_info={user_api}
+						page_title={credit_cards_title}
+					/>
 				}
 			/>
 			<Route
 				path="invitation"
-				element={<Invitation page_title={invitation_title} />}
+				element={
+					<Invitation page_title={invitation_title} />
+				}
 			/>
 			<Route
 				path="authentication"
 				element={
-					<Authentication user_info={user_api} page_title={auth_title} />
+					<Authentication
+						user_info={user_api}
+						page_title={auth_title}
+					/>
 				}
 			/>
 			<Route
 				path="password"
-				element={<Password user_info={user_api} page_title={password_title} />}
+				element={
+					<Password
+						user_info={user_api}
+						page_title={password_title}
+					/>
+				}
 			/>
 			<Route
 				path="two-factor-authentication"
@@ -1092,13 +1355,28 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="*" element={<_404 page_title={_404_title} />} />
-				<Route path="/login" element={<Login page_title={login_title} />} />
+				<Route
+					path="*"
+					element={<_404 page_title={_404_title} />}
+				/>
+				<Route
+					path="/login"
+					element={<Login page_title={login_title} />}
+				/>
 				<Route
 					path="forgot-password"
-					element={<Forgot_password page_title={forgot_password_title} />}
+					element={
+						<Forgot_password
+							page_title={forgot_password_title}
+						/>
+					}
 				/>
-				<Route path="sign-up" element={<Sign_up page_title={signup_title} />} />
+				<Route
+					path="sign-up"
+					element={
+						<Sign_up page_title={signup_title} />
+					}
+				/>
 				<Route
 					path="/*"
 					element={
@@ -1113,7 +1391,9 @@ function App() {
 						element={
 							<Dashboard
 								user_info={user_api}
-								currencies_api={digital_currencies_arr}
+								currencies_api={
+									digital_currencies_arr
+								}
 								page_title={dashboard_title}
 							/>
 						}
@@ -1128,8 +1408,14 @@ function App() {
 							/>
 						}
 					/>
-					<Route path="wallets/deposit/:name" element={<Deposit />} />
-					<Route path="wallets/withdrawal/:name" element={<Withdrawal />} />
+					<Route
+						path="wallets/deposit/:name"
+						element={<Deposit />}
+					/>
+					<Route
+						path="wallets/withdrawal/:name"
+						element={<Withdrawal />}
+					/>
 					<Route
 						path="wallets/deposit/toman"
 						element={
@@ -1144,46 +1430,81 @@ function App() {
 						element={
 							<Toman_withdrawal
 								user_info={user_api}
-								page_title={toman_withdrawal_title}
+								page_title={
+									toman_withdrawal_title
+								}
 							/>
 						}
 					/>
 					<Route
 						path="crypto-transactions"
 						element={
-							<Crypto_transactions page_title={crypto_transactions_title} />
+							<Crypto_transactions
+								page_title={
+									crypto_transactions_title
+								}
+							/>
 						}
 					/>
 					<Route
 						path="rial-transactions"
-						element={<Rial_transactions page_title={rial_transactions_title} />}
+						element={
+							<Rial_transactions
+								page_title={
+									rial_transactions_title
+								}
+							/>
+						}
 					/>
 					<Route
 						path="tickets"
 						element={
-							<Tickets page_title={tickets_title} user_info={user_api} />
+							<Tickets
+								page_title={tickets_title}
+								user_info={user_api}
+							/>
 						}
 					/>
 					<Route
 						path="buy"
 						element={
-							<Buy data={digital_currencies_arr} page_title={buy_title} />
+							<Buy
+								data={digital_currencies_arr}
+								page_title={buy_title}
+							/>
 						}
 					/>
-					<Route path="toman-deposit" element={<Toman_deposit />} />
+					<Route
+						path="toman-deposit"
+						element={<Toman_deposit />}
+					/>
 					<Route
 						path="toman-withdrawal"
-						element={<Toman_withdrawal page_title={toman_withdrawal_title} />}
+						element={
+							<Toman_withdrawal
+								page_title={
+									toman_withdrawal_title
+								}
+							/>
+						}
 					/>
 					<Route
 						path="sell"
 						element={
-							<Sell data={digital_currencies_arr} page_title={sell_title} />
+							<Sell
+								data={digital_currencies_arr}
+								page_title={sell_title}
+							/>
 						}
 					/>
 					<Route
 						path="orders"
-						element={<Orders page_title={orders_title} user_info={user_api} />}
+						element={
+							<Orders
+								page_title={orders_title}
+								user_info={user_api}
+							/>
+						}
 					/>
 					<Route
 						path="credit-cards"
@@ -1196,18 +1517,28 @@ function App() {
 					/>
 					<Route
 						path="invitation"
-						element={<Invitation page_title={invitation_title} />}
+						element={
+							<Invitation
+								page_title={invitation_title}
+							/>
+						}
 					/>
 					<Route
 						path="authentication"
 						element={
-							<Authentication user_info={user_api} page_title={auth_title} />
+							<Authentication
+								user_info={user_api}
+								page_title={auth_title}
+							/>
 						}
 					/>
 					<Route
 						path="password"
 						element={
-							<Password user_info={user_api} page_title={password_title} />
+							<Password
+								user_info={user_api}
+								page_title={password_title}
+							/>
 						}
 					/>
 					<Route
@@ -1215,7 +1546,9 @@ function App() {
 						element={
 							<Two_factor_authentication
 								user_info={user_api}
-								page_title={two_factor_auth_title}
+								page_title={
+									two_factor_auth_title
+								}
 							/>
 						}
 					/>
