@@ -1,5 +1,6 @@
 * {
 	font-family: "Vazirmatn" !important;
+	user-select: none;
 }
 button {
 	cursor: pointer !important;
@@ -41,9 +42,12 @@ button {
 	--button-border-radius-extreme: 1.25rem;
 
 	/* btn box-shadows */
-	--button-box-shadow-primary: 0px 0px 10px var(--color-primary);
-	--button-box-shadow-alpha: 0px 0px 10px var(--button-alpha-bg-color);
-	--button-box-shadow-beta: 0px 0px 10px var(--button-beta-bg-color);
+	--button-box-shadow-primary: 0px 0px 10px
+		var(--color-primary);
+	--button-box-shadow-alpha: 0px 0px 10px
+		var(--button-alpha-bg-color);
+	--button-box-shadow-beta: 0px 0px 10px
+		var(--button-beta-bg-color);
 
 	/**************** input variables *********************/
 
@@ -53,7 +57,8 @@ button {
 
 	/* input border */
 	--input-border: 0.063rem solid var(--light-gray-color);
-	--input-border-focus-mode: 0.063rem solid var(--color-primary);
+	--input-border-focus-mode: 0.063rem solid
+		var(--color-primary);
 	--input-padding-small: 0.625rem;
 	--input-border-radius: 0.313rem;
 }

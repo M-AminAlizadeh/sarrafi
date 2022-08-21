@@ -6,7 +6,8 @@ export default function Converter(props) {
 	const currencies_info = props.currencies_api;
 	// States
 	const [api_data, set_api_data] = useState(currencies_info);
-	const [toggle_drop_down, set_toggle_drop_down] = useState(false);
+	const [toggle_drop_down, set_toggle_drop_down] =
+		useState(false);
 	const [currency_name, set_currency_name] = useState(
 		currencies_info[0].persian_name
 	);
@@ -23,7 +24,9 @@ export default function Converter(props) {
 	// States functions
 	// This function toggle the dropdown
 	const toggle = () => {
-		toggle_drop_down ? set_toggle_drop_down(false) : set_toggle_drop_down(true);
+		toggle_drop_down
+			? set_toggle_drop_down(false)
+			: set_toggle_drop_down(true);
 	};
 	// This funciton choose each currency and fetch its data and display it in dropdown box
 	const choose_currency = (e) => {
@@ -44,8 +47,12 @@ export default function Converter(props) {
 		const filtered_list = currencies_info.filter((item) => {
 			return (
 				item.persian_name.includes(user_input) ||
-				item.name.toLowerCase().includes(user_input.toLowerCase()) ||
-				item.abbr.toLowerCase().includes(user_input.toLowerCase())
+				item.name
+					.toLowerCase()
+					.includes(user_input.toLowerCase()) ||
+				item.abbr
+					.toLowerCase()
+					.includes(user_input.toLowerCase())
 			);
 		});
 		set_api_data(filtered_list);
@@ -53,11 +60,15 @@ export default function Converter(props) {
 	// This function covert unit to toman
 	const unit_to_toman_converter = (e) => {
 		set_unit_value(Number(e.target.value));
-		set_toman_value(Number(e.target.value) * Number(currency_value));
+		set_toman_value(
+			Number(e.target.value) * Number(currency_value)
+		);
 	};
 	// This function covert toman to unit
 	const toman_to_unit_converter = (e) => {
-		set_unit_value(Number(e.target.value) / Number(currency_value));
+		set_unit_value(
+			Number(e.target.value) / Number(currency_value)
+		);
 		set_toman_value(Number(e.target.value));
 	};
 	return (
@@ -68,7 +79,10 @@ export default function Converter(props) {
 					<fieldset className="converter-choose-currency">
 						<legend>انتخاب ارز:</legend>
 						{/* Dropdown box */}
-						<div className="converter-drop-down-box" onClick={toggle}>
+						<div
+							className="converter-drop-down-box"
+							onClick={toggle}
+						>
 							{/* Currency icon */}
 							<div className="converter-currency-icon-container">
 								<img
@@ -80,15 +94,23 @@ export default function Converter(props) {
 							</div>
 							{/* Currency persian name */}
 							<div className="currency-persian-name-container">
-								<span className="currency-persian-name">{currency_name}</span>
+								<span className="currency-persian-name">
+									{currency_name}
+								</span>
 							</div>
 							{/* Currency chevron down */}
 							<div
 								className={`converter-currency-chevron-container ${
-									toggle_drop_down ? "chevron-container-toggle" : null
+									toggle_drop_down
+										? "chevron-container-toggle"
+										: null
 								}`}
 							>
-								<img src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/undefined/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya-4.png" />
+								{toggle_drop_down ? (
+									<img src="https://img.icons8.com/external-royyan-wijaya-detailed-outline-royyan-wijaya/24/000000/external-chevron-arrow-line-royyan-wijaya-detailed-outline-royyan-wijaya.png" />
+								) : (
+									<img src="https://img.icons8.com/external-ayo-icons-royyan-wijaya/24/000000/external-chevron-arrow-line-ayo-icons-royyan-wijaya-2.png" />
+								)}
 							</div>
 						</div>
 						{/* Dropdown itself */}
@@ -108,7 +130,9 @@ export default function Converter(props) {
 										<div
 											className="converter-drop-down-row"
 											onClick={(e) => {
-												choose_currency(e);
+												choose_currency(
+													e
+												);
 											}}
 											id={item.id}
 											key={index}
@@ -118,16 +142,28 @@ export default function Converter(props) {
 												{/* Currency icon */}
 												<img
 													id={item.id}
-													src={item.icon_source}
-													alt={item.persian_name}
+													src={
+														item.icon_source
+													}
+													alt={
+														item.persian_name
+													}
 													width="20px"
 												/>
 												{/* Currency persian name */}
-												<span id={item.id} className="currency-name">
-													{item.persian_name}
+												<span
+													id={item.id}
+													className="currency-name"
+												>
+													{
+														item.persian_name
+													}
 												</span>{" "}
 												{/* Currency abbreviation */}
-												<span id={item.id} className="currency-abbr">
+												<span
+													id={item.id}
+													className="currency-abbr"
+												>
 													({item.abbr})
 												</span>
 											</div>
@@ -136,10 +172,15 @@ export default function Converter(props) {
 												id={item.id}
 												className="converter-drop-down-left-side"
 											>
-												<span>قیمت خرید:</span>
+												<span>
+													قیمت خرید:
+												</span>
 												{/* Currency price */}
 												<span className="currency-price">
-													{item.website_price}تومان
+													{
+														item.website_price
+													}
+													تومان
 												</span>
 											</div>
 										</div>

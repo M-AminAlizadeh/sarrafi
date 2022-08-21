@@ -76,9 +76,9 @@
 }
 
 /* Chevron toggle */
-.chevron-container-toggle {
+/* .chevron-container-toggle {
 	transform: rotate(180deg);
-}
+} */
 .converter-currency-chevron-container img {
 	width: 24px;
 }
