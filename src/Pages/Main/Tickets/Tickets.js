@@ -9,22 +9,29 @@ import {
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import { Helmet } from "react-helmet";
+import axios from "axios";
+import { useCookies } from "react-cookie";
 import "./tickets.css";
 
+const new_ticket = axios.create({
+	baseURL: "https://api-vercel.iran.liara.run/ticket/addTicket",
+});
+
 export default function Tickets(props) {
+	const [cookies, setCookie, removeCookie] = useCookies("");
 	const orders_list = props.user_info.orders;
-	const style = {
-		position: "absolute",
-		top: "50%",
-		left: "50%",
-		transform: "translate(-50%, -50%)",
-		width: 500,
-		dir: "rtl",
-		bgcolor: "background.paper",
-		border: "2px solid #000",
-		boxShadow: 24,
-		p: 4,
-	};
+	// const style = {
+	// 	position: "absolute",
+	// 	top: "50%",
+	// 	left: "50%",
+	// 	transform: "translate(-50%, -50%)",
+	// 	width: 500,
+	// 	dir: "rtl",
+	// 	bgcolor: "background.paper",
+	// 	border: "2px solid #000",
+	// 	boxShadow: 24,
+	// 	p: 4,
+	// };
 	// Table rows
 	const rows = [];
 	props.user_info.tickets.map((item) => {
@@ -83,25 +90,24 @@ export default function Tickets(props) {
 			/>
 		);
 	}
-	// tickets class
-	class Tickets {
-		constructor(form_title, form_unit, form_order, form_explain, form_file) {
-			this.form_title = form_title;
-			this.form_order = form_order;
-			this.form_unit = form_unit;
-			this.form_explain = form_explain;
-			this.form_file = form_file;
-		}
-	}
-	const tickets_form_data = () => {
-		const form_data = new Tickets(
-			form_title,
-			form_unit,
-			form_order,
-			form_explain,
-			form_file
-		);
-		console.log(form_data);
+	// console.log(typeof cookies["x-auth-token"]);
+	const post_new_ticket = () => {
+		new_ticket
+			.post(
+				"",
+				{
+					"x-auth-token": cookies["x-auth-token"],
+				},
+				{
+					title: form_title,
+					supportType: form_unit,
+					situuation: form_order,
+					details: form_explain,
+				}
+			)
+			.then((res) => {
+				setPosts(res.data, ...posts);
+			});
 	};
 	// States
 	const [toggle_new_ticket, setToggle_new_ticket] = useState(false);
@@ -114,6 +120,7 @@ export default function Tickets(props) {
 	const [check_unit, setCheckUnit] = useState(true);
 	const [check_explain, setCheckExplain] = useState(true);
 	const [success_message, set_success_message] = useState(false);
+	const [posts, setPosts] = useState([]);
 	// States functions
 	// This function checks the form
 	const form_checker = (e) => {
@@ -127,7 +134,7 @@ export default function Tickets(props) {
 		// Check all elements in form and success pop-up
 		if (form_title !== "" && form_unit !== "" && form_explain !== "") {
 			set_success_message(true);
-			tickets_form_data();
+			post_new_ticket();
 		}
 	};
 	return (
