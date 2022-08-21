@@ -10,7 +10,8 @@ const client = axios.create({
 });
 
 const client_code = axios.create({
-	baseURL: "https://api-vercel.iran.liara.run/user/verifyLogin",
+	baseURL:
+		"https://api-vercel.iran.liara.run/user/verifyLogin",
 });
 
 const cookies = new Cookies();
@@ -36,13 +37,18 @@ export default function Signup(props) {
 	}
 
 	const code_data = () => {
-		const user_code_data = new Code(code_input, cell_phone_input);
+		const user_code_data = new Code(
+			code_input,
+			cell_phone_input
+		);
 		console.log(user_code_data);
 	};
 	// States
-	const [cell_phone_input, set_cell_phone_input] = useState("");
+	const [cell_phone_input, set_cell_phone_input] =
+		useState("");
 	const [code_input, set_code_input] = useState("");
-	const [cell_phone_warning, set_cell_phone_warning] = useState("");
+	const [cell_phone_warning, set_cell_phone_warning] =
+		useState("");
 	const [code_warning, set_code_warning] = useState("");
 	const [posts, setPosts] = useState([]);
 	const [codes, setCodes] = useState([]);
@@ -66,11 +72,11 @@ export default function Signup(props) {
 				phoneNumber: cell_phone_input,
 			})
 			.then((res) => {
-				console.log(res.data.err)
-				if(res.data.ok === true){
+				console.log(res.data.err);
+				if (res.data.ok === true) {
 					setPosts([res.data, ...posts]);
-				}else{
-					set_cell_phone_warning(res.data.err)
+				} else {
+					set_cell_phone_warning(res.data.err);
 				}
 			});
 	};
@@ -114,8 +120,8 @@ export default function Signup(props) {
 				<div className="signup-page-item-container"></div>
 				<div className="signup-page-item-container">
 					<p>
-						ضمن مطالعه قوانین و شرایط استفاده از سایت لطفا شماره موبایل خود را
-						درج کنید:
+						ضمن مطالعه قوانین و شرایط استفاده از سایت
+						لطفا شماره موبایل خود را درج کنید:
 					</p>
 				</div>
 				<form>
@@ -126,23 +132,36 @@ export default function Signup(props) {
 						<input
 							type="number"
 							className={`signup-page-number-input ${
-								cell_phone_warning ? "error-input-border" : null
+								cell_phone_warning
+									? "error-input-border"
+									: null
 							}`}
 							onChange={(e) => {
-								set_cell_phone_input(e.target.value);
+								set_cell_phone_input(
+									e.target.value
+								);
 							}}
 						/>
+						<br />
+						کد دریافتی
 						<input
+							className="signup-page-number-input"
 							type="number"
 							onChange={(e) => {
 								set_code_input(e.target.value);
 							}}
 						/>
 						<button
+							className="signup-page-submit-button"
 							onClick={(e) => {
 								e.preventDefault();
 								code_data();
 								send_code(code_input);
+							}}
+							style={{
+								marginBottom: "0px",
+								textAlign: "center",
+								width: "95%",
 							}}
 						>
 							ارسال کد
@@ -158,7 +177,10 @@ export default function Signup(props) {
 					<div className="display-space-between"></div>
 					<div>
 						<Link to="/login">
-							<button type="submit" className="signup-page-submit-button">
+							<button
+								type="submit"
+								className="signup-page-submit-button"
+							>
 								ورود
 							</button>
 						</Link>
