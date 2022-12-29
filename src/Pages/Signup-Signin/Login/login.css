@@ -134,3 +134,144 @@ input::-webkit-inner-spin-button {
 		width: 90%;
 	}
 }
+:root {
+	--white-shade: #f0f8ff;
+	--primary-padding: 8px;
+	--pilled-shape-radius: 40px;
+}
+
+.whole-forgot-password-container {
+	font-family: "Vazirmatn";
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(to right, #e2e2e2, #f3eded);
+	padding: 50px;
+}
+
+/* Image container */
+.forgot-password-page-image-container {
+	width: 50%;
+	height: 53vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Image */
+.forgot-password-page-image {
+	width: 50%;
+}
+
+.forgot-password-page-main-card-container {
+	padding: 15px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 10px #353636;
+	background: #fff;
+	width: 40%;
+	min-width: 350px;
+}
+.forgot-password-page-item-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.log-in::after {
+	content: "";
+	display: block;
+	width: 60%;
+	height: 3px;
+	margin-top: 8px;
+	background: var(--primary-gradient);
+	margin-inline: auto;
+}
+.forgot-password-page-form-input {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+.forgot-password-page-number-input,
+.forgot-password-page-password-input {
+	padding: var(--primary-padding);
+	width: 90%;
+	border-radius: var(--pilled-shape-radius);
+	border: none;
+	background: var(--color-primary-light);
+	color: var(--secondary-color);
+	outline: none;
+	border: 1px solid transparent;
+}
+@media only screen and (max-width: 300px) {
+	.forgot-password-page-number-input,
+	.forgot-password-page-password-input {
+		width: 200px;
+	}
+}
+.forgot-password-page-number-input:focus-visible,
+.forgot-password-page-password-input:focus-visible {
+	border: var(--input-border-focus-mode);
+	background: transparent;
+	transition: var(--global-transition);
+}
+.label {
+	margin-bottom: 3px;
+}
+.display-space-between {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 20px 0 20px 0;
+}
+
+.item-container button {
+	border-radius: 50%;
+	border: none;
+	padding: 5px;
+	background: transparent;
+	margin-left: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 2px 2px 5px #353636;
+}
+
+.forgot-password-page-submit-button {
+	width: 30%;
+	padding: var(--primary-padding);
+	border-radius: var(--pilled-shape-radius);
+	border: none;
+	background: var(--color-primary);
+	color: var(--white-shade);
+	margin: 20px 0 20px 0;
+}
+.forgot-password-page-submit-button:hover {
+	box-shadow: var(--button-box-shadow-primary);
+	transition: var(--global-transition);
+}
+.chekbox-label {
+	font-size: 16px;
+	margin-right: 5px;
+}
+
+.forgot-password-link {
+	text-decoration: none;
+	color: var(--link-color);
+	font-size: 16px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+@media (max-width: 900px) {
+	.forgot-password-page-image-container {
+		display: none !important;
+	}
+
+	.forgot-password-page-main-card-container {
+		width: 90%;
+	}
+}

@@ -2,42 +2,35 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./login.css";
 import { Helmet } from "react-helmet";
+import axios from "axios";
+import { Cookies } from "react-cookie";
+
+const url = "https://api-vercel.iran.liara.run/user/login";
 
 export default function Login(props) {
 	// login class
 	class Login {
-		constructor(phone_number, password) {
-			this.phone_number = phone_number;
-			this.password = password;
+		constructor(phoneNumber) {
+			this.phoneNumber = phoneNumber;
 		}
 	}
 	const login_data = () => {
-		const login_user_data = new Login(cell_phone_input, password_input);
+		const login_user_data = new Login(phoneNumber);
 		console.log(login_user_data);
 	};
 
 	// States
-	const [cell_phone_input, set_cell_phone_input] = useState("");
-	const [password_input, set_password_input] = useState("");
+	const [phoneNumber, set_cell_phone_input] = useState("");
 	const [cell_phone_warning, set_cell_phone_warning] = useState("");
-	const [password_warning, set_password_warning] = useState("");
 	// States functions
-	const check_form = (e) => {
+	const check_form = async (e) => {
 		e.preventDefault();
-		// Cellphone input
-		if (cell_phone_input !== "") {
-			set_cell_phone_warning(false);
-		} else {
-			set_cell_phone_warning(true);
-		}
-		// Password input
-		if (password_input !== "") {
-			set_password_warning(false);
-		} else {
-			set_password_warning(true);
-		}
-		if (password_input !== "" && cell_phone_input !== "") {
-			login_data();
+		try {
+			const resp = await axios.post(url, { phoneNumber });
+			console.log(resp.data);
+			set_cell_phone_warning(resp.data.msg);
+		} catch (error) {
+			console.log(error);
 		}
 	};
 	return (
@@ -65,7 +58,7 @@ export default function Login(props) {
 				</div>
 				{/* Sub-Header Container */}
 				<div className="login-page-item-container">
-					<p>خوش آمدید، لطفا شماره موبایل و کلمه عبور خود را درج کنید</p>
+					<p>خوش آمدید، لطفا شماره موبایل خود را وارد کنید</p>
 				</div>
 				{/* Form */}
 				<form>
@@ -84,48 +77,13 @@ export default function Login(props) {
 								set_cell_phone_input(e.target.value);
 							}}
 						/>
-						{cell_phone_warning ? (
-							<span className="error-message">
-								شماره موبایل را بدرستی درج کنید
-							</span>
-						) : (
-							""
-						)}
 					</div>
-					{/* Password Input */}
-					<div className="login-page-form-input">
-						<label htmlFor="password" className="label">
-							کلمه عبور
-						</label>
-						<input
-							type="password"
-							className={`login-page-password-input ${
-								password_warning ? "error-input-border" : null
-							}`}
-							onChange={(e) => {
-								set_password_input(e.target.value);
-							}}
-						/>
-					</div>
-					{password_warning ? (
-						<span className="error-message">کلمه عبور را بدرستی درج کنید</span>
+					{cell_phone_warning ? (
+						<span style={{ color: "red" }}>{cell_phone_warning}</span>
 					) : (
 						""
 					)}
-					<div className="display-space-between">
-						{/* Checkbox Container */}
-						<div>
-							<input type="checkbox"></input>
-							<label htmlFor="password" className="chekbox-label">
-								مرا به خاطر بسپار
-							</label>
-						</div>
-						<div>
-							<Link to="/forgot-password" className="forgot-password-link">
-								فراموشی رمز عبور
-							</Link>
-						</div>
-					</div>
+					<div className="display-space-between"></div>
 					<div>
 						{/* Right Button */}
 						<button
