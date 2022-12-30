@@ -5,7 +5,8 @@ import { Helmet } from "react-helmet";
 import axios from "axios";
 import { Cookies } from "react-cookie";
 
-const url = "https://api-vercel.iran.liara.run/user/login";
+const login_url = "https://api-vercel.iran.liara.run/user/login";
+const verify_login_url = "https://api-vercel.iran.liara.run/user/verifyLogin";
 
 export default function Login(props) {
 	// login class
@@ -20,15 +21,28 @@ export default function Login(props) {
 	};
 
 	// States
-	const [phoneNumber, set_cell_phone_input] = useState("");
-	const [cell_phone_warning, set_cell_phone_warning] = useState("");
-	// States functions
-	const check_form = async (e) => {
+	const [phoneNumber, set_phoneNumber] = useState("");
+	const [phoneNumber_warning, set_phoneNumber_warning] = useState("");
+	const [smsCode, set_smsCode] = useState("");
+	const [smsCode_warning, set_smsCode_warning] = useState("");
+	// Send phoneNumber to server and get the response
+	const send_phoneNumber = async (e) => {
 		e.preventDefault();
 		try {
-			const resp = await axios.post(url, { phoneNumber });
+			const resp = await axios.post(login_url, { phoneNumber });
 			console.log(resp.data);
-			set_cell_phone_warning(resp.data.msg);
+			set_phoneNumber_warning(resp.data.msg);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	// Send smsCode to server and get the response
+	const send_smsCode = async (e) => {
+		e.preventDefault();
+		try {
+			const resp = await axios.post(verify_login_url, { smsCode });
+			console.log(resp.data);
+			set_smsCode_warning(resp.data.msg);
 		} catch (error) {
 			console.log(error);
 		}
@@ -63,49 +77,64 @@ export default function Login(props) {
 				{/* Form */}
 				<form>
 					<div className="login-page-form-input">
-						<label htmlFor="number" className="label">
+						{/* phoneNumber */}
+						<label htmlFor="phoneNumber" className="label">
 							موبایل
 						</label>
-						{/* Phone Number Input */}
 						<input
-							id="number"
+							id="phoneNumber"
 							type="number"
 							className={`login-page-number-input ${
-								cell_phone_warning ? "error-input-border" : null
+								phoneNumber_warning ? "error-input-border" : null
 							}`}
 							onChange={(e) => {
-								set_cell_phone_input(e.target.value);
+								set_phoneNumber(e.target.value);
 							}}
 						/>
-					</div>
-					{cell_phone_warning ? (
-						<span style={{ color: "red" }}>{cell_phone_warning}</span>
-					) : (
-						""
-					)}
-					<div className="display-space-between"></div>
-					<div>
-						{/* Right Button */}
+						{phoneNumber_warning ? (
+							<span style={{ color: "red" }}>{phoneNumber_warning}</span>
+						) : null}
 						<button
-							type="submit"
 							className="login-page-submit-button"
 							onClick={(e) => {
-								check_form(e);
+								send_phoneNumber(e);
 							}}
 						>
-							ورود
+							دریافت کد
 						</button>
-						<Link to="/sign-up">
-							{/* Left Button */}
-							<button
-								className="login-page-submit-button"
-								style={{ float: "left" }}
-							>
-								ثبت نام
-							</button>
-						</Link>
+						{/* smsCode */}
+						<label htmlFor="smsCode" className="label">
+							کد پیامک
+						</label>
+						<input
+							id="smsCode"
+							type="number"
+							className={`login-page-number-input ${
+								smsCode_warning ? "error-input-border" : null
+							}`}
+							onChange={(e) => {
+								set_smsCode(e.target.value);
+							}}
+						/>
+						{smsCode_warning ? (
+							<span style={{ color: "red" }}>{smsCode_warning}</span>
+						) : null}
+						<button
+							className="login-page-submit-button"
+							onClick={(e) => {
+								send_smsCode(e);
+							}}
+						>
+							ارسال کد
+						</button>
 					</div>
 				</form>
+				<Link to="/sign-up">
+					{/* signUp Button */}
+					<button className="login-page-register-btn">
+						اگر هنوز ثبت نام نکردی اینجا کلیک کن
+					</button>
+				</Link>
 			</div>
 		</div>
 	);

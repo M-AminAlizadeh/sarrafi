@@ -4,7 +4,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: linear-gradient(to right, #e2e2e2, #f3eded);
 	padding: 50px;
 }
 
@@ -98,7 +97,7 @@
 }
 
 .login-page-submit-button {
-	width: 30%;
+	width: 15rem;
 	padding: var(--primary-padding);
 	border-radius: var(--pilled-shape-radius);
 	border: none;
@@ -110,6 +109,22 @@
 	box-shadow: var(--button-box-shadow-primary);
 	transition: var(--global-transition);
 }
+
+.login-page-register-btn {
+	width: 15rem;
+	padding: var(--primary-padding);
+	border-radius: var(--pilled-shape-radius);
+	border: none;
+	background: var(--color-primary);
+	color: var(--white-shade);
+	margin: 20px 0 20px 0;
+}
+
+.login-page-register-btn:hover {
+	box-shadow: var(--button-box-shadow-primary);
+	transition: var(--global-transition);
+}
+
 .chekbox-label {
 	font-size: 16px;
 	margin-right: 5px;
