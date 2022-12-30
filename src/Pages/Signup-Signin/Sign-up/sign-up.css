@@ -4,7 +4,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: linear-gradient(to right, #e2e2e2, #f3eded);
+	/* background: linear-gradient(to right, #e2e2e2, #f3eded); */
 	padding: 50px;
 }
 
@@ -51,7 +51,8 @@
 	flex-direction: column;
 	margin-bottom: 10px;
 }
-.signup-page-number-input {
+.signup-page-input,
+.rmdp-container input {
 	padding: var(--primary-padding);
 	width: 90%;
 	border-radius: var(--pilled-shape-radius);
@@ -62,13 +63,14 @@
 	border: 1px solid transparent;
 }
 @media only screen and (max-width: 300px) {
-	.signup-page-number-input,
+	.signup-page-input,
+	.rmdp-container input,
 	.signup-page-password-input {
 		width: 200px;
 	}
 }
-.signup-page-number-input:focus-visible,
-.signup-page-password-input:focus-visible {
+.signup-page-input:focus-visible,
+.signup-page-password-input:focus-visible .rmdp-container input:focus-visible {
 	border: var(--input-border-focus-mode);
 	background: transparent;
 	transition: var(--global-transition);
@@ -76,6 +78,7 @@
 .label {
 	color: var(--secondary-color);
 	margin-bottom: 3px;
+	margin-top: 10px;
 }
 .display-space-between {
 	display: flex;
@@ -85,7 +88,7 @@
 }
 
 .signup-page-submit-button {
-	width: 30%;
+	width: 10rem;
 	padding: var(--primary-padding);
 	border-radius: var(--pilled-shape-radius);
 	border: none;
@@ -108,10 +111,18 @@ input::-webkit-inner-spin-button {
 	margin: 0;
 }
 
+.sign-up-links-container {
+	/* border: 1px solid green; */
+	display: flex;
+	justify-content: space-between;
+}
+
+.mandatory-sign {
+	color: red;
+	font-size: 20px;
+}
+
 @media (max-width: 1200px) {
-	.signup-page-image-container {
-		display: none !important;
-	}
 	.signup-page-main-card-container {
 		width: 90%;
 	}
